@@ -42,7 +42,7 @@ namespace RemiseSysteem_Groep_B
                 {
                     foreach (Sector sect in spoor.Sectoren)
                     {
-                        if (sect.GetTram()==tram.Id)
+                        if (sect.Tram.Id == tram.Id)
                         {
                             sect.TramVerwijderen();
                         }
@@ -62,6 +62,10 @@ namespace RemiseSysteem_Groep_B
         }
         public void SchoonmaakOpgeven(Schoonmaak schoonmaak)
         { 
+
+        }
+        public void OnderhoudOpgeven(Onderhoud onderhoud)
+        {
 
         }
         public List<Schoonmaak> SchoonmaakOpvragen()

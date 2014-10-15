@@ -8,11 +8,13 @@ namespace RemiseSysteem_Groep_B
 {
     class Lijn
     {
-        private int id;
+        public int Lijnnummer { get; private set; }
+        public List<Spoor> Sporen { get; private set; }
 
-        public Lijn(int id)
+        public Lijn(int lijnnummer, List<Spoor> sporen)
         {
-            this.id = id;
+            this.Lijnnummer = lijnnummer;
+            this.Sporen = sporen;
         }
     }
 }
