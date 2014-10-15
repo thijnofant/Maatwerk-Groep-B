@@ -35,7 +35,9 @@ namespace RemiseSysteem_Groep_B
 
         #region Methodes
         public void PlaatsToewijzen(Sector sector, Tram tram)
-        { }
+        { 
+
+        }
         public bool PlaatsAutomatischToewijzen(Tram tram)
         {
             throw new NotImplementedException();
@@ -52,9 +54,9 @@ namespace RemiseSysteem_Groep_B
         }
         public void BeurtVoltooien()
         { }
-        public bool Inloggen(string naam, string password)
+        public bool Inloggen(string naam, string wachtwoord)
         {
-            DatabaseManager
+            return this.Database.Inloggen(naam, wachtwoord);
         }
         #endregion
     }

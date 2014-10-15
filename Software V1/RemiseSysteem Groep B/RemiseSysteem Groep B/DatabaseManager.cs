@@ -42,5 +42,11 @@ namespace RemiseSysteem_Groep_B
 
             return medewerkers;
         }
+
+        public bool Inloggen(string username, string wachtwoord)
+        {
+            //TODO: LogIn
+            throw new NotImplementedException();
+        }
     }
 }
