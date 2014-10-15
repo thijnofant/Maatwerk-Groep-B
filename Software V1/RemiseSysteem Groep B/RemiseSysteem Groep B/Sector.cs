@@ -8,5 +8,37 @@ namespace RemiseSysteem_Groep_B
 {
     class Sector
     {
+        private int id;
+        private bool isWissel;
+        private Tram tram;
+
+        public int Id { get; private set; }
+        public bool IsWissel { get; private set; }
+        public Tram Tram { get; private set; }
+
+        public Sector(int id, bool isWissel) 
+        {
+            this.id = id;
+            this.isWissel = isWissel;
+        }
+
+        public bool TramToevoegen(Tram tram) 
+        {
+            if(this.tram == null) 
+            {
+                this.tram = tram;
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+            
+        }
+
+        public void TramVerwijderen() 
+        {
+            this.tram = null;
+        }
     }
 }

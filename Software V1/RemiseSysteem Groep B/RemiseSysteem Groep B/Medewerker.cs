@@ -24,10 +24,5 @@ namespace RemiseSysteem_Groep_B
                 uitgevoerdeBeurten = new List<Beurt>();
             }
         }
-
-        public void Uitloggen() 
-        {
-            throw new NotImplementedException();
-        }
     }
 }
