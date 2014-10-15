@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
-    public partial class ReparatieApplicatie : Form
+    public partial class OnderhoudApplicatie : Form
     {
-        public ReparatieApplicatie()
+        public OnderhoudApplicatie()
         {
             InitializeComponent();
+
+            LaadMedewerkers();
+        }
+
+        public void LaadMedewerkers()
+        {
+            
         }
     }
 }
