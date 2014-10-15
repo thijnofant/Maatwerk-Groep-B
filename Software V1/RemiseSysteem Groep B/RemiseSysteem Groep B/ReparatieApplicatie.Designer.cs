@@ -1,6 +1,6 @@
 ﻿namespace RemiseSysteem_Groep_B
 {
-    partial class Bestuur
+    partial class ReparatieApplicatie
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Reparatie
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Bestuur";
+            this.ClientSize = new System.Drawing.Size(284, 260);
+            this.Name = "Reparatie";
+            this.Text = "reparatie";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

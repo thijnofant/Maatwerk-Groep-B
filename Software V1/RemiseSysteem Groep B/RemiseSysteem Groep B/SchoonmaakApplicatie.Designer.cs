@@ -1,6 +1,6 @@
 ﻿namespace RemiseSysteem_Groep_B
 {
-    partial class Schoonmaak
+    partial class SchoonmaakApplicatie
     {
         /// <summary>
         /// Required designer variable.

@@ -6,28 +6,23 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
-    class Schoonmaak : Beurt
+    abstract class Beurt
     {
         private DateTime BeginDatum;
         private int ID;
-        private BeurtType Soort;
+        private BeurtType Beurt;
         private bool IsKlaar;
 
-        public Schoonmaak(DateTime beginDatum, int id, BeurtType soort)
-            :base(beginDatum, id, soort)
+        public Beurt(DateTime beginDatum, int id, BeurtType beurt)
         {
             this.BeginDatum = beginDatum;
             this.ID = id;
-            this.Soort = soort;
+            this.Beurt = beurt;
         }
 
         /// <summary>
-        /// Wijzigt de datum van de schoonmaak beurt.
+        /// 
         /// </summary>
-        /// <param name="nieuweDatum"></param>
-        public void DatumWijzigen(DateTime nieuweDatum)
-        {
-
-        }
+        public abstract void Goedkeuren();
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
-    public partial class Bestuur : Form
+    public partial class BestuurApplicatie : Form
     {
-        public Bestuur()
+        public BestuurApplicatie()
         {
             InitializeComponent();
         }

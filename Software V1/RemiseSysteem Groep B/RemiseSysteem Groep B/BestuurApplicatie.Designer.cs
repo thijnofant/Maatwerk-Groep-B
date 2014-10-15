@@ -1,6 +1,6 @@
 ﻿namespace RemiseSysteem_Groep_B
 {
-    partial class Beheer
+    partial class BestuurApplicatie
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.Text = "Bestuur";
         }
 
         #endregion
     }
 }
-
