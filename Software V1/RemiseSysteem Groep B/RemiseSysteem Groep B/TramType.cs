@@ -12,6 +12,10 @@ namespace RemiseSysteem_Groep_B
         private double lengte;
         private List<Lijn> wordtGebruiktOp;
 
+        public string Naam { get; private set; }
+        public double Lengte { get; private set; }
+        public List<Lijn> WordtGebruiktOp { get; private set; }
+
         public TramType(string naam, double lengte)
         {
             this.naam = naam;
