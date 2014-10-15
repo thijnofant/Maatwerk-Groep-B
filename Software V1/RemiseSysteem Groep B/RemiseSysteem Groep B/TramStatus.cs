@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
-    class TramStatus
+    public enum TramStatus
     {
+        Defect,
+        Schoonmaak,
+        Dienst,
+        Remise,
     }
 }
