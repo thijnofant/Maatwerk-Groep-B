@@ -48,5 +48,14 @@ namespace RemiseSysteem_Groep_B
             //TODO: LogIn
             throw new NotImplementedException();
         }
+
+        public List<Onderhoud> OnderhoudsBeurtenOpvragen()
+        {
+            List<Onderhoud> onderhoudsBeurten = new List<Onderhoud>();
+
+            //TODO: SQL
+
+            return onderhoudsBeurten;
+        }
     }
 }
