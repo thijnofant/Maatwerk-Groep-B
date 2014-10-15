@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
-    class BeurtType
+    public enum BeurtType
     {
+        Kleine,
+        Grote,
+        Incident,
     }
 }

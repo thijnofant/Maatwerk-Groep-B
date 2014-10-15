@@ -20,9 +20,6 @@ namespace RemiseSysteem_Groep_B
             this.Beurt = beurt;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public abstract void Goedkeuren();
     }
 }
