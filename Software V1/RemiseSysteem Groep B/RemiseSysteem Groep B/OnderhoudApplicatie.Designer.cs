@@ -139,6 +139,7 @@
             this.btnTijdsIndicatieWijzigen.TabIndex = 11;
             this.btnTijdsIndicatieWijzigen.Text = "Wijzig";
             this.btnTijdsIndicatieWijzigen.UseVisualStyleBackColor = true;
+            this.btnTijdsIndicatieWijzigen.Click += new System.EventHandler(this.btnTijdsIndicatieWijzigen_Click);
             // 
             // btnTijdsIndicatieOpvragen
             // 

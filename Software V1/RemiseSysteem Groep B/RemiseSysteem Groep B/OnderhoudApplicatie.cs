@@ -73,5 +73,17 @@ namespace RemiseSysteem_Groep_B
         {
             medewerkerOnderhoud = medewerkersOnderhoud[lbxOnderhoudsMedewerkers.SelectedIndex];
         }
+
+        private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
+        {
+            if (onderhoud != null)
+            {
+                onderhoud.TijdsIndicatieWijzigen(dtpDatum.Value);
+            }
+            else
+            {
+                MessageBox.Show("Er is nog geen onderhoud geselecteerd.");
+            }
+        }
     }
 }

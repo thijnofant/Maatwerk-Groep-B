@@ -8,23 +8,34 @@ namespace RemiseSysteem_Groep_B
 {
     class Onderhoud : Beurt
     {
+        private DateTime beginDatum;
+        private int id;
+        private BeurtType soort;
+        private bool isKlaar;
+
+        private DateTime tijdsIndicatie;
+
+        private List<Medewerker> medewerkers;
+
+        private Tram tram;
+
         public DateTime BeginDatum { get; private set; }
-        private int ID;
-        private BeurtType Soort;
-        private bool IsKlaar;
+        public int ID { get; private set; }
+        public BeurtType Soort { get; private set; }
+        public bool IsKlaar { get; private set; }
 
-        private DateTime TijdsIndicatie;
+        public DateTime TijdsIndicatie { get; private set; }
 
-        private List<Medewerker> Medewerkers;
+        public List<Medewerker> Medewerkers { get; private set; }
 
-        private Tram Tram;
+        public Tram Tram { get; private set; }
 
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort)
             :base(beginDatum, id, soort)
         {
-            this.BeginDatum = beginDatum;
-            this.ID = id;
-            this.Soort = soort;
+            this.beginDatum = beginDatum;
+            this.id = id;
+            this.soort = soort;
         }
 
         /// <summary>
@@ -42,6 +53,11 @@ namespace RemiseSysteem_Groep_B
         public DateTime TijdsIndicatieOpvragen()
         {
             return this.TijdsIndicatie;
+        }
+
+        public void TijdsIndicatieWijzigen(DateTime datum)
+        {
+            this.TijdsIndicatie = datum;
         }
 
         /// <summary>
