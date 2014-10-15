@@ -35,15 +35,17 @@ namespace RemiseSysteem_Groep_B
 
         #region Methodes
         public void PlaatsToewijzen(Sector sector, Tram tram)
-        { 
-
+        {
+            sector.getTram;
+            sector.TramToevoegen(tram);
         }
         public bool PlaatsAutomatischToewijzen(Tram tram)
         {
             throw new NotImplementedException();
         }
         public void SchoonmaakOpgeven(Schoonmaak schoonmaak)
-        { }
+        { 
+        }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
             throw new NotImplementedException();
