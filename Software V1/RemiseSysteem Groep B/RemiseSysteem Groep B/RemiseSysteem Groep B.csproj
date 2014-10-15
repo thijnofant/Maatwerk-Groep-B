@@ -63,6 +63,12 @@
     <Compile Include="Medewerker.cs" />
     <Compile Include="MedewerkerType.cs" />
     <Compile Include="Onderhoud.cs" />
+    <Compile Include="OpstartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpstartForm.Designer.cs">
+      <DependentUpon>OpstartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remise.cs" />
@@ -84,6 +90,9 @@
     <Compile Include="Tram.cs" />
     <Compile Include="TramStatus.cs" />
     <Compile Include="TramType.cs" />
+    <EmbeddedResource Include="OpstartForm.resx">
+      <DependentUpon>OpstartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

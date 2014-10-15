@@ -21,7 +21,7 @@ namespace RemiseSysteem_Groep_B
         public Tram(int id, TramType type) 
         {
             this.id = id;
-            this.isType = type;
+            this.type = type;
         }
 
         /// <summary>
