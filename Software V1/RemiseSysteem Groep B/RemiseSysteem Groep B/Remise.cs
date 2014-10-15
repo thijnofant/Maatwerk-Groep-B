@@ -53,7 +53,7 @@ namespace RemiseSysteem_Groep_B
         { }
         public bool Inloggen(string naam, string password)
         {
-            throw new NotImplementedException();
+            DatabaseManager
         }
         #endregion
     }
