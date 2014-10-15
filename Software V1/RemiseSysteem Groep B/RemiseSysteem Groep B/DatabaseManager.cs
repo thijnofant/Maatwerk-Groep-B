@@ -43,6 +43,15 @@ namespace RemiseSysteem_Groep_B
             return medewerkers;
         }
 
+        public List<Medewerker> MedewerkersOpvragen(Onderhoud onderhoud)
+        {
+            List<Medewerker> medewerkers = new List<Medewerker>();
+
+            //TODO: SQL
+
+            return medewerkers;
+        }
+
         public bool Inloggen(string username, string wachtwoord)
         {
             //TODO: LogIn

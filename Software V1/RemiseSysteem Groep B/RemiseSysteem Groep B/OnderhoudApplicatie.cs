@@ -12,6 +12,12 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class OnderhoudApplicatie : Form
     {
+        List<Onderhoud> onderhoudsBeurten = new List<Onderhoud>();
+        Onderhoud onderhoud;
+        List<Medewerker> medewerkersOnderhoud;
+        Medewerker medewerkerOnderhoud;
+
+
         public OnderhoudApplicatie()
         {
             InitializeComponent();
@@ -32,12 +38,40 @@ namespace RemiseSysteem_Groep_B
 
         public void LaadOnderhoud()
         {
-            List<Onderhoud> onderhoudsBeurten = Remise.Instance.Database.OnderhoudsBeurtenOpvragen();
+            onderhoudsBeurten = Remise.Instance.Database.OnderhoudsBeurtenOpvragen();
 
             foreach(Onderhoud onderhoud in onderhoudsBeurten)
             {
                 lbxOnderhoudsBeurten.Items.Add(onderhoud);
             }
+        }
+
+        private void lbxOnderhoudsBeurten_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            onderhoud = onderhoudsBeurten[lbxOnderhoudsBeurten.SelectedIndex];
+            UpdateOnderhoudInfo(onderhoud);
+        }
+
+        public void UpdateOnderhoudInfo(Onderhoud onderhoud)
+        {
+            tbxDatum.Text = Convert.ToString(onderhoud.BeginDatum);
+
+            medewerkersOnderhoud = Remise.Instance.Database.MedewerkersOpvragen(onderhoud);
+
+            foreach (Medewerker medewerker in medewerkersOnderhoud)
+            {
+                lbxOnderhoudsMedewerkers.Items.Add(medewerker);
+            }
+        }
+
+        private void btnVerwijderMedewerker_Click(object sender, EventArgs e)
+        {
+            onderhoud.VerwijderMedewerker(medewerkerOnderhoud);
+        }
+
+        private void lbxOnderhoudsMedewerkers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            medewerkerOnderhoud = medewerkersOnderhoud[lbxOnderhoudsMedewerkers.SelectedIndex];
         }
     }
 }
