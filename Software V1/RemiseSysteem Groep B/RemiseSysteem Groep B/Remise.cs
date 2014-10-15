@@ -24,6 +24,7 @@ namespace RemiseSysteem_Groep_B
         #endregion
 
         #region Atributes + Properties
+        public DatabaseManager Database = DatabaseManager.Instance;
         public List<Lijn> Lijnen { get; private set; }
         public List<Spoor> Sporen { get; private set; }
         public Medewerker IngelogdeMedewerker { get; private set; }
