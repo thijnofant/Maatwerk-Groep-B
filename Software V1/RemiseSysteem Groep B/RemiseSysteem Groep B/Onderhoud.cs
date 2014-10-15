@@ -8,23 +8,11 @@ namespace RemiseSysteem_Groep_B
 {
     class Onderhoud : Beurt
     {
-        public DateTime BeginDatum { get; private set; }
-        private int ID;
-        private BeurtType Soort;
-        private bool IsKlaar;
-
         private DateTime TijdsIndicatie;
-
-        private List<Medewerker> Medewerkers;
-
-        private Tram Tram;
 
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort)
             :base(beginDatum, id, soort)
         {
-            this.BeginDatum = beginDatum;
-            this.ID = id;
-            this.Soort = soort;
         }
 
         /// <summary>
@@ -61,7 +49,7 @@ namespace RemiseSysteem_Groep_B
         {
             while(this.Medewerkers.Contains(medewerker))
             {
-                Medewerkers.Remove(medewerker);
+                this.Medewerkers.Remove(medewerker);
             }
         }
     }

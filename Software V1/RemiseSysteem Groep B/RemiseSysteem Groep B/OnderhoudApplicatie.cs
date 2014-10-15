@@ -22,6 +22,8 @@ namespace RemiseSysteem_Groep_B
         {
             InitializeComponent();
 
+            medewerkersOnderhoud = new List<Medewerker>();
+
             LaadMedewerkers();
             LaadOnderhoud();
         }
@@ -52,13 +54,13 @@ namespace RemiseSysteem_Groep_B
             UpdateOnderhoudInfo(onderhoud);
         }
 
-        public void UpdateOnderhoudInfo(Onderhoud onderhoud)
+        void UpdateOnderhoudInfo(Onderhoud onderhoud)
         {
             tbxDatum.Text = Convert.ToString(onderhoud.BeginDatum);
 
-            medewerkersOnderhoud = Remise.Instance.Database.MedewerkersOpvragen(onderhoud);
+            this.medewerkersOnderhoud = Remise.Instance.Database.MedewerkersOpvragen(onderhoud);
 
-            foreach (Medewerker medewerker in medewerkersOnderhoud)
+            foreach (Medewerker medewerker in this.medewerkersOnderhoud)
             {
                 lbxOnderhoudsMedewerkers.Items.Add(medewerker);
             }
