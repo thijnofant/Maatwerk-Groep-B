@@ -15,6 +15,10 @@ namespace RemiseSysteem_Groep_B
 
         private DateTime TijdsIndicatie;
 
+        private List<Medewerker> Medewerkers;
+
+        private Tram Tram;
+
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort)
             :base(beginDatum, id, soort)
         {
@@ -24,11 +28,41 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// Vraagt de tijdsindicatie op voor deze onderhoudsbeurt
+        /// Het opvragen van de medewerkers.
+        /// </summary>
+        /// <returns>Lijst van medewerkers</returns>
+        public override List<Medewerker> MedewerkersOpvragen()
+        {
+            return this.Medewerkers;
+        }
+
+        /// <summary>
+        /// Vraagt de tijdsindicatie op voor deze onderhoudsbeurt.
         /// </summary>
         public DateTime TijdsIndicatieOpvragen()
         {
             return this.TijdsIndicatie;
+        }
+
+        /// <summary>
+        /// Voegt een medewerker toe aan de onderhoudsbeurt.
+        /// </summary>
+        /// <param name="medewerker"></param>
+        public override void VoegMedewerkerToe(Medewerker medewerker)
+        {
+            this.Medewerkers.Add(medewerker);
+        }
+
+        /// <summary>
+        /// Verwijdert een medewerker van de onderhoudsbeurt.
+        /// </summary>
+        /// <param name="medewerker"></param>
+        public override void VerwijderMedewerker(Medewerker medewerker)
+        {
+            while(this.Medewerkers.Contains(medewerker))
+            {
+                Medewerkers.Remove(medewerker);
+            }
         }
     }
 }

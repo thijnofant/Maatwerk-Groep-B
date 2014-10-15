@@ -13,6 +13,10 @@ namespace RemiseSysteem_Groep_B
         private BeurtType Beurt;
         private bool IsKlaar;
 
+        private List<Medewerker> Medewerkers;
+
+        private Tram Tram;
+
         public Beurt(DateTime beginDatum, int id, BeurtType beurt)
         {
             this.BeginDatum = beginDatum;
@@ -20,6 +24,10 @@ namespace RemiseSysteem_Groep_B
             this.Beurt = beurt;
         }
 
-        public abstract void Goedkeuren();
+        public abstract List<Medewerker> MedewerkersOpvragen();
+
+        public abstract void VoegMedewerkerToe(Medewerker medewerker);
+
+        public abstract void VerwijderMedewerker(Medewerker medewerker);
     }
 }
