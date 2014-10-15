@@ -83,6 +83,9 @@
     <Compile Include="Tram.cs" />
     <Compile Include="TramStatus.cs" />
     <Compile Include="TramType.cs" />
+    <EmbeddedResource Include="BeheerApplicatie.resx">
+      <DependentUpon>BeheerApplicatie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
