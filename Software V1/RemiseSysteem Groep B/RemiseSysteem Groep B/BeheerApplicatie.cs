@@ -12,9 +12,13 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class BeheerApplicatie : Form
     {
+        private Remise remise;
+
         public BeheerApplicatie()
         {
             InitializeComponent();
+            this.remise = Remise.Instance;
+            
         }
     }
 }
