@@ -8,5 +8,14 @@ namespace RemiseSysteem_Groep_B
 {
     class Sector
     {
+        private int id;
+        private bool isWissel;
+        private Tram tram;
+
+        public Sector(int id, bool isWissel) 
+        {
+            this.id = id;
+            this.isWissel = isWissel;
+        }
     }
 }
