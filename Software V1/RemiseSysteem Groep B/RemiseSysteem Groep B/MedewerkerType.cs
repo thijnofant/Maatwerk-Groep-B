@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
-    class MedewerkerType
+    public enum MedewerkerType
     {
+        Beheerder,
+        Bestuurder,
+        Schoonmaker,
+        Technicus,
     }
 }
