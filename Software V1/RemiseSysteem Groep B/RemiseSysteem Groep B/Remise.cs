@@ -77,7 +77,9 @@ namespace RemiseSysteem_Groep_B
             throw new NotImplementedException();
         }
         public void BeurtVoltooien()
-        { }
+        {
+
+        }
         public bool Inloggen(string naam, string wachtwoord)
         {
             return this.Database.Inloggen(naam, wachtwoord);
