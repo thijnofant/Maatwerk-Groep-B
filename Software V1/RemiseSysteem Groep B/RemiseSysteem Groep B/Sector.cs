@@ -12,10 +12,31 @@ namespace RemiseSysteem_Groep_B
         private bool isWissel;
         private Tram tram;
 
+        public Tram Tram { get; private set; }
+
         public Sector(int id, bool isWissel) 
         {
             this.id = id;
             this.isWissel = isWissel;
+        }
+
+        public bool TramToevoegen(Tram tram) 
+        {
+            if(this.tram == null) 
+            {
+                this.tram = tram;
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+            
+        }
+
+        public void TramVerwijderen() 
+        {
+            this.tram = null;
         }
     }
 }

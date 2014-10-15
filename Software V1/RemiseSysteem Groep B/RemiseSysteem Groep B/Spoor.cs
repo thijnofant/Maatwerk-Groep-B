@@ -12,6 +12,7 @@ namespace RemiseSysteem_Groep_B
         private List<Sector> sectoren;
         private List<Lijn> lijnen;
 
+        public List<Sector> Sectoren { get; private set; }
         public Spoor(int id, List<Sector> sectoren, List<Lijn> lijnen) 
         {
             this.id = id;
