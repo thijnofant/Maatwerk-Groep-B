@@ -8,7 +8,7 @@ namespace RemiseSysteem_Groep_B
 {
     class Onderhoud : Beurt
     {
-        private DateTime BeginDatum;
+        public DateTime BeginDatum { get; private set; }
         private int ID;
         private BeurtType Soort;
         private bool IsKlaar;

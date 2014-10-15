@@ -10,18 +10,18 @@ namespace RemiseSysteem_Groep_B
     {
         private DateTime BeginDatum;
         private int ID;
-        private BeurtType Beurt;
+        private BeurtType Soort;
         private bool IsKlaar;
 
         private List<Medewerker> Medewerkers;
 
         private Tram Tram;
 
-        public Beurt(DateTime beginDatum, int id, BeurtType beurt)
+        public Beurt(DateTime beginDatum, int id, BeurtType soort)
         {
             this.BeginDatum = beginDatum;
             this.ID = id;
-            this.Beurt = beurt;
+            this.Soort = soort;
         }
 
         public abstract List<Medewerker> MedewerkersOpvragen();
