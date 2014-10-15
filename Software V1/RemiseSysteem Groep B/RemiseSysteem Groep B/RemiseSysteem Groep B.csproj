@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Beurt.cs" />
     <Compile Include="BeurtType.cs" />
+    <Compile Include="DatabaseManager.cs" />
     <Compile Include="Lijn.cs" />
     <Compile Include="Medewerker.cs" />
     <Compile Include="MedewerkerType.cs" />
