@@ -34,17 +34,35 @@ namespace RemiseSysteem_Groep_B
         #endregion
 
         #region Methodes
-        public void PlaatsToewijzen(Sector sector, Tram tram)
+        public bool PlaatsToewijzen(Sector sector, Tram tram)
         {
-            sector.getTram;
-            sector.TramToevoegen(tram);
+            if (sector.TramToevoegen(tram))
+            {
+                foreach (Spoor spoor in Sporen)
+                {
+                    foreach (Sector sect in spoor.Sectoren)
+                    {
+                        if (sect.GetTram()==tram.Id)
+                        {
+                            sect.TramVerwijderen();
+                        }
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
         public bool PlaatsAutomatischToewijzen(Tram tram)
         {
             throw new NotImplementedException();
         }
         public void SchoonmaakOpgeven(Schoonmaak schoonmaak)
         { 
+
         }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
