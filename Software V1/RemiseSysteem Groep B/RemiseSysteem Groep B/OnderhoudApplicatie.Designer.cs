@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lbxMedewerkers = new System.Windows.Forms.ListBox();
-            this.lbxReparaties = new System.Windows.Forms.ListBox();
+            this.lbxOnderhoudsBeurten = new System.Windows.Forms.ListBox();
             this.lblMedewerkers = new System.Windows.Forms.Label();
             this.lblOnderhoud = new System.Windows.Forms.Label();
             this.btnVoegMedewerkerToe = new System.Windows.Forms.Button();
@@ -46,13 +46,13 @@
             this.lbxMedewerkers.Size = new System.Drawing.Size(120, 95);
             this.lbxMedewerkers.TabIndex = 0;
             // 
-            // lbxReparaties
+            // lbxOnderhoudsBeurten
             // 
-            this.lbxReparaties.FormattingEnabled = true;
-            this.lbxReparaties.Location = new System.Drawing.Point(222, 25);
-            this.lbxReparaties.Name = "lbxReparaties";
-            this.lbxReparaties.Size = new System.Drawing.Size(120, 95);
-            this.lbxReparaties.TabIndex = 1;
+            this.lbxOnderhoudsBeurten.FormattingEnabled = true;
+            this.lbxOnderhoudsBeurten.Location = new System.Drawing.Point(222, 25);
+            this.lbxOnderhoudsBeurten.Name = "lbxOnderhoudsBeurten";
+            this.lbxOnderhoudsBeurten.Size = new System.Drawing.Size(120, 95);
+            this.lbxOnderhoudsBeurten.TabIndex = 1;
             // 
             // lblMedewerkers
             // 
@@ -68,9 +68,9 @@
             this.lblOnderhoud.AutoSize = true;
             this.lblOnderhoud.Location = new System.Drawing.Point(219, 9);
             this.lblOnderhoud.Name = "lblOnderhoud";
-            this.lblOnderhoud.Size = new System.Drawing.Size(58, 13);
+            this.lblOnderhoud.Size = new System.Drawing.Size(104, 13);
             this.lblOnderhoud.TabIndex = 3;
-            this.lblOnderhoud.Text = "Reparaties";
+            this.lblOnderhoud.Text = "Onderhoudsbeurten:";
             // 
             // btnVoegMedewerkerToe
             // 
@@ -106,7 +106,7 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 8;
             // 
-            // ReparatieApplicatie
+            // OnderhoudApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +117,7 @@
             this.Controls.Add(this.btnVoegMedewerkerToe);
             this.Controls.Add(this.lblOnderhoud);
             this.Controls.Add(this.lblMedewerkers);
-            this.Controls.Add(this.lbxReparaties);
+            this.Controls.Add(this.lbxOnderhoudsBeurten);
             this.Controls.Add(this.lbxMedewerkers);
             this.Name = "OnderhoudApplicatie";
             this.Text = "Onderhoud";
@@ -129,7 +129,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbxMedewerkers;
-        private System.Windows.Forms.ListBox lbxReparaties;
+        private System.Windows.Forms.ListBox lbxOnderhoudsBeurten;
         private System.Windows.Forms.Label lblMedewerkers;
         private System.Windows.Forms.Label lblOnderhoud;
         private System.Windows.Forms.Button btnVoegMedewerkerToe;
