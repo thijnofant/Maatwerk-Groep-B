@@ -8,5 +8,11 @@ namespace RemiseSysteem_Groep_B
 {
     class Lijn
     {
+        private int id;
+
+        public Lijn(int id)
+        {
+            this.id = id;
+        }
     }
 }
