@@ -31,6 +31,7 @@ namespace RemiseSysteem_Groep_B
                 Control spoorBegin = new Button();
                 spoorBegin.Text = "";
                 spoorBegin.Click += spoorBegin_Click;
+                spoorBegin.Name = "";
                 this.splitContainer1.Panel2.Controls.Add(spoorBegin);
                 foreach (Sector sector in spoor.Sectoren)
                 {
