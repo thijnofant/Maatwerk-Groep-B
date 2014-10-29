@@ -12,6 +12,8 @@ namespace RemiseSysteem_Groep_B
         private bool isWissel;
         private Tram tram;
 
+        public int Id { get; private set; }
+        public bool IsWissel { get; private set; }
         public Tram Tram { get; private set; }
 
         public Sector(int id, bool isWissel) 

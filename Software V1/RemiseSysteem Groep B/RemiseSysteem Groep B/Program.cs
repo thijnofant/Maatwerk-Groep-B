@@ -16,7 +16,7 @@ namespace RemiseSysteem_Groep_B
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OnderhoudApplicatie());
+            Application.Run(new OpstartForm());
         }
     }
 }

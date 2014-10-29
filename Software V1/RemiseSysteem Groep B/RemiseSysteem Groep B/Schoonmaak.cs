@@ -8,21 +8,12 @@ namespace RemiseSysteem_Groep_B
 {
     class Schoonmaak : Beurt
     {
-        private DateTime BeginDatum;
         private int ID;
         private BeurtType Soort;
-        private bool IsKlaar;
-
-        private List<Medewerker> Medewerkers;
-
-        private Tram Tram;
 
         public Schoonmaak(DateTime beginDatum, int id, BeurtType soort)
             :base(beginDatum, id, soort)
         {
-            this.BeginDatum = beginDatum;
-            this.ID = id;
-            this.Soort = soort;
         }
 
         /// <summary>

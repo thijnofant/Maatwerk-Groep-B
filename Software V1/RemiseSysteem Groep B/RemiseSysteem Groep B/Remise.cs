@@ -42,7 +42,7 @@ namespace RemiseSysteem_Groep_B
                 {
                     foreach (Sector sect in spoor.Sectoren)
                     {
-                        if (sect.GetTram()==tram.Id)
+                        if (sect.Tram.Id == tram.Id)
                         {
                             sect.TramVerwijderen();
                         }
@@ -64,6 +64,10 @@ namespace RemiseSysteem_Groep_B
         { 
 
         }
+        public void OnderhoudOpgeven(Onderhoud onderhoud)
+        {
+
+        }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
             throw new NotImplementedException();
@@ -73,7 +77,9 @@ namespace RemiseSysteem_Groep_B
             throw new NotImplementedException();
         }
         public void BeurtVoltooien()
-        { }
+        {
+
+        }
         public bool Inloggen(string naam, string wachtwoord)
         {
             return this.Database.Inloggen(naam, wachtwoord);

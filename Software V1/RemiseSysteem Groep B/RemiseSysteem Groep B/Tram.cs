@@ -10,13 +10,18 @@ namespace RemiseSysteem_Groep_B
     {
         private TramStatus status;
         private int id;
-        private TramType isType;
+        private TramType type;
         private Sector staatOpSector;
+
+        public int Id { get; private set; }
+        public TramStatus Status { get; private set; }
+        public TramType Type { get; private set; }
+        public Sector StaatOpSector { get; private set; }
 
         public Tram(int id, TramType type) 
         {
             this.id = id;
-            this.isType = type;
+            this.type = type;
         }
 
         /// <summary>
