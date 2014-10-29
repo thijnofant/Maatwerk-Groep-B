@@ -14,7 +14,6 @@ namespace RemiseSysteem_Groep_B
         private Sector staatOpSector;
 
         public int Id { get; private set; }
-        public TramStatus Status { get; private set; }
         public TramType Type { get; private set; }
         public Sector StaatOpSector { get; private set; }
 
@@ -24,6 +23,13 @@ namespace RemiseSysteem_Groep_B
             this.type = type;
         }
 
+        public TramStatus Status
+        {
+            get { return status; }
+            set { status = value ; }
+        }
+
+        
         /// <summary>
         /// Verandert de huidige status van de tram naar een nieuwe opgegeven status.
         /// </summary>

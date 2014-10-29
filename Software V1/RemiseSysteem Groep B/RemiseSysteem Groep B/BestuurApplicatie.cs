@@ -12,9 +12,12 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class BestuurApplicatie : Form
     {
+        DatabaseManager manager = DatabaseManager.Instance;
+
         public BestuurApplicatie()
         {
             InitializeComponent();
+            
         }
 
         private void btnOne_Click(object sender, EventArgs e)
@@ -87,7 +90,7 @@ namespace RemiseSysteem_Groep_B
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-
+            manager.Test();
         }
     }
 }
