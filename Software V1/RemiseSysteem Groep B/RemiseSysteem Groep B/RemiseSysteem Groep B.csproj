@@ -96,6 +96,9 @@
     <EmbeddedResource Include="BeheerApplicatie.resx">
       <DependentUpon>BeheerApplicatie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BestuurApplicatie.resx">
+      <DependentUpon>BestuurApplicatie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OnderhoudApplicatie.resx">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
     </EmbeddedResource>
