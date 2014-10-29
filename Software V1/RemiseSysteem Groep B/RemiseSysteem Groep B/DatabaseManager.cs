@@ -14,6 +14,7 @@ namespace RemiseSysteem_Groep_B
         private static DatabaseManager instance;
         private DatabaseManager() 
         {
+            this.connection = new OracleConnection();
             this.Pcn = "dbi292195";
             this.Password = "kd1qoIM98M";
             connection.ConnectionString = "User Id=" + this.Pcn + ";Password=" + this.Password + ";Data Source=" + "//192.168.15.50:1521/fhictora;";
