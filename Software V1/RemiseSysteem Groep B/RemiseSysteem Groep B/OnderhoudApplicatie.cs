@@ -24,7 +24,7 @@ namespace RemiseSysteem_Groep_B
         {
             InitializeComponent();
 
-            databaseManager = new DatabaseManager();
+            databaseManager = DatabaseManager.Instance;
 
             medewerkersOnderhoud = new List<Medewerker>();
 

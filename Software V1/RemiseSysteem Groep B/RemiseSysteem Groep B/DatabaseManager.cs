@@ -11,7 +11,7 @@ namespace RemiseSysteem_Groep_B
     {
         #region singleton
         private static DatabaseManager instance;
-        public DatabaseManager() 
+        private DatabaseManager() 
         {
             this.Pcn = "dbi292195";
             this.Password = "kd1qoIM98M";
