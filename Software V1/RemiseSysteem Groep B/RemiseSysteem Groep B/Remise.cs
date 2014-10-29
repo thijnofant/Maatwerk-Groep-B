@@ -67,60 +67,65 @@ namespace RemiseSysteem_Groep_B
         }
         public bool SchoonmaakOpgeven(Schoonmaak schoonmaak)
         {
-            int schoonmaakOpDatum = 0;
-            int aantalSchoonmakers = 0;
+            if (IngelogdeMedewerker.MedewerkerType == MedewerkerType.Beheerder) {
+                int schoonmaakOpDatum = 0;
+                int aantalSchoonmakers = 0;
 
-            //Aantal schoonmaakbeurten op dezelfde datum tellen en opslaan.
-            foreach(Schoonmaak s in Beurten)
-            {
-                if (s.BeginDatum == schoonmaak.BeginDatum) 
-                {
-                    schoonmaakOpDatum += 1;
+                //Aantal schoonmaakbeurten op dezelfde datum tellen en opslaan.
+                foreach (Schoonmaak s in Beurten) {
+                    if (s.BeginDatum == schoonmaak.BeginDatum) {
+                        schoonmaakOpDatum += 1;
+                    }
                 }
-            }
 
-            //Aantal schoonmakers beschikbaar.
-            foreach(Medewerker m in Medewerkers)
-            {
-                if(m.MedewerkerType == MedewerkerType.Schoonmaker)
-                {
-                    aantalSchoonmakers += 1;
+                //Aantal schoonmakers beschikbaar.
+                foreach (Medewerker m in Medewerkers) {
+                    if (m.MedewerkerType == MedewerkerType.Schoonmaker) {
+                        aantalSchoonmakers += 1;
+                    }
                 }
-            }
 
-            //Als er meer beurten op een dag zijn dan schoonmakers, wordt de beurt geweigerd.
-            if (schoonmaakOpDatum >= aantalSchoonmakers) 
-            {
+                //Als er meer beurten op een dag zijn dan schoonmakers, wordt de beurt geweigerd.
+                if (schoonmaakOpDatum >= aantalSchoonmakers) {
+                    return false;
+                }
+                Beurten.Add(schoonmaak);
+                return true;
+            }
+            else {
                 return false;
             }
-            Beurten.Add(schoonmaak);
-            return true;
         }
         public bool OnderhoudOpgeven(Onderhoud onderhoud)
         {
-            int onderhoudOpDatum = 0;
-            int aantalTechnici = 0;
+            if (IngelogdeMedewerker.MedewerkerType == MedewerkerType.Beheerder) {
+                int onderhoudOpDatum = 0;
+                int aantalTechnici = 0;
 
-            //Aantal onderhoudsbeurten op dezelfde datum tellen en opslaan.
-            foreach (Onderhoud s in Beurten) {
-                if (s.BeginDatum == onderhoud.BeginDatum) {
-                    onderhoudOpDatum += 1;
+                //Aantal onderhoudsbeurten op dezelfde datum tellen en opslaan.
+                foreach (Onderhoud s in Beurten) {
+                    if (s.BeginDatum == onderhoud.BeginDatum) {
+                        onderhoudOpDatum += 1;
+                    }
                 }
-            }
 
-            //Aantal technici beschikbaar.
-            foreach (Medewerker m in Medewerkers) {
-                if (m.MedewerkerType == MedewerkerType.Technicus) {
-                    aantalTechnici += 1;
+                //Aantal technici beschikbaar.
+                foreach (Medewerker m in Medewerkers) {
+                    if (m.MedewerkerType == MedewerkerType.Technicus) {
+                        aantalTechnici += 1;
+                    }
                 }
-            }
 
-            //Als er meer beurten op een dag zijn dan technici, wordt de beurt geweigerd.
-            if (onderhoudOpDatum >= aantalTechnici) {
+                //Als er meer beurten op een dag zijn dan technici, wordt de beurt geweigerd.
+                if (onderhoudOpDatum >= aantalTechnici) {
+                    return false;
+                }
+                Beurten.Add(onderhoud);
+                return true;
+            }
+            else {
                 return false;
             }
-            Beurten.Add(onderhoud);
-            return true;
         }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
