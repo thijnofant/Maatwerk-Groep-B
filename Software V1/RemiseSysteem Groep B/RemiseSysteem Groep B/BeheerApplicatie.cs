@@ -18,26 +18,73 @@ namespace RemiseSysteem_Groep_B
         {
             InitializeComponent();
             this.remise = Remise.Instance;
-            
-
+            List<Sector> sectoren = new List<Sector>();
+            List<Lijn> lijnen = new List<Lijn>();
+            Sector s;
+            s = new Sector(1, false);
+            sectoren.Add(s);
+            s = new Sector(2, false);
+            sectoren.Add(s);
+            s = new Sector(3, false);
+            sectoren.Add(s);
+            s = new Sector(4, false);
+            sectoren.Add(s);
+            s = new Sector(5, false);
+            sectoren.Add(s);
+            Spoor spoor1 = new Spoor(1, sectoren, lijnen);
+            sectoren = new List<Sector>();
+            lijnen = new List<Lijn>();
+            s = new Sector(1, false);
+            sectoren.Add(s);
+            s = new Sector(2, false);
+            sectoren.Add(s);
+            s = new Sector(3, false);
+            sectoren.Add(s);
+            s = new Sector(4, false);
+            sectoren.Add(s);
+            s = new Sector(5, false);
+            sectoren.Add(s);
+            Spoor spoor2 = new Spoor(1, sectoren, lijnen);
+            sectoren = new List<Sector>();
+            lijnen = new List<Lijn>();
+            s = new Sector(1, false);
+            sectoren.Add(s);
+            s = new Sector(2, false);
+            sectoren.Add(s);
+            s = new Sector(3, false);
+            sectoren.Add(s);
+            s = new Sector(4, false);
+            sectoren.Add(s);
+            s = new Sector(5, false);
+            sectoren.Add(s);
+            Spoor spoor3 = new Spoor(1, sectoren, lijnen);
+            this.remise.Sporen.Add(spoor1);
+            this.remise.Sporen.Add(spoor2);
+            this.remise.Sporen.Add(spoor3);
+            VulSporen();
         }
 
         public void VulSporen()
         {
-           List<Spoor> sporen = this.remise.Sporen;
+            List<Spoor> sporen = this.remise.Sporen;
             int spoornummer = 1;
+            Point location = new Point(splitContainer1.Panel2.Location.X, splitContainer1.Panel2.Location.Y);
             foreach (Spoor spoor in sporen)
             {
+                location.X += 5;
+                location.Y += 5;
                 Control spoorBegin = new Button();
-                spoorBegin.Text = "";
+                spoorBegin.Text = "Spoor " + spoornummer;
                 spoorBegin.Click += spoorBegin_Click;
                 spoorBegin.Name = "";
                 this.splitContainer1.Panel2.Controls.Add(spoorBegin);
+
                 foreach (Sector sector in spoor.Sectoren)
                 {
                     Control SectorNieuw = new Button();
                     SectorNieuw.Text = "";
                     SectorNieuw.Click += SectorNieuw_Click;
+                    SectorNieuw.Location = new Point(location.X, location.Y);
                     this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
                 }
                 spoornummer++;
@@ -46,12 +93,12 @@ namespace RemiseSysteem_Groep_B
 
         private void SectorNieuw_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("gegenereerde button aangeklikt!");
         }
 
         private void spoorBegin_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)

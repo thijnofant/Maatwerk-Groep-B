@@ -12,20 +12,20 @@ namespace RemiseSysteem_Groep_B
         private List<Sector> sectoren;
         private List<Lijn> lijnen;
 
-        public int Id { get; private set; }
-        public List<Sector> Sectoren { get; private set; }
-        public List<Lijn> Lijnen { get; private set; }
+        public int Id { get { return id; } }
+        public List<Sector> Sectoren { get { return sectoren; } }
+        public List<Lijn> Lijnen { get { return lijnen; } }
 
-        public Spoor(int id, List<Sector> sectoren, List<Lijn> lijnen) 
+        public Spoor(int id, List<Sector> sectoren, List<Lijn> lijnen)
         {
             this.id = id;
             this.sectoren = sectoren;
             this.lijnen = lijnen;
         }
 
-        public void Blokkeren() 
+        public void Blokkeren()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
