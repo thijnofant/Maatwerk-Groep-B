@@ -31,7 +31,7 @@ namespace RemiseSysteem_Groep_B
                 foreach (Sector sector in spoor.Sectoren)
                 {
 
-                    this.splitContainer1.Panel2.Controls.Add();
+                    //this.splitContainer1.Panel2.Controls.Add();
                 }
                 spoornummer++;
             }
