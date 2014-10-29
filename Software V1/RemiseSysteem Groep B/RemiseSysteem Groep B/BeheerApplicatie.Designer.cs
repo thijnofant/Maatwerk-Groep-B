@@ -45,9 +45,9 @@
             this.lijnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beherenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medewerkersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beherenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
-            this.beherenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -73,6 +73,10 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel1.Controls.Add(this.lblMeldingen);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.splitContainer1.Size = new System.Drawing.Size(1446, 465);
             this.splitContainer1.SplitterDistance = 533;
             this.splitContainer1.TabIndex = 2;
@@ -123,7 +127,7 @@
             // verplaatsenToolStripMenuItem
             // 
             this.verplaatsenToolStripMenuItem.Name = "verplaatsenToolStripMenuItem";
-            this.verplaatsenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.verplaatsenToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.verplaatsenToolStripMenuItem.Text = "Verplaatsen";
             this.verplaatsenToolStripMenuItem.Click += new System.EventHandler(this.verplaatsenToolStripMenuItem_Click);
             // 
@@ -132,27 +136,27 @@
             this.reparatieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aanvragenToolStripMenuItem});
             this.reparatieToolStripMenuItem.Name = "reparatieToolStripMenuItem";
-            this.reparatieToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.reparatieToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.reparatieToolStripMenuItem.Text = "Reparatie";
             this.reparatieToolStripMenuItem.Click += new System.EventHandler(this.reparatieToolStripMenuItem_Click);
             // 
             // aanvragenToolStripMenuItem
             // 
             this.aanvragenToolStripMenuItem.Name = "aanvragenToolStripMenuItem";
-            this.aanvragenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.aanvragenToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
             this.aanvragenToolStripMenuItem.Text = "Aanvragen";
             // 
             // schoonmaakToolStripMenuItem
             // 
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
-            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
             this.schoonmaakToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakToolStripMenuItem_Click);
             // 
             // verwijderenToolStripMenuItem
             // 
             this.verwijderenToolStripMenuItem.Name = "verwijderenToolStripMenuItem";
-            this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.verwijderenToolStripMenuItem.Text = "Verwijderen";
             this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.verwijderenToolStripMenuItem_Click);
             // 
@@ -168,14 +172,14 @@
             // blokkerenToolStripMenuItem
             // 
             this.blokkerenToolStripMenuItem.Name = "blokkerenToolStripMenuItem";
-            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.blokkerenToolStripMenuItem.Text = "Blokkeren";
             this.blokkerenToolStripMenuItem.Click += new System.EventHandler(this.blokkerenToolStripMenuItem_Click);
             // 
             // deblokkerenToolStripMenuItem
             // 
             this.deblokkerenToolStripMenuItem.Name = "deblokkerenToolStripMenuItem";
-            this.deblokkerenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.deblokkerenToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.deblokkerenToolStripMenuItem.Text = "Deblokkeren";
             this.deblokkerenToolStripMenuItem.Click += new System.EventHandler(this.deblokkerenToolStripMenuItem_Click);
             // 
@@ -190,7 +194,7 @@
             // beherenToolStripMenuItem
             // 
             this.beherenToolStripMenuItem.Name = "beherenToolStripMenuItem";
-            this.beherenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.beherenToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.beherenToolStripMenuItem.Text = "Beheren";
             this.beherenToolStripMenuItem.Click += new System.EventHandler(this.beherenToolStripMenuItem_Click);
             // 
@@ -205,12 +209,13 @@
             // beherenToolStripMenuItem1
             // 
             this.beherenToolStripMenuItem1.Name = "beherenToolStripMenuItem1";
-            this.beherenToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
+            this.beherenToolStripMenuItem1.Size = new System.Drawing.Size(132, 24);
             this.beherenToolStripMenuItem1.Text = "Beheren";
             this.beherenToolStripMenuItem1.Click += new System.EventHandler(this.beherenToolStripMenuItem1_Click);
             // 
             // BeheerApplicatie
             // 
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1446, 515);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);

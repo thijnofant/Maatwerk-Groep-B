@@ -28,13 +28,29 @@ namespace RemiseSysteem_Groep_B
             int spoornummer = 1;
             foreach (Spoor spoor in sporen)
             {
+                Control spoorBegin = new Button();
+                spoorBegin.Text = "";
+                spoorBegin.Click += spoorBegin_Click;
+                this.splitContainer1.Panel2.Controls.Add(spoorBegin);
                 foreach (Sector sector in spoor.Sectoren)
                 {
-
-                    //this.splitContainer1.Panel2.Controls.Add();
+                    Control SectorNieuw = new Button();
+                    SectorNieuw.Text = "";
+                    SectorNieuw.Click += SectorNieuw_Click;
+                    this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
                 }
                 spoornummer++;
             }
+        }
+
+        private void SectorNieuw_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void spoorBegin_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)
