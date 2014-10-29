@@ -17,10 +17,14 @@ namespace RemiseSysteem_Groep_B
         List<Medewerker> medewerkersOnderhoud;
         Medewerker medewerkerOnderhoud;
 
+        DatabaseManager databaseManager;
+
 
         public OnderhoudApplicatie()
         {
             InitializeComponent();
+
+            databaseManager = DatabaseManager.Instance;
 
             medewerkersOnderhoud = new List<Medewerker>();
 
@@ -86,6 +90,19 @@ namespace RemiseSysteem_Groep_B
             {
                 MessageBox.Show("Er is nog geen onderhoud geselecteerd.");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(databaseManager.Test())
+            {
+                MessageBox.Show("Succes");
+            }
+            else
+            {
+                MessageBox.Show("Fail");
+            }
+
         }
     }
 }
