@@ -47,7 +47,7 @@
             this.btnFour = new System.Windows.Forms.Button();
             this.btnOne = new System.Windows.Forms.Button();
             this.tbxInput = new System.Windows.Forms.TextBox();
-            this.tbxGotoTrack = new System.Windows.Forms.TextBox();
+            this.lblGoToTrack = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -245,19 +245,21 @@
             this.tbxInput.Size = new System.Drawing.Size(108, 69);
             this.tbxInput.TabIndex = 24;
             // 
-            // tbxGotoTrack
+            // lblGoToTrack
             // 
-            this.tbxGotoTrack.Location = new System.Drawing.Point(23, 34);
-            this.tbxGotoTrack.Multiline = true;
-            this.tbxGotoTrack.Name = "tbxGotoTrack";
-            this.tbxGotoTrack.Size = new System.Drawing.Size(78, 47);
-            this.tbxGotoTrack.TabIndex = 23;
+            this.lblGoToTrack.AutoSize = true;
+            this.lblGoToTrack.Location = new System.Drawing.Point(23, 34);
+            this.lblGoToTrack.Name = "lblGoToTrack";
+            this.lblGoToTrack.Size = new System.Drawing.Size(16, 13);
+            this.lblGoToTrack.TabIndex = 43;
+            this.lblGoToTrack.Text = "...";
             // 
             // BestuurApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 361);
+            this.Controls.Add(this.lblGoToTrack);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -275,7 +277,6 @@
             this.Controls.Add(this.btnFour);
             this.Controls.Add(this.btnOne);
             this.Controls.Add(this.tbxInput);
-            this.Controls.Add(this.tbxGotoTrack);
             this.Name = "BestuurApplicatie";
             this.Text = "Bestuur";
             this.groupBox1.ResumeLayout(false);
@@ -306,7 +307,7 @@
         private System.Windows.Forms.Button btnFour;
         private System.Windows.Forms.Button btnOne;
         private System.Windows.Forms.TextBox tbxInput;
-        private System.Windows.Forms.TextBox tbxGotoTrack;
+        private System.Windows.Forms.Label lblGoToTrack;
 
     }
 }

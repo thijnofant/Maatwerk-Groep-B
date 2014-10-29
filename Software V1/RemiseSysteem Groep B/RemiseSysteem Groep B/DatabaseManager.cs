@@ -115,6 +115,36 @@ namespace RemiseSysteem_Groep_B
             return lijnenlijst;
         }
 
+        public Tram GetTram(int ID)
+        {
+            String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.ID = '" + ID + "' AND t.Tramtype_ID = tt.ID"; //het moet zijn: t."Tramtype_ID", uitzoeken hoe dit moet
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+                string FoundStatus = reader["Status"].ToString();
+                string FoundName = reader["Naam"].ToString();
+                string FoundDescription = reader["Omschrijving"].ToString();
 
+                //aanvullen
+                TramType tramtype = new TramType(FoundDescription, 1);
+                Tram tram = new Tram(ID, tramtype);
+                TramStatus tramtypeStatus = (TramStatus)Enum.Parse(typeof(TramStatus), FoundDescription, true);
+                tram.Status = tramtypeStatus; //is enum, werkt nu niet
+                return tram;
+
+                
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+            }
+            return null;
+        }
     }
 }
