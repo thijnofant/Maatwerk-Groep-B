@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,5 +67,31 @@ namespace RemiseSysteem_Groep_B
 
             return onderhoudsBeurten;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DataTable SporenOpvragen()
+        {
+            DataTable sporenlijst = new DataTable();
+
+            
+            //TODO: SQL
+            return sporenlijst;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DataTable LijnenOpvragen()
+        {
+            DataTable lijnenlijst = new DataTable();
+            //TODO: SQL
+            return lijnenlijst;
+        }
+
+
     }
 }

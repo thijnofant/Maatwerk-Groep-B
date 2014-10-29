@@ -19,6 +19,62 @@ namespace RemiseSysteem_Groep_B
             InitializeComponent();
             this.remise = Remise.Instance;
             
+
+        }
+
+        public void VulSporen()
+        {
+           List<Spoor> sporen = this.remise.Sporen;
+            int spoornummer = 1;
+            foreach (Spoor spoor in sporen)
+            {
+                foreach (Sector sector in spoor.Sectoren)
+                {
+
+                    this.splitContainer1.Panel2.Controls.Add();
+                }
+                spoornummer++;
+            }
+        }
+
+        private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void verwijderenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blokkerenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deblokkerenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void beherenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void beherenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
