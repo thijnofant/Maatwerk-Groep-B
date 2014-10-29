@@ -13,6 +13,11 @@ namespace RemiseSysteem_Groep_B
         private string naam;
         private List<Beurt> uitgevoerdeBeurten;
 
+        public MedewerkerType MedewerkerType { get; private set; }
+        public int Id { get; private set; }
+        public string Naam { get; private set; }
+        public List<Beurt> UitgevoerdeBeurten { get; private set; }
+
         public Medewerker(int id, string naam, MedewerkerType medewerkerType) 
         {
             this.medewerkerType = medewerkerType;

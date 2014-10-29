@@ -18,6 +18,11 @@ namespace RemiseSysteem_Groep_B
                 if (instance == null)
                 {
                     instance = new Remise();
+                    instance.Lijnen = new List<Lijn>();
+                    instance.Sporen = new List<Spoor>();
+                    instance.Medewerkers = new List<Medewerker>();
+                    instance.Beurten = new List<Beurt>();
+                    instance.AanwezigeTrams = new List<Tram>();
                 }
             return instance;}
         }
@@ -60,13 +65,62 @@ namespace RemiseSysteem_Groep_B
         {
             throw new NotImplementedException();
         }
-        public void SchoonmaakOpgeven(Schoonmaak schoonmaak)
-        { 
-
-        }
-        public void OnderhoudOpgeven(Onderhoud onderhoud)
+        public bool SchoonmaakOpgeven(Schoonmaak schoonmaak)
         {
+            int schoonmaakOpDatum = 0;
+            int aantalSchoonmakers = 0;
 
+            //Aantal schoonmaakbeurten op dezelfde datum tellen en opslaan.
+            foreach(Schoonmaak s in Beurten)
+            {
+                if (s.BeginDatum == schoonmaak.BeginDatum) 
+                {
+                    schoonmaakOpDatum += 1;
+                }
+            }
+
+            //Aantal schoonmakers beschikbaar.
+            foreach(Medewerker m in Medewerkers)
+            {
+                if(m.MedewerkerType == MedewerkerType.Schoonmaker)
+                {
+                    aantalSchoonmakers += 1;
+                }
+            }
+
+            //Als er meer beurten op een dag zijn dan schoonmakers, wordt de beurt geweigerd.
+            if (schoonmaakOpDatum >= aantalSchoonmakers) 
+            {
+                return false;
+            }
+            Beurten.Add(schoonmaak);
+            return true;
+        }
+        public bool OnderhoudOpgeven(Onderhoud onderhoud)
+        {
+            int onderhoudOpDatum = 0;
+            int aantalTechnici = 0;
+
+            //Aantal onderhoudsbeurten op dezelfde datum tellen en opslaan.
+            foreach (Onderhoud s in Beurten) {
+                if (s.BeginDatum == onderhoud.BeginDatum) {
+                    onderhoudOpDatum += 1;
+                }
+            }
+
+            //Aantal technici beschikbaar.
+            foreach (Medewerker m in Medewerkers) {
+                if (m.MedewerkerType == MedewerkerType.Technicus) {
+                    aantalTechnici += 1;
+                }
+            }
+
+            //Als er meer beurten op een dag zijn dan technici, wordt de beurt geweigerd.
+            if (onderhoudOpDatum >= aantalTechnici) {
+                return false;
+            }
+            Beurten.Add(onderhoud);
+            return true;
         }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
