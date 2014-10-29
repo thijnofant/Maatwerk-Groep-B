@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Oracle.DataAccess;
+using Oracle.DataAccess.Client;
 
 namespace RemiseSysteem_Groep_B
 {
@@ -11,7 +11,7 @@ namespace RemiseSysteem_Groep_B
     {
         #region singleton
         private static DatabaseManager instance;
-        private DatabaseManager() 
+        public DatabaseManager() 
         {
             this.Pcn = "dbi292195";
             this.Password = "kd1qoIM98M";
@@ -33,6 +33,24 @@ namespace RemiseSysteem_Groep_B
         //private OracleConnection connection = new OracleConnection();
         public string Pcn { get; private set; }
         public string Password { get; private set; }
+
+        public OracleConnection connection;
+
+        public bool Test()
+        {
+            try
+            {
+                connection.Open();
+
+                return true;
+            }
+            catch
+            {
+
+            }
+
+            return false;
+        }
 
         public List<Medewerker> MedewerkersOpvragen()
         {
