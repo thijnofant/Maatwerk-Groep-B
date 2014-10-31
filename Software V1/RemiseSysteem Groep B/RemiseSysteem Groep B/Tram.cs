@@ -9,9 +9,6 @@ namespace RemiseSysteem_Groep_B
     class Tram
     {
         private TramStatus status;
-        private int id;
-        private TramType type;
-        private Sector staatOpSector;
 
         public int Id { get { return id; } }
         public TramType Type { get { return type; } }
@@ -19,8 +16,8 @@ namespace RemiseSysteem_Groep_B
 
         public Tram(int id, TramType type) 
         {
-            this.id = id;
-            this.type = type;
+            this.Id = id;
+            this.Type = type;
         }
 
         public TramStatus Status

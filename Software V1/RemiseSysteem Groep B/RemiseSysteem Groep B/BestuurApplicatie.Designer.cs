@@ -56,10 +56,9 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Location = new System.Drawing.Point(23, 119);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(93, 13);
+            this.lblMessage.Size = new System.Drawing.Size(16, 13);
             this.lblMessage.TabIndex = 42;
-            this.lblMessage.Text = "...Message label...";
-            this.lblMessage.Visible = false;
+            this.lblMessage.Text = "...";
             // 
             // groupBox1
             // 

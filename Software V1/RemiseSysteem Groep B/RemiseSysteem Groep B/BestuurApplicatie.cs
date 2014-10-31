@@ -12,11 +12,12 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class BestuurApplicatie : Form
     {
-        DatabaseManager manager = DatabaseManager.Instance;
+        DatabaseManager db = DatabaseManager.Instance;
 
         public BestuurApplicatie()
         {
             InitializeComponent();
+            tbxInput.Text = "2001";
             
         }
 
@@ -90,7 +91,8 @@ namespace RemiseSysteem_Groep_B
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            manager.Test();
+            Tram tram = db.ZoekTram(Convert.ToInt32(tbxInput.Text));
+            lblMessage.Text = Convert.ToString(tram.Status);
         }
     }
 }
