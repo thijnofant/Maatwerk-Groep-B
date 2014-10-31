@@ -117,15 +117,15 @@ namespace RemiseSysteem_Groep_B
                     DateTime startTijd = reader.GetDateTime(3);
                     string beurtType = reader["BeurtType"].ToString();
 
-                    BeurtType tempEnum;
+                    BeurtType tempEnum = BeurtType.Groot;
 
                     switch (beurtType)
                     {
                         case "Klein":
-                            tempEnum = BeurtType.Kleine;
+                            tempEnum = BeurtType.Klein;
                             break;
                         case "Groot":
-                            tempEnum = BeurtType.Grote;
+                            tempEnum = BeurtType.Groot;  
                             break;
                         case "Incident":
                             tempEnum = BeurtType.Incident;
@@ -136,6 +136,66 @@ namespace RemiseSysteem_Groep_B
                     Medewerker tempMed = ZoekMedewerkerOpID(MedewerkerId);
                     
                     Schoonmaak tempSchoon = new Schoonmaak(startTijd, SchoonmaakID, tempEnum, tempTram);
+                    if (tempMed != null)
+                    {
+                        tempSchoon.VoegMedewerkerToe(tempMed);
+                    }
+                    returnList.Add(tempSchoon);
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return returnList;
+        }
+
+        /// <summary>
+        /// NOG TESTEN
+        /// 
+        /// Haalt de lijst met alle Reparatie die niet nog niet af zijn.
+        /// </summary>
+        /// <returns></returns>
+        public List<Onderhoud> OnderhoudOpvragen()
+        {
+            List<Onderhoud> returnList = new List<Onderhoud>();
+
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType, BeschikbaarDatum FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Onderhoud';";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int OnderhoudID = reader.GetInt32(0);
+                    int MedewerkerId = reader.GetInt32(1);
+                    int tramId = reader.GetInt32(2);
+                    DateTime startTijd = reader.GetDateTime(3);
+                    string beurtType = reader["BeurtType"].ToString();
+                    DateTime estTime = reader.GetDateTime(6);
+
+                    BeurtType tempEnum = BeurtType.Groot;
+
+                    switch (beurtType)
+                    {
+                        case "Klein":
+                            tempEnum = BeurtType.Klein;
+                            break;
+                        case "Groot":
+                            tempEnum = BeurtType.Groot;
+                            break;
+                        case "Incident":
+                            tempEnum = BeurtType.Incident;
+                            break;
+                    }
+
+                    Tram tempTram = ZoekTramOpID(tramId);
+                    Medewerker tempMed = ZoekMedewerkerOpID(MedewerkerId);
+                    /*startTijd, OnderhoudID, tempEnum, tempTram*/
+                    Onderhoud tempSchoon = new Onderhoud(startTijd, OnderhoudID, tempEnum, tempTram, estTime);
                     if (tempMed != null)
                     {
                         tempSchoon.VoegMedewerkerToe(tempMed);
@@ -261,7 +321,7 @@ namespace RemiseSysteem_Groep_B
                 string medewerkerNaam = reader["M.Naam"].ToString();
                 string funtieNaam = reader["F.Naam"].ToString();
 
-                MedewerkerType temp;
+                MedewerkerType temp = MedewerkerType.Bestuurder;
                 switch (funtieNaam)
                 {
                     case "Beheerder":
