@@ -8,9 +8,6 @@ namespace RemiseSysteem_Groep_B
 {
     class Schoonmaak : Beurt
     {
-        private int ID;
-        private BeurtType Soort;
-
         public Schoonmaak(DateTime beginDatum, int id, BeurtType soort, Tram tram)
             :base(beginDatum, id, soort, tram)
         {

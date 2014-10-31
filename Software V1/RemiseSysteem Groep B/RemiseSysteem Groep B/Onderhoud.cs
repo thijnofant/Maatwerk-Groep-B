@@ -8,34 +8,14 @@ namespace RemiseSysteem_Groep_B
 {
     class Onderhoud : Beurt
     {
-        private DateTime beginDatum;
-        private int id;
-        private BeurtType soort;
-        private bool isKlaar;
-
         private DateTime tijdsIndicatie;
 
-        private List<Medewerker> medewerkers;
+        public DateTime TijdsIndicatie { get { return tijdsIndicatie; } }
 
-        private Tram tram;
-
-        public DateTime BeginDatum { get; private set; }
-        public int ID { get; private set; }
-        public BeurtType Soort { get; private set; }
-        public bool IsKlaar { get; private set; }
-
-        public DateTime TijdsIndicatie { get; private set; }
-
-        public List<Medewerker> Medewerkers { get; private set; }
-
-        public Tram Tram { get; private set; }
-
-        public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram)
+        public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram, DateTime tijdsIndicatie)
             :base(beginDatum, id, soort, tram)
         {
-            this.beginDatum = beginDatum;
-            this.id = id;
-            this.soort = soort;
+            this.tijdsIndicatie = tijdsIndicatie;
         }
 
         /// <summary>
