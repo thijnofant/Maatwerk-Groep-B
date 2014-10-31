@@ -30,8 +30,8 @@ namespace RemiseSysteem_Groep_B
 
         public Tram Tram { get; private set; }
 
-        public Onderhoud(DateTime beginDatum, int id, BeurtType soort)
-            :base(beginDatum, id, soort)
+        public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram)
+            :base(beginDatum, id, soort, tram)
         {
             this.beginDatum = beginDatum;
             this.id = id;

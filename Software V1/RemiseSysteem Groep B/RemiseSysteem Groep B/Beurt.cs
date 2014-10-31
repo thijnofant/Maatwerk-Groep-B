@@ -17,8 +17,9 @@ namespace RemiseSysteem_Groep_B
         public Tram Tram { get; protected set; }
         public DateTime BeginDatum { get; protected set; }
 
-        public Beurt(DateTime beginDatum, int id, BeurtType soort)
+        public Beurt(DateTime beginDatum, int id, BeurtType soort, Tram tram)
         {
+            this.Tram = tram;
             this.BeginDatum = beginDatum;
             this.ID = id;
             this.Soort = soort;
