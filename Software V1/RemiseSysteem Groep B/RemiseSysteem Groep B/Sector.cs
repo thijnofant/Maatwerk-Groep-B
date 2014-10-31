@@ -13,10 +13,10 @@ namespace RemiseSysteem_Groep_B
         private bool isGeblokkeerd;
         private Tram tram;
 
-        public int Id { get; private set; }
-        public bool IsWissel { get; private set; }
-        public bool IsGeblokkeerd { get; private set; }
-        public Tram Tram { get; private set; }
+        public int Id { get { return id; } }
+        public bool IsWissel { get { return isWissel; } }
+        public bool IsGeblokkeerd { get { return isGeblokkeerd; } }
+        public Tram Tram { get { return tram; } }
 
         public Sector(int id, bool isWissel) 
         {

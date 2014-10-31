@@ -13,9 +13,9 @@ namespace RemiseSysteem_Groep_B
         private TramType type;
         private Sector staatOpSector;
 
-        public int Id { get; private set; }
-        public TramType Type { get; private set; }
-        public Sector StaatOpSector { get; private set; }
+        public int Id { get { return id; } }
+        public TramType Type { get { return type; } }
+        public Sector StaatOpSector { get { return staatOpSector; } }
 
         public Tram(int id, TramType type) 
         {
