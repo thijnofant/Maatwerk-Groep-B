@@ -13,10 +13,12 @@ namespace RemiseSysteem_Groep_B
     public partial class BeheerApplicatie : Form
     {
         private Remise remise;
+        DatabaseManager databaseManager;
 
         public BeheerApplicatie()
         {
             InitializeComponent();
+            databaseManager = DatabaseManager.Instance;
             this.remise = Remise.Instance;
             List<Sector> sectoren = new List<Sector>();
             List<Lijn> lijnen = new List<Lijn>();
@@ -113,7 +115,12 @@ namespace RemiseSysteem_Groep_B
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Schoonmaak testSchoonmaak = new Schoonmaak(new DateTime(2014, 10, 31), 1, BeurtType.Groot, new Tram(1, new TramType("pingpong", 0)));
+            if (databaseManager.SchoonmaakInvoeren(testSchoonmaak))
+                MessageBox.Show("Succes");
+            else
+                MessageBox.Show("Fail");
+            
         }
 
         private void verwijderenToolStripMenuItem_Click(object sender, EventArgs e)

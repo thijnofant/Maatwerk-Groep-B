@@ -191,7 +191,7 @@ namespace RemiseSysteem_Groep_B
             try 
             {
                 connection.Open();
-                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "NULL, Schoonmaak" + Convert.ToString(schoonmaak.Soort) + ");";
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "NULL, 'Schoonmaak'," + Convert.ToString(schoonmaak.Soort) + ");";
                 OracleCommand command = new OracleCommand(cmd, connection);
                 return true;
             }
