@@ -115,9 +115,14 @@ namespace RemiseSysteem_Groep_B
             return lijnenlijst;
         }
 
+        /// <summary>
+        /// Methode om een tram uit de db te zoeken aan de hand van een tram nummer
+        /// </summary>
+        /// <param name="nummer"></param>
+        /// <returns></returns>
         public Tram ZoekTram(int nummer)
         {
-            String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.Nummer = '" + nummer + "' AND t.TramtypeID = tt.ID"; //het moet zijn: t."Tramtype_ID", uitzoeken hoe dit moet
+            String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.Nummer = '" + nummer + "' AND t.TramtypeID = tt.ID";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -133,7 +138,7 @@ namespace RemiseSysteem_Groep_B
                 TramType tramtype = new TramType(GevondenDescription, 1);
                 Tram tram = new Tram(nummer, tramtype);
                 TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
-                tram.Status = tramStatus; //werkt dit ?
+                tram.Status = tramStatus;
                 return tram;
 
                 

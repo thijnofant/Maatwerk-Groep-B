@@ -37,7 +37,7 @@ namespace RemiseSysteem_Groep_B
 
         public void TijdsIndicatieWijzigen(DateTime datum)
         {
-            this.TijdsIndicatie = datum;
+            this.tijdsIndicatie = datum;
         }
 
         /// <summary>
