@@ -8,8 +8,8 @@ namespace RemiseSysteem_Groep_B
 {
     public enum BeurtType
     {
-        Kleine,
-        Grote,
+        Klein,
+        Groot,
         Incident,
     }
 }
