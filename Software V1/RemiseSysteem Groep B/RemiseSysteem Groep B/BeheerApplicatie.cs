@@ -140,5 +140,11 @@ namespace RemiseSysteem_Groep_B
         {
 
         }
+
+        private void schoonmaakLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Schoonmaak> temp = new List<Schoonmaak>();
+
+        }
     }
 }

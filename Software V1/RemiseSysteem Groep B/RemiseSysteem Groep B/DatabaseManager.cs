@@ -91,6 +91,40 @@ namespace RemiseSysteem_Groep_B
             return onderhoudsBeurten;
         }
 
+        public List<Schoonmaak> SchoonmaakOpvragen()
+        {
+            List<Schoonmaak> returnList = new List<Schoonmaak>();
+
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Schoonmaak'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+                int FoundStatus = reader.GetInt32(0);
+                int MedewerkerId = reader.GetInt32(1);
+                int tramId = reader.GetInt32(2);
+                DateTime startTijd = reader.GetDateTime(3);
+                string beurtType = reader["BeurtType"].ToString();
+                
+                
+
+                //aanvullen
+                TramType tramtype = new TramType(FoundDescription, 1);
+                Tram tram = new Tram(ID, tramtype);
+                TramStatus tramtypeStatus = (TramStatus)Enum.Parse(typeof(TramStatus), FoundDescription, true);
+                tram.Status = tramtypeStatus; //is enum, werkt nu niet
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return returnList;                
+        }
+
         /// <summary>
         /// 
         /// </summary>
