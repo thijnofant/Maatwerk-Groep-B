@@ -371,5 +371,28 @@ namespace RemiseSysteem_Groep_B
                 connection.Close();
             }
         } 
+
+        public bool TramVerplaatsen(int tramNr, Sector sect)
+        {
+            Tram tempTram = ZoekTram(tramNr);
+            String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
     }
 }
