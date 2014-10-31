@@ -148,5 +148,22 @@ namespace RemiseSysteem_Groep_B
             }
             return null;
         }
+
+        /*public bool SchoonmaakInvoeren(Schoonmaak schoonmaak) 
+        {
+            try 
+            {
+                connection.Open();
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ")";
+            }
+            catch 
+            {
+
+            }
+            finally 
+            {
+                connection.Close();
+            }
+        } */
     }
 }
