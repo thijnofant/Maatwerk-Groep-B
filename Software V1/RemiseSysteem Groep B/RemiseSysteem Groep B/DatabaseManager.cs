@@ -109,13 +109,11 @@ namespace RemiseSysteem_Groep_B
                 DateTime startTijd = reader.GetDateTime(3);
                 string beurtType = reader["BeurtType"].ToString();
                 
-                
-
-                //aanvullen
+                /*
                 TramType tramtype = new TramType(FoundDescription, 1);
                 Tram tram = new Tram(ID, tramtype);
                 TramStatus tramtypeStatus = (TramStatus)Enum.Parse(typeof(TramStatus), FoundDescription, true);
-                tram.Status = tramtypeStatus; //is enum, werkt nu niet
+                tram.Status = tramtypeStatus; */
             }
             catch { }
             finally
