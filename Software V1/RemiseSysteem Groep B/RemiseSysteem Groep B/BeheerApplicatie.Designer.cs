@@ -50,6 +50,7 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
+            this.invoerenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -146,11 +147,13 @@
             // aanvragenToolStripMenuItem
             // 
             this.aanvragenToolStripMenuItem.Name = "aanvragenToolStripMenuItem";
-            this.aanvragenToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.aanvragenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aanvragenToolStripMenuItem.Text = "Aanvragen";
             // 
             // schoonmaakToolStripMenuItem
             // 
+            this.schoonmaakToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.invoerenToolStripMenuItem});
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
             this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
@@ -231,6 +234,13 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem.Text = "Schoonmaak lijst opvragen";
             this.schoonmaakLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakLijstOpvragenToolStripMenuItem_Click);
             // 
+            // invoerenToolStripMenuItem
+            // 
+            this.invoerenToolStripMenuItem.Name = "invoerenToolStripMenuItem";
+            this.invoerenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.invoerenToolStripMenuItem.Text = "Invoeren";
+            this.invoerenToolStripMenuItem.Click += new System.EventHandler(this.invoerenToolStripMenuItem_Click);
+            // 
             // BeheerApplicatie
             // 
             this.AutoSize = true;
@@ -279,6 +289,7 @@
         private System.Windows.Forms.ToolStripMenuItem beherenToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem actiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakLijstOpvragenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem invoerenToolStripMenuItem;
     }
 }
 

@@ -115,11 +115,6 @@ namespace RemiseSysteem_Groep_B
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Schoonmaak testSchoonmaak = new Schoonmaak(new DateTime(2014, 10, 31), 1, BeurtType.Groot, new Tram(1, new TramType("pingpong", 0)));
-            if (databaseManager.SchoonmaakInvoeren(testSchoonmaak))
-                MessageBox.Show("Succes");
-            else
-                MessageBox.Show("Fail");
             
         }
 
@@ -151,6 +146,11 @@ namespace RemiseSysteem_Groep_B
         private void schoonmaakLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<Schoonmaak> temp = new List<Schoonmaak>();
+
+        }
+
+        private void invoerenToolStripMenuItem_Click(object sender, EventArgs e) 
+        {
 
         }
     }
