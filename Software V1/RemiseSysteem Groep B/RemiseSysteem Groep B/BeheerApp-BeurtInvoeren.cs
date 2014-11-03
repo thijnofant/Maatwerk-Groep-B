@@ -12,8 +12,34 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class BeheerderApp_SchoonmaakInvoeren : Form
     {
-        public BeheerderApp_SchoonmaakInvoeren() {
+        Remise remise;
+        DatabaseManager db;
+
+        public BeheerderApp_SchoonmaakInvoeren() 
+        {
             InitializeComponent();
+            remise = Remise.Instance;
+            db = DatabaseManager.Instance;
         }
+
+        private void btnInvoeren_Click(object sender, EventArgs e) 
+        {
+            if (cbxSoortBeurt.SelectedItem == null) {
+                MessageBox.Show("Voer in of de beurt een schoonmaak of een reparatie is.", "Error");
+            }
+        }
+
+        private void btnAnnuleren_Click(object sender, EventArgs e) 
+        {
+            this.Close();
+        }
+        /*private void OpstartMethode() 
+        {
+            foreach (Tram t in db.AlleTrams()) 
+            {
+                lbxTrams.Items.Add((string)t.Id);
+            }
+        }*/
+
     }
 }

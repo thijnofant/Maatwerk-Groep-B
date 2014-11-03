@@ -151,7 +151,8 @@ namespace RemiseSysteem_Groep_B
 
         private void invoerenToolStripMenuItem_Click(object sender, EventArgs e) 
         {
-
+            BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
+            form.Show();
         }
     }
 }
