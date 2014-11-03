@@ -24,8 +24,25 @@ namespace RemiseSysteem_Groep_B
 
         private void btnInvoeren_Click(object sender, EventArgs e) 
         {
-            if (cbxSoortBeurt.SelectedItem == null) {
+            if (cbxSoortBeurt.SelectedItem == null) 
+            {
                 MessageBox.Show("Voer in of de beurt een schoonmaak of een reparatie is.", "Error");
+                return;
+            }
+            if (cbxTypeBeurt.SelectedItem == null) 
+            {
+                MessageBox.Show("Voer het type beurt in.", "Error");
+                return;
+            }
+            if (lbxTrams.SelectedItem == null) 
+            {
+                MessageBox.Show("Selecteer een tram voor de beurt.", "Error");
+                return;
+            }
+            if (Convert.ToDateTime(dtpDatum.Text) < DateTime.Today) 
+            {
+                MessageBox.Show("Kan geen beurt plannen in het verleden.", "Error");
+                return;
             }
         }
 
