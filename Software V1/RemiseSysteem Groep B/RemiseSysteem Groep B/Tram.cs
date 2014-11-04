@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
-    class Tram
+    class Tram: IEquatable<Tram>
     {
         private TramStatus status;
         public TramStatus Status { get { return status; } private set { status = value; } }
@@ -33,6 +33,11 @@ namespace RemiseSysteem_Groep_B
         public void StatusWijzigen(TramStatus nieuweStatus) 
         {
             this.Status = nieuweStatus;
+        }
+
+        public bool Equals(Tram other) 
+        {
+            return this.Id == other.Id;
         }
     }
 }

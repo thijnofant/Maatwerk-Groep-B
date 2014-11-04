@@ -392,14 +392,49 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
-        /*
-        public List<Beurt> GetAlleBeurten() 
+        //LEVENSGEVAARLIJK NOG NIET GETEST
+        public List<Beurt> ZoekAlleBeurten() 
         {
             List<Tram> trams = AlleTrams();
-            List<Beurt> beurten;
-            string cmd = "SELECT ID, ";
+            List<Beurt> beurten = new List<Beurt>();
+            string cmd = "SELECT ID, TramID, DatumTijdstip, BeschikbaarDatum, TypeOnderhoud, BeurtType FROM Tram_Beurt";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try 
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read()) 
+                {
+                    int beurtid = reader.GetInt32(0);
+                    int tramid = reader.GetInt32(1);
+                    DateTime datum = reader.GetDateTime(2);
+                    DateTime tijdsindicatie = reader.GetDateTime(3);
+                    string type = reader.GetString(4);
+                    string beurttype = reader.GetString(5);
+
+                    if(type == "Schoonmaak")
+                    {
+                        Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), type, true), trams.Find(x => x.Id == tramid));
+                        beurten.Add(schoonmaak);
+                    }
+                    if(type == "Onderhoud") 
+                    {
+                        Onderhoud onderhoud = new Onderhoud(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), type, true), trams.Find(x => x.Id == tramid));
+                        beurten.Add(onderhoud);
+                    }
+                }
+                return beurten;
+            }
+            catch 
+            {
+                return beurten;
+            }    
+            finally
+            {
+                connection.Close();
+            }
         }
-         * */
 
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak) 
         {
