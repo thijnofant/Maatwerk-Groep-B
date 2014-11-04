@@ -470,5 +470,10 @@ namespace RemiseSysteem_Groep_B
         {
 
         }
+
+        private int GetInsertID(string ID, string tabelnaam)
+        {
+
+        }
     }
 }
