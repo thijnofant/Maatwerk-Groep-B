@@ -61,9 +61,53 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public bool PlaatsAutomatischToewijzen(Tram tram)
+        public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
-            throw new NotImplementedException();
+            int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
+
+
+            List<int> SpoorID;
+            if (onderhoud || schoonmaak)
+            {
+                SpoorID = Database.GetBeurtSporen();
+            }
+            else
+            {
+                int TramLijnID = Database.LijnNrOpvragen(tramNr);
+                SpoorID = Database.GetSporenIDByLijnID(TramLijnID);
+            }
+
+            int X = 0;
+            int N = 0;
+
+            while (true)
+            {
+                int SectorID = Database.GetSectorX(X, SpoorID[N]);
+                if (Database.SectorBezet(SectorID))
+                {
+                    Database.TramVerplaatsen(tramNr, new Sector(SectorID));
+                    break;
+                }
+                else
+                {
+                    if (N < SpoorID.Count)
+                    {
+                        N++;
+                    }
+                    else
+                    {
+                        if (X > 8)
+                        {
+                            SpoorID = Database.GetSporenIDForFreeSporen();
+                        }
+                        else
+                        {
+                            N = 0;
+                            X++;
+                        }
+                    }
+                }
+            }
         }
         public bool SchoonmaakOpgeven(Schoonmaak schoonmaak)
         {
