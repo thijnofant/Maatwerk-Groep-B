@@ -20,7 +20,7 @@ namespace RemiseSysteem_Groep_B
             InitializeComponent();
             databaseManager = DatabaseManager.Instance;
             this.remise = Remise.Instance;
-            this.remise.Sporen = this.remise.Database.SporenlijstOpvragen();
+            this.remise = this.remise.Database.SporenlijstOpvragen();
             //List<Sector> sectoren = new List<Sector>();
             //List<Lijn> lijnen = new List<Lijn>();
             //Sector s;

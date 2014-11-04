@@ -229,7 +229,7 @@ namespace RemiseSysteem_Groep_B
         public List<Spoor> SporenlijstOpvragen()
         {
             List<Spoor> sporen = new List<Spoor>();
-            string cmd = "Select id from spoor";
+            string cmd = "Select id, nummer from spoor";
             OracleCommand comm = new OracleCommand(cmd, connection);
             try
             {
@@ -238,6 +238,7 @@ namespace RemiseSysteem_Groep_B
                 while (reader.Read())
                 {
                     int spoorid = reader.GetInt32(0);
+                    int spoornummer = reader.GetInt32(1);
                     string cmdSector = "Select id from sector where spoorid = " + spoorid;
                     OracleCommand commSector = new OracleCommand(cmdSector, connection);
                     OracleDataReader readerSector = commSector.ExecuteReader();
@@ -249,6 +250,7 @@ namespace RemiseSysteem_Groep_B
                         sectoren.Add(sector);
                     }
                     Spoor spoor = new Spoor(spoorid, sectoren, lijnen);
+                    spoor.Nummer = spoornummer;
                     sporen.Add(spoor);
                 }
             }
