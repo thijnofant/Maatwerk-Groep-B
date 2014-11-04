@@ -18,11 +18,6 @@ namespace RemiseSysteem_Groep_B
                 if (instance == null)
                 {
                     instance = new Remise();
-                    instance.Lijnen = new List<Lijn>();
-                    instance.Sporen = new List<Spoor>();
-                    instance.Medewerkers = new List<Medewerker>();
-                    instance.Beurten = new List<Beurt>();
-                    instance.AanwezigeTrams = new List<Tram>();
                 }
             return instance;}
         }
@@ -31,26 +26,9 @@ namespace RemiseSysteem_Groep_B
         public DatabaseManager Database = DatabaseManager.Instance;
 
         #region Methodes
-        public bool PlaatsToewijzen(Sector sector, Tram tram)
+        public bool PlaatsToewijzen(Sector sector, int tramNR)
         {
-            if (sector.TramToevoegen(tram))
-            {
-                foreach (Spoor spoor in Sporen)
-                {
-                    foreach (Sector sect in spoor.Sectoren)
-                    {
-                        if (sect.Tram.Id == tram.Id)
-                        {
-                            sect.TramVerwijderen();
-                        }
-                    }
-                }
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return(Database.TramVerplaatsen(tramNR, sector));
         }
 
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)

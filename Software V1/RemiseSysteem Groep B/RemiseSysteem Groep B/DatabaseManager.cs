@@ -419,7 +419,7 @@ namespace RemiseSysteem_Groep_B
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
             Tram tempTram = ZoekTram(tramNr);
-            String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
+            String cmd = " UPDATE SECTOR SET TramID = null WHERE TramID ="+tempTram.Id+"; UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
