@@ -50,13 +50,13 @@ namespace RemiseSysteem_Groep_B
         {
             this.Close();
         }
-        /*private void OpstartMethode() 
+        private void OpstartMethode() 
         {
             foreach (Tram t in db.AlleTrams()) 
             {
-                lbxTrams.Items.Add((string)t.Id);
+                string lbstring = t.Type.Naam + Convert.ToString(t.Nummer);
             }
-        }*/
+        }
 
     }
 }

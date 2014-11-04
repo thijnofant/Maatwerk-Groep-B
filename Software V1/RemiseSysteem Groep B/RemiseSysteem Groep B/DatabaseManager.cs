@@ -293,7 +293,7 @@ namespace RemiseSysteem_Groep_B
                 Tram tram = new Tram(id, tramtype);
                 TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
                 tram.Status = tramStatus;
-                return tram;
+                return tram; 
             }
             catch
             {
@@ -395,9 +395,38 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
-        public bool AlleTrams() 
+        public List<Tram> AlleTrams() 
         {
+            List<Tram> tramlist = new List<Tram>();
+            string cmd = "SELECT t.ID, t.Nummer, t.Status, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt WHERE t.TramtypeID = tt.ID";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    int tramid = reader.GetInt32(0);
+                    int tramnummer = reader.GetInt32(1);
+                    TramStatus status = (TramStatus)Enum.Parse(typeof(TramStatus), reader.GetString(2), true);
+                    string typenaam = reader.GetString(3);
+                    double lengte = reader.GetDouble(4);
 
+                    TramType type = new TramType(typenaam, lengte);
+                    Tram tram = new Tram(tramid, type, tramnummer);
+                    tramlist.Add(tram);
+                }
+                return tramlist;
+            }
+            catch
+            {
+                return tramlist;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
