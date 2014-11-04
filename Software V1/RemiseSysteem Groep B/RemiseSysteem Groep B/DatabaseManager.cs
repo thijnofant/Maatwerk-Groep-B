@@ -465,5 +465,10 @@ namespace RemiseSysteem_Groep_B
                 connection.Close();
             }
         }
+
+        public bool TramReserveren(int tramnummer, int spoornummer)
+        {
+
+        }
     }
 }
