@@ -388,6 +388,11 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        public List<Beurt> GetAlleBeurten() 
+        {
+
+        }
+
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak) 
         {
             try 
