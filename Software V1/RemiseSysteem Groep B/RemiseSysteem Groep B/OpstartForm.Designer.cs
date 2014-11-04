@@ -25,17 +25,21 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.btnBeheerdersApp = new System.Windows.Forms.Button();
             this.btnBestuurdersApp = new System.Windows.Forms.Button();
             this.btnOnderhoudsApp = new System.Windows.Forms.Button();
             this.btnSchoonmaakApp = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btnBeheerdersApp
             // 
-            this.btnBeheerdersApp.Location = new System.Drawing.Point(12, 12);
+            this.btnBeheerdersApp.Location = new System.Drawing.Point(16, 15);
+            this.btnBeheerdersApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBeheerdersApp.Name = "btnBeheerdersApp";
-            this.btnBeheerdersApp.Size = new System.Drawing.Size(130, 119);
+            this.btnBeheerdersApp.Size = new System.Drawing.Size(173, 146);
             this.btnBeheerdersApp.TabIndex = 1;
             this.btnBeheerdersApp.Text = "Beheerdersapplicatie";
             this.btnBeheerdersApp.UseVisualStyleBackColor = true;
@@ -43,9 +47,10 @@
             // 
             // btnBestuurdersApp
             // 
-            this.btnBestuurdersApp.Location = new System.Drawing.Point(142, 12);
+            this.btnBestuurdersApp.Location = new System.Drawing.Point(189, 15);
+            this.btnBestuurdersApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBestuurdersApp.Name = "btnBestuurdersApp";
-            this.btnBestuurdersApp.Size = new System.Drawing.Size(130, 119);
+            this.btnBestuurdersApp.Size = new System.Drawing.Size(173, 146);
             this.btnBestuurdersApp.TabIndex = 2;
             this.btnBestuurdersApp.Text = "Bestuurdersapplicatie";
             this.btnBestuurdersApp.UseVisualStyleBackColor = true;
@@ -53,9 +58,10 @@
             // 
             // btnOnderhoudsApp
             // 
-            this.btnOnderhoudsApp.Location = new System.Drawing.Point(12, 131);
+            this.btnOnderhoudsApp.Location = new System.Drawing.Point(16, 161);
+            this.btnOnderhoudsApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOnderhoudsApp.Name = "btnOnderhoudsApp";
-            this.btnOnderhoudsApp.Size = new System.Drawing.Size(130, 119);
+            this.btnOnderhoudsApp.Size = new System.Drawing.Size(173, 146);
             this.btnOnderhoudsApp.TabIndex = 3;
             this.btnOnderhoudsApp.Text = "Onderhoudsapplicatie";
             this.btnOnderhoudsApp.UseVisualStyleBackColor = true;
@@ -63,23 +69,29 @@
             // 
             // btnSchoonmaakApp
             // 
-            this.btnSchoonmaakApp.Location = new System.Drawing.Point(142, 131);
+            this.btnSchoonmaakApp.Location = new System.Drawing.Point(189, 161);
+            this.btnSchoonmaakApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSchoonmaakApp.Name = "btnSchoonmaakApp";
-            this.btnSchoonmaakApp.Size = new System.Drawing.Size(130, 119);
+            this.btnSchoonmaakApp.Size = new System.Drawing.Size(173, 146);
             this.btnSchoonmaakApp.TabIndex = 4;
             this.btnSchoonmaakApp.Text = "Schoonmaakapplicatie";
             this.btnSchoonmaakApp.UseVisualStyleBackColor = true;
             this.btnSchoonmaakApp.Click += new System.EventHandler(this.btnSchoonmaakApp_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // OpstartForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(379, 322);
             this.Controls.Add(this.btnSchoonmaakApp);
             this.Controls.Add(this.btnOnderhoudsApp);
             this.Controls.Add(this.btnBestuurdersApp);
             this.Controls.Add(this.btnBeheerdersApp);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OpstartForm";
             this.Text = "Applicatiemenu";
             this.ResumeLayout(false);
@@ -92,5 +104,7 @@
         private System.Windows.Forms.Button btnBestuurdersApp;
         private System.Windows.Forms.Button btnOnderhoudsApp;
         private System.Windows.Forms.Button btnSchoonmaakApp;
+        private System.Windows.Forms.Timer timer1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

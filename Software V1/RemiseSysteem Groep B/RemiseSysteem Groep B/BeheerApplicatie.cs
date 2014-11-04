@@ -70,29 +70,31 @@ namespace RemiseSysteem_Groep_B
         public void VulSporen()
         {
             List<Spoor> sporen = this.remise.Sporen;
-            int spoornummer = 1;
             Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
             foreach (Spoor spoor in sporen)
             {
-                Control spoorBegin = new Button();
-                spoorBegin.Text = "Spoor " + spoornummer;
-                spoorBegin.Click += spoorBegin_Click;
-                spoorBegin.Name = "";
-                spoorBegin.Location = location;
-                this.splitContainer1.Panel2.Controls.Add(spoorBegin);
-                int sectorY = 30;
-                foreach (Sector sector in spoor.Sectoren)
+                if (location.X < splitContainer1.Panel2.Width)
                 {
-                    Control SectorNieuw = new Button();
-                    SectorNieuw.Text = sector.Id.ToString();
-                    SectorNieuw.Click += SectorNieuw_Click;
-                    SectorNieuw.Location = new Point(location.X, location.Y + sectorY);
-                    this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
-                    sectorY += 22;
+                    int spoornummer = spoor.Nummer;
+                    Control spoorBegin = new Button();
+                    spoorBegin.Text = "Spoor " + spoornummer;
+                    spoorBegin.Click += spoorBegin_Click;
+                    spoorBegin.Name = "";
+                    spoorBegin.Location = location;
+                    this.splitContainer1.Panel2.Controls.Add(spoorBegin);
+                    int sectorY = 30;
+                    foreach (Sector sector in spoor.Sectoren)
+                    {
+                        Control SectorNieuw = new Button();
+                        SectorNieuw.Text = sector.Id.ToString();
+                        SectorNieuw.Click += SectorNieuw_Click;
+                        SectorNieuw.Location = new Point(location.X, location.Y + sectorY);
+                        this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
+                        sectorY += 22;
+                    }
+                    location.X += 100;
                 }
-                location.X += 100;
 
-                spoornummer++;
             }
         }
 
@@ -158,6 +160,11 @@ namespace RemiseSysteem_Groep_B
         {
             BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
             form.Show();
+        }
+
+        private void dataGridViewSporen_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
