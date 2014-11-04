@@ -16,6 +16,7 @@ namespace RemiseSysteem_Groep_B
         public TramReserveren()
         {
             InitializeComponent();
+            gbReparatie.Visible = false;
         }
 
         private void btnBevestig_Click(object sender, EventArgs e)
@@ -24,8 +25,20 @@ namespace RemiseSysteem_Groep_B
             
             if(chbReparatie.Checked)
             {
-                Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text);
-                Onderhoud onderhoud = new Onderhoud(DateTime.Now, , BeurtType.Klein, tram, )
+                //Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));
+                //Onderhoud onderhoud = new Onderhoud(DateTime.Now, , BeurtType.Klein, tram );
+            }
+        }
+
+        private void chbReparatie_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chbReparatie.Checked)
+            {
+                gbReparatie.Visible = true;
+            }
+            else
+            {
+                gbReparatie.Visible = false;
             }
         }
     }
