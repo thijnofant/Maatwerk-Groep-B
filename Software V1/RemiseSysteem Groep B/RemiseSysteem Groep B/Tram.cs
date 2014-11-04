@@ -8,13 +8,19 @@ namespace RemiseSysteem_Groep_B
 {
     class Tram
     {
-        public TramStatus Status { get; private set; }
+        public TramStatus Status { get; set { Status = value; } }
+        public int Nummer { get; private set; }
         public int Id { get; private set;  }
         public TramType Type {  get; private set;  }
         public Sector StaatOpSector { get; private set;  }
 
-        public Tram(int id, TramType type) 
+        public Tram(int id, TramType type, int nummer) 
         {
+            this.Id = id;
+            this.Type = type;
+            this.Nummer = nummer;
+        }
+        public Tram(int id, TramType type) {
             this.Id = id;
             this.Type = type;
         }
