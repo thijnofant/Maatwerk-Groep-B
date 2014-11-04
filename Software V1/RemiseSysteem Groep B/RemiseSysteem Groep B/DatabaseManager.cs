@@ -224,6 +224,43 @@ namespace RemiseSysteem_Groep_B
             return sporenlijst;
         }
 
+        public List<Spoor> SporenlijstOpvragen()
+        {
+            List<Spoor> sporen = new List<Spoor>();
+            string cmd = "Select id from spoor";
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    int spoorid = reader.GetInt32(0);
+                    string cmdSector = "Select id from sector where spoorid = " + spoorid;
+                    OracleCommand commSector = new OracleCommand(cmdSector, connection);
+                    OracleDataReader readerSector = commSector.ExecuteReader();
+                    List<Sector> sectoren = new List<Sector>();
+                    List<Lijn> lijnen = new List<Lijn>();
+                    while (readerSector.Read())
+                    {
+                        Sector sector = new Sector(reader.GetInt32(0));
+                        sectoren.Add(sector);
+                    }
+                    Spoor spoor = new Spoor(spoorid, sectoren, lijnen);
+                    sporen.Add(spoor);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return sporen;
+        }
+
         /// <summary>
         /// 
         /// </summary>

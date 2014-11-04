@@ -31,7 +31,7 @@ namespace RemiseSysteem_Groep_B
         #region Atributes + Properties
         public DatabaseManager Database = DatabaseManager.Instance;
         public List<Lijn> Lijnen { get; private set; }
-        public List<Spoor> Sporen { get; private set; }
+        public List<Spoor> Sporen { get; set; }
         public Medewerker IngelogdeMedewerker { get; private set; }
         public List<Medewerker> Medewerkers { get; private set; }
         public List<Beurt> Beurten { get; private set; }
