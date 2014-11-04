@@ -38,6 +38,7 @@
             this.reparatieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aanvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schoonmaakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoerenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verwijderenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sporenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blokkerenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,7 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
-            this.invoerenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reserverenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -123,7 +124,8 @@
             this.verplaatsenToolStripMenuItem,
             this.reparatieToolStripMenuItem,
             this.schoonmaakToolStripMenuItem,
-            this.verwijderenToolStripMenuItem});
+            this.verwijderenToolStripMenuItem,
+            this.reserverenToolStripMenuItem});
             this.tramsToolStripMenuItem.Name = "tramsToolStripMenuItem";
             this.tramsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.tramsToolStripMenuItem.Text = "Trams";
@@ -147,7 +149,7 @@
             // aanvragenToolStripMenuItem
             // 
             this.aanvragenToolStripMenuItem.Name = "aanvragenToolStripMenuItem";
-            this.aanvragenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aanvragenToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.aanvragenToolStripMenuItem.Text = "Aanvragen";
             // 
             // schoonmaakToolStripMenuItem
@@ -158,6 +160,13 @@
             this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
             this.schoonmaakToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakToolStripMenuItem_Click);
+            // 
+            // invoerenToolStripMenuItem
+            // 
+            this.invoerenToolStripMenuItem.Name = "invoerenToolStripMenuItem";
+            this.invoerenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.invoerenToolStripMenuItem.Text = "Invoeren";
+            this.invoerenToolStripMenuItem.Click += new System.EventHandler(this.invoerenToolStripMenuItem_Click);
             // 
             // verwijderenToolStripMenuItem
             // 
@@ -178,14 +187,14 @@
             // blokkerenToolStripMenuItem
             // 
             this.blokkerenToolStripMenuItem.Name = "blokkerenToolStripMenuItem";
-            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.blokkerenToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.blokkerenToolStripMenuItem.Text = "Blokkeren";
             this.blokkerenToolStripMenuItem.Click += new System.EventHandler(this.blokkerenToolStripMenuItem_Click);
             // 
             // deblokkerenToolStripMenuItem
             // 
             this.deblokkerenToolStripMenuItem.Name = "deblokkerenToolStripMenuItem";
-            this.deblokkerenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deblokkerenToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.deblokkerenToolStripMenuItem.Text = "Deblokkeren";
             this.deblokkerenToolStripMenuItem.Click += new System.EventHandler(this.deblokkerenToolStripMenuItem_Click);
             // 
@@ -200,7 +209,7 @@
             // beherenToolStripMenuItem
             // 
             this.beherenToolStripMenuItem.Name = "beherenToolStripMenuItem";
-            this.beherenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.beherenToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.beherenToolStripMenuItem.Text = "Beheren";
             this.beherenToolStripMenuItem.Click += new System.EventHandler(this.beherenToolStripMenuItem_Click);
             // 
@@ -215,7 +224,7 @@
             // beherenToolStripMenuItem1
             // 
             this.beherenToolStripMenuItem1.Name = "beherenToolStripMenuItem1";
-            this.beherenToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.beherenToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.beherenToolStripMenuItem1.Text = "Beheren";
             this.beherenToolStripMenuItem1.Click += new System.EventHandler(this.beherenToolStripMenuItem1_Click);
             // 
@@ -234,12 +243,12 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem.Text = "Schoonmaak lijst opvragen";
             this.schoonmaakLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakLijstOpvragenToolStripMenuItem_Click);
             // 
-            // invoerenToolStripMenuItem
+            // reserverenToolStripMenuItem
             // 
-            this.invoerenToolStripMenuItem.Name = "invoerenToolStripMenuItem";
-            this.invoerenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.invoerenToolStripMenuItem.Text = "Invoeren";
-            this.invoerenToolStripMenuItem.Click += new System.EventHandler(this.invoerenToolStripMenuItem_Click);
+            this.reserverenToolStripMenuItem.Name = "reserverenToolStripMenuItem";
+            this.reserverenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reserverenToolStripMenuItem.Text = "Reserveren";
+            this.reserverenToolStripMenuItem.Click += new System.EventHandler(this.reserverenToolStripMenuItem_Click);
             // 
             // BeheerApplicatie
             // 
@@ -290,6 +299,7 @@
         private System.Windows.Forms.ToolStripMenuItem actiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakLijstOpvragenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem invoerenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reserverenToolStripMenuItem;
     }
 }
 
