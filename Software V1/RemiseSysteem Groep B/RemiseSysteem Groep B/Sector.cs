@@ -18,10 +18,9 @@ namespace RemiseSysteem_Groep_B
         public bool IsGeblokkeerd { get { return isGeblokkeerd; } }
         public Tram Tram { get { return tram; } }
 
-        public Sector(int id, bool isWissel) 
+        public Sector(int id) 
         {
             this.id = id;
-            this.isWissel = isWissel;
             this.isGeblokkeerd = false;
         }
 

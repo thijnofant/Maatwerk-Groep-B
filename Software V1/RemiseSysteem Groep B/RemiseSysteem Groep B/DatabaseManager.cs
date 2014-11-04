@@ -295,7 +295,7 @@ namespace RemiseSysteem_Groep_B
                 TramType tramtype = new TramType(GevondenDescription, 1);
                 Tram tram = new Tram(nummer, tramtype);
                 TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
-                tram.Status = tramStatus;
+                tram.StatusWijzigen(tramStatus);
                 return tram;
 
 
@@ -329,7 +329,7 @@ namespace RemiseSysteem_Groep_B
                 TramType tramtype = new TramType(GevondenDescription, 1);
                 Tram tram = new Tram(id, tramtype);
                 TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
-                tram.Status = tramStatus;
+                tram.StatusWijzigen(tramStatus);
                 return tram; 
             }
             catch
