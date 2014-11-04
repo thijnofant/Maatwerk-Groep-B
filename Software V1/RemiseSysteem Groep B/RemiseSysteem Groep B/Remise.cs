@@ -28,16 +28,6 @@ namespace RemiseSysteem_Groep_B
         }
         #endregion
 
-        #region Atributes + Properties
-        public DatabaseManager Database = DatabaseManager.Instance;
-        public List<Lijn> Lijnen { get; private set; }
-        public List<Spoor> Sporen { get; set; }
-        public Medewerker IngelogdeMedewerker { get; private set; }
-        public List<Medewerker> Medewerkers { get; private set; }
-        public List<Beurt> Beurten { get; private set; }
-        public List<Tram> AanwezigeTrams { get; private set; }
-        #endregion
-
         #region Methodes
         public bool PlaatsToewijzen(Sector sector, Tram tram)
         {
@@ -109,36 +99,9 @@ namespace RemiseSysteem_Groep_B
                 }
             }
         }
-        public bool SchoonmaakOpgeven(Schoonmaak schoonmaak)
+        public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
         {
-            if (IngelogdeMedewerker.MedewerkerType == MedewerkerType.Beheerder) {
-                int schoonmaakOpDatum = 0;
-                int aantalSchoonmakers = 0;
-
-                //Aantal schoonmaakbeurten op dezelfde datum tellen en opslaan.
-                foreach (Schoonmaak s in Beurten) {
-                    if (s.BeginDatum == schoonmaak.BeginDatum) {
-                        schoonmaakOpDatum += 1;
-                    }
-                }
-
-                //Aantal schoonmakers beschikbaar.
-                foreach (Medewerker m in Medewerkers) {
-                    if (m.MedewerkerType == MedewerkerType.Schoonmaker) {
-                        aantalSchoonmakers += 1;
-                    }
-                }
-
-                //Als er meer beurten op een dag zijn dan schoonmakers, wordt de beurt geweigerd.
-                if (schoonmaakOpDatum >= aantalSchoonmakers) {
-                    return false;
-                }
-                Beurten.Add(schoonmaak);
-                return true;
-            }
-            else {
-                return false;
-            }
+            return false;
         }
         public bool OnderhoudOpgeven(Onderhoud onderhoud)
         {
