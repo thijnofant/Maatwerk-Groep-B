@@ -70,11 +70,11 @@ namespace RemiseSysteem_Groep_B
                     SpoorID = Database.GetBeurtSporen();
                     if (onderhoud)
                     {
-                        
+                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID","TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
                     }
                     if (schoonmaak)
                     {
-                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now,))
+                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID","TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
                     }
                 }
                 else

@@ -18,6 +18,11 @@ namespace RemiseSysteem_Groep_B
             this.tijdsIndicatie = tijdsIndicatie;
         }
 
+        public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram)
+            : base(beginDatum, id, soort, tram)
+        {
+        }
+
         /// <summary>
         /// Het opvragen van de medewerkers.
         /// </summary>
