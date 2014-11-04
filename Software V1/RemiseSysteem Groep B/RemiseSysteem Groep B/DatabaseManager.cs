@@ -12,6 +12,8 @@ namespace RemiseSysteem_Groep_B
     {
         #region singleton
         private static DatabaseManager instance;
+        int ReserveringIdIn;
+
         private DatabaseManager()
         {
             this.connection = new OracleConnection();
@@ -473,12 +475,49 @@ namespace RemiseSysteem_Groep_B
 
         public bool TramReserveren(int tramnummer, int spoornummer)
         {
-
+            ReserveringIdIn = GetInsertID("ID", "RESERVERING");
+            ReserveringIdIn++;
+            string sql = "INSERT INTO RESERVERING (ID, TRAMID, SPOORID ) VALUES (" + ReserveringIdIn + "," + tramnummer + ", " + spoornummer + ")";
+            OracleCommand command = new OracleCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
         }
 
         private int GetInsertID(string ID, string tabelnaam)
         {
+            string insertID = "Select Max(" + ID + ") From " + tabelnaam;
 
+            OracleCommand commandID = new OracleCommand(insertID, connection);
+            commandID.CommandType = System.Data.CommandType.Text;
+
+            try
+            {
+                connection.Open();
+                OracleDataReader readerMat = commandID.ExecuteReader();
+                readerMat.Read();
+                int id = readerMat.GetInt32(0);
+                return id;
+            }
+            catch (InvalidCastException)
+            {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public List<int> GetBeurtSporen()
