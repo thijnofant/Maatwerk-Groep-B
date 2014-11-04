@@ -55,47 +55,62 @@ namespace RemiseSysteem_Groep_B
 
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
+            List<int> SpoorID = null;
             int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
-
-
-            List<int> SpoorID;
-            if (onderhoud || schoonmaak)
+            if (geserveerdSpoor != 0 && geserveerdSpoor != null)
             {
-                SpoorID = Database.GetBeurtSporen();
-            }
-            else
-            {
-                int TramLijnID = Database.LijnNrOpvragen(tramNr);
-                SpoorID = Database.GetSporenIDByLijnID(TramLijnID);
+                SpoorID = new List<int>();
+                SpoorID.Add(geserveerdSpoor);
             }
 
-            int X = 0;
-            int N = 0;
-
-            while (true)
+            if (SpoorID == null)
             {
-                int SectorID = Database.GetSectorX(X, SpoorID[N]);
-                if (Database.SectorBezet(SectorID))
+                if (onderhoud || schoonmaak)
                 {
-                    Database.TramVerplaatsen(tramNr, new Sector(SectorID));
-                    break;
+                    SpoorID = Database.GetBeurtSporen();
+                    if (onderhoud)
+                    {
+                        
+                    }
+                    if (schoonmaak)
+                    {
+                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now,))
+                    }
                 }
                 else
                 {
-                    if (N < SpoorID.Count)
+                    int TramLijnID = Database.LijnNrOpvragen(tramNr);
+                    SpoorID = Database.GetSporenIDByLijnID(TramLijnID);
+                }
+
+                int X = 0;
+                int N = 0;
+
+                while (true)
+                {
+                    int SectorID = Database.GetSectorX(X, SpoorID[N]);
+                    if (Database.SectorBezet(SectorID))
                     {
-                        N++;
+                        Database.TramVerplaatsen(tramNr, new Sector(SectorID));
+                        break;
                     }
                     else
                     {
-                        if (X > 8)
+                        if (N < SpoorID.Count)
                         {
-                            SpoorID = Database.GetSporenIDForFreeSporen();
+                            N++;
                         }
                         else
                         {
-                            N = 0;
-                            X++;
+                            if (X > 8)
+                            {
+                                SpoorID = Database.GetSporenIDForFreeSporen();
+                            }
+                            else
+                            {
+                                N = 0;
+                                X++;
+                            }
                         }
                     }
                 }
