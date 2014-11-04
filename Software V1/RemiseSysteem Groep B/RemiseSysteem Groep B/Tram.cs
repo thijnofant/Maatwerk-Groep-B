@@ -8,8 +8,7 @@ namespace RemiseSysteem_Groep_B
 {
     class Tram
     {
-        private TramStatus status;
-
+        public TramStatus Status { get; private set; }
         public int Id { get; private set;  }
         public TramType Type {  get; private set;  }
         public Sector StaatOpSector { get; private set;  }
@@ -19,13 +18,6 @@ namespace RemiseSysteem_Groep_B
             this.Id = id;
             this.Type = type;
         }
-
-        public TramStatus Status
-        {
-            get { return status; }
-            set { status = value ; }
-        }
-
         
         /// <summary>
         /// Verandert de huidige status van de tram naar een nieuwe opgegeven status.
@@ -33,7 +25,7 @@ namespace RemiseSysteem_Groep_B
         /// <param name="nieuweStatus"></param>
         public void StatusWijzigen(TramStatus nieuweStatus) 
         {
-            this.status = nieuweStatus;
+            this.Status = nieuweStatus;
         }
     }
 }
