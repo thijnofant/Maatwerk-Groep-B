@@ -24,7 +24,8 @@ namespace RemiseSysteem_Groep_B
             
             if(chbReparatie.Checked)
             {
-                Onderhoud onderhoud = new Onderhoud(DateTime.Now, )
+                Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text);
+                Onderhoud onderhoud = new Onderhoud(DateTime.Now, , BeurtType.Klein, tram, )
             }
         }
     }
