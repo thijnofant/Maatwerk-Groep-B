@@ -28,6 +28,8 @@ namespace RemiseSysteem_Groep_B
         }
         #endregion
 
+        public DatabaseManager Database = DatabaseManager.Instance;
+
         #region Methodes
         public bool PlaatsToewijzen(Sector sector, Tram tram)
         {
@@ -101,38 +103,16 @@ namespace RemiseSysteem_Groep_B
         }
         public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
         {
+            int aantalgroot = 0;
+            int aantalklein = 0;
+            DateTime datum = schoonmaak.BeginDatum;
+            //List<Beurt> allebeurten = 
+
             return false;
         }
         public bool OnderhoudOpgeven(Onderhoud onderhoud)
         {
-            if (IngelogdeMedewerker.MedewerkerType == MedewerkerType.Beheerder) {
-                int onderhoudOpDatum = 0;
-                int aantalTechnici = 0;
-
-                //Aantal onderhoudsbeurten op dezelfde datum tellen en opslaan.
-                foreach (Onderhoud s in Beurten) {
-                    if (s.BeginDatum == onderhoud.BeginDatum) {
-                        onderhoudOpDatum += 1;
-                    }
-                }
-
-                //Aantal technici beschikbaar.
-                foreach (Medewerker m in Medewerkers) {
-                    if (m.MedewerkerType == MedewerkerType.Technicus) {
-                        aantalTechnici += 1;
-                    }
-                }
-
-                //Als er meer beurten op een dag zijn dan technici, wordt de beurt geweigerd.
-                if (onderhoudOpDatum >= aantalTechnici) {
-                    return false;
-                }
-                Beurten.Add(onderhoud);
-                return true;
-            }
-            else {
-                return false;
-            }
+            return false;
         }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
