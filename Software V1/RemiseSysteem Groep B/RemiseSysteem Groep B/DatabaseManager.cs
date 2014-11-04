@@ -506,7 +506,7 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
-        private int GetInsertID(string ID, string tabelnaam)
+        public int GetInsertID(string ID, string tabelnaam)
         {
             string insertID = "Select Max(" + ID + ") From " + tabelnaam;
 
