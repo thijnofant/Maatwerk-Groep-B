@@ -20,6 +20,7 @@ namespace RemiseSysteem_Groep_B
             InitializeComponent();
             remise = Remise.Instance;
             db = DatabaseManager.Instance;
+            OpstartMethode();
         }
 
         private void btnInvoeren_Click(object sender, EventArgs e) 
@@ -54,7 +55,8 @@ namespace RemiseSysteem_Groep_B
         {
             foreach (Tram t in db.AlleTrams()) 
             {
-                string lbstring = t.Type.Naam + Convert.ToString(t.Nummer);
+                string lbstring = t.Type.Naam + " - " + Convert.ToString(t.Nummer);
+                lbxTrams.Items.Add(lbstring);
             }
         }
 

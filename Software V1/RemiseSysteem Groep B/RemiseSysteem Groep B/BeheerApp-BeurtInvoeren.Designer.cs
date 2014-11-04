@@ -98,9 +98,9 @@
             // lbxTrams
             // 
             this.lbxTrams.FormattingEnabled = true;
-            this.lbxTrams.Location = new System.Drawing.Point(151, 75);
+            this.lbxTrams.Location = new System.Drawing.Point(102, 75);
             this.lbxTrams.Name = "lbxTrams";
-            this.lbxTrams.Size = new System.Drawing.Size(121, 95);
+            this.lbxTrams.Size = new System.Drawing.Size(170, 95);
             this.lbxTrams.TabIndex = 6;
             // 
             // dtpDatum

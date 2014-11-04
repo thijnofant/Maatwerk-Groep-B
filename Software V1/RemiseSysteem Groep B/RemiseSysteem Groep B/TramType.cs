@@ -8,19 +8,15 @@ namespace RemiseSysteem_Groep_B
 {
     class TramType
     {
-        private string naam;
-        private double lengte;
-        private List<Lijn> wordtGebruiktOp;
-
         public string Naam { get; private set; }
         public double Lengte { get; private set; }
         public List<Lijn> WordtGebruiktOp { get; private set; }
 
         public TramType(string naam, double lengte)
         {
-            this.naam = naam;
-            this.lengte = lengte;
-            wordtGebruiktOp = new List<Lijn>();
+            this.Naam = naam;
+            this.Lengte = lengte;
+            WordtGebruiktOp = new List<Lijn>();
         }
     }
 }
