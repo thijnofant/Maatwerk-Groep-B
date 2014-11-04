@@ -96,6 +96,12 @@
     <Compile Include="Sector.cs" />
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
+    <Compile Include="TramReserveren.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TramReserveren.Designer.cs">
+      <DependentUpon>TramReserveren.cs</DependentUpon>
+    </Compile>
     <Compile Include="TramStatus.cs" />
     <Compile Include="TramType.cs" />
     <EmbeddedResource Include="BeheerApp-BeurtInvoeren.resx">
@@ -122,6 +128,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TramReserveren.resx">
+      <DependentUpon>TramReserveren.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

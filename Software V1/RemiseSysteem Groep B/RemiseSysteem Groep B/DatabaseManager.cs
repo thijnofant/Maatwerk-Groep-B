@@ -12,6 +12,8 @@ namespace RemiseSysteem_Groep_B
     {
         #region singleton
         private static DatabaseManager instance;
+        int ReserveringIdIn;
+
         private DatabaseManager()
         {
             this.connection = new OracleConnection();
@@ -392,6 +394,11 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        public List<Beurt> GetAlleBeurten() 
+        {
+
+        }
+
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak) 
         {
             try 
@@ -416,7 +423,7 @@ namespace RemiseSysteem_Groep_B
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
             Tram tempTram = ZoekTram(tramNr);
-            String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
+            String cmd = " UPDATE SECTOR SET TramID = null WHERE TramID ="+tempTram.Id+"; UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -468,6 +475,258 @@ namespace RemiseSysteem_Groep_B
             {
                 connection.Close();
             }
+        }
+
+        public bool TramReserveren(int tramnummer, int spoornummer)
+        {
+            ReserveringIdIn = GetInsertID("ID", "RESERVERING");
+            ReserveringIdIn++;
+            string sql = "INSERT INTO RESERVERING (ID, TRAMID, SPOORID ) VALUES (" + ReserveringIdIn + "," + tramnummer + ", " + spoornummer + ")";
+            OracleCommand command = new OracleCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        public int GetInsertID(string ID, string tabelnaam)
+        {
+            string insertID = "Select Max(" + ID + ") From " + tabelnaam;
+
+            OracleCommand commandID = new OracleCommand(insertID, connection);
+            commandID.CommandType = System.Data.CommandType.Text;
+
+            try
+            {
+                connection.Open();
+                OracleDataReader readerMat = commandID.ExecuteReader();
+                readerMat.Read();
+                int id = readerMat.GetInt32(0);
+                return id;
+            }
+            catch (InvalidCastException)
+            {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public List<int> GetBeurtSporen()
+        {
+            String cmd = "SELECT ID FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77));";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                List<int> reList = new List<int>();
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int SpoorNR = reader.GetInt32(0);
+
+                    reList.Add(SpoorNR);
+                }
+                return reList;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return null;
+        }
+
+        public List<int> GetSporenIDByLijnID(int lijnID)
+        {
+            String cmd = "SELECT ID FROM SPOOR WHERE ID In (SELECT SpoorID FROM LIJN_SPOOR WHERE LijnID =" + lijnID + ")";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                List<int> reList = new List<int>();
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int SpoorNR = reader.GetInt32(0);
+
+                    reList.Add(SpoorNR);
+                }
+                return reList;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return null;
+        }
+
+        public List<int> GetSporenIDForFreeSporen()
+        {
+            String cmd = "SELECT ID FROM SPOOR WHERE ID NOT IN (SELECT SpoorID FROM Lijn_Spoor) AND NOT(Nummer BETWEEN 12 AND 21) AND NOT(Nummer NOT BETWEEN 74 AND 77)";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                List<int> reList = new List<int>();
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int SpoorNR = reader.GetInt32(0);
+
+                    reList.Add(SpoorNR);
+                }
+                return reList;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return null;
+        }
+        public int GetSectorX(int X, int spoorID)
+        {
+            String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                List<int> reList = new List<int>();
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int SpoorNR = reader.GetInt32(0);
+
+                    reList.Add(SpoorNR);
+                }
+
+                return reList[X];
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return 0;
+        }
+
+        public bool SectorBezet(int SectorID)
+        {
+            String cmd = "SELECT TramId FROM SECTOR WHERE ID =" + SectorID;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+
+                int TramID = reader.GetInt32(0);
+                if (TramID != null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
+
+        public int LijnNrOpvragen(int tramNr)
+        {
+            Tram tempTram = ZoekTram(tramNr);
+            String cmd = "SELECT Nummer FROM Lijn WHERE ID IN (SELECT LIJNID FROM TRAM_LIJN WHERE TramID =" + tempTram.Id + ")";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+                int LijnNR = reader.GetInt32(0);
+                return LijnNR;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return 0;
+        }
+        public int GetGereserveerdSpoor(int tramID)
+        {
+            String cmd = "SELECT SpoorID FROM RESERVERING WHERE TRAMID =" + tramID;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                int SpoorID = reader.GetInt32(0);
+                return SpoorID;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return 0;
         }
     }
 }

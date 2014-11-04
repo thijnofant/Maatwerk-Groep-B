@@ -18,114 +18,94 @@ namespace RemiseSysteem_Groep_B
                 if (instance == null)
                 {
                     instance = new Remise();
-                    instance.Lijnen = new List<Lijn>();
-                    instance.Sporen = new List<Spoor>();
-                    instance.Medewerkers = new List<Medewerker>();
-                    instance.Beurten = new List<Beurt>();
-                    instance.AanwezigeTrams = new List<Tram>();
                 }
             return instance;}
         }
         #endregion
 
-        #region Atributes + Properties
         public DatabaseManager Database = DatabaseManager.Instance;
-        public List<Lijn> Lijnen { get; private set; }
-        public List<Spoor> Sporen { get; set; }
-        public Medewerker IngelogdeMedewerker { get; private set; }
-        public List<Medewerker> Medewerkers { get; private set; }
-        public List<Beurt> Beurten { get; private set; }
-        public List<Tram> AanwezigeTrams { get; private set; }
-        #endregion
 
         #region Methodes
-        public bool PlaatsToewijzen(Sector sector, Tram tram)
+        public bool PlaatsToewijzen(Sector sector, int tramNR)
         {
-            if (sector.TramToevoegen(tram))
+            return(Database.TramVerplaatsen(tramNR, sector));
+        }
+
+        public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
+        {
+            List<int> SpoorID = null;
+            int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
+            if (geserveerdSpoor != 0 && geserveerdSpoor != null)
             {
-                foreach (Spoor spoor in Sporen)
+                SpoorID = new List<int>();
+                SpoorID.Add(geserveerdSpoor);
+            }
+
+            if (SpoorID == null)
+            {
+                if (onderhoud || schoonmaak)
                 {
-                    foreach (Sector sect in spoor.Sectoren)
+                    SpoorID = Database.GetBeurtSporen();
+                    if (onderhoud)
                     {
-                        if (sect.Tram.Id == tram.Id)
+                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID","TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
+                    }
+                    if (schoonmaak)
+                    {
+                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID","TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
+                    }
+                }
+                else
+                {
+                    int TramLijnID = Database.LijnNrOpvragen(tramNr);
+                    SpoorID = Database.GetSporenIDByLijnID(TramLijnID);
+                }
+
+                int X = 0;
+                int N = 0;
+
+                while (true)
+                {
+                    int SectorID = Database.GetSectorX(X, SpoorID[N]);
+                    if (Database.SectorBezet(SectorID))
+                    {
+                        Database.TramVerplaatsen(tramNr, new Sector(SectorID));
+                        break;
+                    }
+                    else
+                    {
+                        if (N < SpoorID.Count)
                         {
-                            sect.TramVerwijderen();
+                            N++;
+                        }
+                        else
+                        {
+                            if (X > 8)
+                            {
+                                SpoorID = Database.GetSporenIDForFreeSporen();
+                            }
+                            else
+                            {
+                                N = 0;
+                                X++;
+                            }
                         }
                     }
                 }
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
-
-        public bool PlaatsAutomatischToewijzen(Tram tram)
+        public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
         {
-            throw new NotImplementedException();
-        }
-        public bool SchoonmaakOpgeven(Schoonmaak schoonmaak)
-        {
-            if (IngelogdeMedewerker.MedewerkerType == MedewerkerType.Beheerder) {
-                int schoonmaakOpDatum = 0;
-                int aantalSchoonmakers = 0;
+            int aantalgroot = 0;
+            int aantalklein = 0;
+            DateTime datum = schoonmaak.BeginDatum;
+            //List<Beurt> allebeurten = 
 
-                //Aantal schoonmaakbeurten op dezelfde datum tellen en opslaan.
-                foreach (Schoonmaak s in Beurten) {
-                    if (s.BeginDatum == schoonmaak.BeginDatum) {
-                        schoonmaakOpDatum += 1;
-                    }
-                }
-
-                //Aantal schoonmakers beschikbaar.
-                foreach (Medewerker m in Medewerkers) {
-                    if (m.MedewerkerType == MedewerkerType.Schoonmaker) {
-                        aantalSchoonmakers += 1;
-                    }
-                }
-
-                //Als er meer beurten op een dag zijn dan schoonmakers, wordt de beurt geweigerd.
-                if (schoonmaakOpDatum >= aantalSchoonmakers) {
-                    return false;
-                }
-                Beurten.Add(schoonmaak);
-                return true;
-            }
-            else {
-                return false;
-            }
+            return false;
         }
         public bool OnderhoudOpgeven(Onderhoud onderhoud)
         {
-            if (IngelogdeMedewerker.MedewerkerType == MedewerkerType.Beheerder) {
-                int onderhoudOpDatum = 0;
-                int aantalTechnici = 0;
-
-                //Aantal onderhoudsbeurten op dezelfde datum tellen en opslaan.
-                foreach (Onderhoud s in Beurten) {
-                    if (s.BeginDatum == onderhoud.BeginDatum) {
-                        onderhoudOpDatum += 1;
-                    }
-                }
-
-                //Aantal technici beschikbaar.
-                foreach (Medewerker m in Medewerkers) {
-                    if (m.MedewerkerType == MedewerkerType.Technicus) {
-                        aantalTechnici += 1;
-                    }
-                }
-
-                //Als er meer beurten op een dag zijn dan technici, wordt de beurt geweigerd.
-                if (onderhoudOpDatum >= aantalTechnici) {
-                    return false;
-                }
-                Beurten.Add(onderhoud);
-                return true;
-            }
-            else {
-                return false;
-            }
+            return false;
         }
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
