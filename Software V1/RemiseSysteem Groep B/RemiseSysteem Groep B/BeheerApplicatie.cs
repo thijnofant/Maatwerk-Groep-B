@@ -20,7 +20,8 @@ namespace RemiseSysteem_Groep_B
             InitializeComponent();
             databaseManager = DatabaseManager.Instance;
             this.remise = Remise.Instance;
-            this.remise = this.remise.Database.SporenlijstOpvragen();
+            //this.remise.Sporen = this.remise.Database.SporenlijstOpvragen(); moet weggegooit worden
+
             //List<Sector> sectoren = new List<Sector>();
             //List<Lijn> lijnen = new List<Lijn>();
             //Sector s;
@@ -69,7 +70,7 @@ namespace RemiseSysteem_Groep_B
 
         public void VulSporen()
         {
-            List<Spoor> sporen = this.remise.Sporen;
+            List<Spoor> sporen = databaseManager.SporenlijstOpvragen();
             int spoornummer = 1;
             Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
             foreach (Spoor spoor in sporen)
