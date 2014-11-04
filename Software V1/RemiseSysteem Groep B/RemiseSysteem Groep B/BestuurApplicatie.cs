@@ -16,9 +16,7 @@ namespace RemiseSysteem_Groep_B
 
         public BestuurApplicatie()
         {
-            InitializeComponent();
-            tbxInput.Text = "2001";
-            
+            InitializeComponent();     
         }
 
         private void btnOne_Click(object sender, EventArgs e)
