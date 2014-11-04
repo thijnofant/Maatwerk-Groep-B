@@ -23,6 +23,7 @@ namespace RemiseSysteem_Groep_B
             bestuurdersApp = new BestuurApplicatie();
             onderhoudsApp = new OnderhoudApplicatie();
             schoonmaakApp = new SchoonmaakApplicatie();
+            Simulatie();
         }
 
         private void btnBeheerdersApp_Click(object sender, EventArgs e) 
@@ -43,6 +44,36 @@ namespace RemiseSysteem_Groep_B
         private void btnSchoonmaakApp_Click(object sender, EventArgs e) 
         {
             schoonmaakApp.Show();
+        }
+
+        private void Simulatie()
+        {
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Random willekeurigGetalGenerator = new Random();
+            int willekeurigGetal = willekeurigGetalGenerator.Next(0, 5);
+            if (willekeurigGetal == 1)
+            {
+                
+            }
+            else if (willekeurigGetal == 2)
+            {
+                
+            }
+            else if (willekeurigGetal == 3)
+            {
+                
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            timer1.Interval = 5000;
+            timer1.Tick += timer1_Tick;
+            timer1.Start();
         }
     }
 }
