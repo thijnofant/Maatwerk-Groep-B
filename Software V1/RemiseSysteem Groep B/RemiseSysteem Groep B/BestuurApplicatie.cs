@@ -104,13 +104,21 @@ namespace RemiseSysteem_Groep_B
                 schoonmaak = true;
             }
 
-            if(remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))
+            if (db.ZoekTram(tramnr) != null)
             {
-                if (db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id) != 0)
+                if (remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))
                 {
-                    lblGoToTrack.Text = Convert.ToString(db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id));
+                    if (db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id) != 0)
+                    {
+                        lblGoToTrack.Text = Convert.ToString(db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id));
+                    }
                 }
             }
+            else
+            {
+                lblMessage.Text = "invoer is geen geldige tram";
+            }
+
         }
 
         private void rbJa_CheckedChanged(object sender, EventArgs e)
