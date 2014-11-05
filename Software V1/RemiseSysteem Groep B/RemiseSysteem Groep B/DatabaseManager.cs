@@ -960,7 +960,7 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public int GetToegewezenSpoor(int tramID)//id van maken ipv nr
+        public int GetToegewezenSpoor(int tramID)
         {
             String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
             OracleCommand command = new OracleCommand(cmd, connection);
@@ -983,6 +983,11 @@ namespace RemiseSysteem_Groep_B
             {
                 this.connection.Close();
             }
+            return 0;
+        }
+
+        public int GetAantalBeurten()
+        {
             return 0;
         }
     }
