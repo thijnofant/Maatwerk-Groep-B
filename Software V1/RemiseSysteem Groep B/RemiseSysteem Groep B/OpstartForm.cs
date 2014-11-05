@@ -45,6 +45,12 @@ namespace RemiseSysteem_Groep_B
             schoonmaakApp = new SchoonmaakApplicatie();
             schoonmaakApp.Show();
         }
+
+        private void btnSimulatie_Click(object sender, EventArgs e)
+        {
+            simulatieapp simulatie = new simulatieapp();
+            simulatie.Show();
+        }
         
     }
 }

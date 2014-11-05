@@ -531,7 +531,7 @@ namespace RemiseSysteem_Groep_B
             Tram tempTram = ZoekTram(tramNr);
             if (tempTram != null)
             {
-                string cmd = "UPDATE sector set tramid = null wher tramid = :tramid";
+                string cmd = "UPDATE sector set tramid = null where tramid = :tramid";
                 try
                 {
                     OracleCommand command = new OracleCommand(cmd, connection);
@@ -550,8 +550,8 @@ namespace RemiseSysteem_Groep_B
                 {
                     connection.Close();
                 }
-                return false;
             }
+            return false;
         }
 
         public bool TramVerplaatsen(int tramNr, Sector sect)

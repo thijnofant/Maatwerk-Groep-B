@@ -29,6 +29,7 @@
             this.btnBestuurdersApp = new System.Windows.Forms.Button();
             this.btnOnderhoudsApp = new System.Windows.Forms.Button();
             this.btnSchoonmaakApp = new System.Windows.Forms.Button();
+            this.btnSimulatie = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBeheerdersApp
@@ -75,11 +76,22 @@
             this.btnSchoonmaakApp.UseVisualStyleBackColor = true;
             this.btnSchoonmaakApp.Click += new System.EventHandler(this.btnSchoonmaakApp_Click);
             // 
+            // btnSimulatie
+            // 
+            this.btnSimulatie.Location = new System.Drawing.Point(16, 314);
+            this.btnSimulatie.Name = "btnSimulatie";
+            this.btnSimulatie.Size = new System.Drawing.Size(346, 84);
+            this.btnSimulatie.TabIndex = 5;
+            this.btnSimulatie.Text = "Simulatie starten";
+            this.btnSimulatie.UseVisualStyleBackColor = true;
+            this.btnSimulatie.Click += new System.EventHandler(this.btnSimulatie_Click);
+            // 
             // OpstartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 322);
+            this.ClientSize = new System.Drawing.Size(375, 410);
+            this.Controls.Add(this.btnSimulatie);
             this.Controls.Add(this.btnSchoonmaakApp);
             this.Controls.Add(this.btnOnderhoudsApp);
             this.Controls.Add(this.btnBestuurdersApp);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button btnBestuurdersApp;
         private System.Windows.Forms.Button btnOnderhoudsApp;
         private System.Windows.Forms.Button btnSchoonmaakApp;
+        private System.Windows.Forms.Button btnSimulatie;
     }
 }
