@@ -752,20 +752,12 @@ namespace RemiseSysteem_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
 
-
                 int TramID = reader.GetInt32(0);
-                if (TramID != null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return true;
             }
             catch
             {
-
+                return false;
             }
             finally
             {
@@ -777,7 +769,7 @@ namespace RemiseSysteem_Groep_B
         public int LijnNrOpvragen(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
-            String cmd = "SELECT Nummer FROM Lijn WHERE ID IN (SELECT LIJNID FROM TRAM_LIJN WHERE TramID =" + tempTram.Id + ")";
+            String cmd = "SELECT ID FROM Lijn WHERE ID IN (SELECT LIJNID FROM TRAM_LIJN WHERE TramID =" + tempTram.Id + ")";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
