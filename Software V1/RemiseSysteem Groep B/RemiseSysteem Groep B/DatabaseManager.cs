@@ -846,7 +846,7 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
-        public List<Sector> GetAlleSectoren() 
+        /*public List<Sector> GetAlleSectoren() 
         {
             string cmd = "SELECT ID, SpoorID, TramID, Blokkade FROM Sector";
             OracleCommand command = new OracleCommand(cmd, connection);
@@ -860,7 +860,7 @@ namespace RemiseSysteem_Groep_B
                     int spoorid
                 }
             }
-        }
+        }*/
 
         public int LijnNrOpvragen(int tramNr)
         {
