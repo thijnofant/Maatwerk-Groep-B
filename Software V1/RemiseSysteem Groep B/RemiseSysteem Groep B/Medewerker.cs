@@ -8,11 +8,6 @@ namespace RemiseSysteem_Groep_B
 {
     class Medewerker
     {
-        private MedewerkerType medewerkerType;
-        private int id;
-        private string naam;
-        private List<Beurt> uitgevoerdeBeurten;
-
         public MedewerkerType MedewerkerType { get; private set; }
         public int Id { get; private set; }
         public string Naam { get; private set; }
@@ -20,13 +15,13 @@ namespace RemiseSysteem_Groep_B
 
         public Medewerker(int id, string naam, MedewerkerType medewerkerType) 
         {
-            this.medewerkerType = medewerkerType;
-            this.naam = naam;
-            this.id = id;
+            this.MedewerkerType = medewerkerType;
+            this.Naam = naam;
+            this.Id = id;
 
             if (medewerkerType == MedewerkerType.Schoonmaker || medewerkerType == MedewerkerType.Technicus) 
             {
-                uitgevoerdeBeurten = new List<Beurt>();
+                UitgevoerdeBeurten = new List<Beurt>();
             }
         }
     }

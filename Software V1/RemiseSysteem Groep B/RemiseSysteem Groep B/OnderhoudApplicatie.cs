@@ -38,13 +38,13 @@ namespace RemiseSysteem_Groep_B
 
             foreach(Medewerker medewerker in medewerkers)
             {
-                //lbxMedewerkers.Items.Add(Convert.ToString(medewerker.Naam));
+                lbxMedewerkers.Items.Add(Convert.ToString(medewerker.Naam));
             }
         }
 
         public void LaadOnderhoud()
         {
-            onderhoudsBeurten = Remise.Instance.Database.OnderhoudsBeurtenOpvragen();
+            onderhoudsBeurten = Remise.Instance.Database.OnderhoudOpvragen();
 
             foreach(Onderhoud onderhoud in onderhoudsBeurten)
             {
