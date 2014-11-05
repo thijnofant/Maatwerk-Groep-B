@@ -166,5 +166,10 @@ namespace RemiseSysteem_Groep_B
             TramReserveren form = new TramReserveren();
             form.Show();
         }
+
+        private void invoerenToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
+            form.Show();
+        }
     }
 }
