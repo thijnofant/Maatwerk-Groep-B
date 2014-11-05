@@ -13,15 +13,52 @@ namespace RemiseSysteem_Groep_B
     public partial class BeheerApp_Blokkeren : Form
     {
         DatabaseManager db = DatabaseManager.Instance;
-        public BeheerApp_Blokkeren() 
-        {
+        List<Spoor> sporen;
+        List<Sector> sectoren;
+        public BeheerApp_Blokkeren() {
             InitializeComponent();
+            UpdateData();
         }
 
         public void UpdateData() 
         {
-            List<Spoor> sporen = db.SporenlijstOpvragen();
-            List<Sector> sectoren = db.GetSectorenVoorBlokkade();
+            sporen = db.SporenlijstOpvragen();
+            sectoren = db.GetSectorenVoorBlokkade();
+
+            foreach (Spoor s in sporen) 
+            {
+                string spoornummer = Convert.ToString(s.Nummer);
+                lbxSporen.Items.Add(spoornummer);
+            }
+        }
+
+        private void lbxSporen_SelectedIndexChanged(object sender, EventArgs e) 
+        {
+            lbxSectoren.Items.Clear();
+            int spoorid = -1;
+            int spoornr = Convert.ToInt32(lbxSporen.SelectedItem);
+
+            foreach (Spoor spoor in sporen)
+            {
+                if (spoor.Nummer == spoornr) {
+                    spoorid = spoor.Id;
+                    break;
+                }
+            }
+            
+            foreach (Sector sector in sectoren) 
+            {
+                string sectorstring;
+                if (spoorid == sector.SpoorID) 
+                {
+                    sectorstring = Convert.ToString(sector.Id);
+                    if (sector.IsGeblokkeerd)
+                        sectorstring += " - Geblokkeerd";
+                    else
+                        sectorstring += " - Open";
+                    lbxSectoren.Items.Add(sectorstring);
+                }
+            }
         }
     }
 }
