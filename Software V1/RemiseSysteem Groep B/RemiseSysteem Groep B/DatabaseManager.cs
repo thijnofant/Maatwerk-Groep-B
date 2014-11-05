@@ -520,13 +520,25 @@ namespace RemiseSysteem_Groep_B
             if (tempTram != null)
             {
                 string cmd = "UPDATE sector set tramid = null wher tramid = :tramid";
-                OracleCommand command = new OracleCommand(cmd,connection);
-                command.Parameters.Add("tramid", tempTram.Id);
-                int resultaat = command.ExecuteNonQuery();
-                if (resultaat > 0)
+                try
                 {
-                    
+                    OracleCommand command = new OracleCommand(cmd, connection);
+                    command.Parameters.Add("tramid", tempTram.Id);
+                    int resultaat = command.ExecuteNonQuery();
+                    if (resultaat > 0)
+                    {
+                        return true;
+                    }
                 }
+                catch(OracleException oex)
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                return false;
             }
         }
 

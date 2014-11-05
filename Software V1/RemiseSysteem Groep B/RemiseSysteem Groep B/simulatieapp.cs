@@ -89,7 +89,7 @@ namespace RemiseSysteem_Groep_B
             {
                 trams = this.remise.Database.AlleTramsMetStatus(TramStatus.Remise);
                 Tram gekozenTram = trams[willekeurigGetalGenerator.Next(trams.Count - 1)];
-
+                
                 //uitrijden
 
             }
