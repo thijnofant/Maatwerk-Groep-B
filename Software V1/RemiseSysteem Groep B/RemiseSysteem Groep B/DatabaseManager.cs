@@ -896,6 +896,7 @@ namespace RemiseSysteem_Groep_B
                     sector.SpoorID = spoorid;
                     if (tramid != -1)
                         sector.Tram = new Tram(1, new TramType("dummy", 0));
+                    sectoren.Add(sector);
                     
                 }
                 return sectoren;

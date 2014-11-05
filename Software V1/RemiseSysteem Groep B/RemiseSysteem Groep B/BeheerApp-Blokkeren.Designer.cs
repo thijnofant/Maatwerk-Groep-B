@@ -66,6 +66,7 @@
             this.lbxSporen.Name = "lbxSporen";
             this.lbxSporen.Size = new System.Drawing.Size(121, 121);
             this.lbxSporen.TabIndex = 4;
+            this.lbxSporen.SelectedIndexChanged += new System.EventHandler(this.lbxSporen_SelectedIndexChanged);
             // 
             // btnBlokkeer
             // 
