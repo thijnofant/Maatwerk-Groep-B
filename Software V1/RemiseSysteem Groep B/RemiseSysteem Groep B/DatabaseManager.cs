@@ -485,6 +485,40 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        public List<Tram> AlleTramsMetStatus(TramStatus status)
+        {
+            List<Tram> tramlist = new List<Tram>();
+            string cmd = "SELECT t.ID, t.Nummer, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt WHERE t.TramtypeID = tt.ID and t.status = :status";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.Parameters.Add("status",status.GetType().ToString());
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int tramid = reader.GetInt32(0);
+                    int tramnummer = reader.GetInt32(1);
+                    string typenaam = reader.GetString(2);
+                    double lengte = reader.GetDouble(3);
+
+                    TramType type = new TramType(typenaam, lengte);
+                    Tram tram = new Tram(tramid, type, tramnummer);
+                    tramlist.Add(tram);
+                }
+                return tramlist;
+            }
+            catch
+            {
+                return tramlist;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         public List<Tram> AlleTrams() 
         {
             List<Tram> tramlist = new List<Tram>();

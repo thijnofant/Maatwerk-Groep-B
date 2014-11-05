@@ -53,19 +53,35 @@ namespace RemiseSysteem_Groep_B
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             Random willekeurigGetalGenerator = new Random();
+            int inOfUitNummer = willekeurigGetalGenerator.Next(0, 2);
             int willekeurigGetal = willekeurigGetalGenerator.Next(0, 5);
-            if (willekeurigGetal == 1)
+            if (inOfUitNummer > 1)
             {
-                
+                //inrijden
+                switch (willekeurigGetal)
+                {
+                    case 1:
+                        //defect
+                        break;
+                    case 2:
+                        //doorrijden
+                        break;
+                    case 3:
+                        //vuil
+                        break;
+                    case 4:
+                        //doorrijden
+                        break;
+                    default:
+                        //doorrijden
+                        break;
+                }
             }
-            else if (willekeurigGetal == 2)
+            else
             {
-                
-            }
-            else if (willekeurigGetal == 3)
-            {
-                
+                //uitrijden
             }
         }
 

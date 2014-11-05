@@ -70,7 +70,8 @@ namespace RemiseSysteem_Groep_B
 
         public void VulSporen()
         {
-            List<Spoor> sporen = databaseManager.SporenlijstOpvragen();
+            List<Spoor> sporen = new List<Spoor>();
+            sporen = this.remise.Database.SporenlijstOpvragen();
             int spoornummer = 1;
             Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
             foreach (Spoor spoor in sporen)
