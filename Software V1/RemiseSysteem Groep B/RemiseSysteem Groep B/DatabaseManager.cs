@@ -492,6 +492,29 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        public bool TramstatusVeranderen(TramStatus nieuwStatus, int tramid)
+        {
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("Update tram set status = :status where id = :id",connection);
+                command.Parameters.Add("status", nieuwStatus.GetType().ToString());
+                command.Parameters.Add("id", tramid);
+                int resultaat = command.ExecuteNonQuery();
+                if (resultaat > 0)
+                    return true;
+            }
+            catch (OracleException oex)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
             Tram tempTram = ZoekTram(tramNr);

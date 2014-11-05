@@ -56,53 +56,69 @@ namespace RemiseSysteem_Groep_B
         private void timer1_Tick(object sender, EventArgs e)
         {
             List<Tram> trams = new List<Tram>();
+            bool isGelukt;
             Random willekeurigGetalGenerator = new Random();
             int inOfUitNummer = willekeurigGetalGenerator.Next(0, 2);
             int willekeurigGetal = willekeurigGetalGenerator.Next(10);
             if (inOfUitNummer > 1)
             {
                 trams = this.remise.Database.AlleTramsMetStatus(TramStatus.Dienst);
+                Tram gekozenTram = trams[willekeurigGetalGenerator.Next(trams.Count - 1)];
                 //inrijden
                 switch (willekeurigGetal)
                 {
                     case 1:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, true, false);
                         //defect
                         break;
                     case 2:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 3:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, true);
                         //vuil
                         break;
                     case 4:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 5:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 6:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 7:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 8:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 9:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     case 10:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                     default:
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
                         //doorrijden
                         break;
                 }
+
             }
             else
             {
                 trams = this.remise.Database.AlleTramsMetStatus(TramStatus.Remise);
+                Tram gekozenTram = trams[willekeurigGetalGenerator.Next(trams.Count - 1)];
+                
                 //uitrijden
 
             }
