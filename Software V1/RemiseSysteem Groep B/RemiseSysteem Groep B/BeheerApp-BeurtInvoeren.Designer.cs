@@ -51,7 +51,7 @@
             this.cbxSoortBeurt.FormattingEnabled = true;
             this.cbxSoortBeurt.Items.AddRange(new object[] {
             "Schoonmaak",
-            "Onderhoud"});
+            "Reparatie"});
             this.cbxSoortBeurt.Location = new System.Drawing.Point(151, 21);
             this.cbxSoortBeurt.Name = "cbxSoortBeurt";
             this.cbxSoortBeurt.Size = new System.Drawing.Size(121, 21);

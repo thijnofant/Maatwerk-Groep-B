@@ -62,7 +62,7 @@ namespace RemiseSysteem_Groep_B
                 db.SchoonmaakInvoeren(schoonmaak);
                 this.Close();
             }
-            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Onderhoud") 
+            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Reparatie") 
             {
                 int beurtid = db.GetInsertID("ID", "Tram_beurt") + 1;
                 string tramstring = Convert.ToString(lbxTrams.SelectedItem);
