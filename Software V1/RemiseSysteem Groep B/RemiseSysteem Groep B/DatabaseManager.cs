@@ -846,6 +846,22 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        public List<Sector> GetAlleSectoren() 
+        {
+            string cmd = "SELECT ID, SpoorID, TramID, Blokkade FROM Sector";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try 
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read()) 
+                {
+                    int spoorid
+                }
+            }
+        }
+
         public int LijnNrOpvragen(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
