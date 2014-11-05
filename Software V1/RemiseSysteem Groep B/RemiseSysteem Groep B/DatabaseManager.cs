@@ -61,11 +61,29 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
-        public List<Medewerker> MedewerkersOpvragen()
+        public List<Medewerker> OnderhoudsMedewerkersOpvragen()
         {
             List<Medewerker> medewerkers = new List<Medewerker>();
 
-            //TODO: SQL
+            String cmd = "SELECT M.ID, M.FunctieID, M.Naam FROM Medewerker M, Functie F WHERE F.ID = M.FunctieID AND F.Naam = 'Technicus'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Medewerker mw = new Medewerker(Convert.ToInt32(reader["ID"]), Convert.ToString(reader["Naam"]), MedewerkerType.Technicus);
+                    medewerkers.Add(mw);
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
 
             return medewerkers;
         }
@@ -74,7 +92,7 @@ namespace RemiseSysteem_Groep_B
         {
             List<Medewerker> medewerkers = new List<Medewerker>();
 
-            //TODO: SQL
+            
 
             return medewerkers;
         }
