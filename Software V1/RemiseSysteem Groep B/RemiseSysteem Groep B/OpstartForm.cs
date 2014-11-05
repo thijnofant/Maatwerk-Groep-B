@@ -78,16 +78,22 @@ namespace RemiseSysteem_Groep_B
                         //doorrijden
                         break;
                     case 5:
+                        //doorrijden
                         break;
                     case 6:
+                        //doorrijden
                         break;
                     case 7:
+                        //doorrijden
                         break;
                     case 8:
+                        //doorrijden
                         break;
                     case 9:
+                        //doorrijden
                         break;
                     case 10:
+                        //doorrijden
                         break;
                     default:
                         //doorrijden
@@ -98,6 +104,7 @@ namespace RemiseSysteem_Groep_B
             {
                 trams = this.remise.Database.AlleTramsMetStatus(TramStatus.Remise);
                 //uitrijden
+
             }
         }
 

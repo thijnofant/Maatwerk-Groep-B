@@ -394,7 +394,7 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
-        //LEVENSGEVAARLIJK NOG NIET GETEST
+        ///LEVENSGEVAARLIJK NOG NIET GETEST
         public List<Beurt> ZoekAlleBeurten() 
         {
             List<Tram> trams = AlleTrams();
