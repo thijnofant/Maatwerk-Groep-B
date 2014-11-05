@@ -103,7 +103,7 @@ namespace RemiseSysteem_Groep_B
             {
                 schoonmaak = true;
             }
-            remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak)
+            remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak);
             //if(remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))
             //{
 
