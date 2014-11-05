@@ -403,7 +403,6 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
-        ///LEVENSGEVAARLIJK NOG NIET GETEST
         public List<Beurt> ZoekAlleBeurten() 
         {
             List<Tram> trams = AlleTrams();
@@ -431,12 +430,12 @@ namespace RemiseSysteem_Groep_B
 
                     if(type == "Schoonmaak")
                     {
-                        Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), type, true), trams.Find(x => x.Id == tramid));
+                        Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), beurttype, true), trams.Find(x => x.Id == tramid));
                         beurten.Add(schoonmaak);
                     }
                     if(type == "Onderhoud") 
                     {
-                        Onderhoud onderhoud = new Onderhoud(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), type, true), trams.Find(x => x.Id == tramid));
+                        Onderhoud onderhoud = new Onderhoud(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), beurttype, true), trams.Find(x => x.Id == tramid));
                         beurten.Add(onderhoud);
                     }
                 }
@@ -478,7 +477,7 @@ namespace RemiseSysteem_Groep_B
             try 
             {
                 connection.Open();
-                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(onderhoud.ID) + ", " + Convert.ToString(onderhoud.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(onderhoud.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Reparatie', '" + Convert.ToString(onderhoud.Soort) + "')";
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(onderhoud.ID) + ", " + Convert.ToString(onderhoud.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(onderhoud.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Onderhoud', '" + Convert.ToString(onderhoud.Soort) + "')";
                 OracleCommand command = new OracleCommand(cmd, connection);
                 command.CommandType = System.Data.CommandType.Text;
                 command.ExecuteReader();

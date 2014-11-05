@@ -54,34 +54,64 @@ namespace RemiseSysteem_Groep_B
             string datumstring = Convert.ToString(gekozendatum).Substring(0, 10);
             int kleincount = 0;
             int grootcount = 0;
-            foreach (Schoonmaak s in db.ZoekAlleBeurten()) 
+            List<Schoonmaak> alleschoonmaak = new List<Schoonmaak>();
+            List<Onderhoud> alleonderhoud = new List<Onderhoud>();
+            foreach (Beurt b in db.ZoekAlleBeurten()) 
             {
-                DateTime datumschoonmaak = s.BeginDatum;
-                string datumschoonmaakstring = Convert.ToString(datumschoonmaak).Substring(0, 10);
-
-                if (datumstring == datumschoonmaakstring) 
-                {
-                    if (s.Soort == BeurtType.Groot) 
-                    {
-                        grootcount++;
-                        if (grootcount >= 2) 
-                        {
-                            MessageBox.Show("Te veel grote beurten op deze datum, kies een andere datum.");
-                            return;
-                        }
-                    }
-                    if (s.Soort == BeurtType.Klein) 
-                    {
-                        kleincount++;
-                        if (kleincount >= 3) 
-                        {
-                            MessageBox.Show("Te veel kleine beurten op deze datum, kies een andere datum.");
-                        }
-                    }
-                        
-                }
+                if (b is Schoonmaak)
+                    alleschoonmaak.Add(b as Schoonmaak);
+                if (b is Onderhoud)
+                    alleonderhoud.Add(b as Onderhoud);
             }
 
+            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Schoonmaak") {
+                foreach (Schoonmaak s in alleschoonmaak) {
+                    DateTime datumschoonmaak = s.BeginDatum;
+                    string datumschoonmaakstring = Convert.ToString(datumschoonmaak).Substring(0, 10);
+
+                    if (datumstring == datumschoonmaakstring) {
+                        if (s.Soort == BeurtType.Groot && (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedItem), true) == BeurtType.Groot) {
+                            grootcount++;
+                            if (grootcount >= 2) {
+                                MessageBox.Show("Te veel grote beurten op deze datum, kies een andere datum.");
+                                return;
+                            }
+                        }
+                        if (s.Soort == BeurtType.Klein && (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedItem), true) == BeurtType.Klein) {
+                            kleincount++;
+                            if (kleincount >= 3) {
+                                MessageBox.Show("Te veel kleine beurten op deze datum, kies een andere datum.");
+                                return;
+                            }
+                        }
+
+                    }
+                }
+            }
+            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Onderhoud") {
+                foreach (Onderhoud o in alleonderhoud) {
+                    DateTime datumonderhoud = o.BeginDatum;
+                    string datumonderhoudstring = Convert.ToString(datumonderhoud).Substring(0, 10);
+
+                    if (datumstring == datumonderhoudstring) {
+                        if (o.Soort == BeurtType.Groot && (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedItem), true) == BeurtType.Groot) {
+                            grootcount++;
+                            if (grootcount >= 1) {
+                                MessageBox.Show("Te veel grote beurten op deze datum, kies een andere datum.");
+                                return;
+                            }
+                        }
+                        if (o.Soort == BeurtType.Klein && (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedItem), true) == BeurtType.Klein) {
+                            kleincount++;
+                            if (kleincount >= 4) {
+                                MessageBox.Show("Te veel kleine beurten op deze datum, kies een andere datum.");
+                                return;
+                            }
+                        }
+
+                    }
+                }
+            }
 
             if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Schoonmaak") 
             {
@@ -99,7 +129,7 @@ namespace RemiseSysteem_Groep_B
                 else
                     MessageBox.Show("Invoeren mislukt.");
             }
-            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Reparatie") 
+            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Onderhoud") 
             {
                 int beurtid = db.GetInsertID("ID", "Tram_beurt") + 1;
                 string tramstring = Convert.ToString(lbxTrams.SelectedItem);
