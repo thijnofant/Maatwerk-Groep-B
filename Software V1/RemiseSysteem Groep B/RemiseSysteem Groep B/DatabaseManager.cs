@@ -823,9 +823,9 @@ namespace RemiseSysteem_Groep_B
             return 0;
         }
 
-        public int GetGereserveerdSpoor(int tramID)
-        {
+        //public int GetToegewezenSpoor(int tramID)
+        //{
 
-        }
+        //}
     }
 }
