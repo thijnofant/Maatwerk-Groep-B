@@ -103,15 +103,6 @@ namespace RemiseSysteem_Groep_B
             throw new NotImplementedException();
         }
 
-        public List<Onderhoud> OnderhoudsBeurtenOpvragen()
-        {
-            List<Onderhoud> onderhoudsBeurten = new List<Onderhoud>();
-
-            //TODO: SQL
-
-            return onderhoudsBeurten;
-        }
-
         /// <summary>
         /// NOG TESTEN
         /// 
