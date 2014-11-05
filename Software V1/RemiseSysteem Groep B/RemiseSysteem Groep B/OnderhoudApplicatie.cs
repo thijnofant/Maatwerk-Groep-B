@@ -34,7 +34,7 @@ namespace RemiseSysteem_Groep_B
 
         public void LaadMedewerkers()
         {
-            List<Medewerker> medewerkers = Remise.Instance.Database.MedewerkersOpvragen();
+            List<Medewerker> medewerkers = Remise.Instance.Database.OnderhoudsMedewerkersOpvragen();
 
             foreach(Medewerker medewerker in medewerkers)
             {
