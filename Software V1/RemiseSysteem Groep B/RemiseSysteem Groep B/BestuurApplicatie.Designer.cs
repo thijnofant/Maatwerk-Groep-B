@@ -45,7 +45,10 @@
             this.btnOne = new System.Windows.Forms.Button();
             this.tbxInput = new System.Windows.Forms.TextBox();
             this.lblGoToTrack = new System.Windows.Forms.Label();
-            this.chbOnderhoud = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbJa = new System.Windows.Forms.RadioButton();
+            this.rbNee = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMessage
@@ -215,22 +218,47 @@
             this.lblGoToTrack.TabIndex = 43;
             this.lblGoToTrack.Text = "...";
             // 
-            // chbOnderhoud
+            // groupBox1
             // 
-            this.chbOnderhoud.AutoSize = true;
-            this.chbOnderhoud.Location = new System.Drawing.Point(23, 264);
-            this.chbOnderhoud.Name = "chbOnderhoud";
-            this.chbOnderhoud.Size = new System.Drawing.Size(108, 17);
-            this.chbOnderhoud.TabIndex = 44;
-            this.chbOnderhoud.Text = "Onderhoud nodig";
-            this.chbOnderhoud.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.rbNee);
+            this.groupBox1.Controls.Add(this.rbJa);
+            this.groupBox1.Location = new System.Drawing.Point(23, 175);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(132, 99);
+            this.groupBox1.TabIndex = 45;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Onderhoud nodig";
+            // 
+            // rbJa
+            // 
+            this.rbJa.AutoSize = true;
+            this.rbJa.Location = new System.Drawing.Point(6, 33);
+            this.rbJa.Name = "rbJa";
+            this.rbJa.Size = new System.Drawing.Size(36, 17);
+            this.rbJa.TabIndex = 0;
+            this.rbJa.TabStop = true;
+            this.rbJa.Text = "Ja";
+            this.rbJa.UseVisualStyleBackColor = true;
+            this.rbJa.CheckedChanged += new System.EventHandler(this.rbJa_CheckedChanged);
+            // 
+            // rbNee
+            // 
+            this.rbNee.AutoSize = true;
+            this.rbNee.Location = new System.Drawing.Point(7, 61);
+            this.rbNee.Name = "rbNee";
+            this.rbNee.Size = new System.Drawing.Size(45, 17);
+            this.rbNee.TabIndex = 1;
+            this.rbNee.TabStop = true;
+            this.rbNee.Text = "Nee";
+            this.rbNee.UseVisualStyleBackColor = true;
+            this.rbNee.CheckedChanged += new System.EventHandler(this.rbNee_CheckedChanged);
             // 
             // BestuurApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 361);
-            this.Controls.Add(this.chbOnderhoud);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblGoToTrack);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.label1);
@@ -250,6 +278,8 @@
             this.Controls.Add(this.tbxInput);
             this.Name = "BestuurApplicatie";
             this.Text = "Bestuur";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,7 +304,9 @@
         private System.Windows.Forms.Button btnOne;
         private System.Windows.Forms.TextBox tbxInput;
         private System.Windows.Forms.Label lblGoToTrack;
-        private System.Windows.Forms.CheckBox chbOnderhoud;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbNee;
+        private System.Windows.Forms.RadioButton rbJa;
 
     }
 }
