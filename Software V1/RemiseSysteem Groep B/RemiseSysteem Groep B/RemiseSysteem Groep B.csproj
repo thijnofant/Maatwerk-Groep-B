@@ -99,6 +99,12 @@
     <Compile Include="SchoonmaakApplicatie.Designer.cs">
       <DependentUpon>SchoonmaakApplicatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="SchoonmaakGoedkeuren.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchoonmaakGoedkeuren.Designer.cs">
+      <DependentUpon>SchoonmaakGoedkeuren.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sector.cs" />
     <Compile Include="simulatieapp.cs">
       <SubType>Form</SubType>
@@ -143,6 +149,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SchoonmaakGoedkeuren.resx">
+      <DependentUpon>SchoonmaakGoedkeuren.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="simulatieapp.resx">
       <DependentUpon>simulatieapp.cs</DependentUpon>
     </EmbeddedResource>
