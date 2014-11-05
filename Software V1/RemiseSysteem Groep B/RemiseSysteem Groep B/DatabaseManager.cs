@@ -847,8 +847,9 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
-        /*public List<Sector> GetAlleSectoren() 
+        public List<Sector> GetSectorenVoorBlokkade() 
         {
+            List<Sector> sectoren = new List<Sector>();
             string cmd = "SELECT ID, SpoorID, TramID, Blokkade FROM Sector";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
@@ -858,10 +859,34 @@ namespace RemiseSysteem_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 while (reader.Read()) 
                 {
-                    int spoorid
+                    int sectorid = reader.GetInt32(0);
+                    int spoorid = reader.GetInt32(1);
+                    int tramid = -1;
+                    try 
+                    {
+                        tramid = reader.GetInt32(2);
+                    }
+                    catch {}
+                    string blokkade = reader.GetString(3);
+                    bool geblokkeerd = false;
+                    if (blokkade == "y")
+                        geblokkeerd = true;
+
+                    Sector sector = new Sector(sectorid);
+                    sector.IsGeblokkeerd = geblokkeerd;
+                    
                 }
+                return sectoren;
             }
-        }*/
+            catch 
+            {
+                return null;
+            }
+            finally 
+            {
+                connection.Close();
+            }
+        }
 
         public int LijnNrOpvragen(int tramNr)
         {
