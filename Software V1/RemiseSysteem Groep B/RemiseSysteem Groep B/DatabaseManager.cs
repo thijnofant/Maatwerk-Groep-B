@@ -1014,5 +1014,63 @@ namespace RemiseSysteem_Groep_B
             }
             return 0;
         }
+        public Sector SectorXfromSpoor(int X, int spoorID)
+        {
+            String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                List<Sector> reList = new List<Sector>();
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int SpoorNR = reader.GetInt32(0);
+                    Sector temp = new Sector(SpoorNR);
+                    reList.Add(temp);
+                }
+
+                return reList[X - 1];
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
+        public int tramNRFromSectorID(int SectorID)
+        {
+            String cmd = "SELECT Nummer FROM TRAM WHERE ID = (SELECT TramID FROM SECTOR WHERE ID =" + SectorID + ")";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                int TramNR = 0;
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    TramNR = reader.GetInt32(0);
+                }
+
+                return TramNR;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
     }
 }
