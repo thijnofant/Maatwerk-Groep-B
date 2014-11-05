@@ -893,6 +893,9 @@ namespace RemiseSysteem_Groep_B
 
                     Sector sector = new Sector(sectorid);
                     sector.IsGeblokkeerd = geblokkeerd;
+                    sector.SpoorID = spoorid;
+                    if (tramid != -1)
+                        sector.Tram = new Tram(1, new TramType("dummy", 0));
                     
                 }
                 return sectoren;

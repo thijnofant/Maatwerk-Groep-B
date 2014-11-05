@@ -15,8 +15,9 @@ namespace RemiseSysteem_Groep_B
 
         public int Id { get { return id; } }
         public bool IsWissel { get { return isWissel; } }
-        public bool IsGeblokkeerd { get { return isGeblokkeerd; } set { IsGeblokkeerd = value; } }
-        public Tram Tram { get { return tram; } }
+        public bool IsGeblokkeerd { get { return isGeblokkeerd; } set { isGeblokkeerd = value; } }
+        public Tram Tram { get { return tram; } set { tram = value; } }
+        public int SpoorID { get; set; }
 
         public Sector(int id) 
         {
