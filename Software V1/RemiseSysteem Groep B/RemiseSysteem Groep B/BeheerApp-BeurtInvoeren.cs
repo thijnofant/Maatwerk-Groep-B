@@ -49,7 +49,7 @@ namespace RemiseSysteem_Groep_B
                 MessageBox.Show("Kan geen beurt plannen in het verleden.", "Error");
                 return;
             }
-            if (Convert.ToString(cbxSoortBeurt.SelectedValue) == "Schoonmaak") 
+            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Schoonmaak") 
             {
                 int beurtid = db.GetInsertID("ID", "Tram_beurt");
                 BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedValue), true);
@@ -59,7 +59,7 @@ namespace RemiseSysteem_Groep_B
                 Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, beurttype, tram);
                 db.SchoonmaakInvoeren(schoonmaak);
             }
-            if (Convert.ToString(cbxSoortBeurt.SelectedValue) == "Onderhoud") 
+            if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Onderhoud") 
             {
                 int beurtid = db.GetInsertID("ID", "Tram_beurt");
                 BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedValue), true);
