@@ -18,33 +18,34 @@ namespace RemiseSysteem_Groep_B
         OnderhoudApplicatie onderhoudsApp;
         SchoonmaakApplicatie schoonmaakApp;
 
-        public OpstartForm() {
+        public OpstartForm() 
+        {
             InitializeComponent();
-            beheerdersApp = new BeheerApplicatie();
-            bestuurdersApp = new BestuurApplicatie();
-            onderhoudsApp = new OnderhoudApplicatie();
-            schoonmaakApp = new SchoonmaakApplicatie();
             this.remise = Remise.Instance;
             //Simulatie();
         }
 
         private void btnBeheerdersApp_Click(object sender, EventArgs e) 
         {
+            beheerdersApp = new BeheerApplicatie();
             beheerdersApp.Show();
         }
 
         private void btnBestuurdersApp_Click(object sender, EventArgs e) 
         {
+            bestuurdersApp = new BestuurApplicatie();
             bestuurdersApp.Show();
         }
 
         private void btnOnderhoudsApp_Click(object sender, EventArgs e) 
         {
+            onderhoudsApp = new OnderhoudApplicatie();
             onderhoudsApp.Show();
         }
 
         private void btnSchoonmaakApp_Click(object sender, EventArgs e) 
         {
+            schoonmaakApp = new SchoonmaakApplicatie();
             schoonmaakApp.Show();
         }
 
