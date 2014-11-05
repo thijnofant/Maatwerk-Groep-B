@@ -20,11 +20,13 @@ namespace RemiseSysteem_Groep_B
             UpdateData();
         }
 
-        public void UpdateData() {
+        public void UpdateData() 
+        {
             sporen = db.SporenlijstOpvragen();
             sectoren = db.GetSectorenVoorBlokkade();
 
-            foreach (Spoor s in sporen) {
+            foreach (Spoor s in sporen) 
+            {
                 string spoornummer = Convert.ToString(s.Nummer);
                 lbxSporen.Items.Add(spoornummer);
             }
