@@ -88,6 +88,7 @@
             this.btnVoegMedewerkerToe.TabIndex = 4;
             this.btnVoegMedewerkerToe.Text = "Voeg Toe";
             this.btnVoegMedewerkerToe.UseVisualStyleBackColor = true;
+            this.btnVoegMedewerkerToe.Click += new System.EventHandler(this.btnVoegMedewerkerToe_Click);
             // 
             // btnVerwijderMedewerker
             // 

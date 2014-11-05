@@ -34,9 +34,9 @@ namespace RemiseSysteem_Groep_B
 
         public void LaadMedewerkers()
         {
-            List<Medewerker> medewerkers = Remise.Instance.Database.OnderhoudsMedewerkersOpvragen();
+            medewerkersOnderhoud = Remise.Instance.Database.OnderhoudsMedewerkersOpvragen();
 
-            foreach(Medewerker medewerker in medewerkers)
+            foreach (Medewerker medewerker in medewerkersOnderhoud)
             {
                 lbxMedewerkers.Items.Add(Convert.ToString(medewerker.Naam));
             }
@@ -48,7 +48,7 @@ namespace RemiseSysteem_Groep_B
 
             foreach(Onderhoud onderhoud in onderhoudsBeurten)
             {
-                lbxOnderhoudsBeurten.Items.Add(onderhoud);
+                lbxOnderhoudsBeurten.Items.Add(Convert.ToString(onderhoud.ID));
             }
         }
 
@@ -103,6 +103,21 @@ namespace RemiseSysteem_Groep_B
                 MessageBox.Show("Fail");
             }
 
+        }
+
+        private void btnVoegMedewerkerToe_Click(object sender, EventArgs e)
+        {
+            if(lbxMedewerkers.SelectedIndex != -1 && lbxOnderhoudsBeurten.SelectedIndex != -1)
+            {
+                if (!this.databaseManager.VoegMedewerkerToeAanOnderhoud(medewerkersOnderhoud[lbxMedewerkers.SelectedIndex], onderhoud))
+                {
+                    MessageBox.Show("Toevoegen mislukt.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Geen medewerker of onderhoudsbeurt geselecteerd.");
+            }
         }
     }
 }
