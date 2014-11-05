@@ -33,7 +33,7 @@ namespace RemiseSysteem_Groep_B
             List<Tram> trams = new List<Tram>();
             bool isGelukt;
             Random willekeurigGetalGenerator = new Random();
-            int inOfUitNummer = willekeurigGetalGenerator.Next(0, 2);
+            int inOfUitNummer = willekeurigGetalGenerator.Next(0, 5);
             int willekeurigGetal = willekeurigGetalGenerator.Next(10);
             if (inOfUitNummer > 1)
             {

@@ -794,10 +794,11 @@ namespace RemiseSysteem_Groep_B
             String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+            List<int> reList = new List<int>();
             try
             {
                 this.connection.Open();
-                List<int> reList = new List<int>();
+               
 
                 OracleDataReader reader = command.ExecuteReader();
                 while (reader.Read())
