@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.lblMessage = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbnYes = new System.Windows.Forms.RadioButton();
-            this.rbnNo = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnZero = new System.Windows.Forms.Button();
@@ -43,12 +40,12 @@
             this.btnFive = new System.Windows.Forms.Button();
             this.btnThree = new System.Windows.Forms.Button();
             this.btnTwo = new System.Windows.Forms.Button();
-            this.cbxCleaningrequest = new System.Windows.Forms.CheckBox();
+            this.chbschoonmaak = new System.Windows.Forms.CheckBox();
             this.btnFour = new System.Windows.Forms.Button();
             this.btnOne = new System.Windows.Forms.Button();
             this.tbxInput = new System.Windows.Forms.TextBox();
             this.lblGoToTrack = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.chbOnderhoud = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblMessage
@@ -59,41 +56,6 @@
             this.lblMessage.Size = new System.Drawing.Size(16, 13);
             this.lblMessage.TabIndex = 42;
             this.lblMessage.Text = "...";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbnYes);
-            this.groupBox1.Controls.Add(this.rbnNo);
-            this.groupBox1.Location = new System.Drawing.Point(7, 188);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(171, 100);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Technische assistentie nodig";
-            // 
-            // rbnYes
-            // 
-            this.rbnYes.AutoSize = true;
-            this.rbnYes.Location = new System.Drawing.Point(16, 34);
-            this.rbnYes.Name = "rbnYes";
-            this.rbnYes.Size = new System.Drawing.Size(36, 17);
-            this.rbnYes.TabIndex = 4;
-            this.rbnYes.TabStop = true;
-            this.rbnYes.Text = "Ja";
-            this.rbnYes.UseVisualStyleBackColor = true;
-            this.rbnYes.CheckedChanged += new System.EventHandler(this.rbnYes_CheckedChanged);
-            // 
-            // rbnNo
-            // 
-            this.rbnNo.AutoSize = true;
-            this.rbnNo.Location = new System.Drawing.Point(16, 69);
-            this.rbnNo.Name = "rbnNo";
-            this.rbnNo.Size = new System.Drawing.Size(45, 17);
-            this.rbnNo.TabIndex = 5;
-            this.rbnNo.TabStop = true;
-            this.rbnNo.Text = "Nee";
-            this.rbnNo.UseVisualStyleBackColor = true;
-            this.rbnNo.CheckedChanged += new System.EventHandler(this.rbnNo_CheckedChanged);
             // 
             // label1
             // 
@@ -206,15 +168,15 @@
             this.btnTwo.UseVisualStyleBackColor = true;
             this.btnTwo.Click += new System.EventHandler(this.btnTwo_Click);
             // 
-            // cbxCleaningrequest
+            // chbschoonmaak
             // 
-            this.cbxCleaningrequest.AutoSize = true;
-            this.cbxCleaningrequest.Location = new System.Drawing.Point(23, 305);
-            this.cbxCleaningrequest.Name = "cbxCleaningrequest";
-            this.cbxCleaningrequest.Size = new System.Drawing.Size(118, 17);
-            this.cbxCleaningrequest.TabIndex = 26;
-            this.cbxCleaningrequest.Text = "Schoonmaak nodig";
-            this.cbxCleaningrequest.UseVisualStyleBackColor = true;
+            this.chbschoonmaak.AutoSize = true;
+            this.chbschoonmaak.Location = new System.Drawing.Point(23, 305);
+            this.chbschoonmaak.Name = "chbschoonmaak";
+            this.chbschoonmaak.Size = new System.Drawing.Size(118, 17);
+            this.chbschoonmaak.TabIndex = 26;
+            this.chbschoonmaak.Text = "Schoonmaak nodig";
+            this.chbschoonmaak.UseVisualStyleBackColor = true;
             // 
             // btnFour
             // 
@@ -253,14 +215,24 @@
             this.lblGoToTrack.TabIndex = 43;
             this.lblGoToTrack.Text = "...";
             // 
+            // chbOnderhoud
+            // 
+            this.chbOnderhoud.AutoSize = true;
+            this.chbOnderhoud.Location = new System.Drawing.Point(23, 264);
+            this.chbOnderhoud.Name = "chbOnderhoud";
+            this.chbOnderhoud.Size = new System.Drawing.Size(108, 17);
+            this.chbOnderhoud.TabIndex = 44;
+            this.chbOnderhoud.Text = "Onderhoud nodig";
+            this.chbOnderhoud.UseVisualStyleBackColor = true;
+            // 
             // BestuurApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 361);
+            this.Controls.Add(this.chbOnderhoud);
             this.Controls.Add(this.lblGoToTrack);
             this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnZero);
@@ -272,14 +244,12 @@
             this.Controls.Add(this.btnFive);
             this.Controls.Add(this.btnThree);
             this.Controls.Add(this.btnTwo);
-            this.Controls.Add(this.cbxCleaningrequest);
+            this.Controls.Add(this.chbschoonmaak);
             this.Controls.Add(this.btnFour);
             this.Controls.Add(this.btnOne);
             this.Controls.Add(this.tbxInput);
             this.Name = "BestuurApplicatie";
             this.Text = "Bestuur";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,9 +258,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbnYes;
-        private System.Windows.Forms.RadioButton rbnNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnZero;
@@ -302,11 +269,12 @@
         private System.Windows.Forms.Button btnFive;
         private System.Windows.Forms.Button btnThree;
         private System.Windows.Forms.Button btnTwo;
-        private System.Windows.Forms.CheckBox cbxCleaningrequest;
+        private System.Windows.Forms.CheckBox chbschoonmaak;
         private System.Windows.Forms.Button btnFour;
         private System.Windows.Forms.Button btnOne;
         private System.Windows.Forms.TextBox tbxInput;
         private System.Windows.Forms.Label lblGoToTrack;
+        private System.Windows.Forms.CheckBox chbOnderhoud;
 
     }
 }

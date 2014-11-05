@@ -459,7 +459,21 @@ namespace RemiseSysteem_Groep_B
 
         public bool OnderhoudInvoeren(Onderhoud onderhoud) 
         {
-            return false;
+            try 
+            {
+                connection.Open();
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(onderhoud.ID) + ", " + Convert.ToString(onderhoud.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(onderhoud.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Onderhoud', '" + Convert.ToString(onderhoud.Soort) + "')";
+                OracleCommand command = new OracleCommand(cmd, connection);
+                command.CommandType = System.Data.CommandType.Text;
+                command.ExecuteReader();
+                return true;
+            }
+            catch {
+                return false;
+            }
+            finally {
+                connection.Close();
+            }
         }
 
         public bool TramVerplaatsen(int tramNr, Sector sect)
