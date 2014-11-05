@@ -822,13 +822,12 @@ namespace RemiseSysteem_Groep_B
             }
             catch
             {
-
+                return 0;
             }
             finally
             {
                 this.connection.Close();
             }
-            return 0;
         }
 
         public int GetToegewezenSpoor(int tramNR)
