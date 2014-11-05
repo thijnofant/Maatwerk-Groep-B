@@ -21,7 +21,8 @@ namespace RemiseSysteem_Groep_B
             databaseManager = DatabaseManager.Instance;
             this.remise = Remise.Instance;
             Update();
-            Update2();
+            //Update2();
+
             //this.remise.Sporen = this.remise.Database.SporenlijstOpvragen(); moet weggegooit worden
 
             //List<Sector> sectoren = new List<Sector>();
@@ -67,55 +68,13 @@ namespace RemiseSysteem_Groep_B
             //this.remise.Sporen.Add(spoor1);
             //this.remise.Sporen.Add(spoor2);
             //this.remise.Sporen.Add(spoor3);
-            VulSporen();
-        }
-
-        public void VulSporen()
-        {
-            List<Spoor> sporen = this.remise.Database.SporenlijstOpvragen();
-            /*Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
-            if (sporen != null)
-                if (sporen.Count > 0)
-                    foreach (Spoor spoor in sporen)
-                    {
-                        Control spoorBegin = new Button();
-                        spoorBegin.Text = "Spoor " + spoor.Nummer;
-                        spoorBegin.Click += spoorBegin_Click;
-                        spoorBegin.Name = "";
-                        spoorBegin.Location = location;
-                        this.splitContainer1.Panel2.Controls.Add(spoorBegin);
-                        int sectorY = 30;
-                        if (spoor.Sectoren.Count > 0)
-                            foreach (Sector sector in spoor.Sectoren)
-                            {
-                                Control SectorNieuw = new Button();
-                                SectorNieuw.Text = sector.Id.ToString();
-                                SectorNieuw.Click += SectorNieuw_Click;
-                                SectorNieuw.Location = new Point(location.X, location.Y + sectorY);
-                                this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
-                                sectorY += 22;
-                            }
-                        location.X += 100;
-                    }
-             */
-
-        }
-
-        private void SectorNieuw_Click(object sender, EventArgs e)
-        {
-            Button b = (Button)sender;
-            MessageBox.Show("gegenereerde button aangeklikt!" + b.Text);
-        }
-
-        private void spoorBegin_Click(object sender, EventArgs e)
-        {
-            Button b = (Button)sender;
-            MessageBox.Show("gegenereerde button aangeklikt!" + b.Text);
         }
 
         private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            TramVerplaatsen app = new TramVerplaatsen();
+            timer1.Enabled = false;
+            app.Show();
         }
 
         private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
@@ -156,7 +115,8 @@ namespace RemiseSysteem_Groep_B
 
         private void schoonmaakLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Schoonmaak> temp = new List<Schoonmaak>();
+            SchoonmaakApplicatie app = new SchoonmaakApplicatie();
+            app.Show();
 
         }
 
@@ -355,6 +315,12 @@ namespace RemiseSysteem_Groep_B
         private void timer2_Tick(object sender, EventArgs e)
         {
             Update2();
+        }
+
+        private void onderhoudLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnderhoudApplicatie app = new OnderhoudApplicatie();
+            app.Show();
         }
     }
 }

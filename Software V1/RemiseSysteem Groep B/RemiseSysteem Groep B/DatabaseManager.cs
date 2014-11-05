@@ -1071,6 +1071,36 @@ namespace RemiseSysteem_Groep_B
                 this.connection.Close();
             }
         }
+        public List<Sector>GetSectorenFromSpoorNR(int spoorNR)
+        {
+            String cmd = "SELECT * FROM Sector WHERE SpoorID = (SELECT ID FROM SPOOR WHERE nummer ="+spoorNR+")";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                int SectorID = 0;
+                List<Sector> retList = new List<Sector>();
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    SectorID = reader.GetInt32(0);
+                    Sector temp = new Sector(SectorID);
+                    retList.Add(temp);
+                }
+
+                return retList;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
 
     }
 }

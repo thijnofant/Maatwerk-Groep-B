@@ -274,6 +274,7 @@
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.onderhoudLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -2524,7 +2525,8 @@
             // actiesToolStripMenuItem
             // 
             this.actiesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.schoonmaakLijstOpvragenToolStripMenuItem});
+            this.schoonmaakLijstOpvragenToolStripMenuItem,
+            this.onderhoudLijstOpvragenToolStripMenuItem});
             this.actiesToolStripMenuItem.Name = "actiesToolStripMenuItem";
             this.actiesToolStripMenuItem.Size = new System.Drawing.Size(54, 21);
             this.actiesToolStripMenuItem.Text = "Acties";
@@ -2538,12 +2540,18 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
             // 
             // timer2
             // 
             this.timer2.Interval = 5000;
+            // 
+            // onderhoudLijstOpvragenToolStripMenuItem
+            // 
+            this.onderhoudLijstOpvragenToolStripMenuItem.Name = "onderhoudLijstOpvragenToolStripMenuItem";
+            this.onderhoudLijstOpvragenToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.onderhoudLijstOpvragenToolStripMenuItem.Text = "Onderhoud lijst Opvragen";
+            this.onderhoudLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudLijstOpvragenToolStripMenuItem_Click);
             // 
             // BeheerApplicatie
             // 
@@ -2818,6 +2826,7 @@
         private System.Windows.Forms.TextBox s40_7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolStripMenuItem onderhoudLijstOpvragenToolStripMenuItem;
     }
 }
 
