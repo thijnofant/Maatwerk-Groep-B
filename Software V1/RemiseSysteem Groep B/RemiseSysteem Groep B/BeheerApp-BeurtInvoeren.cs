@@ -51,23 +51,29 @@ namespace RemiseSysteem_Groep_B
             }
             if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Schoonmaak") 
             {
-                int beurtid = db.GetInsertID("ID", "Tram_beurt");
-                BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedValue), true);
-                Tram tram = tramlijst.Find(x => x.Nummer == Convert.ToInt32(lbxTrams.SelectedItem));
+                int beurtid = db.GetInsertID("ID", "Tram_beurt") + 1;
+                string tramstring = Convert.ToString(lbxTrams.SelectedItem);
+                int tramnummer = Convert.ToInt32(tramstring.Substring(tramstring.IndexOf("-") + 1));
+                BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedItem), true);
+                Tram tram = tramlijst.Find(x => x.Nummer == tramnummer);
                 DateTime datum = Convert.ToDateTime(dtpDatum.Value);
 
                 Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, beurttype, tram);
                 db.SchoonmaakInvoeren(schoonmaak);
+                this.Close();
             }
             if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Onderhoud") 
             {
-                int beurtid = db.GetInsertID("ID", "Tram_beurt");
-                BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedValue), true);
-                Tram tram = tramlijst.Find(x => x.Nummer == Convert.ToInt32(lbxTrams.SelectedItem));
+                int beurtid = db.GetInsertID("ID", "Tram_beurt") + 1;
+                string tramstring = Convert.ToString(lbxTrams.SelectedItem);
+                int tramnummer = Convert.ToInt32(tramstring.Substring(tramstring.IndexOf("-") + 1));
+                BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedItem), true);
+                Tram tram = tramlijst.Find(x => x.Nummer == tramnummer);
                 DateTime datum = Convert.ToDateTime(dtpDatum.Value);
 
                 Onderhoud onderhoud = new Onderhoud(datum, beurtid, beurttype, tram);
                 db.OnderhoudInvoeren(onderhoud);
+                this.Close();
             }
         }
 
