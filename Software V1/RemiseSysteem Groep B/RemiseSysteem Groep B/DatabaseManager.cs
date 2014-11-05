@@ -986,9 +986,32 @@ namespace RemiseSysteem_Groep_B
             }
             return 0;
         }
-
-        public int GetAantalBeurten()
+        
+        public int GetAantalBeurten(string kleingroot, DateTime datum, int tramID)
         {
+            string test = Convert.ToString(datum).Substring(0, 10);
+            String cmd = "SELECT count(*) FROM tram_beurt WHERE BeurtType = '" + kleingroot + "' AND Typeonderhoud = 'Onderhoud' and DatumTijdstip = '" + Convert.ToString(datum).Substring(0, 10) +  "' AND TramID = '" + tramID + "' ";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                int aantal = reader.GetInt32(0);
+                return aantal;
+
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
             return 0;
         }
     }
