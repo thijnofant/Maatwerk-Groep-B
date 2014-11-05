@@ -13,6 +13,7 @@ namespace RemiseSysteem_Groep_B
     public partial class BestuurApplicatie : Form
     {
         DatabaseManager db = DatabaseManager.Instance;
+        Remise remise = Remise.Instance;
 
         public BestuurApplicatie()
         {
@@ -85,12 +86,25 @@ namespace RemiseSysteem_Groep_B
         private void rbnNo_CheckedChanged(object sender, EventArgs e)
         {
             btnConfirm.Visible = true;
+            
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Tram tram = db.ZoekTram(Convert.ToInt32(tbxInput.Text));
-            lblMessage.Text = Convert.ToString(tram.Status);
+            bool onderhoud = false;
+            bool schoonmaak = false;
+            int tramnr = Convert.ToInt32(tbxInput.Text);
+
+            if(chbOnderhoud.Checked)
+            {
+               onderhoud = true;
+            }
+            if(chbschoonmaak.Checked)
+            {
+                schoonmaak = true;
+            }
+
+            remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak);
         }
     }
 }
