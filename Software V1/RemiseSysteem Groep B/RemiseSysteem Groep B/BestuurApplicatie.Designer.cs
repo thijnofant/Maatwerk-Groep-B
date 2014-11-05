@@ -46,8 +46,8 @@
             this.tbxInput = new System.Windows.Forms.TextBox();
             this.lblGoToTrack = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbJa = new System.Windows.Forms.RadioButton();
             this.rbNee = new System.Windows.Forms.RadioButton();
+            this.rbJa = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -212,9 +212,10 @@
             // lblGoToTrack
             // 
             this.lblGoToTrack.AutoSize = true;
+            this.lblGoToTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGoToTrack.Location = new System.Drawing.Point(23, 34);
             this.lblGoToTrack.Name = "lblGoToTrack";
-            this.lblGoToTrack.Size = new System.Drawing.Size(16, 13);
+            this.lblGoToTrack.Size = new System.Drawing.Size(41, 31);
             this.lblGoToTrack.TabIndex = 43;
             this.lblGoToTrack.Text = "...";
             // 
@@ -229,18 +230,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Onderhoud nodig";
             // 
-            // rbJa
-            // 
-            this.rbJa.AutoSize = true;
-            this.rbJa.Location = new System.Drawing.Point(6, 33);
-            this.rbJa.Name = "rbJa";
-            this.rbJa.Size = new System.Drawing.Size(36, 17);
-            this.rbJa.TabIndex = 0;
-            this.rbJa.TabStop = true;
-            this.rbJa.Text = "Ja";
-            this.rbJa.UseVisualStyleBackColor = true;
-            this.rbJa.CheckedChanged += new System.EventHandler(this.rbJa_CheckedChanged);
-            // 
             // rbNee
             // 
             this.rbNee.AutoSize = true;
@@ -252,6 +241,18 @@
             this.rbNee.Text = "Nee";
             this.rbNee.UseVisualStyleBackColor = true;
             this.rbNee.CheckedChanged += new System.EventHandler(this.rbNee_CheckedChanged);
+            // 
+            // rbJa
+            // 
+            this.rbJa.AutoSize = true;
+            this.rbJa.Location = new System.Drawing.Point(6, 33);
+            this.rbJa.Name = "rbJa";
+            this.rbJa.Size = new System.Drawing.Size(36, 17);
+            this.rbJa.TabIndex = 0;
+            this.rbJa.TabStop = true;
+            this.rbJa.Text = "Ja";
+            this.rbJa.UseVisualStyleBackColor = true;
+            this.rbJa.CheckedChanged += new System.EventHandler(this.rbJa_CheckedChanged);
             // 
             // BestuurApplicatie
             // 

@@ -856,9 +856,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public int GetToegewezenSpoor(int tramNR)
+        public int GetToegewezenSpoor(int tramID)//id van maken ipv nr
         {
-            String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramNR + "'";
+            String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -868,7 +868,7 @@ namespace RemiseSysteem_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
 
-                int SpoorID = Convert.ToInt32(reader["ID"]);
+                int SpoorID = Convert.ToInt32(reader["Nummer"]);
                 return SpoorID;
             }
             catch
