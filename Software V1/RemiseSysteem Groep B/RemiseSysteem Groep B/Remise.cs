@@ -37,6 +37,10 @@ namespace RemiseSysteem_Groep_B
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
             List<int> SpoorID = new List<int>();
+            if (Database.ZoekTram(tramNr) == null)
+            {
+                return false;
+            }
             int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
             if (geserveerdSpoor != 0)
             {

@@ -721,7 +721,7 @@ namespace RemiseSysteem_Groep_B
 
         public List<int> GetBeurtSporen()
         {
-            String cmd = "SELECT ID FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77));";
+            String cmd = "SELECT ID FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77))";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -960,7 +960,7 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public int GetToegewezenSpoor(int tramID)//id van maken ipv nr
+        public int GetToegewezenSpoor(int tramID)
         {
             String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
             OracleCommand command = new OracleCommand(cmd, connection);
@@ -983,6 +983,11 @@ namespace RemiseSysteem_Groep_B
             {
                 this.connection.Close();
             }
+            return 0;
+        }
+
+        public int GetAantalBeurten()
+        {
             return 0;
         }
     }
