@@ -608,6 +608,10 @@ namespace RemiseSysteem_Groep_B
             {
                 return 0;
             }
+            catch(InvalidOperationException)
+            {
+                return 0;
+            }
             finally
             {
                 connection.Close();
