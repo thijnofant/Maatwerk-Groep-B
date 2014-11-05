@@ -497,7 +497,7 @@ namespace RemiseSysteem_Groep_B
             {
                 connection.Open();
                 OracleCommand command = new OracleCommand("Update tram set status = :status where id = :id",connection);
-                command.Parameters.Add("status", nieuwStatus.GetType().ToString());
+                command.Parameters.Add("status", nieuwStatus.ToString());
                 command.Parameters.Add("id", tramid);
                 int resultaat = command.ExecuteNonQuery();
                 if (resultaat > 0)
@@ -512,6 +512,22 @@ namespace RemiseSysteem_Groep_B
                 connection.Close();
             }
             return false;
+        }
+
+        public bool TramRijdUitRemise(int tramNr)
+        {
+            Tram tempTram = ZoekTram(tramNr);
+            if (tempTram != null)
+            {
+                string cmd = "UPDATE sector set tramid = null wher tramid = :tramid";
+                OracleCommand command = new OracleCommand(cmd,connection);
+                command.Parameters.Add("tramid", tempTram.Id);
+                int resultaat = command.ExecuteNonQuery();
+                if (resultaat > 0)
+                {
+                    
+                }
+            }
         }
 
         public bool TramVerplaatsen(int tramNr, Sector sect)
@@ -546,7 +562,7 @@ namespace RemiseSysteem_Groep_B
             List<Tram> tramlist = new List<Tram>();
             string cmd = "SELECT t.ID, t.Nummer, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt WHERE t.TramtypeID = tt.ID and t.status = :status";
             OracleCommand command = new OracleCommand(cmd, connection);
-            command.Parameters.Add("status",status.GetType().ToString());
+            command.Parameters.Add("status",status.ToString());
             command.CommandType = System.Data.CommandType.Text;
             try
             {

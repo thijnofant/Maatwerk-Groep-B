@@ -79,7 +79,7 @@ namespace RemiseSysteem_Groep_B
                         //doorrijden
                         break;
                     default:
-                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
+                        isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, true, true);
                         //doorrijden
                         break;
                 }
