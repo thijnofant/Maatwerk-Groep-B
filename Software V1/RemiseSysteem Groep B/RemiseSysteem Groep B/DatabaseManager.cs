@@ -495,12 +495,16 @@ namespace RemiseSysteem_Groep_B
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
             Tram tempTram = ZoekTram(tramNr);
-            String cmd = "UPDATE SECTOR SET TramID = null where tramID = " + tempTram.Id + "; UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
+            String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
+            String cmd2 = "UPDATE SECTOR SET TramID = null where tramID = " + tempTram.Id;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+            OracleCommand command2 = new OracleCommand(cmd2, connection);
+            command2.CommandType = System.Data.CommandType.Text;
             try
             {
                 this.connection.Open();
+                command2.ExecuteNonQuery();
                 command.ExecuteNonQuery();
                 return true;
             }
