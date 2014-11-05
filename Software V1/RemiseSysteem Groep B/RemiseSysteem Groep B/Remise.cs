@@ -32,7 +32,7 @@ namespace RemiseSysteem_Groep_B
             return (Database.TramVerplaatsen(tramNR, sector));
         }
 
-        
+
 
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
@@ -51,13 +51,13 @@ namespace RemiseSysteem_Groep_B
                     SpoorID = Database.GetBeurtSporen();
                     if (onderhoud)
                     {
-                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT")+1, BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT") + 1, BeurtType.Incident, Database.ZoekTram(tramNr)));
                         Tram tram = Database.ZoekTram(tramNr);
                         Database.TramstatusVeranderen(TramStatus.Defect, tram.Id);
                     }
                     if (schoonmaak)
                     {
-                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT")+1, BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT") + 1, BeurtType.Incident, Database.ZoekTram(tramNr)));
                         Tram tram = Database.ZoekTram(tramNr);
                         Database.TramstatusVeranderen(TramStatus.Schoonmaak, tram.Id);
                     }
@@ -142,11 +142,11 @@ namespace RemiseSysteem_Groep_B
         }
         public void BeurtVoltooien()
         {
-            
+
         }
         public bool Inloggen(string naam, string wachtwoord)
         {
-            return this.Database.Inloggen(naam, wachtwoord); 
+            return this.Database.Inloggen(naam, wachtwoord);
         }
 
         #endregion
