@@ -103,11 +103,11 @@ namespace RemiseSysteem_Groep_B
             {
                 schoonmaak = true;
             }
-            remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak);
-            //if(remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))
-            //{
 
-            //}
+            if(remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))
+            {
+                lblGoToTrack.Text = Convert.ToString(db.GetToegewezenSpoor(tramnr));
+            }
         }
 
         private void rbJa_CheckedChanged(object sender, EventArgs e)
