@@ -52,10 +52,14 @@ namespace RemiseSysteem_Groep_B
                     if (onderhoud)
                     {
                         Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT")+1, BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Tram tram = Database.ZoekTram(tramNr);
+                        Database.TramstatusVeranderen(TramStatus.Defect, tram.Id);
                     }
                     if (schoonmaak)
                     {
                         Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT")+1, BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Tram tram = Database.ZoekTram(tramNr);
+                        Database.TramstatusVeranderen(TramStatus.Schoonmaak, tram.Id);
                     }
                 }
                 else
@@ -74,6 +78,8 @@ namespace RemiseSysteem_Groep_B
                 if (!Database.SectorBezet(SectorID))
                 {
                     Database.TramVerplaatsen(tramNr, new Sector(SectorID));
+                    Tram tram = Database.ZoekTram(tramNr);
+                    Database.TramstatusVeranderen(TramStatus.Remise, tram.Id);
                     return true;
                 }
                 else
