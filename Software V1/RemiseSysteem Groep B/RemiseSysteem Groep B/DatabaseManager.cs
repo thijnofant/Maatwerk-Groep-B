@@ -429,7 +429,12 @@ namespace RemiseSysteem_Groep_B
                     int beurtid = reader.GetInt32(0);
                     int tramid = reader.GetInt32(1);
                     DateTime datum = reader.GetDateTime(2);
-                    DateTime tijdsindicatie = reader.GetDateTime(3);
+                    try 
+                    {
+                        DateTime tijdsindicatie = reader.GetDateTime(3);
+                    }
+                    catch 
+                    {}
                     string type = reader.GetString(4);
                     string beurttype = reader.GetString(5);
 

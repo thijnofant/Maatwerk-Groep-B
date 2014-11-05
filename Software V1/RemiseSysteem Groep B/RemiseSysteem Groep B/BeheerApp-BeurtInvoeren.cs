@@ -56,7 +56,30 @@ namespace RemiseSysteem_Groep_B
             int grootcount = 0;
             foreach (Schoonmaak s in db.ZoekAlleBeurten()) 
             {
-                
+                DateTime datumschoonmaak = s.BeginDatum;
+                string datumschoonmaakstring = Convert.ToString(datumschoonmaak).Substring(0, 10);
+
+                if (datumstring == datumschoonmaakstring) 
+                {
+                    if (s.Soort == BeurtType.Groot) 
+                    {
+                        grootcount++;
+                        if (grootcount >= 2) 
+                        {
+                            MessageBox.Show("Te veel grote beurten op deze datum, kies een andere datum.");
+                            return;
+                        }
+                    }
+                    if (s.Soort == BeurtType.Klein) 
+                    {
+                        kleincount++;
+                        if (kleincount >= 3) 
+                        {
+                            MessageBox.Show("Te veel kleine beurten op deze datum, kies een andere datum.");
+                        }
+                    }
+                        
+                }
             }
 
 
