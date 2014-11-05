@@ -71,7 +71,7 @@ namespace RemiseSysteem_Groep_B
         public void VulSporen()
         {
             List<Spoor> sporen = this.remise.Database.SporenlijstOpvragen();
-            Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
+            /*Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
             if (sporen != null)
                 if (sporen.Count > 0)
                     foreach (Spoor spoor in sporen)
@@ -95,6 +95,8 @@ namespace RemiseSysteem_Groep_B
                             }
                         location.X += 100;
                     }
+             */
+
         }
 
         private void SectorNieuw_Click(object sender, EventArgs e)
@@ -172,6 +174,41 @@ namespace RemiseSysteem_Groep_B
         {
             BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
             form.Show();
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox80_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox248_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox103_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void s40_6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox102_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox211_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
