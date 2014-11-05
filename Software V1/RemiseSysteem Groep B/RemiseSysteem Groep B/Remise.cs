@@ -10,16 +10,17 @@ namespace RemiseSysteem_Groep_B
     {
         #region singleton
         private static Remise instance;
-        private Remise() {}
+        private Remise() { }
         public static Remise Instance
         {
-            get 
-            { 
+            get
+            {
                 if (instance == null)
                 {
                     instance = new Remise();
                 }
-            return instance;}
+                return instance;
+            }
         }
         #endregion
 
@@ -28,14 +29,14 @@ namespace RemiseSysteem_Groep_B
         #region Methodes
         public bool PlaatsToewijzen(Sector sector, int tramNR)
         {
-            return(Database.TramVerplaatsen(tramNR, sector));
+            return (Database.TramVerplaatsen(tramNR, sector));
         }
 
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
             List<int> SpoorID = null;
             int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
-            if (geserveerdSpoor != 0 && geserveerdSpoor != null)
+            if (geserveerdSpoor != 0)
             {
                 SpoorID = new List<int>();
                 SpoorID.Add(geserveerdSpoor);
@@ -48,11 +49,11 @@ namespace RemiseSysteem_Groep_B
                     SpoorID = Database.GetBeurtSporen();
                     if (onderhoud)
                     {
-                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID","TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
                     }
                     if (schoonmaak)
                     {
-                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID","TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
                     }
                 }
                 else
@@ -60,39 +61,55 @@ namespace RemiseSysteem_Groep_B
                     int TramLijnID = Database.LijnNrOpvragen(tramNr);
                     SpoorID = Database.GetSporenIDByLijnID(TramLijnID);
                 }
+            }
+            int X = 0;
+            int N = 0;
+            int P = 0;
 
-                int X = 0;
-                int N = 0;
-
-                while (true)
+            while (P < 3)
+            {
+                int SectorID = Database.GetSectorX(X, SpoorID[N]);
+                if (Database.SectorBezet(SectorID))
                 {
-                    int SectorID = Database.GetSectorX(X, SpoorID[N]);
-                    if (Database.SectorBezet(SectorID))
+                    Database.TramVerplaatsen(tramNr, new Sector(SectorID));
+                    return true;
+                }
+                else
+                {
+                    if (N < SpoorID.Count)
                     {
-                        Database.TramVerplaatsen(tramNr, new Sector(SectorID));
-                        break;
+                        N++;
                     }
                     else
                     {
-                        if (N < SpoorID.Count)
+                        if (X > 8 && P == 0)
                         {
-                            N++;
+                            SpoorID = Database.GetSporenIDForFreeSporen();
+                            P = 1;
+                        }
+                        else if (X > 8 && P == 1)
+                        {
+                            SpoorID.Clear();
+                            List<Spoor> tempSpoor = Database.SporenlijstOpvragen();
+                            foreach (Spoor s in tempSpoor)
+                            {
+                                SpoorID.Add(s.Id);
+                            }
+                            P = 2;
+                        }
+                        else if (X > 8 && P == 2)
+                        {
+                            P = 3;
                         }
                         else
                         {
-                            if (X > 8)
-                            {
-                                SpoorID = Database.GetSporenIDForFreeSporen();
-                            }
-                            else
-                            {
-                                N = 0;
-                                X++;
-                            }
+                            N = 0;
+                            X++;
                         }
                     }
                 }
             }
+            return false;
         }
         public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
         {
