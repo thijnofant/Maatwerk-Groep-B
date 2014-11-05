@@ -34,7 +34,7 @@ namespace RemiseSysteem_Groep_B
 
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
-            List<int> SpoorID = null;
+            List<int> SpoorID = new List<int>();
             int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
             if (geserveerdSpoor != 0)
             {
@@ -42,18 +42,18 @@ namespace RemiseSysteem_Groep_B
                 SpoorID.Add(geserveerdSpoor);
             }
 
-            if (SpoorID == null)
+            if (SpoorID.Count == 0)
             {
                 if (onderhoud || schoonmaak)
                 {
                     SpoorID = Database.GetBeurtSporen();
                     if (onderhoud)
                     {
-                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT")+1, BeurtType.Incident, Database.ZoekTram(tramNr)));
                     }
                     if (schoonmaak)
                     {
-                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT"), BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.SchoonmaakInvoeren(new Schoonmaak(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT")+1, BeurtType.Incident, Database.ZoekTram(tramNr)));
                     }
                 }
                 else
@@ -69,7 +69,7 @@ namespace RemiseSysteem_Groep_B
             while (P < 3)
             {
                 int SectorID = Database.GetSectorX(X, SpoorID[N]);
-                if (Database.SectorBezet(SectorID))
+                if (!Database.SectorBezet(SectorID))
                 {
                     Database.TramVerplaatsen(tramNr, new Sector(SectorID));
                     return true;
