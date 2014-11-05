@@ -126,7 +126,7 @@
             this.btnAnnuleren.Name = "btnAnnuleren";
             this.btnAnnuleren.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuleren.TabIndex = 9;
-            this.btnAnnuleren.Text = "Annuleren";
+            this.btnAnnuleren.Text = "Sluiten";
             this.btnAnnuleren.UseVisualStyleBackColor = true;
             this.btnAnnuleren.Click += new System.EventHandler(this.btnAnnuleren_Click);
             // 

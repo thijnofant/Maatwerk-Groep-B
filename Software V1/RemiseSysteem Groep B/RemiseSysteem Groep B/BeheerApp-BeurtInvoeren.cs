@@ -49,6 +49,7 @@ namespace RemiseSysteem_Groep_B
                 MessageBox.Show("Kan geen beurt plannen in het verleden.", "Error");
                 return;
             }
+
             if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Schoonmaak") 
             {
                 int beurtid = db.GetInsertID("ID", "Tram_beurt") + 1;
@@ -59,8 +60,11 @@ namespace RemiseSysteem_Groep_B
                 DateTime datum = Convert.ToDateTime(dtpDatum.Value);
 
                 Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, beurttype, tram);
-                db.SchoonmaakInvoeren(schoonmaak);
-                this.Close();
+                
+                if (db.SchoonmaakInvoeren(schoonmaak))
+                    MessageBox.Show("Invoeren succesvol.");
+                else
+                    MessageBox.Show("Invoeren mislukt.");
             }
             if (Convert.ToString(cbxSoortBeurt.SelectedItem) == "Reparatie") 
             {
@@ -72,8 +76,11 @@ namespace RemiseSysteem_Groep_B
                 DateTime datum = Convert.ToDateTime(dtpDatum.Value);
 
                 Onderhoud onderhoud = new Onderhoud(datum, beurtid, beurttype, tram);
-                db.OnderhoudInvoeren(onderhoud);
-                this.Close();
+                
+                if(db.OnderhoudInvoeren(onderhoud))
+                    MessageBox.Show("Invoeren succesvol.");
+                else
+                    MessageBox.Show("Invoeren mislukt.");
             }
         }
 
