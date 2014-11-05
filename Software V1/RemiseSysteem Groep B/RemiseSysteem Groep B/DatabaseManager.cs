@@ -782,7 +782,7 @@ namespace RemiseSysteem_Groep_B
 
         public bool SectorBezet(int SectorID)
         {
-            String cmd = "SELECT TramId FROM SECTOR WHERE ID =" + SectorID;
+            String cmd = "SELECT TramId FROM SECTOR WHERE ID =" + SectorID + "OR Blokkade = 'y' OR Blokkade = 'Y'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
