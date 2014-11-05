@@ -33,7 +33,8 @@ namespace RemiseSysteem_Groep_B
 
         private void btnBevestig_Click_1(object sender, EventArgs e)
         {
-            db.TramReserveren(Convert.ToInt32(tbTramnummer.Text), Convert.ToInt32(tbSpoornummer.Text));
+            Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));
+            db.TramReserveren(tram.Id, Convert.ToInt32(tbSpoornummer.Text));
             BeurtType type = BeurtType.Klein;
             int aantalToegestaandeBeurten = 0;
 
@@ -49,7 +50,6 @@ namespace RemiseSysteem_Groep_B
                     type = BeurtType.Klein;
                     aantalToegestaandeBeurten = 4;
                 }
-                Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));
                 DateTime datum = Convert.ToDateTime(dtpDatum.Text);
                 Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT"), type, tram);
 
