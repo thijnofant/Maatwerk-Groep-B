@@ -95,7 +95,7 @@ namespace RemiseSysteem_Groep_B
             bool schoonmaak = false;
             int tramnr = Convert.ToInt32(tbxInput.Text);
 
-            if(chbOnderhoud.Checked)
+            if(rbJa.Checked)
             {
                onderhoud = true;
             }
@@ -105,6 +105,16 @@ namespace RemiseSysteem_Groep_B
             }
 
             remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak);
+        }
+
+        private void rbJa_CheckedChanged(object sender, EventArgs e)
+        {
+            btnConfirm.Visible = true;
+        }
+
+        private void rbNee_CheckedChanged(object sender, EventArgs e)
+        {
+            btnConfirm.Visible = true;
         }
     }
 }
