@@ -100,6 +100,12 @@
       <DependentUpon>SchoonmaakApplicatie.cs</DependentUpon>
     </Compile>
     <Compile Include="Sector.cs" />
+    <Compile Include="simulatieapp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="simulatieapp.Designer.cs">
+      <DependentUpon>simulatieapp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
     <Compile Include="TramReserveren.cs">
@@ -137,6 +143,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="simulatieapp.resx">
+      <DependentUpon>simulatieapp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TramReserveren.resx">
       <DependentUpon>TramReserveren.cs</DependentUpon>
     </EmbeddedResource>
