@@ -50,8 +50,8 @@ namespace RemiseSysteem_Groep_B
                 return;
             }
 
-            DateTime datum = Convert.ToDateTime(dtpDatum.Text);
-            string datumstring = Convert.ToString(datum).Substring(0, 10);
+            DateTime gekozendatum = Convert.ToDateTime(dtpDatum.Text);
+            string datumstring = Convert.ToString(gekozendatum).Substring(0, 10);
             int kleincount = 0;
             int grootcount = 0;
             foreach (Schoonmaak s in db.ZoekAlleBeurten()) 
