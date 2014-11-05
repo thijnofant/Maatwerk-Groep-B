@@ -19,17 +19,6 @@ namespace RemiseSysteem_Groep_B
             gbReparatie.Visible = false;
         }
 
-        private void btnBevestig_Click(object sender, EventArgs e)
-        {
-            db.TramReserveren(Convert.ToInt32(tbTramnummer.Text), Convert.ToInt32(tbSpoornummer.Text));
-            
-            if(chbReparatie.Checked)
-            {
-                //Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));
-                //Onderhoud onderhoud = new Onderhoud(DateTime.Now, , BeurtType.Klein, tram );
-            }
-        }
-
         private void chbReparatie_CheckedChanged(object sender, EventArgs e)
         {
             if(chbReparatie.Checked)
@@ -39,6 +28,19 @@ namespace RemiseSysteem_Groep_B
             else
             {
                 gbReparatie.Visible = false;
+            }
+        }
+
+        private void btnBevestig_Click_1(object sender, EventArgs e)
+        {
+            db.TramReserveren(Convert.ToInt32(tbTramnummer.Text), Convert.ToInt32(tbSpoornummer.Text));
+
+            if (chbReparatie.Checked)
+            {
+                Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));
+                DateTime datum = Convert.ToDateTime(dtpDatum.Text);
+                Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT"), BeurtType.Klein, tram);
+                db.OnderhoudInvoeren(onderhoud);
             }
         }
     }

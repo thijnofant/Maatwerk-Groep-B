@@ -35,10 +35,10 @@
             this.tbTramnummer = new System.Windows.Forms.TextBox();
             this.tbSpoornummer = new System.Windows.Forms.TextBox();
             this.chbReparatie = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbGroot = new System.Windows.Forms.RadioButton();
+            this.rbKlein = new System.Windows.Forms.RadioButton();
             this.gbReparatie = new System.Windows.Forms.GroupBox();
             this.gbReparatie.SuspendLayout();
             this.SuspendLayout();
@@ -72,12 +72,13 @@
             // 
             // btnBevestig
             // 
-            this.btnBevestig.Location = new System.Drawing.Point(179, 118);
+            this.btnBevestig.Location = new System.Drawing.Point(166, 118);
             this.btnBevestig.Name = "btnBevestig";
-            this.btnBevestig.Size = new System.Drawing.Size(75, 23);
+            this.btnBevestig.Size = new System.Drawing.Size(88, 30);
             this.btnBevestig.TabIndex = 3;
             this.btnBevestig.Text = "Bevestig";
             this.btnBevestig.UseVisualStyleBackColor = true;
+            this.btnBevestig.Click += new System.EventHandler(this.btnBevestig_Click_1);
             // 
             // tbTramnummer
             // 
@@ -105,12 +106,12 @@
             this.chbReparatie.UseVisualStyleBackColor = true;
             this.chbReparatie.CheckedChanged += new System.EventHandler(this.chbReparatie_CheckedChanged);
             // 
-            // dateTimePicker1
+            // dtpDatum
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 30);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dtpDatum.Location = new System.Drawing.Point(6, 30);
+            this.dtpDatum.Name = "dtpDatum";
+            this.dtpDatum.Size = new System.Drawing.Size(200, 20);
+            this.dtpDatum.TabIndex = 7;
             // 
             // label4
             // 
@@ -121,34 +122,34 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Soort reparatie";
             // 
-            // radioButton1
+            // rbGroot
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(63, 98);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(51, 17);
-            this.radioButton1.TabIndex = 9;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Groot";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbGroot.AutoSize = true;
+            this.rbGroot.Location = new System.Drawing.Point(63, 98);
+            this.rbGroot.Name = "rbGroot";
+            this.rbGroot.Size = new System.Drawing.Size(51, 17);
+            this.rbGroot.TabIndex = 9;
+            this.rbGroot.TabStop = true;
+            this.rbGroot.Text = "Groot";
+            this.rbGroot.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbKlein
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 98);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(48, 17);
-            this.radioButton2.TabIndex = 10;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Klein";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbKlein.AutoSize = true;
+            this.rbKlein.Location = new System.Drawing.Point(9, 98);
+            this.rbKlein.Name = "rbKlein";
+            this.rbKlein.Size = new System.Drawing.Size(48, 17);
+            this.rbKlein.TabIndex = 10;
+            this.rbKlein.TabStop = true;
+            this.rbKlein.Text = "Klein";
+            this.rbKlein.UseVisualStyleBackColor = true;
             // 
             // gbReparatie
             // 
-            this.gbReparatie.Controls.Add(this.dateTimePicker1);
-            this.gbReparatie.Controls.Add(this.radioButton2);
+            this.gbReparatie.Controls.Add(this.dtpDatum);
+            this.gbReparatie.Controls.Add(this.rbKlein);
             this.gbReparatie.Controls.Add(this.label4);
-            this.gbReparatie.Controls.Add(this.radioButton1);
+            this.gbReparatie.Controls.Add(this.rbGroot);
             this.gbReparatie.Location = new System.Drawing.Point(24, 154);
             this.gbReparatie.Name = "gbReparatie";
             this.gbReparatie.Size = new System.Drawing.Size(237, 136);
@@ -186,10 +187,10 @@
         private System.Windows.Forms.TextBox tbTramnummer;
         private System.Windows.Forms.TextBox tbSpoornummer;
         private System.Windows.Forms.CheckBox chbReparatie;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDatum;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbGroot;
+        private System.Windows.Forms.RadioButton rbKlein;
         private System.Windows.Forms.GroupBox gbReparatie;
     }
 }

@@ -92,7 +92,9 @@ namespace RemiseSysteem_Groep_B
                         }
                     }
                 }
-            }
+
+            } 
+            return false;
         }
         public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
         {
