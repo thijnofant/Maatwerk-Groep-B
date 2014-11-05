@@ -293,13 +293,15 @@ namespace RemiseSysteem_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
                 string GevondenStatus = reader["Status"].ToString();
+                int GevondenID = Convert.ToInt32(reader["ID"]);
                 string GevondenDescription = reader["Omschrijving"].ToString();
 
                 //aanvullen
                 TramType tramtype = new TramType(GevondenDescription, 1);
-                Tram tram = new Tram(nummer, tramtype);
+                Tram tram = new Tram(GevondenID, tramtype);
                 TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
                 tram.StatusWijzigen(tramStatus);
+                tram.Nummer = nummer;
                 return tram;
 
 
@@ -823,9 +825,9 @@ namespace RemiseSysteem_Groep_B
             return 0;
         }
 
-        //public int GetToegewezenSpoor(int tramID)
-        //{
-
-        //}
+        public int GetToegewezenSpoor(int tramID)
+        {
+            return 0;
+        }
     }
 }

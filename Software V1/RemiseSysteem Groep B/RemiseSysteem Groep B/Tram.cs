@@ -10,7 +10,7 @@ namespace RemiseSysteem_Groep_B
     {
         private TramStatus status;
         public TramStatus Status { get { return status; } private set { status = value; } }
-        public int Nummer { get; private set; }
+        private int nummer;
         public int Id { get; private set;  }
         public TramType Type {  get; private set;  }
         public Sector StaatOpSector { get; private set;  }
@@ -38,6 +38,12 @@ namespace RemiseSysteem_Groep_B
         public bool Equals(Tram other) 
         {
             return this.Id == other.Id;
+        }
+
+        public int Nummer
+        {
+            get { return nummer; }
+            set { nummer = value; }
         }
     }
 }
