@@ -32,6 +32,79 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblMeldingen = new System.Windows.Forms.Label();
+            this.s40_7 = new System.Windows.Forms.TextBox();
+            this.s40_6 = new System.Windows.Forms.TextBox();
+            this.s40_5 = new System.Windows.Forms.TextBox();
+            this.s40_4 = new System.Windows.Forms.TextBox();
+            this.s21_1 = new System.Windows.Forms.TextBox();
+            this.textBox248 = new System.Windows.Forms.TextBox();
+            this.s20_1 = new System.Windows.Forms.TextBox();
+            this.s19_1 = new System.Windows.Forms.TextBox();
+            this.textBox251 = new System.Windows.Forms.TextBox();
+            this.textBox252 = new System.Windows.Forms.TextBox();
+            this.s18_1 = new System.Windows.Forms.TextBox();
+            this.s17_1 = new System.Windows.Forms.TextBox();
+            this.textBox231 = new System.Windows.Forms.TextBox();
+            this.textBox232 = new System.Windows.Forms.TextBox();
+            this.s16_1 = new System.Windows.Forms.TextBox();
+            this.textBox234 = new System.Windows.Forms.TextBox();
+            this.s15_1 = new System.Windows.Forms.TextBox();
+            this.s14_1 = new System.Windows.Forms.TextBox();
+            this.s13_1 = new System.Windows.Forms.TextBox();
+            this.s12_1 = new System.Windows.Forms.TextBox();
+            this.textBox239 = new System.Windows.Forms.TextBox();
+            this.textBox240 = new System.Windows.Forms.TextBox();
+            this.textBox241 = new System.Windows.Forms.TextBox();
+            this.textBox242 = new System.Windows.Forms.TextBox();
+            this.s77_5 = new System.Windows.Forms.TextBox();
+            this.s76_6 = new System.Windows.Forms.TextBox();
+            this.s74_5 = new System.Windows.Forms.TextBox();
+            this.s77_4 = new System.Windows.Forms.TextBox();
+            this.s76_4 = new System.Windows.Forms.TextBox();
+            this.s77_3 = new System.Windows.Forms.TextBox();
+            this.s77_2 = new System.Windows.Forms.TextBox();
+            this.s77_1 = new System.Windows.Forms.TextBox();
+            this.textBox212 = new System.Windows.Forms.TextBox();
+            this.s76_3 = new System.Windows.Forms.TextBox();
+            this.s76_2 = new System.Windows.Forms.TextBox();
+            this.s76_1 = new System.Windows.Forms.TextBox();
+            this.textBox218 = new System.Windows.Forms.TextBox();
+            this.s75_4 = new System.Windows.Forms.TextBox();
+            this.s74_4 = new System.Windows.Forms.TextBox();
+            this.s75_3 = new System.Windows.Forms.TextBox();
+            this.s75_2 = new System.Windows.Forms.TextBox();
+            this.s75_1 = new System.Windows.Forms.TextBox();
+            this.textBox224 = new System.Windows.Forms.TextBox();
+            this.s74_3 = new System.Windows.Forms.TextBox();
+            this.s74_2 = new System.Windows.Forms.TextBox();
+            this.s74_1 = new System.Windows.Forms.TextBox();
+            this.textBox228 = new System.Windows.Forms.TextBox();
+            this.s63_4 = new System.Windows.Forms.TextBox();
+            this.s64_5 = new System.Windows.Forms.TextBox();
+            this.s64_4 = new System.Windows.Forms.TextBox();
+            this.s51_6 = new System.Windows.Forms.TextBox();
+            this.s51_5 = new System.Windows.Forms.TextBox();
+            this.s52_7 = new System.Windows.Forms.TextBox();
+            this.s52_6 = new System.Windows.Forms.TextBox();
+            this.s52_5 = new System.Windows.Forms.TextBox();
+            this.s53_7 = new System.Windows.Forms.TextBox();
+            this.s53_6 = new System.Windows.Forms.TextBox();
+            this.s53_5 = new System.Windows.Forms.TextBox();
+            this.s54_7 = new System.Windows.Forms.TextBox();
+            this.s54_6 = new System.Windows.Forms.TextBox();
+            this.s54_5 = new System.Windows.Forms.TextBox();
+            this.s55_8 = new System.Windows.Forms.TextBox();
+            this.s55_7 = new System.Windows.Forms.TextBox();
+            this.s55_6 = new System.Windows.Forms.TextBox();
+            this.s55_5 = new System.Windows.Forms.TextBox();
+            this.s56_8 = new System.Windows.Forms.TextBox();
+            this.s56_7 = new System.Windows.Forms.TextBox();
+            this.s56_6 = new System.Windows.Forms.TextBox();
+            this.s56_5 = new System.Windows.Forms.TextBox();
+            this.s57_8 = new System.Windows.Forms.TextBox();
+            this.s57_7 = new System.Windows.Forms.TextBox();
+            this.s57_6 = new System.Windows.Forms.TextBox();
+            this.s57_5 = new System.Windows.Forms.TextBox();
             this.s58_3 = new System.Windows.Forms.TextBox();
             this.s58_2 = new System.Windows.Forms.TextBox();
             this.s58_1 = new System.Windows.Forms.TextBox();
@@ -198,79 +271,6 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
-            this.s57_8 = new System.Windows.Forms.TextBox();
-            this.s57_7 = new System.Windows.Forms.TextBox();
-            this.s57_6 = new System.Windows.Forms.TextBox();
-            this.s57_5 = new System.Windows.Forms.TextBox();
-            this.s56_8 = new System.Windows.Forms.TextBox();
-            this.s56_7 = new System.Windows.Forms.TextBox();
-            this.s56_6 = new System.Windows.Forms.TextBox();
-            this.s56_5 = new System.Windows.Forms.TextBox();
-            this.s55_8 = new System.Windows.Forms.TextBox();
-            this.s55_7 = new System.Windows.Forms.TextBox();
-            this.s55_6 = new System.Windows.Forms.TextBox();
-            this.s55_5 = new System.Windows.Forms.TextBox();
-            this.s54_7 = new System.Windows.Forms.TextBox();
-            this.s54_6 = new System.Windows.Forms.TextBox();
-            this.s54_5 = new System.Windows.Forms.TextBox();
-            this.s53_7 = new System.Windows.Forms.TextBox();
-            this.s53_6 = new System.Windows.Forms.TextBox();
-            this.s53_5 = new System.Windows.Forms.TextBox();
-            this.s52_7 = new System.Windows.Forms.TextBox();
-            this.s52_6 = new System.Windows.Forms.TextBox();
-            this.s52_5 = new System.Windows.Forms.TextBox();
-            this.s51_6 = new System.Windows.Forms.TextBox();
-            this.s51_5 = new System.Windows.Forms.TextBox();
-            this.s64_5 = new System.Windows.Forms.TextBox();
-            this.s64_4 = new System.Windows.Forms.TextBox();
-            this.s63_4 = new System.Windows.Forms.TextBox();
-            this.s77_5 = new System.Windows.Forms.TextBox();
-            this.s76_6 = new System.Windows.Forms.TextBox();
-            this.s74_5 = new System.Windows.Forms.TextBox();
-            this.s77_4 = new System.Windows.Forms.TextBox();
-            this.s76_4 = new System.Windows.Forms.TextBox();
-            this.s77_3 = new System.Windows.Forms.TextBox();
-            this.s77_2 = new System.Windows.Forms.TextBox();
-            this.s77_1 = new System.Windows.Forms.TextBox();
-            this.textBox212 = new System.Windows.Forms.TextBox();
-            this.s76_3 = new System.Windows.Forms.TextBox();
-            this.s76_2 = new System.Windows.Forms.TextBox();
-            this.s76_1 = new System.Windows.Forms.TextBox();
-            this.textBox218 = new System.Windows.Forms.TextBox();
-            this.s75_4 = new System.Windows.Forms.TextBox();
-            this.s74_4 = new System.Windows.Forms.TextBox();
-            this.s75_3 = new System.Windows.Forms.TextBox();
-            this.s75_2 = new System.Windows.Forms.TextBox();
-            this.s75_1 = new System.Windows.Forms.TextBox();
-            this.textBox224 = new System.Windows.Forms.TextBox();
-            this.s74_3 = new System.Windows.Forms.TextBox();
-            this.s74_2 = new System.Windows.Forms.TextBox();
-            this.s74_1 = new System.Windows.Forms.TextBox();
-            this.textBox228 = new System.Windows.Forms.TextBox();
-            this.s18_1 = new System.Windows.Forms.TextBox();
-            this.s17_1 = new System.Windows.Forms.TextBox();
-            this.textBox231 = new System.Windows.Forms.TextBox();
-            this.textBox232 = new System.Windows.Forms.TextBox();
-            this.s16_1 = new System.Windows.Forms.TextBox();
-            this.textBox234 = new System.Windows.Forms.TextBox();
-            this.s15_1 = new System.Windows.Forms.TextBox();
-            this.s14_1 = new System.Windows.Forms.TextBox();
-            this.s13_1 = new System.Windows.Forms.TextBox();
-            this.s12_1 = new System.Windows.Forms.TextBox();
-            this.textBox239 = new System.Windows.Forms.TextBox();
-            this.textBox240 = new System.Windows.Forms.TextBox();
-            this.textBox241 = new System.Windows.Forms.TextBox();
-            this.textBox242 = new System.Windows.Forms.TextBox();
-            this.s21_1 = new System.Windows.Forms.TextBox();
-            this.textBox248 = new System.Windows.Forms.TextBox();
-            this.s20_1 = new System.Windows.Forms.TextBox();
-            this.s19_1 = new System.Windows.Forms.TextBox();
-            this.textBox251 = new System.Windows.Forms.TextBox();
-            this.textBox252 = new System.Windows.Forms.TextBox();
-            this.s40_6 = new System.Windows.Forms.TextBox();
-            this.s40_5 = new System.Windows.Forms.TextBox();
-            this.s40_4 = new System.Windows.Forms.TextBox();
-            this.s40_7 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -546,6 +546,607 @@
             this.lblMeldingen.Size = new System.Drawing.Size(82, 20);
             this.lblMeldingen.TabIndex = 0;
             this.lblMeldingen.Text = "Meldingen";
+            // 
+            // s40_7
+            // 
+            this.s40_7.Location = new System.Drawing.Point(629, 164);
+            this.s40_7.Name = "s40_7";
+            this.s40_7.Size = new System.Drawing.Size(59, 20);
+            this.s40_7.TabIndex = 269;
+            this.s40_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s40_6
+            // 
+            this.s40_6.Location = new System.Drawing.Point(629, 143);
+            this.s40_6.Name = "s40_6";
+            this.s40_6.Size = new System.Drawing.Size(59, 20);
+            this.s40_6.TabIndex = 268;
+            this.s40_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.s40_6.TextChanged += new System.EventHandler(this.s40_6_TextChanged);
+            // 
+            // s40_5
+            // 
+            this.s40_5.Location = new System.Drawing.Point(629, 123);
+            this.s40_5.Name = "s40_5";
+            this.s40_5.Size = new System.Drawing.Size(59, 20);
+            this.s40_5.TabIndex = 267;
+            this.s40_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s40_4
+            // 
+            this.s40_4.Location = new System.Drawing.Point(629, 103);
+            this.s40_4.Name = "s40_4";
+            this.s40_4.Size = new System.Drawing.Size(59, 20);
+            this.s40_4.TabIndex = 266;
+            this.s40_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s21_1
+            // 
+            this.s21_1.Location = new System.Drawing.Point(1109, 455);
+            this.s21_1.Name = "s21_1";
+            this.s21_1.Size = new System.Drawing.Size(59, 20);
+            this.s21_1.TabIndex = 265;
+            this.s21_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox248
+            // 
+            this.textBox248.Location = new System.Drawing.Point(1050, 455);
+            this.textBox248.Name = "textBox248";
+            this.textBox248.Size = new System.Drawing.Size(59, 20);
+            this.textBox248.TabIndex = 264;
+            this.textBox248.Text = "21";
+            this.textBox248.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox248.TextChanged += new System.EventHandler(this.textBox248_TextChanged);
+            // 
+            // s20_1
+            // 
+            this.s20_1.Location = new System.Drawing.Point(1109, 429);
+            this.s20_1.Name = "s20_1";
+            this.s20_1.Size = new System.Drawing.Size(59, 20);
+            this.s20_1.TabIndex = 263;
+            this.s20_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s19_1
+            // 
+            this.s19_1.Location = new System.Drawing.Point(1109, 403);
+            this.s19_1.Name = "s19_1";
+            this.s19_1.Size = new System.Drawing.Size(59, 20);
+            this.s19_1.TabIndex = 262;
+            this.s19_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox251
+            // 
+            this.textBox251.Location = new System.Drawing.Point(1050, 429);
+            this.textBox251.Name = "textBox251";
+            this.textBox251.Size = new System.Drawing.Size(59, 20);
+            this.textBox251.TabIndex = 261;
+            this.textBox251.Text = "20";
+            this.textBox251.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox252
+            // 
+            this.textBox252.Location = new System.Drawing.Point(1050, 403);
+            this.textBox252.Name = "textBox252";
+            this.textBox252.Size = new System.Drawing.Size(59, 20);
+            this.textBox252.TabIndex = 260;
+            this.textBox252.Text = "19";
+            this.textBox252.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s18_1
+            // 
+            this.s18_1.Location = new System.Drawing.Point(1109, 377);
+            this.s18_1.Name = "s18_1";
+            this.s18_1.Size = new System.Drawing.Size(59, 20);
+            this.s18_1.TabIndex = 259;
+            this.s18_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s17_1
+            // 
+            this.s17_1.Location = new System.Drawing.Point(1109, 351);
+            this.s17_1.Name = "s17_1";
+            this.s17_1.Size = new System.Drawing.Size(59, 20);
+            this.s17_1.TabIndex = 258;
+            this.s17_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox231
+            // 
+            this.textBox231.Location = new System.Drawing.Point(1050, 377);
+            this.textBox231.Name = "textBox231";
+            this.textBox231.Size = new System.Drawing.Size(59, 20);
+            this.textBox231.TabIndex = 257;
+            this.textBox231.Text = "18";
+            this.textBox231.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox232
+            // 
+            this.textBox232.Location = new System.Drawing.Point(1050, 351);
+            this.textBox232.Name = "textBox232";
+            this.textBox232.Size = new System.Drawing.Size(59, 20);
+            this.textBox232.TabIndex = 256;
+            this.textBox232.Text = "17";
+            this.textBox232.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s16_1
+            // 
+            this.s16_1.Location = new System.Drawing.Point(1109, 325);
+            this.s16_1.Name = "s16_1";
+            this.s16_1.Size = new System.Drawing.Size(59, 20);
+            this.s16_1.TabIndex = 255;
+            this.s16_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox234
+            // 
+            this.textBox234.Location = new System.Drawing.Point(1050, 325);
+            this.textBox234.Name = "textBox234";
+            this.textBox234.Size = new System.Drawing.Size(59, 20);
+            this.textBox234.TabIndex = 254;
+            this.textBox234.Text = "16";
+            this.textBox234.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s15_1
+            // 
+            this.s15_1.Location = new System.Drawing.Point(1109, 299);
+            this.s15_1.Name = "s15_1";
+            this.s15_1.Size = new System.Drawing.Size(59, 20);
+            this.s15_1.TabIndex = 253;
+            this.s15_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s14_1
+            // 
+            this.s14_1.Location = new System.Drawing.Point(1109, 273);
+            this.s14_1.Name = "s14_1";
+            this.s14_1.Size = new System.Drawing.Size(59, 20);
+            this.s14_1.TabIndex = 252;
+            this.s14_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s13_1
+            // 
+            this.s13_1.Location = new System.Drawing.Point(1109, 247);
+            this.s13_1.Name = "s13_1";
+            this.s13_1.Size = new System.Drawing.Size(59, 20);
+            this.s13_1.TabIndex = 251;
+            this.s13_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s12_1
+            // 
+            this.s12_1.Location = new System.Drawing.Point(1109, 221);
+            this.s12_1.Name = "s12_1";
+            this.s12_1.Size = new System.Drawing.Size(59, 20);
+            this.s12_1.TabIndex = 250;
+            this.s12_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox239
+            // 
+            this.textBox239.Location = new System.Drawing.Point(1050, 299);
+            this.textBox239.Name = "textBox239";
+            this.textBox239.Size = new System.Drawing.Size(59, 20);
+            this.textBox239.TabIndex = 249;
+            this.textBox239.Text = "15";
+            this.textBox239.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox240
+            // 
+            this.textBox240.Location = new System.Drawing.Point(1050, 273);
+            this.textBox240.Name = "textBox240";
+            this.textBox240.Size = new System.Drawing.Size(59, 20);
+            this.textBox240.TabIndex = 248;
+            this.textBox240.Text = "14";
+            this.textBox240.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox241
+            // 
+            this.textBox241.Location = new System.Drawing.Point(1050, 247);
+            this.textBox241.Name = "textBox241";
+            this.textBox241.Size = new System.Drawing.Size(59, 20);
+            this.textBox241.TabIndex = 247;
+            this.textBox241.Text = "13";
+            this.textBox241.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox242
+            // 
+            this.textBox242.Location = new System.Drawing.Point(1050, 221);
+            this.textBox242.Name = "textBox242";
+            this.textBox242.Size = new System.Drawing.Size(59, 20);
+            this.textBox242.TabIndex = 246;
+            this.textBox242.Text = "12";
+            this.textBox242.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s77_5
+            // 
+            this.s77_5.Location = new System.Drawing.Point(932, 321);
+            this.s77_5.Name = "s77_5";
+            this.s77_5.Size = new System.Drawing.Size(59, 20);
+            this.s77_5.TabIndex = 244;
+            this.s77_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s76_6
+            // 
+            this.s76_6.Location = new System.Drawing.Point(867, 321);
+            this.s76_6.Name = "s76_6";
+            this.s76_6.Size = new System.Drawing.Size(59, 20);
+            this.s76_6.TabIndex = 242;
+            this.s76_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s74_5
+            // 
+            this.s74_5.Location = new System.Drawing.Point(737, 321);
+            this.s74_5.Name = "s74_5";
+            this.s74_5.Size = new System.Drawing.Size(59, 20);
+            this.s74_5.TabIndex = 235;
+            this.s74_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s77_4
+            // 
+            this.s77_4.Location = new System.Drawing.Point(932, 301);
+            this.s77_4.Name = "s77_4";
+            this.s77_4.Size = new System.Drawing.Size(59, 20);
+            this.s77_4.TabIndex = 234;
+            this.s77_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s76_4
+            // 
+            this.s76_4.Location = new System.Drawing.Point(867, 301);
+            this.s76_4.Name = "s76_4";
+            this.s76_4.Size = new System.Drawing.Size(59, 20);
+            this.s76_4.TabIndex = 233;
+            this.s76_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s77_3
+            // 
+            this.s77_3.Location = new System.Drawing.Point(932, 281);
+            this.s77_3.Name = "s77_3";
+            this.s77_3.Size = new System.Drawing.Size(59, 20);
+            this.s77_3.TabIndex = 232;
+            this.s77_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s77_2
+            // 
+            this.s77_2.Location = new System.Drawing.Point(932, 261);
+            this.s77_2.Name = "s77_2";
+            this.s77_2.Size = new System.Drawing.Size(59, 20);
+            this.s77_2.TabIndex = 231;
+            this.s77_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s77_1
+            // 
+            this.s77_1.Location = new System.Drawing.Point(932, 241);
+            this.s77_1.Name = "s77_1";
+            this.s77_1.Size = new System.Drawing.Size(59, 20);
+            this.s77_1.TabIndex = 230;
+            this.s77_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.s77_1.TextChanged += new System.EventHandler(this.textBox211_TextChanged);
+            // 
+            // textBox212
+            // 
+            this.textBox212.Location = new System.Drawing.Point(932, 221);
+            this.textBox212.Name = "textBox212";
+            this.textBox212.Size = new System.Drawing.Size(59, 20);
+            this.textBox212.TabIndex = 229;
+            this.textBox212.Text = "77";
+            this.textBox212.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s76_3
+            // 
+            this.s76_3.Location = new System.Drawing.Point(867, 281);
+            this.s76_3.Name = "s76_3";
+            this.s76_3.Size = new System.Drawing.Size(59, 20);
+            this.s76_3.TabIndex = 228;
+            this.s76_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s76_2
+            // 
+            this.s76_2.Location = new System.Drawing.Point(867, 261);
+            this.s76_2.Name = "s76_2";
+            this.s76_2.Size = new System.Drawing.Size(59, 20);
+            this.s76_2.TabIndex = 227;
+            this.s76_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s76_1
+            // 
+            this.s76_1.Location = new System.Drawing.Point(867, 241);
+            this.s76_1.Name = "s76_1";
+            this.s76_1.Size = new System.Drawing.Size(59, 20);
+            this.s76_1.TabIndex = 226;
+            this.s76_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox218
+            // 
+            this.textBox218.Location = new System.Drawing.Point(867, 221);
+            this.textBox218.Name = "textBox218";
+            this.textBox218.Size = new System.Drawing.Size(59, 20);
+            this.textBox218.TabIndex = 225;
+            this.textBox218.Text = "76";
+            this.textBox218.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s75_4
+            // 
+            this.s75_4.Location = new System.Drawing.Point(802, 301);
+            this.s75_4.Name = "s75_4";
+            this.s75_4.Size = new System.Drawing.Size(59, 20);
+            this.s75_4.TabIndex = 224;
+            this.s75_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s74_4
+            // 
+            this.s74_4.Location = new System.Drawing.Point(737, 301);
+            this.s74_4.Name = "s74_4";
+            this.s74_4.Size = new System.Drawing.Size(59, 20);
+            this.s74_4.TabIndex = 223;
+            this.s74_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s75_3
+            // 
+            this.s75_3.Location = new System.Drawing.Point(802, 281);
+            this.s75_3.Name = "s75_3";
+            this.s75_3.Size = new System.Drawing.Size(59, 20);
+            this.s75_3.TabIndex = 222;
+            this.s75_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s75_2
+            // 
+            this.s75_2.Location = new System.Drawing.Point(802, 261);
+            this.s75_2.Name = "s75_2";
+            this.s75_2.Size = new System.Drawing.Size(59, 20);
+            this.s75_2.TabIndex = 221;
+            this.s75_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s75_1
+            // 
+            this.s75_1.Location = new System.Drawing.Point(802, 241);
+            this.s75_1.Name = "s75_1";
+            this.s75_1.Size = new System.Drawing.Size(59, 20);
+            this.s75_1.TabIndex = 220;
+            this.s75_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox224
+            // 
+            this.textBox224.Location = new System.Drawing.Point(802, 221);
+            this.textBox224.Name = "textBox224";
+            this.textBox224.Size = new System.Drawing.Size(59, 20);
+            this.textBox224.TabIndex = 219;
+            this.textBox224.Text = "75";
+            this.textBox224.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s74_3
+            // 
+            this.s74_3.Location = new System.Drawing.Point(737, 281);
+            this.s74_3.Name = "s74_3";
+            this.s74_3.Size = new System.Drawing.Size(59, 20);
+            this.s74_3.TabIndex = 218;
+            this.s74_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s74_2
+            // 
+            this.s74_2.Location = new System.Drawing.Point(737, 261);
+            this.s74_2.Name = "s74_2";
+            this.s74_2.Size = new System.Drawing.Size(59, 20);
+            this.s74_2.TabIndex = 217;
+            this.s74_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s74_1
+            // 
+            this.s74_1.Location = new System.Drawing.Point(737, 241);
+            this.s74_1.Name = "s74_1";
+            this.s74_1.Size = new System.Drawing.Size(59, 20);
+            this.s74_1.TabIndex = 216;
+            this.s74_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox228
+            // 
+            this.textBox228.Location = new System.Drawing.Point(737, 221);
+            this.textBox228.Name = "textBox228";
+            this.textBox228.Size = new System.Drawing.Size(59, 20);
+            this.textBox228.TabIndex = 215;
+            this.textBox228.Text = "74";
+            this.textBox228.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s63_4
+            // 
+            this.s63_4.Location = new System.Drawing.Point(523, 321);
+            this.s63_4.Name = "s63_4";
+            this.s63_4.Size = new System.Drawing.Size(59, 20);
+            this.s63_4.TabIndex = 201;
+            this.s63_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s64_5
+            // 
+            this.s64_5.Location = new System.Drawing.Point(458, 341);
+            this.s64_5.Name = "s64_5";
+            this.s64_5.Size = new System.Drawing.Size(59, 20);
+            this.s64_5.TabIndex = 196;
+            this.s64_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s64_4
+            // 
+            this.s64_4.Location = new System.Drawing.Point(458, 321);
+            this.s64_4.Name = "s64_4";
+            this.s64_4.Size = new System.Drawing.Size(59, 20);
+            this.s64_4.TabIndex = 195;
+            this.s64_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s51_6
+            // 
+            this.s51_6.Location = new System.Drawing.Point(393, 361);
+            this.s51_6.Name = "s51_6";
+            this.s51_6.Size = new System.Drawing.Size(59, 20);
+            this.s51_6.TabIndex = 190;
+            this.s51_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s51_5
+            // 
+            this.s51_5.Location = new System.Drawing.Point(393, 341);
+            this.s51_5.Name = "s51_5";
+            this.s51_5.Size = new System.Drawing.Size(59, 20);
+            this.s51_5.TabIndex = 189;
+            this.s51_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s52_7
+            // 
+            this.s52_7.Location = new System.Drawing.Point(328, 381);
+            this.s52_7.Name = "s52_7";
+            this.s52_7.Size = new System.Drawing.Size(59, 20);
+            this.s52_7.TabIndex = 185;
+            this.s52_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s52_6
+            // 
+            this.s52_6.Location = new System.Drawing.Point(328, 361);
+            this.s52_6.Name = "s52_6";
+            this.s52_6.Size = new System.Drawing.Size(59, 20);
+            this.s52_6.TabIndex = 184;
+            this.s52_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s52_5
+            // 
+            this.s52_5.Location = new System.Drawing.Point(328, 341);
+            this.s52_5.Name = "s52_5";
+            this.s52_5.Size = new System.Drawing.Size(59, 20);
+            this.s52_5.TabIndex = 183;
+            this.s52_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s53_7
+            // 
+            this.s53_7.Location = new System.Drawing.Point(263, 381);
+            this.s53_7.Name = "s53_7";
+            this.s53_7.Size = new System.Drawing.Size(59, 20);
+            this.s53_7.TabIndex = 179;
+            this.s53_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s53_6
+            // 
+            this.s53_6.Location = new System.Drawing.Point(263, 361);
+            this.s53_6.Name = "s53_6";
+            this.s53_6.Size = new System.Drawing.Size(59, 20);
+            this.s53_6.TabIndex = 178;
+            this.s53_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s53_5
+            // 
+            this.s53_5.Location = new System.Drawing.Point(263, 341);
+            this.s53_5.Name = "s53_5";
+            this.s53_5.Size = new System.Drawing.Size(59, 20);
+            this.s53_5.TabIndex = 177;
+            this.s53_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s54_7
+            // 
+            this.s54_7.Location = new System.Drawing.Point(198, 381);
+            this.s54_7.Name = "s54_7";
+            this.s54_7.Size = new System.Drawing.Size(59, 20);
+            this.s54_7.TabIndex = 174;
+            this.s54_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s54_6
+            // 
+            this.s54_6.Location = new System.Drawing.Point(198, 361);
+            this.s54_6.Name = "s54_6";
+            this.s54_6.Size = new System.Drawing.Size(59, 20);
+            this.s54_6.TabIndex = 173;
+            this.s54_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s54_5
+            // 
+            this.s54_5.Location = new System.Drawing.Point(198, 341);
+            this.s54_5.Name = "s54_5";
+            this.s54_5.Size = new System.Drawing.Size(59, 20);
+            this.s54_5.TabIndex = 172;
+            this.s54_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s55_8
+            // 
+            this.s55_8.Location = new System.Drawing.Point(133, 401);
+            this.s55_8.Name = "s55_8";
+            this.s55_8.Size = new System.Drawing.Size(59, 20);
+            this.s55_8.TabIndex = 169;
+            this.s55_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s55_7
+            // 
+            this.s55_7.Location = new System.Drawing.Point(133, 381);
+            this.s55_7.Name = "s55_7";
+            this.s55_7.Size = new System.Drawing.Size(59, 20);
+            this.s55_7.TabIndex = 168;
+            this.s55_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s55_6
+            // 
+            this.s55_6.Location = new System.Drawing.Point(133, 361);
+            this.s55_6.Name = "s55_6";
+            this.s55_6.Size = new System.Drawing.Size(59, 20);
+            this.s55_6.TabIndex = 167;
+            this.s55_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s55_5
+            // 
+            this.s55_5.Location = new System.Drawing.Point(133, 341);
+            this.s55_5.Name = "s55_5";
+            this.s55_5.Size = new System.Drawing.Size(59, 20);
+            this.s55_5.TabIndex = 166;
+            this.s55_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s56_8
+            // 
+            this.s56_8.Location = new System.Drawing.Point(68, 401);
+            this.s56_8.Name = "s56_8";
+            this.s56_8.Size = new System.Drawing.Size(59, 20);
+            this.s56_8.TabIndex = 163;
+            this.s56_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s56_7
+            // 
+            this.s56_7.Location = new System.Drawing.Point(68, 381);
+            this.s56_7.Name = "s56_7";
+            this.s56_7.Size = new System.Drawing.Size(59, 20);
+            this.s56_7.TabIndex = 162;
+            this.s56_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s56_6
+            // 
+            this.s56_6.Location = new System.Drawing.Point(68, 361);
+            this.s56_6.Name = "s56_6";
+            this.s56_6.Size = new System.Drawing.Size(59, 20);
+            this.s56_6.TabIndex = 161;
+            this.s56_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s56_5
+            // 
+            this.s56_5.Location = new System.Drawing.Point(68, 341);
+            this.s56_5.Name = "s56_5";
+            this.s56_5.Size = new System.Drawing.Size(59, 20);
+            this.s56_5.TabIndex = 160;
+            this.s56_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s57_8
+            // 
+            this.s57_8.Location = new System.Drawing.Point(3, 401);
+            this.s57_8.Name = "s57_8";
+            this.s57_8.Size = new System.Drawing.Size(59, 20);
+            this.s57_8.TabIndex = 157;
+            this.s57_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s57_7
+            // 
+            this.s57_7.Location = new System.Drawing.Point(3, 381);
+            this.s57_7.Name = "s57_7";
+            this.s57_7.Size = new System.Drawing.Size(59, 20);
+            this.s57_7.TabIndex = 156;
+            this.s57_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s57_6
+            // 
+            this.s57_6.Location = new System.Drawing.Point(3, 361);
+            this.s57_6.Name = "s57_6";
+            this.s57_6.Size = new System.Drawing.Size(59, 20);
+            this.s57_6.TabIndex = 155;
+            this.s57_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s57_5
+            // 
+            this.s57_5.Location = new System.Drawing.Point(3, 341);
+            this.s57_5.Name = "s57_5";
+            this.s57_5.Size = new System.Drawing.Size(59, 20);
+            this.s57_5.TabIndex = 154;
+            this.s57_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // s58_3
             // 
@@ -1938,607 +2539,6 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
             this.schoonmaakLijstOpvragenToolStripMenuItem.Text = "Schoonmaak lijst opvragen";
             this.schoonmaakLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakLijstOpvragenToolStripMenuItem_Click);
-            // 
-            // s57_8
-            // 
-            this.s57_8.Location = new System.Drawing.Point(3, 401);
-            this.s57_8.Name = "s57_8";
-            this.s57_8.Size = new System.Drawing.Size(59, 20);
-            this.s57_8.TabIndex = 157;
-            this.s57_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s57_7
-            // 
-            this.s57_7.Location = new System.Drawing.Point(3, 381);
-            this.s57_7.Name = "s57_7";
-            this.s57_7.Size = new System.Drawing.Size(59, 20);
-            this.s57_7.TabIndex = 156;
-            this.s57_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s57_6
-            // 
-            this.s57_6.Location = new System.Drawing.Point(3, 361);
-            this.s57_6.Name = "s57_6";
-            this.s57_6.Size = new System.Drawing.Size(59, 20);
-            this.s57_6.TabIndex = 155;
-            this.s57_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s57_5
-            // 
-            this.s57_5.Location = new System.Drawing.Point(3, 341);
-            this.s57_5.Name = "s57_5";
-            this.s57_5.Size = new System.Drawing.Size(59, 20);
-            this.s57_5.TabIndex = 154;
-            this.s57_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s56_8
-            // 
-            this.s56_8.Location = new System.Drawing.Point(68, 401);
-            this.s56_8.Name = "s56_8";
-            this.s56_8.Size = new System.Drawing.Size(59, 20);
-            this.s56_8.TabIndex = 163;
-            this.s56_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s56_7
-            // 
-            this.s56_7.Location = new System.Drawing.Point(68, 381);
-            this.s56_7.Name = "s56_7";
-            this.s56_7.Size = new System.Drawing.Size(59, 20);
-            this.s56_7.TabIndex = 162;
-            this.s56_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s56_6
-            // 
-            this.s56_6.Location = new System.Drawing.Point(68, 361);
-            this.s56_6.Name = "s56_6";
-            this.s56_6.Size = new System.Drawing.Size(59, 20);
-            this.s56_6.TabIndex = 161;
-            this.s56_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s56_5
-            // 
-            this.s56_5.Location = new System.Drawing.Point(68, 341);
-            this.s56_5.Name = "s56_5";
-            this.s56_5.Size = new System.Drawing.Size(59, 20);
-            this.s56_5.TabIndex = 160;
-            this.s56_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s55_8
-            // 
-            this.s55_8.Location = new System.Drawing.Point(133, 401);
-            this.s55_8.Name = "s55_8";
-            this.s55_8.Size = new System.Drawing.Size(59, 20);
-            this.s55_8.TabIndex = 169;
-            this.s55_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s55_7
-            // 
-            this.s55_7.Location = new System.Drawing.Point(133, 381);
-            this.s55_7.Name = "s55_7";
-            this.s55_7.Size = new System.Drawing.Size(59, 20);
-            this.s55_7.TabIndex = 168;
-            this.s55_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s55_6
-            // 
-            this.s55_6.Location = new System.Drawing.Point(133, 361);
-            this.s55_6.Name = "s55_6";
-            this.s55_6.Size = new System.Drawing.Size(59, 20);
-            this.s55_6.TabIndex = 167;
-            this.s55_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s55_5
-            // 
-            this.s55_5.Location = new System.Drawing.Point(133, 341);
-            this.s55_5.Name = "s55_5";
-            this.s55_5.Size = new System.Drawing.Size(59, 20);
-            this.s55_5.TabIndex = 166;
-            this.s55_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s54_7
-            // 
-            this.s54_7.Location = new System.Drawing.Point(198, 381);
-            this.s54_7.Name = "s54_7";
-            this.s54_7.Size = new System.Drawing.Size(59, 20);
-            this.s54_7.TabIndex = 174;
-            this.s54_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s54_6
-            // 
-            this.s54_6.Location = new System.Drawing.Point(198, 361);
-            this.s54_6.Name = "s54_6";
-            this.s54_6.Size = new System.Drawing.Size(59, 20);
-            this.s54_6.TabIndex = 173;
-            this.s54_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s54_5
-            // 
-            this.s54_5.Location = new System.Drawing.Point(198, 341);
-            this.s54_5.Name = "s54_5";
-            this.s54_5.Size = new System.Drawing.Size(59, 20);
-            this.s54_5.TabIndex = 172;
-            this.s54_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s53_7
-            // 
-            this.s53_7.Location = new System.Drawing.Point(263, 381);
-            this.s53_7.Name = "s53_7";
-            this.s53_7.Size = new System.Drawing.Size(59, 20);
-            this.s53_7.TabIndex = 179;
-            this.s53_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s53_6
-            // 
-            this.s53_6.Location = new System.Drawing.Point(263, 361);
-            this.s53_6.Name = "s53_6";
-            this.s53_6.Size = new System.Drawing.Size(59, 20);
-            this.s53_6.TabIndex = 178;
-            this.s53_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s53_5
-            // 
-            this.s53_5.Location = new System.Drawing.Point(263, 341);
-            this.s53_5.Name = "s53_5";
-            this.s53_5.Size = new System.Drawing.Size(59, 20);
-            this.s53_5.TabIndex = 177;
-            this.s53_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s52_7
-            // 
-            this.s52_7.Location = new System.Drawing.Point(328, 381);
-            this.s52_7.Name = "s52_7";
-            this.s52_7.Size = new System.Drawing.Size(59, 20);
-            this.s52_7.TabIndex = 185;
-            this.s52_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s52_6
-            // 
-            this.s52_6.Location = new System.Drawing.Point(328, 361);
-            this.s52_6.Name = "s52_6";
-            this.s52_6.Size = new System.Drawing.Size(59, 20);
-            this.s52_6.TabIndex = 184;
-            this.s52_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s52_5
-            // 
-            this.s52_5.Location = new System.Drawing.Point(328, 341);
-            this.s52_5.Name = "s52_5";
-            this.s52_5.Size = new System.Drawing.Size(59, 20);
-            this.s52_5.TabIndex = 183;
-            this.s52_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s51_6
-            // 
-            this.s51_6.Location = new System.Drawing.Point(393, 361);
-            this.s51_6.Name = "s51_6";
-            this.s51_6.Size = new System.Drawing.Size(59, 20);
-            this.s51_6.TabIndex = 190;
-            this.s51_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s51_5
-            // 
-            this.s51_5.Location = new System.Drawing.Point(393, 341);
-            this.s51_5.Name = "s51_5";
-            this.s51_5.Size = new System.Drawing.Size(59, 20);
-            this.s51_5.TabIndex = 189;
-            this.s51_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s64_5
-            // 
-            this.s64_5.Location = new System.Drawing.Point(458, 341);
-            this.s64_5.Name = "s64_5";
-            this.s64_5.Size = new System.Drawing.Size(59, 20);
-            this.s64_5.TabIndex = 196;
-            this.s64_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s64_4
-            // 
-            this.s64_4.Location = new System.Drawing.Point(458, 321);
-            this.s64_4.Name = "s64_4";
-            this.s64_4.Size = new System.Drawing.Size(59, 20);
-            this.s64_4.TabIndex = 195;
-            this.s64_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s63_4
-            // 
-            this.s63_4.Location = new System.Drawing.Point(523, 321);
-            this.s63_4.Name = "s63_4";
-            this.s63_4.Size = new System.Drawing.Size(59, 20);
-            this.s63_4.TabIndex = 201;
-            this.s63_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s77_5
-            // 
-            this.s77_5.Location = new System.Drawing.Point(932, 321);
-            this.s77_5.Name = "s77_5";
-            this.s77_5.Size = new System.Drawing.Size(59, 20);
-            this.s77_5.TabIndex = 244;
-            this.s77_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s76_6
-            // 
-            this.s76_6.Location = new System.Drawing.Point(867, 321);
-            this.s76_6.Name = "s76_6";
-            this.s76_6.Size = new System.Drawing.Size(59, 20);
-            this.s76_6.TabIndex = 242;
-            this.s76_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s74_5
-            // 
-            this.s74_5.Location = new System.Drawing.Point(737, 321);
-            this.s74_5.Name = "s74_5";
-            this.s74_5.Size = new System.Drawing.Size(59, 20);
-            this.s74_5.TabIndex = 235;
-            this.s74_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s77_4
-            // 
-            this.s77_4.Location = new System.Drawing.Point(932, 301);
-            this.s77_4.Name = "s77_4";
-            this.s77_4.Size = new System.Drawing.Size(59, 20);
-            this.s77_4.TabIndex = 234;
-            this.s77_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s76_4
-            // 
-            this.s76_4.Location = new System.Drawing.Point(867, 301);
-            this.s76_4.Name = "s76_4";
-            this.s76_4.Size = new System.Drawing.Size(59, 20);
-            this.s76_4.TabIndex = 233;
-            this.s76_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s77_3
-            // 
-            this.s77_3.Location = new System.Drawing.Point(932, 281);
-            this.s77_3.Name = "s77_3";
-            this.s77_3.Size = new System.Drawing.Size(59, 20);
-            this.s77_3.TabIndex = 232;
-            this.s77_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s77_2
-            // 
-            this.s77_2.Location = new System.Drawing.Point(932, 261);
-            this.s77_2.Name = "s77_2";
-            this.s77_2.Size = new System.Drawing.Size(59, 20);
-            this.s77_2.TabIndex = 231;
-            this.s77_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s77_1
-            // 
-            this.s77_1.Location = new System.Drawing.Point(932, 241);
-            this.s77_1.Name = "s77_1";
-            this.s77_1.Size = new System.Drawing.Size(59, 20);
-            this.s77_1.TabIndex = 230;
-            this.s77_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.s77_1.TextChanged += new System.EventHandler(this.textBox211_TextChanged);
-            // 
-            // textBox212
-            // 
-            this.textBox212.Location = new System.Drawing.Point(932, 221);
-            this.textBox212.Name = "textBox212";
-            this.textBox212.Size = new System.Drawing.Size(59, 20);
-            this.textBox212.TabIndex = 229;
-            this.textBox212.Text = "77";
-            this.textBox212.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s76_3
-            // 
-            this.s76_3.Location = new System.Drawing.Point(867, 281);
-            this.s76_3.Name = "s76_3";
-            this.s76_3.Size = new System.Drawing.Size(59, 20);
-            this.s76_3.TabIndex = 228;
-            this.s76_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s76_2
-            // 
-            this.s76_2.Location = new System.Drawing.Point(867, 261);
-            this.s76_2.Name = "s76_2";
-            this.s76_2.Size = new System.Drawing.Size(59, 20);
-            this.s76_2.TabIndex = 227;
-            this.s76_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s76_1
-            // 
-            this.s76_1.Location = new System.Drawing.Point(867, 241);
-            this.s76_1.Name = "s76_1";
-            this.s76_1.Size = new System.Drawing.Size(59, 20);
-            this.s76_1.TabIndex = 226;
-            this.s76_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox218
-            // 
-            this.textBox218.Location = new System.Drawing.Point(867, 221);
-            this.textBox218.Name = "textBox218";
-            this.textBox218.Size = new System.Drawing.Size(59, 20);
-            this.textBox218.TabIndex = 225;
-            this.textBox218.Text = "76";
-            this.textBox218.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s75_4
-            // 
-            this.s75_4.Location = new System.Drawing.Point(802, 301);
-            this.s75_4.Name = "s75_4";
-            this.s75_4.Size = new System.Drawing.Size(59, 20);
-            this.s75_4.TabIndex = 224;
-            this.s75_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s74_4
-            // 
-            this.s74_4.Location = new System.Drawing.Point(737, 301);
-            this.s74_4.Name = "s74_4";
-            this.s74_4.Size = new System.Drawing.Size(59, 20);
-            this.s74_4.TabIndex = 223;
-            this.s74_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s75_3
-            // 
-            this.s75_3.Location = new System.Drawing.Point(802, 281);
-            this.s75_3.Name = "s75_3";
-            this.s75_3.Size = new System.Drawing.Size(59, 20);
-            this.s75_3.TabIndex = 222;
-            this.s75_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s75_2
-            // 
-            this.s75_2.Location = new System.Drawing.Point(802, 261);
-            this.s75_2.Name = "s75_2";
-            this.s75_2.Size = new System.Drawing.Size(59, 20);
-            this.s75_2.TabIndex = 221;
-            this.s75_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s75_1
-            // 
-            this.s75_1.Location = new System.Drawing.Point(802, 241);
-            this.s75_1.Name = "s75_1";
-            this.s75_1.Size = new System.Drawing.Size(59, 20);
-            this.s75_1.TabIndex = 220;
-            this.s75_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox224
-            // 
-            this.textBox224.Location = new System.Drawing.Point(802, 221);
-            this.textBox224.Name = "textBox224";
-            this.textBox224.Size = new System.Drawing.Size(59, 20);
-            this.textBox224.TabIndex = 219;
-            this.textBox224.Text = "75";
-            this.textBox224.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s74_3
-            // 
-            this.s74_3.Location = new System.Drawing.Point(737, 281);
-            this.s74_3.Name = "s74_3";
-            this.s74_3.Size = new System.Drawing.Size(59, 20);
-            this.s74_3.TabIndex = 218;
-            this.s74_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s74_2
-            // 
-            this.s74_2.Location = new System.Drawing.Point(737, 261);
-            this.s74_2.Name = "s74_2";
-            this.s74_2.Size = new System.Drawing.Size(59, 20);
-            this.s74_2.TabIndex = 217;
-            this.s74_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s74_1
-            // 
-            this.s74_1.Location = new System.Drawing.Point(737, 241);
-            this.s74_1.Name = "s74_1";
-            this.s74_1.Size = new System.Drawing.Size(59, 20);
-            this.s74_1.TabIndex = 216;
-            this.s74_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox228
-            // 
-            this.textBox228.Location = new System.Drawing.Point(737, 221);
-            this.textBox228.Name = "textBox228";
-            this.textBox228.Size = new System.Drawing.Size(59, 20);
-            this.textBox228.TabIndex = 215;
-            this.textBox228.Text = "74";
-            this.textBox228.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s18_1
-            // 
-            this.s18_1.Location = new System.Drawing.Point(1109, 377);
-            this.s18_1.Name = "s18_1";
-            this.s18_1.Size = new System.Drawing.Size(59, 20);
-            this.s18_1.TabIndex = 259;
-            this.s18_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s17_1
-            // 
-            this.s17_1.Location = new System.Drawing.Point(1109, 351);
-            this.s17_1.Name = "s17_1";
-            this.s17_1.Size = new System.Drawing.Size(59, 20);
-            this.s17_1.TabIndex = 258;
-            this.s17_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox231
-            // 
-            this.textBox231.Location = new System.Drawing.Point(1050, 377);
-            this.textBox231.Name = "textBox231";
-            this.textBox231.Size = new System.Drawing.Size(59, 20);
-            this.textBox231.TabIndex = 257;
-            this.textBox231.Text = "18";
-            this.textBox231.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox232
-            // 
-            this.textBox232.Location = new System.Drawing.Point(1050, 351);
-            this.textBox232.Name = "textBox232";
-            this.textBox232.Size = new System.Drawing.Size(59, 20);
-            this.textBox232.TabIndex = 256;
-            this.textBox232.Text = "17";
-            this.textBox232.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s16_1
-            // 
-            this.s16_1.Location = new System.Drawing.Point(1109, 325);
-            this.s16_1.Name = "s16_1";
-            this.s16_1.Size = new System.Drawing.Size(59, 20);
-            this.s16_1.TabIndex = 255;
-            this.s16_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox234
-            // 
-            this.textBox234.Location = new System.Drawing.Point(1050, 325);
-            this.textBox234.Name = "textBox234";
-            this.textBox234.Size = new System.Drawing.Size(59, 20);
-            this.textBox234.TabIndex = 254;
-            this.textBox234.Text = "16";
-            this.textBox234.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s15_1
-            // 
-            this.s15_1.Location = new System.Drawing.Point(1109, 299);
-            this.s15_1.Name = "s15_1";
-            this.s15_1.Size = new System.Drawing.Size(59, 20);
-            this.s15_1.TabIndex = 253;
-            this.s15_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s14_1
-            // 
-            this.s14_1.Location = new System.Drawing.Point(1109, 273);
-            this.s14_1.Name = "s14_1";
-            this.s14_1.Size = new System.Drawing.Size(59, 20);
-            this.s14_1.TabIndex = 252;
-            this.s14_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s13_1
-            // 
-            this.s13_1.Location = new System.Drawing.Point(1109, 247);
-            this.s13_1.Name = "s13_1";
-            this.s13_1.Size = new System.Drawing.Size(59, 20);
-            this.s13_1.TabIndex = 251;
-            this.s13_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s12_1
-            // 
-            this.s12_1.Location = new System.Drawing.Point(1109, 221);
-            this.s12_1.Name = "s12_1";
-            this.s12_1.Size = new System.Drawing.Size(59, 20);
-            this.s12_1.TabIndex = 250;
-            this.s12_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox239
-            // 
-            this.textBox239.Location = new System.Drawing.Point(1050, 299);
-            this.textBox239.Name = "textBox239";
-            this.textBox239.Size = new System.Drawing.Size(59, 20);
-            this.textBox239.TabIndex = 249;
-            this.textBox239.Text = "15";
-            this.textBox239.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox240
-            // 
-            this.textBox240.Location = new System.Drawing.Point(1050, 273);
-            this.textBox240.Name = "textBox240";
-            this.textBox240.Size = new System.Drawing.Size(59, 20);
-            this.textBox240.TabIndex = 248;
-            this.textBox240.Text = "14";
-            this.textBox240.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox241
-            // 
-            this.textBox241.Location = new System.Drawing.Point(1050, 247);
-            this.textBox241.Name = "textBox241";
-            this.textBox241.Size = new System.Drawing.Size(59, 20);
-            this.textBox241.TabIndex = 247;
-            this.textBox241.Text = "13";
-            this.textBox241.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox242
-            // 
-            this.textBox242.Location = new System.Drawing.Point(1050, 221);
-            this.textBox242.Name = "textBox242";
-            this.textBox242.Size = new System.Drawing.Size(59, 20);
-            this.textBox242.TabIndex = 246;
-            this.textBox242.Text = "12";
-            this.textBox242.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s21_1
-            // 
-            this.s21_1.Location = new System.Drawing.Point(1109, 455);
-            this.s21_1.Name = "s21_1";
-            this.s21_1.Size = new System.Drawing.Size(59, 20);
-            this.s21_1.TabIndex = 265;
-            this.s21_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox248
-            // 
-            this.textBox248.Location = new System.Drawing.Point(1050, 455);
-            this.textBox248.Name = "textBox248";
-            this.textBox248.Size = new System.Drawing.Size(59, 20);
-            this.textBox248.TabIndex = 264;
-            this.textBox248.Text = "21";
-            this.textBox248.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox248.TextChanged += new System.EventHandler(this.textBox248_TextChanged);
-            // 
-            // s20_1
-            // 
-            this.s20_1.Location = new System.Drawing.Point(1109, 429);
-            this.s20_1.Name = "s20_1";
-            this.s20_1.Size = new System.Drawing.Size(59, 20);
-            this.s20_1.TabIndex = 263;
-            this.s20_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s19_1
-            // 
-            this.s19_1.Location = new System.Drawing.Point(1109, 403);
-            this.s19_1.Name = "s19_1";
-            this.s19_1.Size = new System.Drawing.Size(59, 20);
-            this.s19_1.TabIndex = 262;
-            this.s19_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox251
-            // 
-            this.textBox251.Location = new System.Drawing.Point(1050, 429);
-            this.textBox251.Name = "textBox251";
-            this.textBox251.Size = new System.Drawing.Size(59, 20);
-            this.textBox251.TabIndex = 261;
-            this.textBox251.Text = "20";
-            this.textBox251.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox252
-            // 
-            this.textBox252.Location = new System.Drawing.Point(1050, 403);
-            this.textBox252.Name = "textBox252";
-            this.textBox252.Size = new System.Drawing.Size(59, 20);
-            this.textBox252.TabIndex = 260;
-            this.textBox252.Text = "19";
-            this.textBox252.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s40_6
-            // 
-            this.s40_6.Location = new System.Drawing.Point(629, 143);
-            this.s40_6.Name = "s40_6";
-            this.s40_6.Size = new System.Drawing.Size(59, 20);
-            this.s40_6.TabIndex = 268;
-            this.s40_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.s40_6.TextChanged += new System.EventHandler(this.s40_6_TextChanged);
-            // 
-            // s40_5
-            // 
-            this.s40_5.Location = new System.Drawing.Point(629, 123);
-            this.s40_5.Name = "s40_5";
-            this.s40_5.Size = new System.Drawing.Size(59, 20);
-            this.s40_5.TabIndex = 267;
-            this.s40_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s40_4
-            // 
-            this.s40_4.Location = new System.Drawing.Point(629, 103);
-            this.s40_4.Name = "s40_4";
-            this.s40_4.Size = new System.Drawing.Size(59, 20);
-            this.s40_4.TabIndex = 266;
-            this.s40_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s40_7
-            // 
-            this.s40_7.Location = new System.Drawing.Point(629, 164);
-            this.s40_7.Name = "s40_7";
-            this.s40_7.Size = new System.Drawing.Size(59, 20);
-            this.s40_7.TabIndex = 269;
-            this.s40_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // BeheerApplicatie
             // 
