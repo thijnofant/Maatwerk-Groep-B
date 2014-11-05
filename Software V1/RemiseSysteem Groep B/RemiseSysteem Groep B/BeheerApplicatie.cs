@@ -70,31 +70,31 @@ namespace RemiseSysteem_Groep_B
 
         public void VulSporen()
         {
-            List<Spoor> sporen = new List<Spoor>();
-            sporen = this.remise.Database.SporenlijstOpvragen();
+            List<Spoor> sporen = this.remise.Database.SporenlijstOpvragen();
             Point location = new Point(splitContainer1.Panel2.Location.X - (splitContainer1.Panel2.Height + 20), splitContainer1.Panel2.Location.Y + 5);
-            if(sporen.Count > 0)
-            foreach (Spoor spoor in sporen)
-            {
-                Control spoorBegin = new Button();
-                spoorBegin.Text = "Spoor " + spoor.Nummer;
-                spoorBegin.Click += spoorBegin_Click;
-                spoorBegin.Name = "";
-                spoorBegin.Location = location;
-                this.splitContainer1.Panel2.Controls.Add(spoorBegin);
-                int sectorY = 30;
-                if(spoor.Sectoren.Count > 0)
-                foreach (Sector sector in spoor.Sectoren)
-                {
-                    Control SectorNieuw = new Button();
-                    SectorNieuw.Text = sector.Id.ToString();
-                    SectorNieuw.Click += SectorNieuw_Click;
-                    SectorNieuw.Location = new Point(location.X, location.Y + sectorY);
-                    this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
-                    sectorY += 22;
-                }
-                location.X += 100;
-            }
+            if (sporen != null)
+                if (sporen.Count > 0)
+                    foreach (Spoor spoor in sporen)
+                    {
+                        Control spoorBegin = new Button();
+                        spoorBegin.Text = "Spoor " + spoor.Nummer;
+                        spoorBegin.Click += spoorBegin_Click;
+                        spoorBegin.Name = "";
+                        spoorBegin.Location = location;
+                        this.splitContainer1.Panel2.Controls.Add(spoorBegin);
+                        int sectorY = 30;
+                        if (spoor.Sectoren.Count > 0)
+                            foreach (Sector sector in spoor.Sectoren)
+                            {
+                                Control SectorNieuw = new Button();
+                                SectorNieuw.Text = sector.Id.ToString();
+                                SectorNieuw.Click += SectorNieuw_Click;
+                                SectorNieuw.Location = new Point(location.X, location.Y + sectorY);
+                                this.splitContainer1.Panel2.Controls.Add(SectorNieuw);
+                                sectorY += 22;
+                            }
+                        location.X += 100;
+                    }
         }
 
         private void SectorNieuw_Click(object sender, EventArgs e)
@@ -121,7 +121,7 @@ namespace RemiseSysteem_Groep_B
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void verwijderenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace RemiseSysteem_Groep_B
 
         }
 
-        private void invoerenToolStripMenuItem_Click(object sender, EventArgs e) 
+        private void invoerenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
             form.Show();
@@ -167,7 +167,8 @@ namespace RemiseSysteem_Groep_B
             form.Show();
         }
 
-        private void invoerenToolStripMenuItem_Click_1(object sender, EventArgs e) {
+        private void invoerenToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
             BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
             form.Show();
         }

@@ -12,6 +12,7 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class OpstartForm : Form
     {
+        private Remise remise;
         BeheerApplicatie beheerdersApp;
         BestuurApplicatie bestuurdersApp;
         OnderhoudApplicatie onderhoudsApp;
@@ -23,7 +24,8 @@ namespace RemiseSysteem_Groep_B
             bestuurdersApp = new BestuurApplicatie();
             onderhoudsApp = new OnderhoudApplicatie();
             schoonmaakApp = new SchoonmaakApplicatie();
-            Simulatie();
+            this.remise = Remise.Instance;
+            //Simulatie();
         }
 
         private void btnBeheerdersApp_Click(object sender, EventArgs e) 
@@ -53,12 +55,13 @@ namespace RemiseSysteem_Groep_B
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            List<Tram> trams = new List<Tram>();
             Random willekeurigGetalGenerator = new Random();
             int inOfUitNummer = willekeurigGetalGenerator.Next(0, 2);
-            int willekeurigGetal = willekeurigGetalGenerator.Next(0, 5);
+            int willekeurigGetal = willekeurigGetalGenerator.Next(10);
             if (inOfUitNummer > 1)
             {
+                trams = this.remise.Database.AlleTramsMetStatus(TramStatus.Dienst);
                 //inrijden
                 switch (willekeurigGetal)
                 {
@@ -74,6 +77,18 @@ namespace RemiseSysteem_Groep_B
                     case 4:
                         //doorrijden
                         break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
                     default:
                         //doorrijden
                         break;
@@ -81,6 +96,7 @@ namespace RemiseSysteem_Groep_B
             }
             else
             {
+                trams = this.remise.Database.AlleTramsMetStatus(TramStatus.Remise);
                 //uitrijden
             }
         }
