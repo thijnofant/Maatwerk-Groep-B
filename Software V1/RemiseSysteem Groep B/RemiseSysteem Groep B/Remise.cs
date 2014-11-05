@@ -146,11 +146,11 @@ namespace RemiseSysteem_Groep_B
         }
         public void BeurtVoltooien()
         {
-
+            
         }
         public bool Inloggen(string naam, string wachtwoord)
         {
-            return this.Database.Inloggen(naam, wachtwoord);
+            return this.Database.Inloggen(naam, wachtwoord); 
         }
 
         #endregion

@@ -12,8 +12,16 @@ namespace RemiseSysteem_Groep_B
 {
     public partial class BeheerApp_Blokkeren : Form
     {
-        public BeheerApp_Blokkeren() {
+        DatabaseManager db = DatabaseManager.Instance;
+        public BeheerApp_Blokkeren() 
+        {
             InitializeComponent();
+        }
+
+        public void UpdateData() 
+        {
+            List<Spoor> sporen = db.SporenlijstOpvragen();
+            List<Sector> sectoren = db.GetSectorenVoorBlokkade();
         }
     }
 }
