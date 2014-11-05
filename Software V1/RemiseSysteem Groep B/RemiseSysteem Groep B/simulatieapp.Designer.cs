@@ -43,6 +43,10 @@
             this.lbxSimulatie.Size = new System.Drawing.Size(905, 484);
             this.lbxSimulatie.TabIndex = 0;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork_1);
+            // 
             // simulatieapp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
