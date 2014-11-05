@@ -61,29 +61,11 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
-        public List<Medewerker> OnderhoudsMedewerkersOpvragen()
+        public List<Medewerker> MedewerkersOpvragen()
         {
             List<Medewerker> medewerkers = new List<Medewerker>();
 
-            String cmd = "SELECT M.ID, M.FunctieID, M.Naam FROM Medewerker M, Functie F WHERE F.ID = M.FunctieID AND F.Naam = 'Technicus'";
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
-
-            try
-            {
-                connection.Open();
-                OracleDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Medewerker mw = new Medewerker(Convert.ToInt32(reader["ID"]), Convert.ToString(reader["Naam"]), MedewerkerType.Technicus);
-                    medewerkers.Add(mw);
-                }
-            }
-            catch { }
-            finally
-            {
-                connection.Close();
-            }
+            //TODO: SQL
 
             return medewerkers;
         }
@@ -92,7 +74,7 @@ namespace RemiseSysteem_Groep_B
         {
             List<Medewerker> medewerkers = new List<Medewerker>();
 
-            
+            //TODO: SQL
 
             return medewerkers;
         }
@@ -845,6 +827,27 @@ namespace RemiseSysteem_Groep_B
 
         public int GetToegewezenSpoor(int tramID)
         {
+            String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                int SpoorID = reader.GetInt32(0);
+                return SpoorID;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
             return 0;
         }
     }
