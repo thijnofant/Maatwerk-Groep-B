@@ -91,15 +91,20 @@ namespace RemiseSysteem_Groep_B
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string onderhoud = "False";
-            string schoonmaak = "False";
+            bool onderhoud = false;
+            bool schoonmaak = false;
+            int tramnr = Convert.ToInt32(tbxInput.Text);
 
-            remise.PlaatsAutomatischToewijzen(Convert.ToInt32(tbxInput.Text),)
             if(chbOnderhoud.Checked)
             {
-               string onderhoud = "True";
+               onderhoud = true;
             }
-            if()
+            if(chbschoonmaak.Checked)
+            {
+                schoonmaak = true;
+            }
+
+            remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak);
         }
     }
 }
