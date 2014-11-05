@@ -14,8 +14,10 @@ namespace RemiseSysteem_Groep_B
     {
         List<Onderhoud> onderhoudsBeurten = new List<Onderhoud>();
         Onderhoud onderhoud;
-        List<Medewerker> medewerkersOnderhoud;
+        List<Medewerker> medewerkers;
+        Medewerker medewerker;
         Medewerker medewerkerOnderhoud;
+        int medewerkerID;
 
         DatabaseManager databaseManager;
 
@@ -26,17 +28,23 @@ namespace RemiseSysteem_Groep_B
 
             databaseManager = DatabaseManager.Instance;
 
-            medewerkersOnderhoud = new List<Medewerker>();
+            medewerkers = new List<Medewerker>();
 
             LaadMedewerkers();
+
+            if(medewerkers.Count >= 1)
+            {
+                medewerker = medewerkers[0];
+            }
+
             LaadOnderhoud();
         }
 
         public void LaadMedewerkers()
         {
-            medewerkersOnderhoud = Remise.Instance.Database.OnderhoudsMedewerkersOpvragen();
+            medewerkers = Remise.Instance.Database.OnderhoudsMedewerkersOpvragen();
 
-            foreach (Medewerker medewerker in medewerkersOnderhoud)
+            foreach (Medewerker medewerker in medewerkers)
             {
                 lbxMedewerkers.Items.Add(Convert.ToString(medewerker.Naam));
             }
@@ -62,23 +70,29 @@ namespace RemiseSysteem_Groep_B
         {
             tbxDatum.Text = Convert.ToString(onderhoud.BeginDatum);
 
-            this.medewerkersOnderhoud = Remise.Instance.Database.MedewerkersOpvragen(onderhoud);
+            medewerkerID = Remise.Instance.Database.MedewerkerOpvragen(onderhoud);
 
-            foreach (Medewerker medewerker in this.medewerkersOnderhoud)
+            if(medewerkerID != -1)
             {
-                lbxOnderhoudsMedewerkers.Items.Add(medewerker);
+                medewerkerOnderhoud = this.databaseManager.ZoekMedewerkerOpID(medewerkerID);
+
+                tbxMedewerkerOnderhoud.Text = medewerkerOnderhoud.Naam;
+            }
+            else
+            {
+                tbxMedewerkerOnderhoud.Text = "Geen medewerker.";
             }
         }
 
         private void btnVerwijderMedewerker_Click(object sender, EventArgs e)
         {
-            onderhoud.VerwijderMedewerker(medewerkerOnderhoud);
+            onderhoud.VerwijderMedewerker(medewerker);
         }
 
-        private void lbxOnderhoudsMedewerkers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            medewerkerOnderhoud = medewerkersOnderhoud[lbxOnderhoudsMedewerkers.SelectedIndex];
-        }
+        //private void lbxOnderhoudsMedewerkers_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    medewerker = medewerkers[lbxOnderhoudsMedewerkers.SelectedIndex];
+        //}
 
         private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
         {
@@ -109,7 +123,7 @@ namespace RemiseSysteem_Groep_B
         {
             if(lbxMedewerkers.SelectedIndex != -1 && lbxOnderhoudsBeurten.SelectedIndex != -1)
             {
-                if (!this.databaseManager.VoegMedewerkerToeAanOnderhoud(medewerkersOnderhoud[lbxMedewerkers.SelectedIndex], onderhoud))
+                if (!this.databaseManager.VoegMedewerkerToeAanOnderhoud(medewerkers[lbxMedewerkers.SelectedIndex], onderhoud))
                 {
                     MessageBox.Show("Toevoegen mislukt.");
                 }

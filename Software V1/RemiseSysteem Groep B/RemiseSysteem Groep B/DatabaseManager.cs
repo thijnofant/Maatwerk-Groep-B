@@ -88,13 +88,33 @@ namespace RemiseSysteem_Groep_B
             return medewerkers;
         }
 
-        public List<Medewerker> MedewerkersOpvragen(Onderhoud onderhoud)
+        public int MedewerkerOpvragen(Onderhoud onderhoud)
         {
-            List<Medewerker> medewerkers = new List<Medewerker>();
+            int medewerkerID = -1;
 
-            //TODO: SQL
+            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = " + onderhoud.ID;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
 
-            return medewerkers;
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader["MedewerkerID"] != "")
+                    {
+                        medewerkerID = Convert.ToInt32(reader["MedewerkerID"]);
+                    }
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return medewerkerID;
         }
 
         public bool Inloggen(string username, string wachtwoord)
@@ -109,58 +129,58 @@ namespace RemiseSysteem_Groep_B
         /// Haalt de lijst met alle schoonmaak die niet nog niet af zijn.
         /// </summary>
         /// <returns></returns>
-        public List<Schoonmaak> SchoonmaakOpvragen()
-        {
-            List<Tram> trams = AlleTrams();
+        //public List<Schoonmaak> SchoonmaakOpvragen()
+        //{
+        //    List<Tram> trams = AlleTrams();
 
-            List<Schoonmaak> returnList = new List<Schoonmaak>();
+        //    List<Schoonmaak> returnList = new List<Schoonmaak>();
 
-            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Schoonmaak'";
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
-            try
-            {
-                connection.Open();
-                OracleDataReader reader = command.ExecuteReader();
-                while(reader.Read())
-                {
-                    int SchoonmaakID = reader.GetInt32(0);
-                    int MedewerkerId = reader.GetInt32(1);
-                    int tramId = reader.GetInt32(2);
-                    DateTime startTijd = reader.GetDateTime(3);
-                    string beurtType = reader["BeurtType"].ToString();
+        //    String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Schoonmaak'";
+        //    OracleCommand command = new OracleCommand(cmd, connection);
+        //    command.CommandType = System.Data.CommandType.Text;
+        //    try
+        //    {
+        //        connection.Open();
+        //        OracleDataReader reader = command.ExecuteReader();
+        //        while(reader.Read())
+        //        {
+        //            int SchoonmaakID = reader.GetInt32(0);
+        //            int MedewerkerId = reader.GetInt32(1);
+        //            int tramId = reader.GetInt32(2);
+        //            DateTime startTijd = reader.GetDateTime(3);
+        //            string beurtType = reader["BeurtType"].ToString();
 
-                    BeurtType tempEnum = BeurtType.Groot;
+        //            BeurtType tempEnum = BeurtType.Groot;
 
-                    switch (beurtType)
-                    {
-                        case "Klein":
-                            tempEnum = BeurtType.Klein;
-                            break;
-                        case "Groot":
-                            tempEnum = BeurtType.Groot;  
-                            break;
-                        case "Incident":
-                            tempEnum = BeurtType.Incident;
-                            break;
-                    }
-                    Medewerker tempMed = ZoekMedewerkerOpID(MedewerkerId);
+        //            switch (beurtType)
+        //            {
+        //                case "Klein":
+        //                    tempEnum = BeurtType.Klein;
+        //                    break;
+        //                case "Groot":
+        //                    tempEnum = BeurtType.Groot;  
+        //                    break;
+        //                case "Incident":
+        //                    tempEnum = BeurtType.Incident;
+        //                    break;
+        //            }
+        //            Medewerker tempMed = ZoekMedewerkerOpID(MedewerkerId);
                     
-                    Schoonmaak tempSchoon = new Schoonmaak(startTijd, SchoonmaakID, tempEnum, trams.Find(x => x.Id == tramId));
-                    if (tempMed != null)
-                    {
-                        tempSchoon.VoegMedewerkerToe(tempMed);
-                    }
-                    returnList.Add(tempSchoon);
-                }
-            }
-            catch { }
-            finally
-            {
-                connection.Close();
-            }
-            return returnList;
-        }
+        //            Schoonmaak tempSchoon = new Schoonmaak(startTijd, SchoonmaakID, tempEnum, trams.Find(x => x.Id == tramId));
+        //            if (tempMed != null)
+        //            {
+        //                tempSchoon.VoegMedewerkerToe(tempMed);
+        //            }
+        //            returnList.Add(tempSchoon);
+        //        }
+        //    }
+        //    catch { }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+        //    return returnList;
+        //}
 
         /// <summary>
         /// NOG TESTEN
@@ -231,7 +251,7 @@ namespace RemiseSysteem_Groep_B
 
         public bool VoegMedewerkerToeAanOnderhoud(Medewerker medewerker, Onderhoud onderhoud)
         {
-            string cmd = "UPDATE TRAM_BEURT SET Mederwerker_ID = " + medewerker.Id + " WHERE ID = " + onderhoud.ID;
+            string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = " + medewerker.Id + " WHERE ID = " + onderhoud.ID;
             OracleCommand comm = new OracleCommand(cmd, connection);
             try
             {
@@ -372,7 +392,7 @@ namespace RemiseSysteem_Groep_B
 
         public Medewerker ZoekMedewerkerOpID(int id)
         {
-            String cmd = "Select M.ID, M.Naam, F.Naam FROM MEDEWERKER M INNER JOIN FUNCTIE F ON M.FUNCTIEID = F.ID WHERE M.ID =" + id.ToString();
+            String cmd = "Select M.Naam AS MNaam, F.Naam AS FNaam FROM MEDEWERKER M, FUNCTIE F WHERE M.FunctieID = F.ID AND M.ID = " + id.ToString();
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -381,9 +401,8 @@ namespace RemiseSysteem_Groep_B
 
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
-                int medewerkerID = reader.GetInt32(0);
-                string medewerkerNaam = reader["M.Naam"].ToString();
-                string funtieNaam = reader["F.Naam"].ToString();
+                string medewerkerNaam = reader["MNaam"].ToString();
+                string funtieNaam = reader["FNaam"].ToString();
 
                 MedewerkerType temp = MedewerkerType.Bestuurder;
                 switch (funtieNaam)
@@ -401,7 +420,7 @@ namespace RemiseSysteem_Groep_B
                         temp = MedewerkerType.Technicus;
                         break;
                 }
-                Medewerker returnmed = new Medewerker(medewerkerID, medewerkerNaam, temp);
+                Medewerker returnmed = new Medewerker(id, medewerkerNaam, temp);
                 return returnmed;
             }
             catch
