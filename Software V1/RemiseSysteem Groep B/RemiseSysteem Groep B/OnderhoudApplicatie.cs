@@ -38,7 +38,7 @@ namespace RemiseSysteem_Groep_B
 
             foreach(Medewerker medewerker in medewerkers)
             {
-                lbxMedewerkers.Items.Add(medewerker);
+                //lbxMedewerkers.Items.Add(Convert.ToString(medewerker.Naam));
             }
         }
 
