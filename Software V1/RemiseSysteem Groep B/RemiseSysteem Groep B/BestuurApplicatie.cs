@@ -106,7 +106,10 @@ namespace RemiseSysteem_Groep_B
 
             if(remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))
             {
-                lblGoToTrack.Text = Convert.ToString(db.GetToegewezenSpoor(tramnr));
+                if (db.GetToegewezenSpoor(tramnr) != 0)
+                {
+                    lblGoToTrack.Text = Convert.ToString(db.GetToegewezenSpoor(tramnr));
+                }
             }
         }
 
