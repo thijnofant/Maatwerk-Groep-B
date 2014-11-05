@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BeheerApp-Blokkeren.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BeheerApp-Blokkeren.Designer.cs">
+      <DependentUpon>BeheerApp-Blokkeren.cs</DependentUpon>
+    </Compile>
     <Compile Include="BeheerApplicatie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,12 +100,6 @@
       <DependentUpon>SchoonmaakApplicatie.cs</DependentUpon>
     </Compile>
     <Compile Include="Sector.cs" />
-    <Compile Include="simulatieapp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="simulatieapp.Designer.cs">
-      <DependentUpon>simulatieapp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
     <Compile Include="TramReserveren.cs">
@@ -112,6 +112,9 @@
     <Compile Include="TramType.cs" />
     <EmbeddedResource Include="BeheerApp-BeurtInvoeren.resx">
       <DependentUpon>BeheerApp-BeurtInvoeren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BeheerApp-Blokkeren.resx">
+      <DependentUpon>BeheerApp-Blokkeren.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BeheerApplicatie.resx">
       <DependentUpon>BeheerApplicatie.cs</DependentUpon>
@@ -134,9 +137,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="simulatieapp.resx">
-      <DependentUpon>simulatieapp.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TramReserveren.resx">
       <DependentUpon>TramReserveren.cs</DependentUpon>
     </EmbeddedResource>

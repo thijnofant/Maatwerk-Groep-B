@@ -131,7 +131,8 @@ namespace RemiseSysteem_Groep_B
 
         private void blokkerenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            BeheerApp_Blokkeren form = new BeheerApp_Blokkeren();
+            form.Show();
         }
 
         private void deblokkerenToolStripMenuItem_Click(object sender, EventArgs e)
