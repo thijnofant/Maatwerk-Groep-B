@@ -14,12 +14,16 @@ namespace RemiseSysteem_Groep_B
     {
         Remise remise;
         DatabaseManager db;
+        List<Tram> tramlijst;
+        List<Beurt> beurtenlijst;
 
         public BeheerderApp_SchoonmaakInvoeren() 
         {
             InitializeComponent();
             remise = Remise.Instance;
             db = DatabaseManager.Instance;
+            tramlijst = db.AlleTrams();
+            beurtenlijst = db.ZoekAlleBeurten();
             OpstartMethode();
         }
 
@@ -45,6 +49,26 @@ namespace RemiseSysteem_Groep_B
                 MessageBox.Show("Kan geen beurt plannen in het verleden.", "Error");
                 return;
             }
+            if (Convert.ToString(cbxSoortBeurt.SelectedValue) == "Schoonmaak") 
+            {
+                int beurtid = db.GetInsertID("ID", "Tram_beurt");
+                BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedValue), true);
+                Tram tram = tramlijst.Find(x => x.Nummer == Convert.ToInt32(lbxTrams.SelectedItem));
+                DateTime datum = Convert.ToDateTime(dtpDatum.Value);
+
+                Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, beurttype, tram);
+                db.SchoonmaakInvoeren(schoonmaak);
+            }
+            if (Convert.ToString(cbxSoortBeurt.SelectedValue) == "Onderhoud") 
+            {
+                int beurtid = db.GetInsertID("ID", "Tram_beurt");
+                BeurtType beurttype = (BeurtType)Enum.Parse(typeof(BeurtType), Convert.ToString(cbxTypeBeurt.SelectedValue), true);
+                Tram tram = tramlijst.Find(x => x.Nummer == Convert.ToInt32(lbxTrams.SelectedItem));
+                DateTime datum = Convert.ToDateTime(dtpDatum.Value);
+
+                Onderhoud onderhoud = new Onderhoud(datum, beurtid, beurttype, tram);
+                db.OnderhoudInvoeren(onderhoud);
+            }
         }
 
         private void btnAnnuleren_Click(object sender, EventArgs e) 
@@ -53,7 +77,7 @@ namespace RemiseSysteem_Groep_B
         }
         private void OpstartMethode() 
         {
-            foreach (Tram t in db.AlleTrams()) 
+            foreach (Tram t in tramlijst) 
             {
                 string lbstring = t.Type.Naam + " - " + Convert.ToString(t.Nummer);
                 lbxTrams.Items.Add(lbstring);
