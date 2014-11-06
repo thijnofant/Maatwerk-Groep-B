@@ -1111,9 +1111,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public bool BlokkeerSector(int sectorID) 
+        public bool BlokkeerSector(string sectorID) 
         {
-            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + Convert.ToString(sectorID) + "' AND TramID IS NULL";
+            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try 
@@ -1132,19 +1132,60 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public bool DeblokkeerSector(int sectorID) {
-            string cmd = "";
-            return false;
+        public bool DeblokkeerSector(string sectorID) {
+            string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try 
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+            finally 
+            {
+                connection.Close();
+            }
         }
 
-        public bool BlokkeerSpoor(int sectorID) {
-            string cmd = "";
-            return false;
+        public bool BlokkeerSpoor(string spoorID) 
+        {
+            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch {
+                return false;
+            }
+            finally {
+                connection.Close();
+            }
         }
 
-        public bool DeblokkeerSpoor(int sectorID) {
-            string cmd = "";
-            return false;
+        public bool DeblokkeerSpoor(string spoorID) 
+        {
+            string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch {
+                return false;
+            }
+            finally {
+                connection.Close();
+            }
         }
     }
 }

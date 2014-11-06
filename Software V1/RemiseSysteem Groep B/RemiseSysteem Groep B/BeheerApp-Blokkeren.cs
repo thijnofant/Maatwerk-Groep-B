@@ -20,10 +20,19 @@ namespace RemiseSysteem_Groep_B
             UpdateData();
         }
 
+        public void UpdateDataAlleen() 
+        {
+            sporen = db.SporenlijstOpvragen();
+            sectoren = db.GetSectorenVoorBlokkade();
+        }
+
         public void UpdateData() 
         {
             sporen = db.SporenlijstOpvragen();
             sectoren = db.GetSectorenVoorBlokkade();
+            lbxSporen.Items.Clear();
+            btnBlokkeer.Enabled = false;
+            btnDeblokkeer.Enabled = false;
 
             foreach (Spoor s in sporen) 
             {
@@ -66,15 +75,78 @@ namespace RemiseSysteem_Groep_B
 
         private void btnBlokkeer_Click(object sender, EventArgs e) 
         {
+            UpdateDataAlleen();
+
             if (lbxSectoren.SelectedItem == null) 
             {
+                int spoornummer = Convert.ToInt32(lbxSporen.SelectedItem);
+                int spoorID = -1;
 
+                foreach (Spoor s in sporen) 
+                {
+                    if (spoornummer == s.Nummer) 
+                    {
+                        spoorID = s.Id;
+                    }
+                }
+               
+                if (db.BlokkeerSpoor(Convert.ToString(spoorID)))
+                    MessageBox.Show("Spoor is succesvol geblokkeerd");
+                else
+                    MessageBox.Show("Spoor blokkeren mislukt.");
+                lbxSectoren.Items.Clear();
+                UpdateData();
+                return;
             }
+
+            string sectorID = Convert.ToString(lbxSectoren.SelectedItem);
+            sectorID = sectorID.Substring(0, sectorID.IndexOf(" "));
+
+            if (db.BlokkeerSector(sectorID))
+                MessageBox.Show("Sector is succesvol geblokkeerd.");
+            else
+                MessageBox.Show("Sector blokkeren mislukt.");
+
+            lbxSectoren.Items.Clear();
+            UpdateData();
         }
 
         private void btnDeblokkeer_Click(object sender, EventArgs e) 
         {
+            UpdateDataAlleen();
 
+            if (lbxSectoren.SelectedItem == null) 
+            {
+                int spoornummer = Convert.ToInt32(lbxSporen.SelectedItem);
+                int spoorID = -1;
+
+                foreach (Spoor s in sporen) 
+                {
+                    if (spoornummer == s.Nummer) 
+                    {
+                        spoorID = s.Id;
+                    }
+                }
+               
+                if (db.DeblokkeerSpoor(Convert.ToString(spoorID)))
+                    MessageBox.Show("Spoor is succesvol gedeblokkeerd");
+                else
+                    MessageBox.Show("Spoor deblokkeren mislukt.");
+                lbxSectoren.Items.Clear();
+                UpdateData();
+                return;
+            }
+
+            string sectorID = Convert.ToString(lbxSectoren.SelectedItem);
+            sectorID = sectorID.Substring(0, sectorID.IndexOf(" "));
+
+            if (db.DeblokkeerSector(sectorID))
+                MessageBox.Show("Sector is succesvol gedeblokkeerd.");
+            else
+                MessageBox.Show("Sector deblokkeren mislukt.");
+
+            lbxSectoren.Items.Clear();
+            UpdateData();
         }
     }
 }
