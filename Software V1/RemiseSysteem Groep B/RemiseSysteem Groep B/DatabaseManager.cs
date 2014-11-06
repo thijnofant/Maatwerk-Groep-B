@@ -1315,5 +1315,48 @@ namespace RemiseSysteem_Groep_B
                 connection.Close();
             }
         }
+
+        public string[] SpoorSectorArray()
+        {
+            String cmd = "SELECT T.NUMMER, SE.ID, SE.Blokkade FROM TRAM T Right JOIN Sector SE ON T.ID = SE.TramId ORDER BY SE.ID";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                string[] tempArray = new string[1000];
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string restring;
+                    try
+                    {
+                        restring = reader.GetInt32(0).ToString();
+                    }
+                    catch
+                    {
+                        restring = "0";
+                    }
+                    int SectorID = reader.GetInt32(1);
+                    if (reader.GetString(2) == "y")
+                    {
+                        restring = "X";
+                    }
+
+                    tempArray[SectorID] = restring;
+                }
+
+                return tempArray;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
     }
 }

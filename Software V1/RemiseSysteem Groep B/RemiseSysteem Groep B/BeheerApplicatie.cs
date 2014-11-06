@@ -20,54 +20,7 @@ namespace RemiseSysteem_Groep_B
             InitializeComponent();
             databaseManager = DatabaseManager.Instance;
             this.remise = Remise.Instance;
-            Update();
-            //Update2();
-
-            //this.remise.Sporen = this.remise.Database.SporenlijstOpvragen(); moet weggegooit worden
-
-            //List<Sector> sectoren = new List<Sector>();
-            //List<Lijn> lijnen = new List<Lijn>();
-            //Sector s;
-            //s = new Sector(1, false);
-            //sectoren.Add(s);
-            //s = new Sector(2, false);
-            //sectoren.Add(s);
-            //s = new Sector(3, false);
-            //sectoren.Add(s);
-            //s = new Sector(4, false);
-            //sectoren.Add(s);
-            //s = new Sector(5, false);
-            //sectoren.Add(s);
-            //Spoor spoor1 = new Spoor(1, sectoren, lijnen);
-            //sectoren = new List<Sector>();
-            //lijnen = new List<Lijn>();
-            //s = new Sector(1, false);
-            //sectoren.Add(s);
-            //s = new Sector(2, false);
-            //sectoren.Add(s);
-            //s = new Sector(3, false);
-            //sectoren.Add(s);
-            //s = new Sector(4, false);
-            //sectoren.Add(s);
-            //s = new Sector(5, false);
-            //sectoren.Add(s);
-            //Spoor spoor2 = new Spoor(1, sectoren, lijnen);
-            //sectoren = new List<Sector>();
-            //lijnen = new List<Lijn>();
-            //s = new Sector(1, false);
-            //sectoren.Add(s);
-            //s = new Sector(2, false);
-            //sectoren.Add(s);
-            //s = new Sector(3, false);
-            //sectoren.Add(s);
-            //s = new Sector(4, false);
-            //sectoren.Add(s);
-            //s = new Sector(5, false);
-            //sectoren.Add(s);
-            //Spoor spoor3 = new Spoor(1, sectoren, lijnen);
-            //this.remise.Sporen.Add(spoor1);
-            //this.remise.Sporen.Add(spoor2);
-            //this.remise.Sporen.Add(spoor3);
+            Updater();
         }
 
         private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,185 +91,164 @@ namespace RemiseSysteem_Groep_B
             form.Show();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Updater()
         {
-            Update();
-            if (timer2.Enabled == false)
-                timer2.Enabled = true;
+            string[] Spoor_Sector = DatabaseManager.Instance.SpoorSectorArray();
+            s12_1.Text = Spoor_Sector[1].ToString();
+            s13_1.Text = Spoor_Sector[2].ToString();
+            s14_1.Text = Spoor_Sector[3].ToString();
+            s15_1.Text = Spoor_Sector[4].ToString();
+            s16_1.Text = Spoor_Sector[5].ToString();
+            s17_1.Text = Spoor_Sector[6].ToString();
+            s18_1.Text = Spoor_Sector[7].ToString();
+            s19_1.Text = Spoor_Sector[8].ToString();
+            s20_1.Text = Spoor_Sector[9].ToString();
+            s21_1.Text = Spoor_Sector[10].ToString();
+            s30_1.Text = Spoor_Sector[11].ToString();
+            s30_2.Text = Spoor_Sector[13].ToString();
+            s30_3.Text = Spoor_Sector[14].ToString();
+            s31_1.Text = Spoor_Sector[15].ToString();
+            s31_2.Text = Spoor_Sector[16].ToString();
+            s31_3.Text = Spoor_Sector[17].ToString();
+            s32_1.Text = Spoor_Sector[18].ToString();
+            s32_2.Text = Spoor_Sector[19].ToString();
+            s32_3.Text = Spoor_Sector[20].ToString();
+            s32_4.Text = Spoor_Sector[21].ToString();
+            s33_1.Text = Spoor_Sector[22].ToString();
+            s33_2.Text = Spoor_Sector[23].ToString();
+            s33_3.Text = Spoor_Sector[24].ToString();
+            s33_4.Text = Spoor_Sector[25].ToString();
+            s34_1.Text = Spoor_Sector[26].ToString();
+            s34_2.Text = Spoor_Sector[27].ToString();
+            s34_3.Text = Spoor_Sector[28].ToString();
+            s34_4.Text = Spoor_Sector[29].ToString();
+            s35_1.Text = Spoor_Sector[30].ToString();
+            s35_2.Text = Spoor_Sector[31].ToString();
+            s35_3.Text = Spoor_Sector[32].ToString();
+            s35_4.Text = Spoor_Sector[33].ToString();
+            s36_1.Text = Spoor_Sector[34].ToString();
+            s36_2.Text = Spoor_Sector[35].ToString();
+            s36_3.Text = Spoor_Sector[36].ToString();
+            s36_4.Text = Spoor_Sector[37].ToString();
+            s37_1.Text = Spoor_Sector[38].ToString();
+            s37_2.Text = Spoor_Sector[39].ToString();
+            s37_3.Text = Spoor_Sector[40].ToString();
+            s37_4.Text = Spoor_Sector[41].ToString();
+            s38_1.Text = Spoor_Sector[42].ToString();
+            s38_2.Text = Spoor_Sector[43].ToString();
+            s38_3.Text = Spoor_Sector[44].ToString();
+            s38_4.Text = Spoor_Sector[45].ToString();
+            s40_1.Text = Spoor_Sector[46].ToString();
+            s40_2.Text = Spoor_Sector[47].ToString();
+            s40_3.Text = Spoor_Sector[48].ToString();
+            s40_4.Text = Spoor_Sector[49].ToString();
+            s40_5.Text = Spoor_Sector[50].ToString();
+            s40_6.Text = Spoor_Sector[51].ToString();
+            s40_7.Text = Spoor_Sector[52].ToString();
+            s41_1.Text = Spoor_Sector[53].ToString();
+            s41_2.Text = Spoor_Sector[54].ToString();
+            s41_3.Text = Spoor_Sector[55].ToString();
+            s42_1.Text = Spoor_Sector[56].ToString();
+            s42_2.Text = Spoor_Sector[57].ToString();
+            s42_3.Text = Spoor_Sector[58].ToString();
+            s43_1.Text = Spoor_Sector[59].ToString();
+            s43_2.Text = Spoor_Sector[60].ToString();
+            s43_3.Text = Spoor_Sector[61].ToString();
+            s44_1.Text = Spoor_Sector[62].ToString();
+            s44_2.Text = Spoor_Sector[63].ToString();
+            s44_3.Text = Spoor_Sector[64].ToString();
+            s45_1.Text = Spoor_Sector[65].ToString();
+            s45_2.Text = Spoor_Sector[66].ToString();
+            s45_3.Text = Spoor_Sector[67].ToString();
+            s51_1.Text = Spoor_Sector[68].ToString();
+            s51_2.Text = Spoor_Sector[69].ToString();
+            s51_3.Text = Spoor_Sector[70].ToString();
+            s51_4.Text = Spoor_Sector[71].ToString();
+            s51_5.Text = Spoor_Sector[72].ToString();
+            s51_6.Text = Spoor_Sector[73].ToString();
+            s52_1.Text = Spoor_Sector[74].ToString();
+            s52_2.Text = Spoor_Sector[75].ToString();
+            s52_3.Text = Spoor_Sector[76].ToString();
+            s52_4.Text = Spoor_Sector[77].ToString();
+            s52_5.Text = Spoor_Sector[78].ToString();
+            s52_6.Text = Spoor_Sector[79].ToString();
+            s52_7.Text = Spoor_Sector[80].ToString();
+            s53_1.Text = Spoor_Sector[81].ToString();
+            s53_2.Text = Spoor_Sector[82].ToString();
+            s53_3.Text = Spoor_Sector[83].ToString();
+            s53_4.Text = Spoor_Sector[84].ToString();
+            s53_5.Text = Spoor_Sector[85].ToString();
+            s53_6.Text = Spoor_Sector[86].ToString();
+            s53_7.Text = Spoor_Sector[87].ToString();
+            s54_1.Text = Spoor_Sector[88].ToString();
+            s54_2.Text = Spoor_Sector[89].ToString();
+            s54_3.Text = Spoor_Sector[90].ToString();
+            s54_4.Text = Spoor_Sector[91].ToString();
+            s54_5.Text = Spoor_Sector[92].ToString();
+            s54_6.Text = Spoor_Sector[93].ToString();
+            s54_7.Text = Spoor_Sector[94].ToString();
+            s55_1.Text = Spoor_Sector[95].ToString();
+            s55_2.Text = Spoor_Sector[96].ToString();
+            s55_3.Text = Spoor_Sector[97].ToString();
+            s55_4.Text = Spoor_Sector[98].ToString();
+            s55_5.Text = Spoor_Sector[99].ToString();
+            s55_6.Text = Spoor_Sector[100].ToString();
+            s55_7.Text = Spoor_Sector[101].ToString();
+            s55_8.Text = Spoor_Sector[102].ToString();
+            s56_1.Text = Spoor_Sector[103].ToString();
+            s56_2.Text = Spoor_Sector[104].ToString();
+            s56_3.Text = Spoor_Sector[105].ToString();
+            s56_4.Text = Spoor_Sector[106].ToString();
+            s56_5.Text = Spoor_Sector[107].ToString();
+            s56_6.Text = Spoor_Sector[108].ToString();
+            s56_7.Text = Spoor_Sector[109].ToString();
+            s56_8.Text = Spoor_Sector[110].ToString();
+            s57_1.Text = Spoor_Sector[111].ToString();
+            s57_2.Text = Spoor_Sector[112].ToString();
+            s57_3.Text = Spoor_Sector[113].ToString();
+            s57_4.Text = Spoor_Sector[114].ToString();
+            s57_5.Text = Spoor_Sector[115].ToString();
+            s57_6.Text = Spoor_Sector[116].ToString();
+            s57_7.Text = Spoor_Sector[117].ToString();
+            s57_8.Text = Spoor_Sector[118].ToString();
+            s58_1.Text = Spoor_Sector[119].ToString();
+            s58_2.Text = Spoor_Sector[120].ToString();
+            s58_3.Text = Spoor_Sector[121].ToString();
+            s61_1.Text = Spoor_Sector[122].ToString();
+            s61_2.Text = Spoor_Sector[123].ToString();
+            s61_3.Text = Spoor_Sector[124].ToString();
+            s62_1.Text = Spoor_Sector[125].ToString();
+            s62_2.Text = Spoor_Sector[126].ToString();
+            s62_3.Text = Spoor_Sector[127].ToString();
+            s63_1.Text = Spoor_Sector[128].ToString();
+            s63_2.Text = Spoor_Sector[129].ToString();
+            s63_3.Text = Spoor_Sector[130].ToString();
+            s63_4.Text = Spoor_Sector[131].ToString();
+            s64_1.Text = Spoor_Sector[132].ToString();
+            s64_2.Text = Spoor_Sector[133].ToString();
+            s64_3.Text = Spoor_Sector[134].ToString();
+            s64_4.Text = Spoor_Sector[135].ToString();
+            s64_5.Text = Spoor_Sector[136].ToString();
+            s74_1.Text = Spoor_Sector[137].ToString();
+            s74_2.Text = Spoor_Sector[138].ToString();
+            s74_3.Text = Spoor_Sector[139].ToString();
+            s74_4.Text = Spoor_Sector[140].ToString();
+            s74_5.Text = Spoor_Sector[141].ToString();
+            s75_1.Text = Spoor_Sector[142].ToString();
+            s75_2.Text = Spoor_Sector[143].ToString();
+            s75_3.Text = Spoor_Sector[144].ToString();
+            s75_4.Text = Spoor_Sector[145].ToString();
+            s76_1.Text = Spoor_Sector[146].ToString();
+            s76_2.Text = Spoor_Sector[147].ToString();
+            s76_3.Text = Spoor_Sector[148].ToString();
+            s76_4.Text = Spoor_Sector[149].ToString();
+            s76_5.Text = Spoor_Sector[150].ToString();
+            s77_1.Text = Spoor_Sector[151].ToString();
+            s77_2.Text = Spoor_Sector[152].ToString();
+            s77_3.Text = Spoor_Sector[153].ToString();
+            s77_4.Text = Spoor_Sector[154].ToString();
+            s77_5.Text = Spoor_Sector[155].ToString();
         }
-
-        private void Update()
-        {
-            s12_1.Text = GetTrainString(1, 1);
-            s13_1.Text = GetTrainString(1, 2);
-            s14_1.Text = GetTrainString(1, 3);
-            s15_1.Text = GetTrainString(1, 4);
-            s16_1.Text = GetTrainString(1, 5);
-            s17_1.Text = GetTrainString(1, 6);
-            s18_1.Text = GetTrainString(1, 7);
-            s19_1.Text = GetTrainString(1, 8);
-            s20_1.Text = GetTrainString(1, 9);
-            s21_1.Text = GetTrainString(1, 10);
-            s30_1.Text = GetTrainString(1, 11);
-            s30_2.Text = GetTrainString(2, 11);
-            s30_3.Text = GetTrainString(3, 11);
-            s31_1.Text = GetTrainString(1, 12);
-            s31_2.Text = GetTrainString(2, 12);
-            s31_3.Text = GetTrainString(3, 12);
-            s32_1.Text = GetTrainString(1, 13);
-            s32_2.Text = GetTrainString(2, 13);
-            s32_3.Text = GetTrainString(3, 13);
-            s32_4.Text = GetTrainString(4, 13);
-            s33_1.Text = GetTrainString(1, 14);
-            s33_2.Text = GetTrainString(2, 14);
-            s33_3.Text = GetTrainString(3, 14);
-            s33_4.Text = GetTrainString(4, 14);
-            s34_1.Text = GetTrainString(1, 15);
-            s34_2.Text = GetTrainString(2, 15);
-            s34_3.Text = GetTrainString(3, 15);
-            s34_4.Text = GetTrainString(4, 15);
-            s35_1.Text = GetTrainString(1, 16);
-            s35_2.Text = GetTrainString(2, 16);
-            s35_3.Text = GetTrainString(3, 16);
-            s35_4.Text = GetTrainString(4, 16);
-            s36_1.Text = GetTrainString(1, 17);
-            s36_2.Text = GetTrainString(2, 17);
-            s36_3.Text = GetTrainString(3, 17);
-            s36_4.Text = GetTrainString(4, 17);
-            s37_1.Text = GetTrainString(1, 18);
-            s37_2.Text = GetTrainString(2, 18);
-            s37_3.Text = GetTrainString(3, 18);
-            s37_4.Text = GetTrainString(4, 18);
-            s38_1.Text = GetTrainString(1, 19);
-            s38_2.Text = GetTrainString(2, 19);
-            s38_3.Text = GetTrainString(3, 19);
-            s38_4.Text = GetTrainString(4, 19);
-            s40_1.Text = GetTrainString(1, 20);
-            s40_2.Text = GetTrainString(2, 20);
-            s40_3.Text = GetTrainString(3, 20);
-            s40_4.Text = GetTrainString(4, 20);
-            s40_5.Text = GetTrainString(5, 20);
-            s40_6.Text = GetTrainString(6, 20);
-            s40_7.Text = GetTrainString(7, 20);
-            s41_1.Text = GetTrainString(1, 21);
-            s41_2.Text = GetTrainString(2, 21);
-            s41_3.Text = GetTrainString(3, 21);
-            s42_1.Text = GetTrainString(1, 22);
-            s42_2.Text = GetTrainString(2, 22);
-            s42_3.Text = GetTrainString(3, 22);
-            s43_1.Text = GetTrainString(1, 23);
-            s43_2.Text = GetTrainString(2, 23);
-            s43_3.Text = GetTrainString(3, 23);
-            s44_1.Text = GetTrainString(1, 24);
-            s44_2.Text = GetTrainString(2, 24);
-            s44_3.Text = GetTrainString(3, 24);
-        }
-        private void Update2()
-        {
-
-            s45_1.Text = GetTrainString(1, 25);
-            s45_2.Text = GetTrainString(2, 25);
-            s45_3.Text = GetTrainString(3, 25);
-            s51_1.Text = GetTrainString(1, 27);
-            s51_2.Text = GetTrainString(2, 27);
-            s51_3.Text = GetTrainString(3, 27);
-            s51_4.Text = GetTrainString(4, 27);
-            s51_5.Text = GetTrainString(5, 27);
-            s51_6.Text = GetTrainString(6, 27);
-            s52_1.Text = GetTrainString(1, 28);
-            s52_2.Text = GetTrainString(2, 28);
-            s52_3.Text = GetTrainString(3, 28);
-            s52_4.Text = GetTrainString(4, 28);
-            s52_5.Text = GetTrainString(5, 28);
-            s52_6.Text = GetTrainString(6, 28);
-            s52_7.Text = GetTrainString(7, 28);
-            s53_1.Text = GetTrainString(1, 29);
-            s53_2.Text = GetTrainString(2, 29);
-            s53_3.Text = GetTrainString(3, 29);
-            s53_4.Text = GetTrainString(4, 29);
-            s53_5.Text = GetTrainString(5, 29);
-            s53_6.Text = GetTrainString(6, 29);
-            s53_7.Text = GetTrainString(7, 29);
-            s54_1.Text = GetTrainString(1, 30);
-            s54_2.Text = GetTrainString(2, 30);
-            s54_3.Text = GetTrainString(3, 30);
-            s54_4.Text = GetTrainString(4, 30);
-            s54_5.Text = GetTrainString(5, 30);
-            s54_6.Text = GetTrainString(6, 30);
-            s54_7.Text = GetTrainString(7, 30);
-            s55_1.Text = GetTrainString(1, 31);
-            s55_2.Text = GetTrainString(2, 31);
-            s55_3.Text = GetTrainString(3, 31);
-            s55_4.Text = GetTrainString(4, 31);
-            s55_5.Text = GetTrainString(5, 31);
-            s55_6.Text = GetTrainString(6, 31);
-            s55_7.Text = GetTrainString(7, 31);
-            s55_8.Text = GetTrainString(8, 31);
-            s56_1.Text = GetTrainString(1, 32);
-            s56_2.Text = GetTrainString(2, 32);
-            s56_3.Text = GetTrainString(3, 32);
-            s56_4.Text = GetTrainString(4, 32);
-            s56_5.Text = GetTrainString(5, 32);
-            s56_6.Text = GetTrainString(6, 32);
-            s56_7.Text = GetTrainString(7, 32);
-            s56_8.Text = GetTrainString(8, 32);
-            s57_1.Text = GetTrainString(1, 33);
-            s57_2.Text = GetTrainString(2, 33);
-            s57_3.Text = GetTrainString(3, 33);
-            s57_4.Text = GetTrainString(4, 33);
-            s57_5.Text = GetTrainString(5, 33);
-            s57_6.Text = GetTrainString(6, 33);
-            s57_7.Text = GetTrainString(7, 33);
-            s57_8.Text = GetTrainString(8, 33);
-            s58_1.Text = GetTrainString(1, 34);
-            s58_2.Text = GetTrainString(2, 34);
-            s58_3.Text = GetTrainString(3, 34);
-            s61_1.Text = GetTrainString(1, 36);
-            s61_2.Text = GetTrainString(2, 36);
-            s61_3.Text = GetTrainString(3, 36);
-            s62_1.Text = GetTrainString(1, 37);
-            s62_2.Text = GetTrainString(2, 37);
-            s62_3.Text = GetTrainString(3, 37);
-            s63_1.Text = GetTrainString(1, 38);
-            s63_2.Text = GetTrainString(2, 38);
-            s63_3.Text = GetTrainString(3, 38);
-            s63_4.Text = GetTrainString(4, 38);
-            s64_1.Text = GetTrainString(1, 39);
-            s64_2.Text = GetTrainString(2, 39);
-            s64_3.Text = GetTrainString(3, 39);
-            s64_4.Text = GetTrainString(4, 39);
-            s64_5.Text = GetTrainString(5, 39);
-            s74_1.Text = GetTrainString(1, 40);
-            s74_2.Text = GetTrainString(2, 40);
-            s74_3.Text = GetTrainString(3, 40);
-            s74_4.Text = GetTrainString(4, 40);
-            s74_5.Text = GetTrainString(5, 40);
-            s75_1.Text = GetTrainString(1, 41);
-            s75_2.Text = GetTrainString(2, 41);
-            s75_3.Text = GetTrainString(3, 41);
-            s75_4.Text = GetTrainString(4, 41);
-            s76_1.Text = GetTrainString(1, 42);
-            s76_2.Text = GetTrainString(2, 42);
-            s76_3.Text = GetTrainString(3, 42);
-            s76_4.Text = GetTrainString(4, 42);
-            s76_5.Text = GetTrainString(5, 42);
-            s77_1.Text = GetTrainString(1, 43);
-            s77_2.Text = GetTrainString(2, 43);
-            s77_3.Text = GetTrainString(3, 43);
-            s77_4.Text = GetTrainString(4, 43);
-            s77_5.Text = GetTrainString(5, 43);
-        }
-
-        private string GetTrainString(int x, int SpoorId)
-        {
-            return Remise.Instance.Database.tramNRFromSectorID(Remise.Instance.Database.SectorXfromSpoor(x, SpoorId).Id).ToString();
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            Update2();
-        }
-
         private void onderhoudLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OnderhoudApplicatie app = new OnderhoudApplicatie();
@@ -329,10 +261,9 @@ namespace RemiseSysteem_Groep_B
             schoonmaakGoedkeuren.Show();
         }
 
-        private void goedkeurenToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            OnderhoudGoedkeuren onderhoudGoedkeuren = new OnderhoudGoedkeuren();
-            onderhoudGoedkeuren.Show();
+            Updater();
         }
     }
 }
