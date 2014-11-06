@@ -1104,8 +1104,23 @@ namespace RemiseSysteem_Groep_B
 
         public bool BlokkeerSector(int sectorID) 
         {
-            string cmd = "";
-            return false;
+            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + Convert.ToString(sectorID) + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try 
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+            finally 
+            {
+                connection.Close();
+            }
         }
 
         public bool DeblokkeerSector(int sectorID) {

@@ -66,7 +66,8 @@ namespace RemiseSysteem_Groep_B
 
         private void btnBlokkeer_Click(object sender, EventArgs e) 
         {
-            if (lbxSectoren.SelectedItem == null) {
+            if (lbxSectoren.SelectedItem == null) 
+            {
 
             }
         }
