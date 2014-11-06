@@ -190,7 +190,7 @@ namespace RemiseSysteem_Groep_B
                     }
                     else//wanneer er geen toegeweze spoor is komt de volgende error
                     {
-                        MessageBox.Show("Het systeem heeft geen spoor kunnen toekennen", "Error");
+                        lblMessage.Text = "Het systeem heeft geen spoor kunnen toekennen";
                     }
                 }
             }

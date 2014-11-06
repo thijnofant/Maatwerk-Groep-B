@@ -79,18 +79,26 @@ namespace RemiseSysteem_Groep_B
                 beurttype = BeurtType.Klein;
                 allowedbeurten = 3;
             }
-            Schoonmaak s = new Schoonmaak(begindatum, db.GetInsertID("ID", "Tram_Beurt") + 1, beurttype, tram);//maakt nieuw schoonmaak object aan
-            aantalUitgevoerdeBeurten = db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id);//kijkt hoeveel beurten zijn uitgevoerd op geselecteerde datum
-            
-            if (aantalUitgevoerdeBeurten <= allowedbeurten)// wanneer dit meer is dan allowed beurten, wordt dit overgeslagen
+            if (tram != null)
             {
-                db.SchoonmaakInvoeren(s, mwID);//voert nieuwe schoonmaak in in de database
-                lblMessage.Text = "Het verzoek is succesvol aangevraagd";
+                Schoonmaak s = new Schoonmaak(begindatum, db.GetInsertID("ID", "Tram_Beurt") + 1, beurttype, tram);//maakt nieuw schoonmaak object aan
+                aantalUitgevoerdeBeurten = db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id);//kijkt hoeveel beurten zijn uitgevoerd op geselecteerde datum
+
+                if (aantalUitgevoerdeBeurten <= allowedbeurten)// wanneer dit meer is dan allowed beurten, wordt dit overgeslagen
+                {
+                    db.SchoonmaakInvoeren(s, mwID);//voert nieuwe schoonmaak in in de database
+                    lblMessage.Text = "Het verzoek is succesvol aangevraagd";
+                }
+                else
+                {
+                    lblMessage.Text = "De geselecteerde tram kan niet meer worden ingepland op de geselecteerde dag";
+                }
             }
             else
             {
-                lblMessage.Text = "De geselecteerde tram kan niet meer worden ingepland op de geselecteerde dag";
+                lblMessage.Text = "Ingevoerde tram bestaat niet";
             }
+            
         }
 
         /// <summary>

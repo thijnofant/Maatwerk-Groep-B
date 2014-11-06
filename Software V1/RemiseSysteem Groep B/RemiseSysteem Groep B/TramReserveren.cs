@@ -71,11 +71,21 @@ namespace RemiseSysteem_Groep_B
                 DateTime datum = Convert.ToDateTime(dtpDatum.Text);//geseleceteerde datum
                 Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT"), type, tram, DateTime.Now.AddDays(1.0));//nieuw onderhoud object.
 
-                if (db.GetAantalBeurten(type.ToString(), "Onderhoud", datum, tram.Id) > aantalToegestaandeBeurten)// kijkt of aantal gebeurde beurten niet het aantaal toegestane beurten overschrijd
+                if (tram != null)
                 {
-                    db.OnderhoudInvoeren(onderhoud);//maakt reparatie aan in de database
+                    if (db.GetAantalBeurten(type.ToString(), "Onderhoud", datum, tram.Id) > aantalToegestaandeBeurten)// kijkt of aantal gebeurde beurten niet het aantaal toegestane beurten overschrijd
+                    {
+                        db.OnderhoudInvoeren(onderhoud);//maakt reparatie aan in de database
+                    }
+                    else
+                    {
+                        lblMessage.Text = "De geselecteerde tram kan niet meer worden ingepland op de geselecteerde dag";
+                    }
                 }
-                
+                else
+                {
+                    lblMessage.Text = "De ingevoerde tram bestaat niet";
+                }
             }
         }
     }

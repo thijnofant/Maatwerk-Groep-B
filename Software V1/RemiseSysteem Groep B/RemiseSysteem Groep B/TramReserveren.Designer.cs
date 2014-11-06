@@ -40,6 +40,7 @@
             this.rbGroot = new System.Windows.Forms.RadioButton();
             this.rbKlein = new System.Windows.Forms.RadioButton();
             this.gbReparatie = new System.Windows.Forms.GroupBox();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.gbReparatie.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,11 +157,21 @@
             this.gbReparatie.TabIndex = 11;
             this.gbReparatie.TabStop = false;
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(30, 308);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(16, 13);
+            this.lblMessage.TabIndex = 12;
+            this.lblMessage.Text = "...";
+            // 
             // TramReserveren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 330);
+            this.ClientSize = new System.Drawing.Size(438, 347);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.gbReparatie);
             this.Controls.Add(this.chbReparatie);
             this.Controls.Add(this.tbSpoornummer);
@@ -192,5 +203,6 @@
         private System.Windows.Forms.RadioButton rbGroot;
         private System.Windows.Forms.RadioButton rbKlein;
         private System.Windows.Forms.GroupBox gbReparatie;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

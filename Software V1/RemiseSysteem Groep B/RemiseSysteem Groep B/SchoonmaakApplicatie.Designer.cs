@@ -71,6 +71,7 @@
             // 
             // cbMedewerker
             // 
+            this.cbMedewerker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMedewerker.FormattingEnabled = true;
             this.cbMedewerker.Location = new System.Drawing.Point(163, 22);
             this.cbMedewerker.Name = "cbMedewerker";
