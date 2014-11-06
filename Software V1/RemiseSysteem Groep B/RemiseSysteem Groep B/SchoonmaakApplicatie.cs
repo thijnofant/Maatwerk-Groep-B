@@ -11,24 +11,22 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// form voor het aanvragen van schoonmaakbeurten
     /// </summary>
     public partial class SchoonmaakApplicatie : Form
     {
-        List<Medewerker> schoomaakmedewerkers;
+        List<Medewerker> schoonmaakmedewerkers;
         List<Tram> tramlijst;
         DatabaseManager db;
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         public SchoonmaakApplicatie()
         {
             InitializeComponent();
             btnAanvragen.Visible = false;
             db = DatabaseManager.Instance;//singleton design pattern voor database klasse
-            schoomaakmedewerkers = new List<Medewerker>();//lijst om alle schoonmaakmedewerkers in op te slaan
-            schoomaakmedewerkers = db.SchoonmaakMedewerkersOpvragen();//haalt alle schoonmaakmedewerkers op uit de database
+            schoonmaakmedewerkers = new List<Medewerker>();//lijst om alle schoonmaakmedewerkers in op te slaan
+            schoonmaakmedewerkers = db.SchoonmaakMedewerkersOpvragen();//haalt alle schoonmaakmedewerkers op uit de database
             tramlijst = new List<Tram>();//lijst om alle trams in op te slaan
             tramlijst = db.AlleTrams();//haalt alle trams op uit de database en vult hiermee de lijst
 
@@ -38,12 +36,10 @@ namespace RemiseSysteem_Groep_B
             cbTram.SelectedIndex = 0;//zorgt dat altijd een waarde is geselecteerd
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         public void Updateform()
         {
-            foreach(Medewerker m in schoomaakmedewerkers)
+            foreach(Medewerker m in schoonmaakmedewerkers)
             {
                 cbMedewerker.Items.Add(m.ToString());
             }
@@ -53,11 +49,7 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void btnAanvragen_Click(object sender, EventArgs e)
         {
             int selectedtramnr = Convert.ToInt32(cbTram.SelectedItem.ToString());//het geselecteerde tramnr
@@ -101,21 +93,13 @@ namespace RemiseSysteem_Groep_B
             
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void rbGroot_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void rbKlein_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;
