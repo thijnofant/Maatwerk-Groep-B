@@ -41,7 +41,7 @@ namespace RemiseSysteem_Groep_B
 
             sporen = DatabaseManager.Instance.SporenlijstOpvragen();
             trams = DatabaseManager.Instance.AlleTrams();
-            foreach(Tram tr in trams)
+            foreach (Tram tr in trams)
             {
                 cbbTram.Items.Add(tr.Nummer);
             }
@@ -67,7 +67,7 @@ namespace RemiseSysteem_Groep_B
                 cbbSector.Items.Add(se.Id);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -97,6 +97,15 @@ namespace RemiseSysteem_Groep_B
             int temp = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
             sectoren = DatabaseManager.Instance.GetSectorenFromSpoorNR(temp);
             UpdateSector();
+        }
+
+        private void btnVertrek_Click(object sender, EventArgs e)
+        {
+            int tramnummer = Convert.ToInt32(cbbTram.SelectedItem.ToString());
+            Tram gekozenTram = DatabaseManager.Instance.ZoekTram(tramnummer);
+            DatabaseManager.Instance.TramRijdUitRemise(tramnummer);
+            DatabaseManager.Instance.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id);
+            Update1();
         }
     }
 }
