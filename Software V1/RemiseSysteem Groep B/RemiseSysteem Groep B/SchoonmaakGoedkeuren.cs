@@ -10,10 +10,17 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class SchoonmaakGoedkeuren : Form
     {
         private Remise remise;
         private List<Schoonmaak> schoonmaakbeurten;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public SchoonmaakGoedkeuren()
         {
             InitializeComponent();
@@ -21,6 +28,9 @@ namespace RemiseSysteem_Groep_B
             HaalSchoonmakenOp();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void HaalSchoonmakenOp()
         {
             lbxSchoonmaak.Items.Clear();
@@ -38,6 +48,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGoedkeuren_Click(object sender, EventArgs e)
         {
             string text = lbxSchoonmaak.SelectedItem.ToString();
@@ -51,6 +66,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAfkeuren_Click(object sender, EventArgs e)
         {
             string text = lbxSchoonmaak.SelectedItem.ToString();

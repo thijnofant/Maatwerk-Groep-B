@@ -10,9 +10,16 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class simulatieapp : Form
     {
         private Remise remise;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public simulatieapp()
         {
             InitializeComponent();
@@ -20,6 +27,9 @@ namespace RemiseSysteem_Groep_B
             Simuleren();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Simuleren()
         {
             timer1.Interval = 5000;
@@ -28,6 +38,11 @@ namespace RemiseSysteem_Groep_B
             //backgroundWorker1.RunWorkerAsync();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             List<Tram> trams = new List<Tram>();
@@ -119,6 +134,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void backgroundWorker1_DoWork_1(object sender, DoWorkEventArgs e)
         {
 

@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Schoonmaak : Beurt
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beginDatum"></param>
+        /// <param name="id"></param>
+        /// <param name="soort"></param>
+        /// <param name="tram"></param>
         public Schoonmaak(DateTime beginDatum, int id, BeurtType soort, Tram tram)
             :base(beginDatum, id, soort, tram)
         {
@@ -51,7 +61,11 @@ namespace RemiseSysteem_Groep_B
                 Medewerkers.Remove(medewerker);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString();

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class BeheerderApp_SchoonmaakInvoeren : Form
     {
         Remise remise;
@@ -17,6 +20,9 @@ namespace RemiseSysteem_Groep_B
         List<Tram> tramlijst;
         List<Beurt> beurtenlijst;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public BeheerderApp_SchoonmaakInvoeren() 
         {
             InitializeComponent();
@@ -27,6 +33,11 @@ namespace RemiseSysteem_Groep_B
             OpstartMethode();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnInvoeren_Click(object sender, EventArgs e) 
         {
             if (cbxSoortBeurt.SelectedItem == null) 
@@ -147,10 +158,19 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuleren_Click(object sender, EventArgs e) 
         {
             this.Close();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void OpstartMethode() 
         {
             foreach (Tram t in tramlijst) 

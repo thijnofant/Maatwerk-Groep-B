@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class SchoonmaakApplicatie : Form
     {
         List<Medewerker> schoomaakmedewerkers;
         List<Tram> tramlijst;
         DatabaseManager db;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public SchoonmaakApplicatie()
         {
             InitializeComponent();
@@ -31,6 +38,9 @@ namespace RemiseSysteem_Groep_B
             cbTram.SelectedIndex = 0;//zorgt dat altijd een waarde is geselecteerd
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Updateform()
         {
             foreach(Medewerker m in schoomaakmedewerkers)
@@ -43,7 +53,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAanvragen_Click(object sender, EventArgs e)
         {
             int selectedtramnr = Convert.ToInt32(cbTram.SelectedItem.ToString());//het geselecteerde tramnr
@@ -79,11 +93,21 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbGroot_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbKlein_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;

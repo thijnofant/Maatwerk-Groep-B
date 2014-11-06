@@ -27,13 +27,25 @@ namespace RemiseSysteem_Groep_B
         public DatabaseManager Database = DatabaseManager.Instance;
 
         #region Methodes
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sector"></param>
+        /// <param name="tramNR"></param>
+        /// <returns></returns>
         public bool PlaatsToewijzen(Sector sector, int tramNR)
         {
             return (Database.TramVerplaatsen(tramNR, sector));
         }
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramNr"></param>
+        /// <param name="onderhoud"></param>
+        /// <param name="schoonmaak"></param>
+        /// <returns></returns>
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
             List<int> SpoorID = new List<int>();
@@ -123,6 +135,12 @@ namespace RemiseSysteem_Groep_B
             }
             return false;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="schoonmaak"></param>
+        /// <returns></returns>
         public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
         {
             int aantalgroot = 0;
@@ -132,22 +150,49 @@ namespace RemiseSysteem_Groep_B
 
             return false;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="onderhoud"></param>
+        /// <returns></returns>
         public bool OnderhoudOpgeven(Onderhoud onderhoud)
         {
             return false;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
             throw new NotImplementedException();
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Onderhoud> OnderhoudOpvragen()
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void BeurtVoltooien()
         {
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <param name="wachtwoord"></param>
+        /// <returns></returns>
         public bool Inloggen(string naam, string wachtwoord)
         {
             return this.Database.Inloggen(naam, wachtwoord);

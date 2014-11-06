@@ -10,15 +10,27 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class TramReserveren : Form
     {
         DatabaseManager db = DatabaseManager.Instance;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public TramReserveren()
         {
             InitializeComponent();
             gbReparatie.Visible = false;//laat reparatie controlls pas zien wanneer er gekozen is voor een reparatie
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void chbReparatie_CheckedChanged(object sender, EventArgs e)
         {
             if(chbReparatie.Checked)
@@ -31,6 +43,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBevestig_Click_1(object sender, EventArgs e)
         {
             Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));//haalt tram op uit de database

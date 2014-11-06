@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class OnderhoudApplicatie : Form
     {
         List<Onderhoud> onderhoudsBeurten = new List<Onderhoud>();
@@ -21,7 +24,9 @@ namespace RemiseSysteem_Groep_B
 
         DatabaseManager databaseManager;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public OnderhoudApplicatie()
         {
             InitializeComponent();
@@ -40,6 +45,9 @@ namespace RemiseSysteem_Groep_B
             LaadOnderhoud();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LaadMedewerkers()
         {
             medewerkers = Remise.Instance.Database.OnderhoudsMedewerkersOpvragen();
@@ -50,6 +58,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void LaadOnderhoud()
         {
             onderhoudsBeurten = Remise.Instance.Database.OnderhoudOpvragen();
@@ -60,12 +71,21 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbxOnderhoudsBeurten_SelectedIndexChanged(object sender, EventArgs e)
         {
             onderhoud = onderhoudsBeurten[lbxOnderhoudsBeurten.SelectedIndex];
             UpdateOnderhoudInfo(onderhoud);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="onderhoud"></param>
         void UpdateOnderhoudInfo(Onderhoud onderhoud)
         {
             tbxDatum.Text = Convert.ToString(onderhoud.TijdsIndicatie);
@@ -84,6 +104,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVerwijderMedewerker_Click(object sender, EventArgs e)
         {
             if(!this.databaseManager.VerwijderMedewerkerVanOnderhoud(onderhoud))
@@ -93,6 +118,11 @@ namespace RemiseSysteem_Groep_B
             UpdateOnderhoudInfo(onderhoud);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVoegMedewerkerToe_Click(object sender, EventArgs e)
         {
             if(lbxMedewerkers.SelectedIndex != -1 && lbxOnderhoudsBeurten.SelectedIndex != -1)
@@ -109,6 +139,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
         {
             string uur = Convert.ToString(nudUur.Value);

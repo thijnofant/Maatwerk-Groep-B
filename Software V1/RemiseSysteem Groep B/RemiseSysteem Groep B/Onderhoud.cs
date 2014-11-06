@@ -6,18 +6,39 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Onderhoud : Beurt
     {
         private DateTime tijdsIndicatie;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime TijdsIndicatie { get { return tijdsIndicatie; } protected set { tijdsIndicatie = value; } }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beginDatum"></param>
+        /// <param name="id"></param>
+        /// <param name="soort"></param>
+        /// <param name="tram"></param>
+        /// <param name="tijdsIndicatie"></param>
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram, DateTime tijdsIndicatie)
             : base(beginDatum, id, soort, tram)
         {
             this.tijdsIndicatie = tijdsIndicatie;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beginDatum"></param>
+        /// <param name="id"></param>
+        /// <param name="soort"></param>
+        /// <param name="tram"></param>
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram)
             : base(beginDatum, id, soort, tram)
         {
@@ -54,6 +75,10 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString() + " - Tijdsindicatie: " + this.tijdsIndicatie.ToShortDateString();
