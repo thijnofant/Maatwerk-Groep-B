@@ -151,9 +151,9 @@
             this.lblOnderhoudsMedewerkers.AutoSize = true;
             this.lblOnderhoudsMedewerkers.Location = new System.Drawing.Point(348, 114);
             this.lblOnderhoudsMedewerkers.Name = "lblOnderhoudsMedewerkers";
-            this.lblOnderhoudsMedewerkers.Size = new System.Drawing.Size(74, 13);
+            this.lblOnderhoudsMedewerkers.Size = new System.Drawing.Size(69, 13);
             this.lblOnderhoudsMedewerkers.TabIndex = 14;
-            this.lblOnderhoudsMedewerkers.Text = "Medewerkers:";
+            this.lblOnderhoudsMedewerkers.Text = "Medewerker:";
             // 
             // tbxMedewerkerOnderhoud
             // 
@@ -166,6 +166,11 @@
             // nudUur
             // 
             this.nudUur.Location = new System.Drawing.Point(351, 91);
+            this.nudUur.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.nudUur.Name = "nudUur";
             this.nudUur.Size = new System.Drawing.Size(47, 20);
             this.nudUur.TabIndex = 17;
@@ -173,6 +178,11 @@
             // nudMinuut
             // 
             this.nudMinuut.Location = new System.Drawing.Point(404, 91);
+            this.nudMinuut.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.nudMinuut.Name = "nudMinuut";
             this.nudMinuut.Size = new System.Drawing.Size(47, 20);
             this.nudMinuut.TabIndex = 18;
@@ -187,6 +197,7 @@
             this.chxKlaar.Text = "Klaar";
             this.chxKlaar.UseVisualStyleBackColor = true;
             this.chxKlaar.CheckedChanged += new System.EventHandler(this.chxKlaar_CheckedChanged);
+            this.chxKlaar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chxKlaar_MouseClick);
             // 
             // OnderhoudApplicatie
             // 

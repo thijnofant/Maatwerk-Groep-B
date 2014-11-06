@@ -165,7 +165,7 @@ namespace RemiseSysteem_Groep_B
 
             List<Onderhoud> returnList = new List<Onderhoud>();
 
-            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeschikbaarDatum BeurtType, BeschikbaarDatum FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Onderhoud'";
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeschikbaarDatum BeurtType, BeschikbaarDatum FROM TRAM_BEURT WHERE TypeOnderhoud = 'Onderhoud'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -194,9 +194,17 @@ namespace RemiseSysteem_Groep_B
                             break;
                     }
 
-                    /*startTijd, OnderhoudID, tempEnum, tempTram*/
-                    Onderhoud tempSchoon = new Onderhoud(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId), Convert.ToDateTime(reader["BeschikbaarDatum"]));
-                    returnList.Add(tempSchoon);
+                    if (Convert.ToString(reader["BeschikbaarDatum"]) != "")
+                    {
+                        /*startTijd, OnderhoudID, tempEnum, tempTram*/
+                        Onderhoud tempSchoon = new Onderhoud(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId), Convert.ToDateTime(reader["BeschikbaarDatum"]));
+                        returnList.Add(tempSchoon);
+                    }
+                    else
+                    {
+                        Onderhoud tempSchoon = new Onderhoud(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId));
+                        returnList.Add(tempSchoon);
+                    }
                 }
             }
             catch { }
@@ -323,7 +331,8 @@ namespace RemiseSysteem_Groep_B
         /// <returns></returns>
         public bool WijzigTijdsIndicatieOnderhoud(DateTime datum, Onderhoud onderhoud)
         {
-            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = '" + datum + "' WHERE ID = " + onderhoud.ID;
+            string datumString = datum.Day + "-" + datum.Month + "-" + datum.Year + " " + datum.Hour + ":" + datum.Minute;
+            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = '" + datumString + "' WHERE ID = " + onderhoud.ID;
             OracleCommand comm = new OracleCommand(cmd, connection);
             try
             {

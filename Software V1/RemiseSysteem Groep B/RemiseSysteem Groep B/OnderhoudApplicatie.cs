@@ -89,6 +89,10 @@ namespace RemiseSysteem_Groep_B
         void UpdateOnderhoudInfo(Onderhoud onderhoud)
         {
             tbxDatum.Text = Convert.ToString(onderhoud.TijdsIndicatie);
+            if(tbxDatum.Text == "01/01/0001 00:00:00")
+            {
+                tbxDatum.Text = "";
+            }
 
             medewerkerID = Remise.Instance.Database.MedewerkerOpvragen(onderhoud);
 
@@ -104,6 +108,10 @@ namespace RemiseSysteem_Groep_B
             }
 
             if(this.databaseManager.IsKlaar(onderhoud))
+            {
+                chxKlaar.Checked = true;
+            }
+            else
             {
                 chxKlaar.Checked = false;
             }
@@ -171,13 +179,35 @@ namespace RemiseSysteem_Groep_B
 
         private void chxKlaar_CheckedChanged(object sender, EventArgs e)
         {
-            if(chxKlaar.Checked == true)
+            //if(chxKlaar.Checked == true)
+            //{
+            //    DateTime datum = dtpDatum.Value;
+            //    datum.AddHours(Convert.ToDouble(nudUur.Value));
+            //    datum.AddMinutes(Convert.ToDouble(nudMinuut.Value));
+
+            //    this.databaseManager.WijzigKlaar(onderhoud, true);
+            //    this.databaseManager.WijzigTijdsIndicatieOnderhoud(datum, onderhoud);
+            //}
+            //else
+            //{
+            //    this.databaseManager.WijzigKlaar(onderhoud, false);
+            //}
+        }
+
+        private void chxKlaar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (chxKlaar.Checked == true)
             {
-                this.databaseManager.WijzigKlaar(onderhoud, false);
+                DateTime datum = dtpDatum.Value;
+                datum.AddHours(Convert.ToDouble(nudUur.Value));
+                datum.AddMinutes(Convert.ToDouble(nudMinuut.Value));
+
+                this.databaseManager.WijzigKlaar(onderhoud, true);
+                this.databaseManager.WijzigTijdsIndicatieOnderhoud(datum, onderhoud);
             }
             else
             {
-                this.databaseManager.WijzigKlaar(onderhoud, true);
+                this.databaseManager.WijzigKlaar(onderhoud, false);
             }
         }
     }
