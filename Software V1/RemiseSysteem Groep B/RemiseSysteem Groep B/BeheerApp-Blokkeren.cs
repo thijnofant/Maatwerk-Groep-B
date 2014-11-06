@@ -34,6 +34,9 @@ namespace RemiseSysteem_Groep_B
 
         private void lbxSporen_SelectedIndexChanged(object sender, EventArgs e) 
         {
+            btnBlokkeer.Enabled = true;
+            btnDeblokkeer.Enabled = true;
+
             lbxSectoren.Items.Clear();
             int spoorid = -1;
             int spoornr = Convert.ToInt32(lbxSporen.SelectedItem);
@@ -59,6 +62,18 @@ namespace RemiseSysteem_Groep_B
                     lbxSectoren.Items.Add(sectorstring);
                 }
             }
+        }
+
+        private void btnBlokkeer_Click(object sender, EventArgs e) 
+        {
+            if (lbxSectoren.SelectedItem == null) {
+
+            }
+        }
+
+        private void btnDeblokkeer_Click(object sender, EventArgs e) 
+        {
+
         }
     }
 }
