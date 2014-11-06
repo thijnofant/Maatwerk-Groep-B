@@ -264,5 +264,11 @@ namespace RemiseSysteem_Groep_B
         {
             Updater();
         }
+
+        private void goedkeurenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OnderhoudGoedkeuren onderhoudGoedkeuren = new OnderhoudGoedkeuren();
+            onderhoudGoedkeuren.Show();
+        }
     }
 }
