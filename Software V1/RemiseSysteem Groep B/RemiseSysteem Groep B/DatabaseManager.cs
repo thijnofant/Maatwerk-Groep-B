@@ -823,6 +823,7 @@ namespace RemiseSysteem_Groep_B
 
                     TramType type = new TramType(typenaam, lengte);
                     Tram tram = new Tram(tramid, type, tramnummer);
+                    tram.StatusWijzigen(status);
                     tramlist.Add(tram);
                 }
                 return tramlist;

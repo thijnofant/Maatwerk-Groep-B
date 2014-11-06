@@ -278,6 +278,7 @@
             this.goedkeurenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
+            this.statusWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -2874,7 +2875,8 @@
             this.beurtToolStripMenuItem,
             this.verplaatsenToolStripMenuItem,
             this.verwijderenToolStripMenuItem,
-            this.reserverenToolStripMenuItem});
+            this.reserverenToolStripMenuItem,
+            this.statusWijzigenToolStripMenuItem});
             this.tramsToolStripMenuItem.Name = "tramsToolStripMenuItem";
             this.tramsToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
             this.tramsToolStripMenuItem.Text = "Trams";
@@ -2884,7 +2886,7 @@
             this.beurtToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.invoerenToolStripMenuItem});
             this.beurtToolStripMenuItem.Name = "beurtToolStripMenuItem";
-            this.beurtToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.beurtToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.beurtToolStripMenuItem.Text = "Beurt";
             // 
             // invoerenToolStripMenuItem
@@ -2897,21 +2899,21 @@
             // verplaatsenToolStripMenuItem
             // 
             this.verplaatsenToolStripMenuItem.Name = "verplaatsenToolStripMenuItem";
-            this.verplaatsenToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.verplaatsenToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.verplaatsenToolStripMenuItem.Text = "(Ver)plaatsen";
             this.verplaatsenToolStripMenuItem.Click += new System.EventHandler(this.verplaatsenToolStripMenuItem_Click);
             // 
             // verwijderenToolStripMenuItem
             // 
             this.verwijderenToolStripMenuItem.Name = "verwijderenToolStripMenuItem";
-            this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.verwijderenToolStripMenuItem.Text = "Verwijderen";
             this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.verwijderenToolStripMenuItem_Click);
             // 
             // reserverenToolStripMenuItem
             // 
             this.reserverenToolStripMenuItem.Name = "reserverenToolStripMenuItem";
-            this.reserverenToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.reserverenToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.reserverenToolStripMenuItem.Text = "Reserveren";
             this.reserverenToolStripMenuItem.Click += new System.EventHandler(this.reserverenToolStripMenuItem_Click);
             // 
@@ -2997,13 +2999,13 @@
             this.schoonmaakToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goedkeurenToolStripMenuItem});
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
-            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
             // 
             // goedkeurenToolStripMenuItem
             // 
             this.goedkeurenToolStripMenuItem.Name = "goedkeurenToolStripMenuItem";
-            this.goedkeurenToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.goedkeurenToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
             this.goedkeurenToolStripMenuItem.Text = "Goedkeuren";
             this.goedkeurenToolStripMenuItem.Click += new System.EventHandler(this.goedkeurenToolStripMenuItem_Click);
             // 
@@ -3012,15 +3014,22 @@
             this.onderhoudToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goedkeurenToolStripMenuItem1});
             this.onderhoudToolStripMenuItem.Name = "onderhoudToolStripMenuItem";
-            this.onderhoudToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.onderhoudToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.onderhoudToolStripMenuItem.Text = "Onderhoud";
             // 
             // goedkeurenToolStripMenuItem1
             // 
             this.goedkeurenToolStripMenuItem1.Name = "goedkeurenToolStripMenuItem1";
-            this.goedkeurenToolStripMenuItem1.Size = new System.Drawing.Size(175, 24);
+            this.goedkeurenToolStripMenuItem1.Size = new System.Drawing.Size(158, 24);
             this.goedkeurenToolStripMenuItem1.Text = "Goedkeuren";
             this.goedkeurenToolStripMenuItem1.Click += new System.EventHandler(this.goedkeurenToolStripMenuItem1_Click);
+            // 
+            // statusWijzigenToolStripMenuItem
+            // 
+            this.statusWijzigenToolStripMenuItem.Name = "statusWijzigenToolStripMenuItem";
+            this.statusWijzigenToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.statusWijzigenToolStripMenuItem.Text = "Status wijzigen";
+            this.statusWijzigenToolStripMenuItem.Click += new System.EventHandler(this.statusWijzigenToolStripMenuItem_Click);
             // 
             // BeheerApplicatie
             // 
@@ -3300,6 +3309,7 @@
         private System.Windows.Forms.ToolStripMenuItem onderhoudToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goedkeurenToolStripMenuItem1;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ToolStripMenuItem statusWijzigenToolStripMenuItem;
     }
 }
 

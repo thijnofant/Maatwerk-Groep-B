@@ -91,8 +91,13 @@ namespace RemiseSysteem_Groep_B
 
         public override string ToString()
         {
-            return "ID: " + this.Id + " - Nummer: " + this.nummer + " - Type: " + this.Type.Naam + " - Status: " + this.status.ToString() + " - Spoor & Sector: " +
-                   this.StaatOpSector.SpoorID + "." + this.StaatOpSector.Id ;
+            string text = "ID: " + this.Id + " - Nummer: " + this.nummer + " - Type: " + this.Type.Naam + " - Status: " + this.status.ToString() ;
+            if (this.StaatOpSector != null)
+            {
+                text += " - Spoor & Sector: " +
+                        this.StaatOpSector.SpoorID + "." + this.StaatOpSector.Id;
+            }
+            return text;
         }
     }
 }

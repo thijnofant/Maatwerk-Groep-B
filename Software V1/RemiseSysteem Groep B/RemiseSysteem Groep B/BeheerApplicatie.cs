@@ -356,5 +356,11 @@ namespace RemiseSysteem_Groep_B
             OnderhoudGoedkeuren onderhoudGoedkeuren = new OnderhoudGoedkeuren();
             onderhoudGoedkeuren.Show();
         }
+
+        private void statusWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TramstatusWijzigen statusWijzigen = new TramstatusWijzigen();
+            statusWijzigen.Show();
+        }
     }
 }
