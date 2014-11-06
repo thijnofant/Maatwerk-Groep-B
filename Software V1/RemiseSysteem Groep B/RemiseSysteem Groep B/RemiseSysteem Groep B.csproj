@@ -83,6 +83,12 @@
     <Compile Include="OnderhoudApplicatie.Designer.cs">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="OnderhoudGoedkeuren.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnderhoudGoedkeuren.Designer.cs">
+      <DependentUpon>OnderhoudGoedkeuren.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpstartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OnderhoudApplicatie.resx">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnderhoudGoedkeuren.resx">
+      <DependentUpon>OnderhoudGoedkeuren.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpstartForm.resx">
       <DependentUpon>OpstartForm.cs</DependentUpon>

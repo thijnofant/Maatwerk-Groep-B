@@ -504,7 +504,7 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
-        public bool beurtGoedkeuren(int beurtid)
+        public bool BeurtGoedkeuren(int beurtid)
         {
             try
             {

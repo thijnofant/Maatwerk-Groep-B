@@ -48,7 +48,7 @@ namespace RemiseSysteem_Groep_B
             {
                 if (text == schoonmaak.ToString())
                 {
-                    this.remise.Database.beurtGoedkeuren(schoonmaak.ID);
+                    this.remise.Database.BeurtGoedkeuren(schoonmaak.ID);
                     HaalSchoonmakenOp();
                 }
             }

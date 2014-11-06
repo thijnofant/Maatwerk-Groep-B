@@ -328,5 +328,11 @@ namespace RemiseSysteem_Groep_B
             SchoonmaakGoedkeuren schoonmaakGoedkeuren = new SchoonmaakGoedkeuren();
             schoonmaakGoedkeuren.Show();
         }
+
+        private void goedkeurenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OnderhoudGoedkeuren onderhoudGoedkeuren = new OnderhoudGoedkeuren();
+            onderhoudGoedkeuren.Show();
+        }
     }
 }
