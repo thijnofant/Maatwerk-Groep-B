@@ -608,6 +608,27 @@ namespace RemiseSysteem_Groep_B
             {
                 connection.Close();
             }
+        }
+
+        public bool SchoonmaakInvoeren(Schoonmaak schoonmaak, int medewerkerID)
+        {
+            try
+            {
+                connection.Open();
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', '" + Convert.ToString(schoonmaak.Soort) + "')";
+                OracleCommand command = new OracleCommand(cmd, connection);
+                command.CommandType = System.Data.CommandType.Text;
+                command.ExecuteReader();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         } 
 
         public bool OnderhoudInvoeren(Onderhoud onderhoud) 
