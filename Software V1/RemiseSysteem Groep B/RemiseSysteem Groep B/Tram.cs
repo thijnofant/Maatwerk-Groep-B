@@ -45,5 +45,11 @@ namespace RemiseSysteem_Groep_B
             get { return nummer; }
             set { nummer = value; }
         }
+
+        public override string ToString()
+        {
+            return "ID: " + this.Id + " - Nummer: " + this.nummer + " - Type: " + this.Type.Naam + " - Status: " + this.status.ToString() + " - Spoor & Sector: " +
+                   this.StaatOpSector.SpoorID + "." + this.StaatOpSector.Id ;
+        }
     }
 }

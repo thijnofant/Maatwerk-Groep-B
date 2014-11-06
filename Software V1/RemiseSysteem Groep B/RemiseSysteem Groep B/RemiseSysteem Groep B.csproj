@@ -127,6 +127,12 @@
       <DependentUpon>TramReserveren.cs</DependentUpon>
     </Compile>
     <Compile Include="TramStatus.cs" />
+    <Compile Include="TramstatusWijzigen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TramstatusWijzigen.Designer.cs">
+      <DependentUpon>TramstatusWijzigen.cs</DependentUpon>
+    </Compile>
     <Compile Include="TramType.cs" />
     <Compile Include="TramVerplaatsen.cs">
       <SubType>Form</SubType>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TramReserveren.resx">
       <DependentUpon>TramReserveren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TramstatusWijzigen.resx">
+      <DependentUpon>TramstatusWijzigen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TramVerplaatsen.resx">
       <DependentUpon>TramVerplaatsen.cs</DependentUpon>
