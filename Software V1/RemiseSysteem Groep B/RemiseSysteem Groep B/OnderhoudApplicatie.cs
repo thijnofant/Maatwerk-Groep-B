@@ -89,11 +89,6 @@ namespace RemiseSysteem_Groep_B
             onderhoud.VerwijderMedewerker(medewerker);
         }
 
-        //private void lbxOnderhoudsMedewerkers_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    medewerker = medewerkers[lbxOnderhoudsMedewerkers.SelectedIndex];
-        //}
-
         private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
         {
             if (onderhoud != null)
@@ -127,6 +122,7 @@ namespace RemiseSysteem_Groep_B
                 {
                     MessageBox.Show("Toevoegen mislukt.");
                 }
+                UpdateOnderhoudInfo(onderhoud);
             }
             else
             {
