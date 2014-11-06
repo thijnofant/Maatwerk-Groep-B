@@ -41,6 +41,7 @@
             this.btnGoedkeuren.TabIndex = 3;
             this.btnGoedkeuren.Text = "Goedkeuren";
             this.btnGoedkeuren.UseVisualStyleBackColor = true;
+            this.btnGoedkeuren.Click += new System.EventHandler(this.btnGoedkeuren_Click);
             // 
             // lbxOnderhoud
             // 
