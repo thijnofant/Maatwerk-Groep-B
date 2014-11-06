@@ -31,12 +31,9 @@ namespace RemiseSysteem_Groep_B
             {
                 if (beurt is Onderhoud)
                 {
-                    if (!beurt.IsGoedgekeurd)
-                    {
                         Onderhoud onderhoud = beurt as Onderhoud;
                         onderhoudsBeurten.Add(onderhoud);
                         lbxOnderhoud.Items.Add(onderhoud.ToString());
-                    }
                 }
             }
         }
@@ -48,7 +45,20 @@ namespace RemiseSysteem_Groep_B
             {
                 if (text == onderhoud.ToString())
                 {
-                    this.remise.Database.BeurtGoedkeuren(onderhoud.ID);
+                    this.remise.Database.BeurtGoedkeurenAfkeuren(onderhoud.ID, true);
+                    HaalOnderhoudsBeurtenOp();
+                }
+            }
+        }
+
+        private void btnAfkeuren_Click(object sender, EventArgs e)
+        {
+            string text = lbxOnderhoud.SelectedItem.ToString();
+            foreach (Onderhoud onderhoud in onderhoudsBeurten)
+            {
+                if (text == onderhoud.ToString())
+                {
+                    this.remise.Database.BeurtGoedkeurenAfkeuren(onderhoud.ID, false);
                     HaalOnderhoudsBeurtenOp();
                 }
             }

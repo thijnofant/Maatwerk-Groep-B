@@ -30,11 +30,12 @@
         {
             this.btnGoedkeuren = new System.Windows.Forms.Button();
             this.lbxOnderhoud = new System.Windows.Forms.ListBox();
+            this.btnAfkeuren = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGoedkeuren
             // 
-            this.btnGoedkeuren.Location = new System.Drawing.Point(270, 333);
+            this.btnGoedkeuren.Location = new System.Drawing.Point(156, 333);
             this.btnGoedkeuren.Name = "btnGoedkeuren";
             this.btnGoedkeuren.Size = new System.Drawing.Size(213, 40);
             this.btnGoedkeuren.TabIndex = 3;
@@ -50,11 +51,22 @@
             this.lbxOnderhoud.Size = new System.Drawing.Size(752, 308);
             this.lbxOnderhoud.TabIndex = 2;
             // 
+            // btnAfkeuren
+            // 
+            this.btnAfkeuren.Location = new System.Drawing.Point(375, 333);
+            this.btnAfkeuren.Name = "btnAfkeuren";
+            this.btnAfkeuren.Size = new System.Drawing.Size(213, 40);
+            this.btnAfkeuren.TabIndex = 4;
+            this.btnAfkeuren.Text = "Afkeuren";
+            this.btnAfkeuren.UseVisualStyleBackColor = true;
+            this.btnAfkeuren.Click += new System.EventHandler(this.btnAfkeuren_Click);
+            // 
             // OnderhoudGoedkeuren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 385);
+            this.Controls.Add(this.btnAfkeuren);
             this.Controls.Add(this.btnGoedkeuren);
             this.Controls.Add(this.lbxOnderhoud);
             this.MaximizeBox = false;
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Button btnGoedkeuren;
         private System.Windows.Forms.ListBox lbxOnderhoud;
+        private System.Windows.Forms.Button btnAfkeuren;
     }
 }

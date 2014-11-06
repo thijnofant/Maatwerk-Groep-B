@@ -31,12 +31,9 @@ namespace RemiseSysteem_Groep_B
             {
                 if (beurt is Schoonmaak)
                 {
-                    if (!beurt.IsGoedgekeurd)
-                    {
-                        Schoonmaak schoonmaak = beurt as Schoonmaak;
-                        schoonmaakbeurten.Add(schoonmaak);
-                        lbxSchoonmaak.Items.Add(schoonmaak.ToString());
-                    }
+                    Schoonmaak schoonmaak = beurt as Schoonmaak;
+                    schoonmaakbeurten.Add(schoonmaak);
+                    lbxSchoonmaak.Items.Add(schoonmaak.ToString());
                 }
             }
         }
@@ -48,7 +45,20 @@ namespace RemiseSysteem_Groep_B
             {
                 if (text == schoonmaak.ToString())
                 {
-                    this.remise.Database.BeurtGoedkeuren(schoonmaak.ID);
+                    this.remise.Database.BeurtGoedkeurenAfkeuren(schoonmaak.ID, true);
+                    HaalSchoonmakenOp();
+                }
+            }
+        }
+
+        private void btnAfkeuren_Click(object sender, EventArgs e)
+        {
+            string text = lbxSchoonmaak.SelectedItem.ToString();
+            foreach (Schoonmaak schoonmaak in schoonmaakbeurten)
+            {
+                if (text == schoonmaak.ToString())
+                {
+                    this.remise.Database.BeurtGoedkeurenAfkeuren(schoonmaak.ID, false);
                     HaalSchoonmakenOp();
                 }
             }

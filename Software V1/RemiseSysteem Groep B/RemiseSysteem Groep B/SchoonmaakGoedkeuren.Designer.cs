@@ -30,6 +30,7 @@
         {
             this.lbxSchoonmaak = new System.Windows.Forms.ListBox();
             this.btnGoedkeuren = new System.Windows.Forms.Button();
+            this.btnAfkeuren = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbxSchoonmaak
@@ -43,7 +44,7 @@
             // 
             // btnGoedkeuren
             // 
-            this.btnGoedkeuren.Location = new System.Drawing.Point(277, 333);
+            this.btnGoedkeuren.Location = new System.Drawing.Point(157, 333);
             this.btnGoedkeuren.Name = "btnGoedkeuren";
             this.btnGoedkeuren.Size = new System.Drawing.Size(213, 40);
             this.btnGoedkeuren.TabIndex = 1;
@@ -51,11 +52,22 @@
             this.btnGoedkeuren.UseVisualStyleBackColor = true;
             this.btnGoedkeuren.Click += new System.EventHandler(this.btnGoedkeuren_Click);
             // 
+            // btnAfkeuren
+            // 
+            this.btnAfkeuren.Location = new System.Drawing.Point(376, 333);
+            this.btnAfkeuren.Name = "btnAfkeuren";
+            this.btnAfkeuren.Size = new System.Drawing.Size(213, 40);
+            this.btnAfkeuren.TabIndex = 2;
+            this.btnAfkeuren.Text = "Afkeuren";
+            this.btnAfkeuren.UseVisualStyleBackColor = true;
+            this.btnAfkeuren.Click += new System.EventHandler(this.btnAfkeuren_Click);
+            // 
             // SchoonmaakGoedkeuren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 385);
+            this.Controls.Add(this.btnAfkeuren);
             this.Controls.Add(this.btnGoedkeuren);
             this.Controls.Add(this.lbxSchoonmaak);
             this.MaximumSize = new System.Drawing.Size(794, 432);
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.ListBox lbxSchoonmaak;
         private System.Windows.Forms.Button btnGoedkeuren;
+        private System.Windows.Forms.Button btnAfkeuren;
 
 
     }

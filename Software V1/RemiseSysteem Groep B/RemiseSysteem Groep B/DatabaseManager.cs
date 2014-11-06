@@ -504,14 +504,25 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
-        public bool BeurtGoedkeuren(int beurtid)
+        public bool BeurtGoedkeurenAfkeuren(int beurtid, bool isGoedgekeurd)
         {
             try
             {
-                string cmd = "Update tram_beurt set goedgekeurd = 'Y' where id = :beurtid";
+                string goedgekeurdString = "";
+                if (isGoedgekeurd)
+                {
+                    goedgekeurdString = "Y";
+                }
+                else
+                {
+                    goedgekeurdString = "N";
+                }
+
+                string cmd = "Update tram_beurt set goedgekeurd = :goedgekeurd where id = :beurtid";
                 OracleCommand command = new OracleCommand(cmd,connection);
                 connection.Open();
                 command.Parameters.Add("beurtid", beurtid);
+                command.Parameters.Add("goedgekeurd", goedgekeurdString);
                 int resultaat = command.ExecuteNonQuery();
                 if (resultaat > 0)
                 {
