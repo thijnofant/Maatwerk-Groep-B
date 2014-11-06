@@ -19,7 +19,18 @@ namespace RemiseSysteem_Groep_B
         List<Tram> tramlijst;
         DatabaseManager db;
 
+<<<<<<< HEAD
+        Medewerker medewerkerSchoonmaak;
+        List<Schoonmaak> schoonmaakBeurten;
+        Schoonmaak schoonmaak;
+        int medewerkerID;
 
+        /// <summary>
+        /// 
+        /// </summary>
+=======
+
+>>>>>>> origin/master
         public SchoonmaakApplicatie()
         {
             InitializeComponent();
@@ -34,6 +45,18 @@ namespace RemiseSysteem_Groep_B
 
             cbMedewerker.SelectedIndex = 0;//zorgt dat altijd een waarde is geselecteerd
             cbTram.SelectedIndex = 0;//zorgt dat altijd een waarde is geselecteerd
+
+            LaadSchoonmaakBeurten();
+        }
+
+        private void LaadSchoonmaakBeurten()
+        {
+            schoonmaakBeurten = this.db.SchoonmaakOpvragen();
+
+            foreach (Schoonmaak sm in schoonmaakBeurten)
+            {
+                lbxSchoonmaakBeurten.Items.Add(Convert.ToInt32(sm.ID));
+            }
         }
 
 
@@ -103,6 +126,54 @@ namespace RemiseSysteem_Groep_B
         private void rbKlein_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;
+        }
+
+        private void lbxSchoonmaakBeurten_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            schoonmaak = schoonmaakBeurten[lbxSchoonmaakBeurten.SelectedIndex];
+            UpdateSchoonmaakInfo(schoonmaak);
+        }
+
+        private void UpdateSchoonmaakInfo(Schoonmaak schoonmaak)
+        {
+            tbxDatum.Text = Convert.ToString(schoonmaak.BeginDatum);
+            if (tbxDatum.Text == "01/01/0001 00:00:00")
+            {
+                tbxDatum.Text = "";
+            }
+            medewerkerID = Remise.Instance.Database.MedewerkerOpvragen(schoonmaak);
+
+            if (medewerkerID != -1)
+            {
+                medewerkerSchoonmaak = this.db.ZoekMedewerkerOpID(medewerkerID);
+
+                tbxMedewerkerOnderhoud.Text = medewerkerSchoonmaak.Naam;
+            }
+            else
+            {
+                tbxMedewerkerOnderhoud.Text = "Geen medewerker.";
+            }
+
+            if (this.db.IsKlaar(schoonmaak))
+            {
+                chxKlaar.Checked = true;
+            }
+            else
+            {
+                chxKlaar.Checked = false;
+            }
+        }
+
+        private void chxKlaar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (chxKlaar.Checked == true)
+            {
+                this.db.WijzigKlaar(schoonmaak, true);
+            }
+            else
+            {
+                this.db.WijzigKlaar(schoonmaak, false);
+            }
         }
     }
 }

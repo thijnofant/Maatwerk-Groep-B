@@ -141,6 +141,35 @@ namespace RemiseSysteem_Groep_B
             return medewerkerID;
         }
 
+        public int MedewerkerOpvragen(Schoonmaak schoonmaak)
+        {
+            int medewerkerID = -1;
+
+            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = " + schoonmaak.ID;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader["MedewerkerID"] != "")
+                    {
+                        medewerkerID = Convert.ToInt32(reader["MedewerkerID"]);
+                    }
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return medewerkerID;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -165,7 +194,7 @@ namespace RemiseSysteem_Groep_B
 
             List<Onderhoud> returnList = new List<Onderhoud>();
 
-            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeschikbaarDatum BeurtType, BeschikbaarDatum FROM TRAM_BEURT WHERE TypeOnderhoud = 'Onderhoud'";
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeschikbaarDatum, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Onderhoud'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -215,6 +244,54 @@ namespace RemiseSysteem_Groep_B
             return returnList;
         }
 
+        public List<Schoonmaak> SchoonmaakOpvragen()
+        {
+            List<Tram> trams = AlleTrams();
+
+            List<Schoonmaak> returnList = new List<Schoonmaak>();
+
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int OnderhoudID = reader.GetInt32(0);
+                    int tramId = reader.GetInt32(2);
+                    DateTime startTijd = reader.GetDateTime(3);
+                    string beurtType = reader["BeurtType"].ToString();
+
+                    BeurtType tempEnum = BeurtType.Groot;
+
+                    switch (beurtType)
+                    {
+                        case "Klein":
+                            tempEnum = BeurtType.Klein;
+                            break;
+                        case "Groot":
+                            tempEnum = BeurtType.Groot;
+                            break;
+                        case "Incident":
+                            tempEnum = BeurtType.Incident;
+                            break;
+                    }
+
+                    /*startTijd, OnderhoudID, tempEnum, tempTram*/
+                    Schoonmaak tempSchoon = new Schoonmaak(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId));
+                    returnList.Add(tempSchoon);
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return returnList;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -250,6 +327,28 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        public bool IsKlaar(Schoonmaak schoonmaak)
+        {
+            string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = " + schoonmaak.ID;
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = comm.ExecuteReader();
+                reader.Read();
+                if (Convert.ToString(reader["Klaar"]) == "Y")
+                {
+                    return true;
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
         public bool WijzigKlaar(Onderhoud onderhoud, bool klaar)
         {
             string cmd = "";
@@ -260,6 +359,32 @@ namespace RemiseSysteem_Groep_B
             else
             {
                 cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = " + onderhoud.ID;
+            }
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                comm.ExecuteNonQuery();
+                return true;
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        public bool WijzigKlaar(Schoonmaak schoonmaak, bool klaar)
+        {
+            string cmd = "";
+            if (klaar)
+            {
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'Y' WHERE ID = " + schoonmaak.ID;
+            }
+            else
+            {
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = " + schoonmaak.ID;
             }
             OracleCommand comm = new OracleCommand(cmd, connection);
             try
@@ -331,8 +456,7 @@ namespace RemiseSysteem_Groep_B
         /// <returns></returns>
         public bool WijzigTijdsIndicatieOnderhoud(DateTime datum, Onderhoud onderhoud)
         {
-            string datumString = datum.Day + "-" + datum.Month + "-" + datum.Year + " " + datum.Hour + ":" + datum.Minute;
-            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = '" + datumString + "' WHERE ID = " + onderhoud.ID;
+            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = TO_DATE('" + datum + "', 'DD-MM-YYYY HH24:MI:SS') WHERE ID = " + onderhoud.ID;
             OracleCommand comm = new OracleCommand(cmd, connection);
             try
             {

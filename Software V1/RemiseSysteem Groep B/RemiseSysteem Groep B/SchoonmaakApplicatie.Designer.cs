@@ -39,6 +39,17 @@
             this.rbGroot = new System.Windows.Forms.RadioButton();
             this.btnAanvragen = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.tbxMedewerkerOnderhoud = new System.Windows.Forms.TextBox();
+            this.lblOnderhoudsMedewerkers = new System.Windows.Forms.Label();
+            this.tbxDatum = new System.Windows.Forms.TextBox();
+            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
+            this.lblSchoonmaak = new System.Windows.Forms.Label();
+            this.btnVerwijderMedewerker = new System.Windows.Forms.Button();
+            this.lblSchoonmaakBeurten = new System.Windows.Forms.Label();
+            this.lbxSchoonmaakBeurten = new System.Windows.Forms.ListBox();
+            this.btnSchoonmaakAanvragen = new System.Windows.Forms.Button();
+            this.btnSchoonmaakWijzigen = new System.Windows.Forms.Button();
+            this.chxKlaar = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,17 +152,125 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(46, 324);
+            this.lblMessage.Location = new System.Drawing.Point(55, 360);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(16, 13);
             this.lblMessage.TabIndex = 9;
             this.lblMessage.Text = "...";
             // 
+            // tbxMedewerkerOnderhoud
+            // 
+            this.tbxMedewerkerOnderhoud.Enabled = false;
+            this.tbxMedewerkerOnderhoud.Location = new System.Drawing.Point(141, 441);
+            this.tbxMedewerkerOnderhoud.Name = "tbxMedewerkerOnderhoud";
+            this.tbxMedewerkerOnderhoud.Size = new System.Drawing.Size(120, 20);
+            this.tbxMedewerkerOnderhoud.TabIndex = 33;
+            // 
+            // lblOnderhoudsMedewerkers
+            // 
+            this.lblOnderhoudsMedewerkers.AutoSize = true;
+            this.lblOnderhoudsMedewerkers.Location = new System.Drawing.Point(138, 425);
+            this.lblOnderhoudsMedewerkers.Name = "lblOnderhoudsMedewerkers";
+            this.lblOnderhoudsMedewerkers.Size = new System.Drawing.Size(69, 13);
+            this.lblOnderhoudsMedewerkers.TabIndex = 32;
+            this.lblOnderhoudsMedewerkers.Text = "Medewerker:";
+            // 
+            // tbxDatum
+            // 
+            this.tbxDatum.Enabled = false;
+            this.tbxDatum.Location = new System.Drawing.Point(141, 376);
+            this.tbxDatum.Name = "tbxDatum";
+            this.tbxDatum.Size = new System.Drawing.Size(100, 20);
+            this.tbxDatum.TabIndex = 29;
+            // 
+            // dtpDatum
+            // 
+            this.dtpDatum.Location = new System.Drawing.Point(141, 402);
+            this.dtpDatum.Name = "dtpDatum";
+            this.dtpDatum.Size = new System.Drawing.Size(200, 20);
+            this.dtpDatum.TabIndex = 28;
+            // 
+            // lblSchoonmaak
+            // 
+            this.lblSchoonmaak.AutoSize = true;
+            this.lblSchoonmaak.Location = new System.Drawing.Point(138, 360);
+            this.lblSchoonmaak.Name = "lblSchoonmaak";
+            this.lblSchoonmaak.Size = new System.Drawing.Size(97, 13);
+            this.lblSchoonmaak.TabIndex = 27;
+            this.lblSchoonmaak.Text = "Schoonmaakbeurt:";
+            // 
+            // btnVerwijderMedewerker
+            // 
+            this.btnVerwijderMedewerker.Location = new System.Drawing.Point(267, 439);
+            this.btnVerwijderMedewerker.Name = "btnVerwijderMedewerker";
+            this.btnVerwijderMedewerker.Size = new System.Drawing.Size(75, 23);
+            this.btnVerwijderMedewerker.TabIndex = 26;
+            this.btnVerwijderMedewerker.Text = "Verwijder";
+            this.btnVerwijderMedewerker.UseVisualStyleBackColor = true;
+            // 
+            // lblSchoonmaakBeurten
+            // 
+            this.lblSchoonmaakBeurten.AutoSize = true;
+            this.lblSchoonmaakBeurten.Location = new System.Drawing.Point(12, 360);
+            this.lblSchoonmaakBeurten.Name = "lblSchoonmaakBeurten";
+            this.lblSchoonmaakBeurten.Size = new System.Drawing.Size(109, 13);
+            this.lblSchoonmaakBeurten.TabIndex = 24;
+            this.lblSchoonmaakBeurten.Text = "Schoonmaakbeurten:";
+            // 
+            // lbxSchoonmaakBeurten
+            // 
+            this.lbxSchoonmaakBeurten.FormattingEnabled = true;
+            this.lbxSchoonmaakBeurten.Location = new System.Drawing.Point(15, 376);
+            this.lbxSchoonmaakBeurten.Name = "lbxSchoonmaakBeurten";
+            this.lbxSchoonmaakBeurten.Size = new System.Drawing.Size(120, 147);
+            this.lbxSchoonmaakBeurten.TabIndex = 22;
+            this.lbxSchoonmaakBeurten.SelectedIndexChanged += new System.EventHandler(this.lbxSchoonmaakBeurten_SelectedIndexChanged);
+            // 
+            // btnSchoonmaakAanvragen
+            // 
+            this.btnSchoonmaakAanvragen.Location = new System.Drawing.Point(141, 468);
+            this.btnSchoonmaakAanvragen.Name = "btnSchoonmaakAanvragen";
+            this.btnSchoonmaakAanvragen.Size = new System.Drawing.Size(75, 23);
+            this.btnSchoonmaakAanvragen.TabIndex = 34;
+            this.btnSchoonmaakAanvragen.Text = "Aanvragen";
+            this.btnSchoonmaakAanvragen.UseVisualStyleBackColor = true;
+            // 
+            // btnSchoonmaakWijzigen
+            // 
+            this.btnSchoonmaakWijzigen.Location = new System.Drawing.Point(222, 468);
+            this.btnSchoonmaakWijzigen.Name = "btnSchoonmaakWijzigen";
+            this.btnSchoonmaakWijzigen.Size = new System.Drawing.Size(75, 23);
+            this.btnSchoonmaakWijzigen.TabIndex = 35;
+            this.btnSchoonmaakWijzigen.Text = "Wijzigen";
+            this.btnSchoonmaakWijzigen.UseVisualStyleBackColor = true;
+            // 
+            // chxKlaar
+            // 
+            this.chxKlaar.AutoSize = true;
+            this.chxKlaar.Location = new System.Drawing.Point(141, 497);
+            this.chxKlaar.Name = "chxKlaar";
+            this.chxKlaar.Size = new System.Drawing.Size(50, 17);
+            this.chxKlaar.TabIndex = 36;
+            this.chxKlaar.Text = "Klaar";
+            this.chxKlaar.UseVisualStyleBackColor = true;
+            this.chxKlaar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chxKlaar_MouseClick);
+            // 
             // SchoonmaakApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 364);
+            this.ClientSize = new System.Drawing.Size(407, 537);
+            this.Controls.Add(this.chxKlaar);
+            this.Controls.Add(this.btnSchoonmaakWijzigen);
+            this.Controls.Add(this.btnSchoonmaakAanvragen);
+            this.Controls.Add(this.tbxMedewerkerOnderhoud);
+            this.Controls.Add(this.lblOnderhoudsMedewerkers);
+            this.Controls.Add(this.tbxDatum);
+            this.Controls.Add(this.dtpDatum);
+            this.Controls.Add(this.lblSchoonmaak);
+            this.Controls.Add(this.btnVerwijderMedewerker);
+            this.Controls.Add(this.lblSchoonmaakBeurten);
+            this.Controls.Add(this.lbxSchoonmaakBeurten);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnAanvragen);
             this.Controls.Add(this.groupBox1);
@@ -183,5 +302,16 @@
         private System.Windows.Forms.RadioButton rbGroot;
         private System.Windows.Forms.Button btnAanvragen;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.TextBox tbxMedewerkerOnderhoud;
+        private System.Windows.Forms.Label lblOnderhoudsMedewerkers;
+        private System.Windows.Forms.TextBox tbxDatum;
+        private System.Windows.Forms.DateTimePicker dtpDatum;
+        private System.Windows.Forms.Label lblSchoonmaak;
+        private System.Windows.Forms.Button btnVerwijderMedewerker;
+        private System.Windows.Forms.Label lblSchoonmaakBeurten;
+        private System.Windows.Forms.ListBox lbxSchoonmaakBeurten;
+        private System.Windows.Forms.Button btnSchoonmaakAanvragen;
+        private System.Windows.Forms.Button btnSchoonmaakWijzigen;
+        private System.Windows.Forms.CheckBox chxKlaar;
     }
 }

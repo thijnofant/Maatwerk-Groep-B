@@ -86,14 +86,13 @@ namespace RemiseSysteem_Groep_B
         /// 
         /// </summary>
         /// <param name="onderhoud"></param>
-        void UpdateOnderhoudInfo(Onderhoud onderhoud)
+        private void UpdateOnderhoudInfo(Onderhoud onderhoud)
         {
             tbxDatum.Text = Convert.ToString(onderhoud.TijdsIndicatie);
             if(tbxDatum.Text == "01/01/0001 00:00:00")
             {
                 tbxDatum.Text = "";
             }
-
             medewerkerID = Remise.Instance.Database.MedewerkerOpvragen(onderhoud);
 
             if(medewerkerID != -1)
@@ -169,7 +168,7 @@ namespace RemiseSysteem_Groep_B
             {
                 minuut = "0" + Convert.ToString(nudMinuut.Value);
             }
-            DateTime datum = Convert.ToDateTime(dtpDatum.Value + " " + uur + ":" + minuut);
+            DateTime datum = Convert.ToDateTime(dtpDatum.Value);
             if(!this.databaseManager.WijzigTijdsIndicatieOnderhoud(datum, onderhoud))
             {
                 MessageBox.Show("Tijdsindicatie wijzigen mislukt.");
