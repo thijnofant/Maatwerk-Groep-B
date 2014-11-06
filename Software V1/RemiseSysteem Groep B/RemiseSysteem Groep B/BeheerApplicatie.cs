@@ -14,7 +14,9 @@ namespace RemiseSysteem_Groep_B
     {
         private Remise remise;
         DatabaseManager databaseManager;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public BeheerApplicatie()
         {
             InitializeComponent();
@@ -23,48 +25,93 @@ namespace RemiseSysteem_Groep_B
             Updater();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TramVerplaatsen app = new TramVerplaatsen();
             app.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void verwijderenToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void blokkerenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeheerApp_Blokkeren form = new BeheerApp_Blokkeren();
             form.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void deblokkerenToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void beherenToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void beherenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void schoonmaakLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SchoonmaakApplicatie app = new SchoonmaakApplicatie();
@@ -72,24 +119,42 @@ namespace RemiseSysteem_Groep_B
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void invoerenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
             form.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reserverenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TramReserveren form = new TramReserveren();
             form.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void invoerenToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             BeheerderApp_SchoonmaakInvoeren form = new BeheerderApp_SchoonmaakInvoeren();
             form.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Updater()
         {
             string[] Spoor_Sector = DatabaseManager.Instance.SpoorSectorArray();
@@ -248,23 +313,44 @@ namespace RemiseSysteem_Groep_B
             s77_4.Text = Spoor_Sector[154].ToString();
             s77_5.Text = Spoor_Sector[155].ToString();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void onderhoudLijstOpvragenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OnderhoudApplicatie app = new OnderhoudApplicatie();
             app.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void goedkeurenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SchoonmaakGoedkeuren schoonmaakGoedkeuren = new SchoonmaakGoedkeuren();
             schoonmaakGoedkeuren.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Updater();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void goedkeurenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OnderhoudGoedkeuren onderhoudGoedkeuren = new OnderhoudGoedkeuren();
