@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Het form voor het blokkeren van sporen en sectoren.
     /// </summary>
     public partial class BeheerApp_Blokkeren : Form
     {
@@ -19,9 +19,6 @@ namespace RemiseSysteem_Groep_B
         List<Spoor> sporen;
         List<Sector> sectoren;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public BeheerApp_Blokkeren() {
             InitializeComponent();
             UpdateData();

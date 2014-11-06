@@ -43,6 +43,7 @@
             this.tbxMedewerkerOnderhoud = new System.Windows.Forms.TextBox();
             this.nudUur = new System.Windows.Forms.NumericUpDown();
             this.nudMinuut = new System.Windows.Forms.NumericUpDown();
+            this.chxKlaar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudUur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinuut)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +53,7 @@
             this.lbxMedewerkers.FormattingEnabled = true;
             this.lbxMedewerkers.Location = new System.Drawing.Point(15, 25);
             this.lbxMedewerkers.Name = "lbxMedewerkers";
-            this.lbxMedewerkers.Size = new System.Drawing.Size(120, 134);
+            this.lbxMedewerkers.Size = new System.Drawing.Size(120, 147);
             this.lbxMedewerkers.TabIndex = 0;
             // 
             // lbxOnderhoudsBeurten
@@ -60,7 +61,7 @@
             this.lbxOnderhoudsBeurten.FormattingEnabled = true;
             this.lbxOnderhoudsBeurten.Location = new System.Drawing.Point(222, 25);
             this.lbxOnderhoudsBeurten.Name = "lbxOnderhoudsBeurten";
-            this.lbxOnderhoudsBeurten.Size = new System.Drawing.Size(120, 134);
+            this.lbxOnderhoudsBeurten.Size = new System.Drawing.Size(120, 147);
             this.lbxOnderhoudsBeurten.TabIndex = 1;
             this.lbxOnderhoudsBeurten.SelectedIndexChanged += new System.EventHandler(this.lbxOnderhoudsBeurten_SelectedIndexChanged);
             // 
@@ -150,9 +151,9 @@
             this.lblOnderhoudsMedewerkers.AutoSize = true;
             this.lblOnderhoudsMedewerkers.Location = new System.Drawing.Point(348, 114);
             this.lblOnderhoudsMedewerkers.Name = "lblOnderhoudsMedewerkers";
-            this.lblOnderhoudsMedewerkers.Size = new System.Drawing.Size(74, 13);
+            this.lblOnderhoudsMedewerkers.Size = new System.Drawing.Size(69, 13);
             this.lblOnderhoudsMedewerkers.TabIndex = 14;
-            this.lblOnderhoudsMedewerkers.Text = "Medewerkers:";
+            this.lblOnderhoudsMedewerkers.Text = "Medewerker:";
             // 
             // tbxMedewerkerOnderhoud
             // 
@@ -165,6 +166,11 @@
             // nudUur
             // 
             this.nudUur.Location = new System.Drawing.Point(351, 91);
+            this.nudUur.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
             this.nudUur.Name = "nudUur";
             this.nudUur.Size = new System.Drawing.Size(47, 20);
             this.nudUur.TabIndex = 17;
@@ -172,15 +178,33 @@
             // nudMinuut
             // 
             this.nudMinuut.Location = new System.Drawing.Point(404, 91);
+            this.nudMinuut.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.nudMinuut.Name = "nudMinuut";
             this.nudMinuut.Size = new System.Drawing.Size(47, 20);
             this.nudMinuut.TabIndex = 18;
+            // 
+            // chxKlaar
+            // 
+            this.chxKlaar.AutoSize = true;
+            this.chxKlaar.Location = new System.Drawing.Point(351, 154);
+            this.chxKlaar.Name = "chxKlaar";
+            this.chxKlaar.Size = new System.Drawing.Size(50, 17);
+            this.chxKlaar.TabIndex = 20;
+            this.chxKlaar.Text = "Klaar";
+            this.chxKlaar.UseVisualStyleBackColor = true;
+            this.chxKlaar.CheckedChanged += new System.EventHandler(this.chxKlaar_CheckedChanged);
+            this.chxKlaar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chxKlaar_MouseClick);
             // 
             // OnderhoudApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 173);
+            this.ClientSize = new System.Drawing.Size(565, 186);
+            this.Controls.Add(this.chxKlaar);
             this.Controls.Add(this.nudMinuut);
             this.Controls.Add(this.nudUur);
             this.Controls.Add(this.tbxMedewerkerOnderhoud);
@@ -222,5 +246,6 @@
         private System.Windows.Forms.TextBox tbxMedewerkerOnderhoud;
         private System.Windows.Forms.NumericUpDown nudUur;
         private System.Windows.Forms.NumericUpDown nudMinuut;
+        private System.Windows.Forms.CheckBox chxKlaar;
     }
 }
