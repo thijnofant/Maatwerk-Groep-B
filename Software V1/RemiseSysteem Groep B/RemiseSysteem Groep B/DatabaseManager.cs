@@ -575,6 +575,15 @@ namespace RemiseSysteem_Groep_B
 
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
+            List<Sector> tempSectoren= GetSectorenVoorBlokkade();
+            foreach (Sector s in tempSectoren)
+            {
+                if (s.Id == sect.Id && (s.IsGeblokkeerd || s.Tram != null))
+                {
+                    return false;
+                }
+            }
+
             Tram tempTram = ZoekTram(tramNr);
             String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
             String cmd2 = "UPDATE SECTOR SET TramID = null where tramID = " + tempTram.Id;
