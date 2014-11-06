@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Het form voor het invoeren van schoonmaakberten en onderhoudsbeurten.
     /// </summary>
     public partial class BeheerderApp_SchoonmaakInvoeren : Form
     {
@@ -20,9 +20,6 @@ namespace RemiseSysteem_Groep_B
         List<Tram> tramlijst;
         List<Beurt> beurtenlijst;
 
-        /// <summary>
-        /// 
-        /// </summary>
         public BeheerderApp_SchoonmaakInvoeren() 
         {
             InitializeComponent();
