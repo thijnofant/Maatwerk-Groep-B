@@ -18,13 +18,13 @@ namespace RemiseSysteem_Groep_B
         public SchoonmaakApplicatie()
         {
             InitializeComponent();
-            db = DatabaseManager.Instance;
-            schoomaakmedewerkers = new List<Medewerker>();
-            schoomaakmedewerkers = db.SchoonmaakMedewerkersOpvragen();
-            tramlijst = new List<Tram>();
-            tramlijst = db.AlleTrams();
+            db = DatabaseManager.Instance;//singleton design pattern voor database klasse
+            schoomaakmedewerkers = new List<Medewerker>();//lijst om alle schoonmaakmedewerkers in op te slaan
+            schoomaakmedewerkers = db.SchoonmaakMedewerkersOpvragen();//haalt alle schoonmaakmedewerkers op uit de database
+            tramlijst = new List<Tram>();//lijst om alle trams in op te slaan
+            tramlijst = db.AlleTrams();//haalt alle trams op uit de database en vult hiermee de lijst
 
-            Updateform();   
+            Updateform();//methode die de comboboxes vult op het form
         }
 
         public void Updateform()
@@ -42,30 +42,30 @@ namespace RemiseSysteem_Groep_B
 
         private void btnAanvragen_Click(object sender, EventArgs e)
         {
-            int selectedtramnr = Convert.ToInt32(cbTram.SelectedItem.ToString());
-            string selectedmwstring = cbMedewerker.SelectedItem.ToString();
-            int mwID = Convert.ToInt32(selectedmwstring.Substring(0, 1));
-            int allowedbeurten = 3;
-            int aantalUitgevoerdeBeurten;
-            BeurtType beurttype = BeurtType.Klein;
-            Tram tram = db.ZoekTram(selectedtramnr);
-            Medewerker medewerker = db.ZoekMedewerkerOpID(mwID);
-            DateTime begindatum = dtpStartDatum.Value;
-            if(rbGroot.Checked)
+            int selectedtramnr = Convert.ToInt32(cbTram.SelectedItem.ToString());//het geselecteerde tramnr
+            string selectedmwstring = cbMedewerker.SelectedItem.ToString();//geselecteerde medewerker string
+            int mwID = Convert.ToInt32(selectedmwstring.Substring(0, 1));// eerste character uit medewerker string (dit is de ID)
+            int allowedbeurten = 0;//het aantalbeurten dat is toegestaan per dag, deze wordt later gevuld , afhankelijk van grote of kleine beurt
+            int aantalUitgevoerdeBeurten; //variable om in op te slaan wat het aantal uitgevoerde beurten is van de geselecteerde dag
+            BeurtType beurttype = BeurtType.Klein;//variable voor geselecteerde beurttype
+            Tram tram = db.ZoekTram(selectedtramnr);//zoekt de tram en voegt deze toe in het tram object
+            Medewerker medewerker = db.ZoekMedewerkerOpID(mwID);//zoekt medewerker en voegt deze toe in het medwerker object
+            DateTime begindatum = dtpStartDatum.Value;//geselecteerde datum
+            if(rbGroot.Checked)//wanneer groot geselecteerd is
             {
                 beurttype = BeurtType.Groot;
                 allowedbeurten = 2;
             }
-            if(rbKlein.Checked)
+            if(rbKlein.Checked)//wanneer klein geselecteerd is
             {
                 beurttype = BeurtType.Klein;
                 allowedbeurten = 3;
             }
-            Schoonmaak s = new Schoonmaak(begindatum, db.GetInsertID("ID", "Tram_Beurt") + 1, beurttype, tram);
-            aantalUitgevoerdeBeurten = db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id);
-            if (aantalUitgevoerdeBeurten <= allowedbeurten)
+            Schoonmaak s = new Schoonmaak(begindatum, db.GetInsertID("ID", "Tram_Beurt") + 1, beurttype, tram);//maakt nieuw schoonmaak object aan
+            aantalUitgevoerdeBeurten = db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id);//kijkt hoeveel beurten zijn uitgevoerd op geselecteerde datum
+            if (aantalUitgevoerdeBeurten <= allowedbeurten)// wanneer dit meer is dan allowed beurten, wordt dit overgeslagen
             {
-                db.SchoonmaakInvoeren(s);
+                db.SchoonmaakInvoeren(s, mwID);//voert nieuwe schoonmaak in in de database
             }
         }
     }
