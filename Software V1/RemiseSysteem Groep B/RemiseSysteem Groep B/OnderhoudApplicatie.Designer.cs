@@ -39,10 +39,12 @@
             this.tbxDatum = new System.Windows.Forms.TextBox();
             this.lblDatum = new System.Windows.Forms.Label();
             this.btnTijdsIndicatieWijzigen = new System.Windows.Forms.Button();
-            this.btnTijdsIndicatieOpvragen = new System.Windows.Forms.Button();
             this.lblOnderhoudsMedewerkers = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tbxMedewerkerOnderhoud = new System.Windows.Forms.TextBox();
+            this.nudUur = new System.Windows.Forms.NumericUpDown();
+            this.nudMinuut = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinuut)).BeginInit();
             this.SuspendLayout();
             // 
             // lbxMedewerkers
@@ -50,7 +52,7 @@
             this.lbxMedewerkers.FormattingEnabled = true;
             this.lbxMedewerkers.Location = new System.Drawing.Point(15, 25);
             this.lbxMedewerkers.Name = "lbxMedewerkers";
-            this.lbxMedewerkers.Size = new System.Drawing.Size(120, 95);
+            this.lbxMedewerkers.Size = new System.Drawing.Size(120, 134);
             this.lbxMedewerkers.TabIndex = 0;
             // 
             // lbxOnderhoudsBeurten
@@ -58,7 +60,7 @@
             this.lbxOnderhoudsBeurten.FormattingEnabled = true;
             this.lbxOnderhoudsBeurten.Location = new System.Drawing.Point(222, 25);
             this.lbxOnderhoudsBeurten.Name = "lbxOnderhoudsBeurten";
-            this.lbxOnderhoudsBeurten.Size = new System.Drawing.Size(120, 95);
+            this.lbxOnderhoudsBeurten.Size = new System.Drawing.Size(120, 134);
             this.lbxOnderhoudsBeurten.TabIndex = 1;
             this.lbxOnderhoudsBeurten.SelectedIndexChanged += new System.EventHandler(this.lbxOnderhoudsBeurten_SelectedIndexChanged);
             // 
@@ -92,7 +94,7 @@
             // 
             // btnVerwijderMedewerker
             // 
-            this.btnVerwijderMedewerker.Location = new System.Drawing.Point(642, 344);
+            this.btnVerwijderMedewerker.Location = new System.Drawing.Point(477, 128);
             this.btnVerwijderMedewerker.Name = "btnVerwijderMedewerker";
             this.btnVerwijderMedewerker.Size = new System.Drawing.Size(75, 23);
             this.btnVerwijderMedewerker.TabIndex = 5;
@@ -103,7 +105,7 @@
             // lblOnderhoud
             // 
             this.lblOnderhoud.AutoSize = true;
-            this.lblOnderhoud.Location = new System.Drawing.Point(513, 179);
+            this.lblOnderhoud.Location = new System.Drawing.Point(348, 9);
             this.lblOnderhoud.Name = "lblOnderhoud";
             this.lblOnderhoud.Size = new System.Drawing.Size(92, 13);
             this.lblOnderhoud.TabIndex = 6;
@@ -111,7 +113,7 @@
             // 
             // dtpDatum
             // 
-            this.dtpDatum.Location = new System.Drawing.Point(516, 276);
+            this.dtpDatum.Location = new System.Drawing.Point(351, 64);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(200, 20);
             this.dtpDatum.TabIndex = 8;
@@ -119,7 +121,7 @@
             // tbxDatum
             // 
             this.tbxDatum.Enabled = false;
-            this.tbxDatum.Location = new System.Drawing.Point(516, 250);
+            this.tbxDatum.Location = new System.Drawing.Point(351, 38);
             this.tbxDatum.Name = "tbxDatum";
             this.tbxDatum.Size = new System.Drawing.Size(100, 20);
             this.tbxDatum.TabIndex = 9;
@@ -127,7 +129,7 @@
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
-            this.lblDatum.Location = new System.Drawing.Point(513, 234);
+            this.lblDatum.Location = new System.Drawing.Point(348, 22);
             this.lblDatum.Name = "lblDatum";
             this.lblDatum.Size = new System.Drawing.Size(71, 13);
             this.lblDatum.TabIndex = 10;
@@ -135,59 +137,54 @@
             // 
             // btnTijdsIndicatieWijzigen
             // 
-            this.btnTijdsIndicatieWijzigen.Location = new System.Drawing.Point(516, 302);
+            this.btnTijdsIndicatieWijzigen.Location = new System.Drawing.Point(457, 36);
             this.btnTijdsIndicatieWijzigen.Name = "btnTijdsIndicatieWijzigen";
             this.btnTijdsIndicatieWijzigen.Size = new System.Drawing.Size(75, 23);
-            this.btnTijdsIndicatieWijzigen.TabIndex = 11;
-            this.btnTijdsIndicatieWijzigen.Text = "Wijzig";
+            this.btnTijdsIndicatieWijzigen.TabIndex = 12;
+            this.btnTijdsIndicatieWijzigen.Text = "Update";
             this.btnTijdsIndicatieWijzigen.UseVisualStyleBackColor = true;
             this.btnTijdsIndicatieWijzigen.Click += new System.EventHandler(this.btnTijdsIndicatieWijzigen_Click);
-            // 
-            // btnTijdsIndicatieOpvragen
-            // 
-            this.btnTijdsIndicatieOpvragen.Location = new System.Drawing.Point(622, 248);
-            this.btnTijdsIndicatieOpvragen.Name = "btnTijdsIndicatieOpvragen";
-            this.btnTijdsIndicatieOpvragen.Size = new System.Drawing.Size(75, 23);
-            this.btnTijdsIndicatieOpvragen.TabIndex = 12;
-            this.btnTijdsIndicatieOpvragen.Text = "Vernieuwen";
-            this.btnTijdsIndicatieOpvragen.UseVisualStyleBackColor = true;
             // 
             // lblOnderhoudsMedewerkers
             // 
             this.lblOnderhoudsMedewerkers.AutoSize = true;
-            this.lblOnderhoudsMedewerkers.Location = new System.Drawing.Point(513, 328);
+            this.lblOnderhoudsMedewerkers.Location = new System.Drawing.Point(348, 114);
             this.lblOnderhoudsMedewerkers.Name = "lblOnderhoudsMedewerkers";
             this.lblOnderhoudsMedewerkers.Size = new System.Drawing.Size(74, 13);
             this.lblOnderhoudsMedewerkers.TabIndex = 14;
             this.lblOnderhoudsMedewerkers.Text = "Medewerkers:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(59, 459);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // tbxMedewerkerOnderhoud
             // 
             this.tbxMedewerkerOnderhoud.Enabled = false;
-            this.tbxMedewerkerOnderhoud.Location = new System.Drawing.Point(516, 346);
+            this.tbxMedewerkerOnderhoud.Location = new System.Drawing.Point(351, 128);
             this.tbxMedewerkerOnderhoud.Name = "tbxMedewerkerOnderhoud";
             this.tbxMedewerkerOnderhoud.Size = new System.Drawing.Size(120, 20);
             this.tbxMedewerkerOnderhoud.TabIndex = 16;
+            // 
+            // nudUur
+            // 
+            this.nudUur.Location = new System.Drawing.Point(351, 91);
+            this.nudUur.Name = "nudUur";
+            this.nudUur.Size = new System.Drawing.Size(47, 20);
+            this.nudUur.TabIndex = 17;
+            // 
+            // nudMinuut
+            // 
+            this.nudMinuut.Location = new System.Drawing.Point(404, 91);
+            this.nudMinuut.Name = "nudMinuut";
+            this.nudMinuut.Size = new System.Drawing.Size(47, 20);
+            this.nudMinuut.TabIndex = 18;
             // 
             // OnderhoudApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1475, 633);
+            this.ClientSize = new System.Drawing.Size(565, 173);
+            this.Controls.Add(this.nudMinuut);
+            this.Controls.Add(this.nudUur);
             this.Controls.Add(this.tbxMedewerkerOnderhoud);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblOnderhoudsMedewerkers);
-            this.Controls.Add(this.btnTijdsIndicatieOpvragen);
             this.Controls.Add(this.btnTijdsIndicatieWijzigen);
             this.Controls.Add(this.lblDatum);
             this.Controls.Add(this.tbxDatum);
@@ -201,6 +198,8 @@
             this.Controls.Add(this.lbxMedewerkers);
             this.Name = "OnderhoudApplicatie";
             this.Text = "Onderhoud";
+            ((System.ComponentModel.ISupportInitialize)(this.nudUur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinuut)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,9 +218,9 @@
         private System.Windows.Forms.TextBox tbxDatum;
         private System.Windows.Forms.Label lblDatum;
         private System.Windows.Forms.Button btnTijdsIndicatieWijzigen;
-        private System.Windows.Forms.Button btnTijdsIndicatieOpvragen;
         private System.Windows.Forms.Label lblOnderhoudsMedewerkers;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tbxMedewerkerOnderhoud;
+        private System.Windows.Forms.NumericUpDown nudUur;
+        private System.Windows.Forms.NumericUpDown nudMinuut;
     }
 }

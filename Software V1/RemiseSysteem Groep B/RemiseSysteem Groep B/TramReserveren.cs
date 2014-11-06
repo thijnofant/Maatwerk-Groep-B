@@ -51,7 +51,7 @@ namespace RemiseSysteem_Groep_B
                     aantalToegestaandeBeurten = 4;
                 }
                 DateTime datum = Convert.ToDateTime(dtpDatum.Text);
-                Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT"), type, tram);
+                Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT"), type, tram, DateTime.Now.AddDays(1.0));
 
                 if (db.GetAantalBeurten(type.ToString(), datum, tram.Id) > aantalToegestaandeBeurten)
                 {
