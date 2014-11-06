@@ -18,6 +18,7 @@ namespace RemiseSysteem_Groep_B
         public SchoonmaakApplicatie()
         {
             InitializeComponent();
+            btnAanvragen.Visible = false;
             db = DatabaseManager.Instance;//singleton design pattern voor database klasse
             schoomaakmedewerkers = new List<Medewerker>();//lijst om alle schoonmaakmedewerkers in op te slaan
             schoomaakmedewerkers = db.SchoonmaakMedewerkersOpvragen();//haalt alle schoonmaakmedewerkers op uit de database
@@ -25,6 +26,9 @@ namespace RemiseSysteem_Groep_B
             tramlijst = db.AlleTrams();//haalt alle trams op uit de database en vult hiermee de lijst
 
             Updateform();//methode die de comboboxes vult op het form
+
+            cbMedewerker.SelectedIndex = 0;//zorgt dat altijd een waarde is geselecteerd
+            cbTram.SelectedIndex = 0;//zorgt dat altijd een waarde is geselecteerd
         }
 
         public void Updateform()
@@ -63,10 +67,26 @@ namespace RemiseSysteem_Groep_B
             }
             Schoonmaak s = new Schoonmaak(begindatum, db.GetInsertID("ID", "Tram_Beurt") + 1, beurttype, tram);//maakt nieuw schoonmaak object aan
             aantalUitgevoerdeBeurten = db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id);//kijkt hoeveel beurten zijn uitgevoerd op geselecteerde datum
+            
             if (aantalUitgevoerdeBeurten <= allowedbeurten)// wanneer dit meer is dan allowed beurten, wordt dit overgeslagen
             {
                 db.SchoonmaakInvoeren(s, mwID);//voert nieuwe schoonmaak in in de database
+                lblMessage.Text = "Het verzoek is succesvol aangevraagd";
             }
+            else
+            {
+                lblMessage.Text = "De geselecteerde tram kan niet meer worden ingepland op de geselecteerde dag";
+            }
+        }
+
+        private void rbGroot_CheckedChanged(object sender, EventArgs e)
+        {
+            btnAanvragen.Visible = true;
+        }
+
+        private void rbKlein_CheckedChanged(object sender, EventArgs e)
+        {
+            btnAanvragen.Visible = true;
         }
     }
 }
