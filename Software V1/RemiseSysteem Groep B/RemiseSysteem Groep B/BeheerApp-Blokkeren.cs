@@ -20,16 +20,21 @@ namespace RemiseSysteem_Groep_B
             UpdateData();
         }
 
+        /// <summary>
+        /// Deze methode vult de lijsten sectoren en sporen vanuit de database.
+        /// </summary>
         public void UpdateDataAlleen() 
         {
             sporen = db.SporenlijstOpvragen();
             sectoren = db.GetSectorenVoorBlokkade();
         }
 
+        /// <summary>
+        /// Deze methode vult de lijsten sectoren en sporen uit de database en vult de listbox met spoornummers.
+        /// </summary>
         public void UpdateData() 
         {
-            sporen = db.SporenlijstOpvragen();
-            sectoren = db.GetSectorenVoorBlokkade();
+            UpdateDataAlleen();
             lbxSporen.Items.Clear();
             btnBlokkeer.Enabled = false;
             btnDeblokkeer.Enabled = false;
@@ -41,6 +46,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// Wanneer er een spoor wordt aangeklikt in de listbox worden de bijbehorende sectoren gezocht en in de tweede listbox gezet.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbxSporen_SelectedIndexChanged(object sender, EventArgs e) 
         {
             btnBlokkeer.Enabled = true;
@@ -50,14 +60,17 @@ namespace RemiseSysteem_Groep_B
             int spoorid = -1;
             int spoornr = Convert.ToInt32(lbxSporen.SelectedItem);
 
+            //SpoorID wordt opgehaald aan de hand van het spoornummer uit de listbox.
             foreach (Spoor spoor in sporen)
             {
-                if (spoor.Nummer == spoornr) {
+                if (spoor.Nummer == spoornr) 
+                {
                     spoorid = spoor.Id;
                     break;
                 }
             }
             
+            //Sectoren worden opgehaald bij het spoor en daarnaast wordt voor iedere sector gekeken of het geblokkeerd is of niet.
             foreach (Sector sector in sectoren) 
             {
                 string sectorstring;
@@ -73,15 +86,22 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// Wanneer er op deze button geklikt wordt worden de geselecteerde sectoren geblokkeerd.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBlokkeer_Click(object sender, EventArgs e) 
         {
             UpdateDataAlleen();
 
+            //Hier wordt gecheckt of er een sector geselecteerd is, is dit niet het geval dan zullen alle sectoren in het geselecteerde spoor geblokkeerd worden.
             if (lbxSectoren.SelectedItem == null) 
             {
                 int spoornummer = Convert.ToInt32(lbxSporen.SelectedItem);
                 int spoorID = -1;
 
+                //Spoornummer wordt vertaald naar SpoorID
                 foreach (Spoor s in sporen) 
                 {
                     if (spoornummer == s.Nummer) 
@@ -99,9 +119,11 @@ namespace RemiseSysteem_Groep_B
                 return;
             }
 
+            //SectorID wordt opgehaald uit string.
             string sectorID = Convert.ToString(lbxSectoren.SelectedItem);
             sectorID = sectorID.Substring(0, sectorID.IndexOf(" "));
 
+            //Sector wordt geblokkeerd.
             if (db.BlokkeerSector(sectorID))
                 MessageBox.Show("Sector is succesvol geblokkeerd.");
             else
@@ -111,15 +133,22 @@ namespace RemiseSysteem_Groep_B
             UpdateData();
         }
 
+        /// <summary>
+        /// Wanneer er op deze button geklikt wordt worden de geselecteerde sectoren gedeblokkeerd.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeblokkeer_Click(object sender, EventArgs e) 
         {
             UpdateDataAlleen();
 
+            //Hier wordt gecheckt of er een sector geselecteerd is, is dit niet het geval dan zullen alle sectoren in het geselecteerde spoor gedeblokkeerd worden.
             if (lbxSectoren.SelectedItem == null) 
             {
                 int spoornummer = Convert.ToInt32(lbxSporen.SelectedItem);
                 int spoorID = -1;
 
+                //Spoornummer wordt vertaald naar SpoorID
                 foreach (Spoor s in sporen) 
                 {
                     if (spoornummer == s.Nummer) 
@@ -137,9 +166,11 @@ namespace RemiseSysteem_Groep_B
                 return;
             }
 
+            //SectorID wordt opgehaald uit string.
             string sectorID = Convert.ToString(lbxSectoren.SelectedItem);
             sectorID = sectorID.Substring(0, sectorID.IndexOf(" "));
 
+            //Sector wordt gedeblokkeerd.
             if (db.DeblokkeerSector(sectorID))
                 MessageBox.Show("Sector is succesvol gedeblokkeerd.");
             else
