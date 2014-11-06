@@ -109,8 +109,15 @@ namespace RemiseSysteem_Groep_B
             int tramnummer = Convert.ToInt32(cbbTram.SelectedItem.ToString());
             Tram gekozenTram = DatabaseManager.Instance.ZoekTram(tramnummer);
             DatabaseManager.Instance.TramRijdUitRemise(tramnummer);
-            DatabaseManager.Instance.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id);
-            lblStatus.Text = "Tram " + tramnummer + " is uit Remise gereden";
+
+            if (DatabaseManager.Instance.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id))
+            {
+                lblStatus.Text = "Tram " + tramnummer + " is uit Remise gereden";
+            }
+            else
+            {
+                lblStatus.Text = "Tram " + tramnummer + " uit remise rijden is mislukt";
+            }
         }
     }
 }
