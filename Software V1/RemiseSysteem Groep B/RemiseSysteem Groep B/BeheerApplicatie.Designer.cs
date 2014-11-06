@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblMeldingen = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.s40_7 = new System.Windows.Forms.TextBox();
             this.s40_6 = new System.Windows.Forms.TextBox();
             this.s40_5 = new System.Windows.Forms.TextBox();
@@ -278,8 +278,6 @@
             this.goedkeurenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -309,6 +307,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnRefresh);
             this.splitContainer1.Panel2.Controls.Add(this.s40_7);
             this.splitContainer1.Panel2.Controls.Add(this.s40_6);
             this.splitContainer1.Panel2.Controls.Add(this.s40_5);
@@ -554,6 +553,16 @@
             this.lblMeldingen.Size = new System.Drawing.Size(82, 20);
             this.lblMeldingen.TabIndex = 0;
             this.lblMeldingen.Text = "Meldingen";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(671, 429);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(190, 58);
+            this.btnRefresh.TabIndex = 270;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // s40_7
             // 
@@ -3012,16 +3021,6 @@
             this.goedkeurenToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.goedkeurenToolStripMenuItem1.Text = "Goedkeuren";
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 5000;
-            // 
             // BeheerApplicatie
             // 
             this.AutoSize = true;
@@ -3293,14 +3292,13 @@
         private System.Windows.Forms.TextBox s40_5;
         private System.Windows.Forms.TextBox s40_4;
         private System.Windows.Forms.TextBox s40_7;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem onderhoudLijstOpvragenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beurtToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goedkeurenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goedkeurenToolStripMenuItem1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

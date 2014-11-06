@@ -26,7 +26,6 @@ namespace RemiseSysteem_Groep_B
         private void verplaatsenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TramVerplaatsen app = new TramVerplaatsen();
-            timer1.Enabled = false;
             app.Show();
         }
 
@@ -261,7 +260,7 @@ namespace RemiseSysteem_Groep_B
             schoonmaakGoedkeuren.Show();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             Updater();
         }
