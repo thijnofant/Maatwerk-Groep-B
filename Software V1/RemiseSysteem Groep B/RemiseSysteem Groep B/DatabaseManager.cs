@@ -434,11 +434,36 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        public bool beurtGoedkeuren(int beurtid)
+        {
+            try
+            {
+                string cmd = "Update tram_beurt set goedgekeurd = 'Y' where id = :beurtid";
+                OracleCommand command = new OracleCommand(cmd,connection);
+                connection.Open();
+                command.Parameters.Add("beurtid", beurtid);
+                int resultaat = command.ExecuteNonQuery();
+                if (resultaat > 0)
+                {
+                    return true;
+                }
+            }
+            catch (OracleException oex)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
         public List<Beurt> ZoekAlleBeurten() 
         {
             List<Tram> trams = AlleTrams();
             List<Beurt> beurten = new List<Beurt>();
-            string cmd = "SELECT ID, TramID, DatumTijdstip, BeschikbaarDatum, TypeOnderhoud, BeurtType FROM Tram_Beurt";
+            string cmd = "SELECT ID, TramID, DatumTijdstip, BeschikbaarDatum, TypeOnderhoud, BeurtType, goedgekeurd FROM Tram_Beurt";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try 
@@ -458,15 +483,27 @@ namespace RemiseSysteem_Groep_B
                     {}
                     string type = reader.GetString(4);
                     string beurttype = reader.GetString(5);
+                    string goedgekeurdstring = reader.GetString(6);
+                    bool goedgekeurd = false;
+                    if (goedgekeurdstring.ToLower() == "y")
+                    {
+                        goedgekeurd = true;
+                    }
+                    else if (goedgekeurdstring.ToLower() == "n")
+                    {
+                        goedgekeurd = false;
+                    }
 
                     if(type == "Schoonmaak")
                     {
                         Schoonmaak schoonmaak = new Schoonmaak(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), beurttype, true), trams.Find(x => x.Id == tramid));
+                        schoonmaak.IsGoedgekeurd = goedgekeurd;
                         beurten.Add(schoonmaak);
                     }
                     if(type == "Onderhoud") 
                     {
                         Onderhoud onderhoud = new Onderhoud(datum, beurtid, (BeurtType)Enum.Parse(typeof(BeurtType), beurttype, true), trams.Find(x => x.Id == tramid));
+                        onderhoud.IsGoedgekeurd = goedgekeurd;
                         beurten.Add(onderhoud);
                     }
                 }

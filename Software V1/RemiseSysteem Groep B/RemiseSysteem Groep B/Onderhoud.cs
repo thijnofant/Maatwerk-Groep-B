@@ -65,5 +65,10 @@ namespace RemiseSysteem_Groep_B
                 Medewerkers.Remove(medewerker);
             }
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + " - Tijdsindicatie: " + this.tijdsIndicatie.ToShortDateString();
+        }
     }
 }
