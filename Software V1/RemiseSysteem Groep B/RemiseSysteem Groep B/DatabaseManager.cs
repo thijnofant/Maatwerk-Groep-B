@@ -1104,6 +1104,22 @@ namespace RemiseSysteem_Groep_B
 
         public bool BlokkeerSector(int sectorID) 
         {
+            string cmd = "";
+            return false;
+        }
+
+        public bool DeblokkeerSector(int sectorID) {
+            string cmd = "";
+            return false;
+        }
+
+        public bool BlokkeerSpoor(int sectorID) {
+            string cmd = "";
+            return false;
+        }
+
+        public bool DeblokkeerSpoor(int sectorID) {
+            string cmd = "";
             return false;
         }
     }
