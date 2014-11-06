@@ -38,12 +38,16 @@ namespace RemiseSysteem_Groep_B
         {
             sporen.Clear();
             trams.Clear();
+            
 
             sporen = DatabaseManager.Instance.SporenlijstOpvragen();
             trams = DatabaseManager.Instance.AlleTrams();
             foreach (Tram tr in trams)
             {
-                cbbTram.Items.Add(tr.Nummer);
+                if (tr.Status != TramStatus.Dienst)
+                {
+                    cbbTram.Items.Add(tr.Nummer);
+                }
             }
             foreach (Spoor sp in sporen)
             {
@@ -82,9 +86,10 @@ namespace RemiseSysteem_Groep_B
             Sector s = new Sector(sector);
 
             if (DatabaseManager.Instance.TramVerplaatsen(tram, s))
-                MessageBox.Show("Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector);
+                lblStatus.Text = "Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector;
+
             else
-                MessageBox.Show("Er is iets misgegaan bij het plaatsen van de tram");
+                lblStatus.Text = "Er is iets misgegaan bij het plaatsen van de tram";
         }
 
         /// <summary>
@@ -105,7 +110,7 @@ namespace RemiseSysteem_Groep_B
             Tram gekozenTram = DatabaseManager.Instance.ZoekTram(tramnummer);
             DatabaseManager.Instance.TramRijdUitRemise(tramnummer);
             DatabaseManager.Instance.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id);
-            Update1();
+            lblStatus.Text = "Tram " + tramnummer + " is uit Remise gereden";
         }
     }
 }

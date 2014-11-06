@@ -755,6 +755,7 @@ namespace RemiseSysteem_Groep_B
                 string cmd = "UPDATE sector set tramid = null where tramid = :tramid";
                 try
                 {
+                    connection.Open();
                     OracleCommand command = new OracleCommand(cmd, connection);
                     command.Parameters.Add("tramid", tempTram.Id);
                     int resultaat = command.ExecuteNonQuery();

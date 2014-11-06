@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnVertrek = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbbTram
@@ -117,11 +118,20 @@
             this.btnVertrek.UseVisualStyleBackColor = true;
             this.btnVertrek.Click += new System.EventHandler(this.btnVertrek_Click);
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(207, 132);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            this.lblStatus.TabIndex = 8;
+            // 
             // TramVerplaatsen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 158);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnVertrek);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -148,5 +158,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnVertrek;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
