@@ -77,6 +77,7 @@
             this.btnBlokkeer.TabIndex = 5;
             this.btnBlokkeer.Text = "Blokkeer";
             this.btnBlokkeer.UseVisualStyleBackColor = true;
+            this.btnBlokkeer.Click += new System.EventHandler(this.btnBlokkeer_Click);
             // 
             // btnDeblokkeer
             // 
@@ -87,6 +88,7 @@
             this.btnDeblokkeer.TabIndex = 6;
             this.btnDeblokkeer.Text = "Deblokkeer";
             this.btnDeblokkeer.UseVisualStyleBackColor = true;
+            this.btnDeblokkeer.Click += new System.EventHandler(this.btnDeblokkeer_Click);
             // 
             // BeheerApp_Blokkeren
             // 

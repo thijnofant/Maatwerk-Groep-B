@@ -1102,5 +1102,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        public bool BlokkeerSector(int sectorID) 
+        {
+            return false;
+        }
     }
 }
