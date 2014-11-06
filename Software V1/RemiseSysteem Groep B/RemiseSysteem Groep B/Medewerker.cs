@@ -24,5 +24,10 @@ namespace RemiseSysteem_Groep_B
                 UitgevoerdeBeurten = new List<Beurt>();
             }
         }
+
+        public override string ToString()
+        {
+            return Id + ". " + Naam;
+        }
     }
 }
