@@ -14,30 +14,64 @@ namespace RemiseSysteem_Groep_B
     {
         List<Sector> sectoren;
         List<Spoor> sporen;
+        List<Tram> trams;
         public TramVerplaatsen()
         {
             InitializeComponent();
             sectoren = new List<Sector>();
+            sporen = new List<Spoor>();
+            trams = new List<Tram>();
+            Update1();
+        }
+
+        void Update1()
+        {
+            sporen.Clear();
+            trams.Clear();
+
             sporen = DatabaseManager.Instance.SporenlijstOpvragen();
-            foreach (Spoor s in sporen)
+            trams = DatabaseManager.Instance.AlleTrams();
+            foreach(Tram tr in trams)
             {
-                cbbSpoor.Items.Add(s.Nummer);
+                cbbTram.Items.Add(tr.Nummer);
+            }
+            foreach (Spoor sp in sporen)
+            {
+                cbbSpoor.Items.Add(sp.Nummer);
+            }
+            foreach (Sector se in sectoren)
+            {
+                cbbSector.Items.Add(se.Id);
+            }
+        }
+        void UpdateSector()
+        {
+            cbbSector.Items.Clear();
+
+            foreach (Sector se in sectoren)
+            {
+                cbbSector.Items.Add(se.Id);
             }
         }
 
         private void btnPlaats_Click(object sender, EventArgs e)
         {
-            //DatabaseManager.Instance.TramVerplaatsen(tramNr, sect);
+            int tram = Convert.ToInt32(cbbTram.SelectedItem.ToString());
+            int spoor = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
+            int sector = Convert.ToInt32(cbbSector.SelectedItem.ToString());
+
+            Sector s = new Sector(sector);
+
+            if (DatabaseManager.Instance.TramVerplaatsen(tram, s))
+                MessageBox.Show("Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector);
+            else
+                MessageBox.Show("Er is iets misgegaan bij het plaatsen van de tram");
         }
-        //WTF HIJ CRASHT GEWOON ZONDER REDEN
         private void cbbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            sectoren = DatabaseManager.Instance.GetSectorenFromSpoorNR(Convert.ToInt32(cbbSpoor.SelectedText));
-        }
-
-        private void cbbSector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            int temp = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
+            sectoren = DatabaseManager.Instance.GetSectorenFromSpoorNR(temp);
+            UpdateSector();
         }
     }
 }

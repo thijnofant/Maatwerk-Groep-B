@@ -270,11 +270,11 @@
             this.beherenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.actiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schoonmaakLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onderhoudLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.onderhoudLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -2446,7 +2446,7 @@
             this.beurtToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.invoerenToolStripMenuItem});
             this.beurtToolStripMenuItem.Name = "beurtToolStripMenuItem";
-            this.beurtToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.beurtToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.beurtToolStripMenuItem.Text = "Beurt";
             // 
             // invoerenToolStripMenuItem
@@ -2459,21 +2459,21 @@
             // verplaatsenToolStripMenuItem
             // 
             this.verplaatsenToolStripMenuItem.Name = "verplaatsenToolStripMenuItem";
-            this.verplaatsenToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.verplaatsenToolStripMenuItem.Text = "Verplaatsen";
+            this.verplaatsenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.verplaatsenToolStripMenuItem.Text = "(Ver)plaatsen";
             this.verplaatsenToolStripMenuItem.Click += new System.EventHandler(this.verplaatsenToolStripMenuItem_Click);
             // 
             // verwijderenToolStripMenuItem
             // 
             this.verwijderenToolStripMenuItem.Name = "verwijderenToolStripMenuItem";
-            this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.verwijderenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.verwijderenToolStripMenuItem.Text = "Verwijderen";
             this.verwijderenToolStripMenuItem.Click += new System.EventHandler(this.verwijderenToolStripMenuItem_Click);
             // 
             // reserverenToolStripMenuItem
             // 
             this.reserverenToolStripMenuItem.Name = "reserverenToolStripMenuItem";
-            this.reserverenToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.reserverenToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.reserverenToolStripMenuItem.Text = "Reserveren";
             this.reserverenToolStripMenuItem.Click += new System.EventHandler(this.reserverenToolStripMenuItem_Click);
             // 
@@ -2538,6 +2538,13 @@
             this.schoonmaakLijstOpvragenToolStripMenuItem.Text = "Schoonmaak lijst opvragen";
             this.schoonmaakLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakLijstOpvragenToolStripMenuItem_Click);
             // 
+            // onderhoudLijstOpvragenToolStripMenuItem
+            // 
+            this.onderhoudLijstOpvragenToolStripMenuItem.Name = "onderhoudLijstOpvragenToolStripMenuItem";
+            this.onderhoudLijstOpvragenToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.onderhoudLijstOpvragenToolStripMenuItem.Text = "Onderhoud lijst Opvragen";
+            this.onderhoudLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudLijstOpvragenToolStripMenuItem_Click);
+            // 
             // timer1
             // 
             this.timer1.Interval = 5000;
@@ -2545,13 +2552,6 @@
             // timer2
             // 
             this.timer2.Interval = 5000;
-            // 
-            // onderhoudLijstOpvragenToolStripMenuItem
-            // 
-            this.onderhoudLijstOpvragenToolStripMenuItem.Name = "onderhoudLijstOpvragenToolStripMenuItem";
-            this.onderhoudLijstOpvragenToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.onderhoudLijstOpvragenToolStripMenuItem.Text = "Onderhoud lijst Opvragen";
-            this.onderhoudLijstOpvragenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudLijstOpvragenToolStripMenuItem_Click);
             // 
             // BeheerApplicatie
             // 

@@ -61,7 +61,6 @@
             this.cbbSector.Name = "cbbSector";
             this.cbbSector.Size = new System.Drawing.Size(64, 21);
             this.cbbSector.TabIndex = 2;
-            this.cbbSector.SelectedIndexChanged += new System.EventHandler(this.cbbSector_SelectedIndexChanged);
             // 
             // label1
             // 
