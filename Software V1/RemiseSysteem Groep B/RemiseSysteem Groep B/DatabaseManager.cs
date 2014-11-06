@@ -619,6 +619,27 @@ namespace RemiseSysteem_Groep_B
             {
                 connection.Close();
             }
+        }
+
+        public bool SchoonmaakInvoeren(Schoonmaak schoonmaak, int medewerkerID)
+        {
+            try
+            {
+                connection.Open();
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', '" + Convert.ToString(schoonmaak.Soort) + "')";
+                OracleCommand command = new OracleCommand(cmd, connection);
+                command.CommandType = System.Data.CommandType.Text;
+                command.ExecuteReader();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
         } 
 
         public bool OnderhoudInvoeren(Onderhoud onderhoud) 
@@ -1303,6 +1324,49 @@ namespace RemiseSysteem_Groep_B
         }
             finally {
                 connection.Close();
+            }
+        }
+
+        public string[] SpoorSectorArray()
+        {
+            String cmd = "SELECT T.NUMMER, SE.ID, SE.Blokkade FROM TRAM T Right JOIN Sector SE ON T.ID = SE.TramId ORDER BY SE.ID";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                string[] tempArray = new string[1000];
+
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string restring;
+                    try
+                    {
+                        restring = reader.GetInt32(0).ToString();
+                    }
+                    catch
+                    {
+                        restring = "0";
+                    }
+                    int SectorID = reader.GetInt32(1);
+                    if (reader.GetString(2) == "y")
+                    {
+                        restring = "X";
+                    }
+
+                    tempArray[SectorID] = restring;
+                }
+
+                return tempArray;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                this.connection.Close();
             }
         }
     }
