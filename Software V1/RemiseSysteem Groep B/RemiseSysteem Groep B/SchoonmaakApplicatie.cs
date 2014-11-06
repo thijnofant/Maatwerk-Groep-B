@@ -42,12 +42,14 @@ namespace RemiseSysteem_Groep_B
 
         private void btnAanvragen_Click(object sender, EventArgs e)
         {
-            int selectedtramnr = Convert.ToInt32(cbTram.SelectedText);
-            int selectedmwid = Convert.ToInt32(cbMedewerker.SelectedText.Substring(0, 1));
+            int selectedtramnr = Convert.ToInt32(cbTram.SelectedItem.ToString());
+            string selectedmwstring = cbMedewerker.SelectedItem.ToString();
+            int mwID = Convert.ToInt32(selectedmwstring.Substring(0, 1));
             int allowedbeurten = 3;
+            int aantalUitgevoerdeBeurten;
             BeurtType beurttype = BeurtType.Klein;
             Tram tram = db.ZoekTram(selectedtramnr);
-            Medewerker medewerker = db.ZoekMedewerkerOpID(selectedmwid);
+            Medewerker medewerker = db.ZoekMedewerkerOpID(mwID);
             DateTime begindatum = dtpStartDatum.Value;
             if(rbGroot.Checked)
             {
@@ -60,8 +62,8 @@ namespace RemiseSysteem_Groep_B
                 allowedbeurten = 3;
             }
             Schoonmaak s = new Schoonmaak(begindatum, db.GetInsertID("ID", "Tram_Beurt") + 1, beurttype, tram);
-
-            if (db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id) >= allowedbeurten)
+            aantalUitgevoerdeBeurten = db.GetAantalBeurten(beurttype.ToString(), "Schoonmaak", begindatum, tram.Id);
+            if (aantalUitgevoerdeBeurten <= allowedbeurten)
             {
                 db.SchoonmaakInvoeren(s);
             }
