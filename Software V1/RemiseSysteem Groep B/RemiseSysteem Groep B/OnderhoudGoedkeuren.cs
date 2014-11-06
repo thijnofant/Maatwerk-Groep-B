@@ -10,10 +10,18 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class OnderhoudGoedkeuren : Form
     {
- private Remise remise;
+        private Remise remise;
+
         private List<Onderhoud> onderhoudsBeurten;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public OnderhoudGoedkeuren()
         {
             InitializeComponent();
@@ -21,6 +29,9 @@ namespace RemiseSysteem_Groep_B
             HaalOnderhoudsBeurtenOp();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void HaalOnderhoudsBeurtenOp()
         {
             lbxOnderhoud.Items.Clear();
@@ -38,6 +49,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGoedkeuren_Click(object sender, EventArgs e)
         {
             string text = lbxOnderhoud.SelectedItem.ToString();
@@ -51,6 +67,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAfkeuren_Click(object sender, EventArgs e)
         {
             string text = lbxOnderhoud.SelectedItem.ToString();

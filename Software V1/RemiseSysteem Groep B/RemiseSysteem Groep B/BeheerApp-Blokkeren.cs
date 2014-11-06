@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class BeheerApp_Blokkeren : Form
     {
         DatabaseManager db = DatabaseManager.Instance;
         List<Spoor> sporen;
         List<Sector> sectoren;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public BeheerApp_Blokkeren() {
             InitializeComponent();
             UpdateData();

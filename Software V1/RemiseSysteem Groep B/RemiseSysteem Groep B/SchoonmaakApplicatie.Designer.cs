@@ -38,6 +38,7 @@
             this.rbKlein = new System.Windows.Forms.RadioButton();
             this.rbGroot = new System.Windows.Forms.RadioButton();
             this.btnAanvragen = new System.Windows.Forms.Button();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@
             // 
             // cbMedewerker
             // 
+            this.cbMedewerker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMedewerker.FormattingEnabled = true;
             this.cbMedewerker.Location = new System.Drawing.Point(163, 22);
             this.cbMedewerker.Name = "cbMedewerker";
@@ -112,6 +114,7 @@
             this.rbKlein.TabStop = true;
             this.rbKlein.Text = "Klein";
             this.rbKlein.UseVisualStyleBackColor = true;
+            this.rbKlein.CheckedChanged += new System.EventHandler(this.rbKlein_CheckedChanged);
             // 
             // rbGroot
             // 
@@ -123,6 +126,7 @@
             this.rbGroot.TabStop = true;
             this.rbGroot.Text = "Groot";
             this.rbGroot.UseVisualStyleBackColor = true;
+            this.rbGroot.CheckedChanged += new System.EventHandler(this.rbGroot_CheckedChanged);
             // 
             // btnAanvragen
             // 
@@ -134,11 +138,21 @@
             this.btnAanvragen.UseVisualStyleBackColor = true;
             this.btnAanvragen.Click += new System.EventHandler(this.btnAanvragen_Click);
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(46, 324);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(16, 13);
+            this.lblMessage.TabIndex = 9;
+            this.lblMessage.Text = "...";
+            // 
             // SchoonmaakApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 347);
+            this.ClientSize = new System.Drawing.Size(467, 364);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnAanvragen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtpStartDatum);
@@ -168,5 +182,6 @@
         private System.Windows.Forms.RadioButton rbKlein;
         private System.Windows.Forms.RadioButton rbGroot;
         private System.Windows.Forms.Button btnAanvragen;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

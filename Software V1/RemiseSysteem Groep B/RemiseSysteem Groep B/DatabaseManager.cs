@@ -34,33 +34,15 @@ namespace RemiseSysteem_Groep_B
         }
         #endregion
 
-        //TODO: Fix
-        //private OracleConnection connection = new OracleConnection();
         public string Pcn { get; private set; }
         public string Password { get; private set; }
 
         public OracleConnection connection;
 
-        public bool Test()
-        {
-            try
-            {
-                connection.Open();
-
-                return true;
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return false;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Medewerker> OnderhoudsMedewerkersOpvragen()
         {
             List<Medewerker> medewerkers = new List<Medewerker>();
@@ -88,6 +70,10 @@ namespace RemiseSysteem_Groep_B
             return medewerkers;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Medewerker> SchoonmaakMedewerkersOpvragen()
         {
             List<Medewerker> schoonmaakmedewerkers = new List<Medewerker>();
@@ -121,6 +107,11 @@ namespace RemiseSysteem_Groep_B
             return schoonmaakmedewerkers;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="onderhoud"></param>
+        /// <returns></returns>
         public int MedewerkerOpvragen(Onderhoud onderhoud)
         {
             int medewerkerID = -1;
@@ -150,70 +141,17 @@ namespace RemiseSysteem_Groep_B
             return medewerkerID;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="wachtwoord"></param>
+        /// <returns></returns>
         public bool Inloggen(string username, string wachtwoord)
         {
             //TODO: LogIn
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// NOG TESTEN
-        /// 
-        /// Haalt de lijst met alle schoonmaak die niet nog niet af zijn.
-        /// </summary>
-        /// <returns></returns>
-        //public List<Schoonmaak> SchoonmaakOpvragen()
-        //{
-        //    List<Tram> trams = AlleTrams();
-
-        //    List<Schoonmaak> returnList = new List<Schoonmaak>();
-
-        //    String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Schoonmaak'";
-        //    OracleCommand command = new OracleCommand(cmd, connection);
-        //    command.CommandType = System.Data.CommandType.Text;
-        //    try
-        //    {
-        //        connection.Open();
-        //        OracleDataReader reader = command.ExecuteReader();
-        //        while(reader.Read())
-        //        {
-        //            int SchoonmaakID = reader.GetInt32(0);
-        //            int MedewerkerId = reader.GetInt32(1);
-        //            int tramId = reader.GetInt32(2);
-        //            DateTime startTijd = reader.GetDateTime(3);
-        //            string beurtType = reader["BeurtType"].ToString();
-
-        //            BeurtType tempEnum = BeurtType.Groot;
-
-        //            switch (beurtType)
-        //            {
-        //                case "Klein":
-        //                    tempEnum = BeurtType.Klein;
-        //                    break;
-        //                case "Groot":
-        //                    tempEnum = BeurtType.Groot;  
-        //                    break;
-        //                case "Incident":
-        //                    tempEnum = BeurtType.Incident;
-        //                    break;
-        //            }
-        //            Medewerker tempMed = ZoekMedewerkerOpID(MedewerkerId);
-                    
-        //            Schoonmaak tempSchoon = new Schoonmaak(startTijd, SchoonmaakID, tempEnum, trams.Find(x => x.Id == tramId));
-        //            if (tempMed != null)
-        //            {
-        //                tempSchoon.VoegMedewerkerToe(tempMed);
-        //            }
-        //            returnList.Add(tempSchoon);
-        //        }
-        //    }
-        //    catch { }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-        //    return returnList;
-        //}
 
         /// <summary>
         /// NOG TESTEN
@@ -282,6 +220,12 @@ namespace RemiseSysteem_Groep_B
             return sporenlijst;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="medewerker"></param>
+        /// <param name="onderhoud"></param>
+        /// <returns></returns>
         public bool VoegMedewerkerToeAanOnderhoud(Medewerker medewerker, Onderhoud onderhoud)
         {
             string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = " + medewerker.Id + " WHERE ID = " + onderhoud.ID;
@@ -300,6 +244,11 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="onderhoud"></param>
+        /// <returns></returns>
         public bool VerwijderMedewerkerVanOnderhoud(Onderhoud onderhoud)
         {
             string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = null WHERE ID = " + onderhoud.ID;
@@ -318,6 +267,12 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="datum"></param>
+        /// <param name="onderhoud"></param>
+        /// <returns></returns>
         public bool WijzigTijdsIndicatieOnderhoud(DateTime datum, Onderhoud onderhoud)
         {
             string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = '" + datum + "' WHERE ID = " + onderhoud.ID;
@@ -337,6 +292,10 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Spoor> SporenlijstOpvragen()
         {
             List<Spoor> sporen = new List<Spoor>();
@@ -428,6 +387,11 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Tram ZoekTramOpID(int id)
         {
             String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.ID = '" + id + "' AND t.TramtypeID = tt.ID";
@@ -460,6 +424,11 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Medewerker ZoekMedewerkerOpID(int id)
         {
             String cmd = "Select M.Naam AS MNaam, F.Naam AS FNaam FROM MEDEWERKER M, FUNCTIE F WHERE M.FunctieID = F.ID AND M.ID = " + id.ToString();
@@ -504,6 +473,12 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beurtid"></param>
+        /// <param name="isGoedgekeurd"></param>
+        /// <returns></returns>
         public bool BeurtGoedkeurenAfkeuren(int beurtid, bool isGoedgekeurd)
         {
             try
@@ -540,6 +515,10 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Beurt> ZoekAlleBeurten() 
         {
             List<Tram> trams = AlleTrams();
@@ -600,6 +579,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="schoonmaak"></param>
+        /// <returns></returns>
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak) 
         {
             try 
@@ -621,12 +605,18 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="schoonmaak"></param>
+        /// <param name="medewerkerID"></param>
+        /// <returns></returns>
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak, int medewerkerID)
         {
             try
             {
                 connection.Open();
-                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', '" + Convert.ToString(schoonmaak.Soort) + "')";
+                string cmd = "INSERT INTO Tram_Beurt(ID, MedewerkerID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + medewerkerID + " , " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', '" + Convert.ToString(schoonmaak.Soort) + "')";
                 OracleCommand command = new OracleCommand(cmd, connection);
                 command.CommandType = System.Data.CommandType.Text;
                 command.ExecuteReader();
@@ -642,6 +632,11 @@ namespace RemiseSysteem_Groep_B
             }
         } 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="onderhoud"></param>
+        /// <returns></returns>
         public bool OnderhoudInvoeren(Onderhoud onderhoud) 
         {
             try 
@@ -661,6 +656,12 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nieuwStatus"></param>
+        /// <param name="tramid"></param>
+        /// <returns></returns>
         public bool TramstatusVeranderen(TramStatus nieuwStatus, int tramid)
         {
             try
@@ -684,6 +685,11 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramNr"></param>
+        /// <returns></returns>
         public bool TramRijdUitRemise(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
@@ -712,6 +718,12 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramNr"></param>
+        /// <param name="sect"></param>
+        /// <returns></returns>
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
             List<Sector> tempSectoren= GetSectorenVoorBlokkade();
@@ -748,6 +760,11 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public List<Tram> AlleTramsMetStatus(TramStatus status)
         {
             List<Tram> tramlist = new List<Tram>();
@@ -782,6 +799,10 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Tram> AlleTrams() 
         {
             List<Tram> tramlist = new List<Tram>();
@@ -816,6 +837,12 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramnummer"></param>
+        /// <param name="spoornummer"></param>
+        /// <returns></returns>
         public bool TramReserveren(int tramnummer, int spoornummer)
         {
             ReserveringIdIn = GetInsertID("ID", "RESERVERING");
@@ -838,6 +865,12 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="tabelnaam"></param>
+        /// <returns></returns>
         public int GetInsertID(string ID, string tabelnaam)
         {
             string insertID = "Select Max(" + ID + ") From " + tabelnaam;
@@ -867,6 +900,10 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<int> GetBeurtSporen()
         {
             String cmd = "SELECT ID FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77))";
@@ -897,6 +934,11 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lijnID"></param>
+        /// <returns></returns>
         public List<int> GetSporenIDByLijnID(int lijnID)
         {
             String cmd = "SELECT ID FROM SPOOR WHERE ID In (SELECT SpoorID FROM LIJN_SPOOR WHERE LijnID =" + lijnID + ")";
@@ -927,6 +969,10 @@ namespace RemiseSysteem_Groep_B
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<int> GetSporenIDForFreeSporen()
         {
             String cmd = "SELECT ID FROM SPOOR WHERE ID NOT IN (SELECT SpoorID FROM Lijn_Spoor) AND NOT(Nummer BETWEEN 12 AND 21) AND NOT(Nummer NOT BETWEEN 74 AND 77)";
@@ -956,6 +1002,13 @@ namespace RemiseSysteem_Groep_B
             }
             return null;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="spoorID"></param>
+        /// <returns></returns>
         public int GetSectorX(int X, int spoorID)
         {
             String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
@@ -988,6 +1041,11 @@ namespace RemiseSysteem_Groep_B
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SectorID"></param>
+        /// <returns></returns>
         public bool SectorBezet(int SectorID)
         {
             String cmd = "SELECT TramId FROM SECTOR WHERE ID =" + SectorID + "OR Blokkade = 'y' OR Blokkade = 'Y'";
@@ -1014,6 +1072,10 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Sector> GetSectorenVoorBlokkade() 
         {
             List<Sector> sectoren = new List<Sector>();
@@ -1059,6 +1121,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramNr"></param>
+        /// <returns></returns>
         public int LijnNrOpvragen(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
@@ -1084,6 +1151,12 @@ namespace RemiseSysteem_Groep_B
             }
             return 0;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramID"></param>
+        /// <returns></returns>
         public int GetGereserveerdSpoor(int tramID)
         {
             String cmd = "SELECT SpoorID FROM RESERVERING WHERE TRAMID =" + tramID;
@@ -1109,6 +1182,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tramID"></param>
+        /// <returns></returns>
         public int GetToegewezenSpoor(int tramID)
         {
             String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
@@ -1134,7 +1212,15 @@ namespace RemiseSysteem_Groep_B
             }
             return 0;
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="kleingroot"></param>
+        /// <param name="OnderhoudOfSchoonmaak"></param>
+        /// <param name="datum"></param>
+        /// <param name="tramID"></param>
+        /// <returns></returns>
         public int GetAantalBeurten(string kleingroot, string OnderhoudOfSchoonmaak, DateTime datum, int tramID)
         {
             string test = Convert.ToString(datum).Substring(0, 10);
@@ -1162,6 +1248,13 @@ namespace RemiseSysteem_Groep_B
             }
             return 0;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="spoorID"></param>
+        /// <returns></returns>
         public Sector SectorXfromSpoor(int X, int spoorID)
         {
             String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
@@ -1192,6 +1285,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SectorID"></param>
+        /// <returns></returns>
         public int tramNRFromSectorID(int SectorID)
         {
             String cmd = "SELECT Nummer FROM TRAM WHERE ID = (SELECT TramID FROM SECTOR WHERE ID =" + SectorID + ")";
@@ -1219,6 +1317,12 @@ namespace RemiseSysteem_Groep_B
                 this.connection.Close();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="spoorNR"></param>
+        /// <returns></returns>
         public List<Sector>GetSectorenFromSpoorNR(int spoorNR)
         {
             String cmd = "SELECT * FROM Sector WHERE SpoorID = (SELECT ID FROM SPOOR WHERE nummer ="+spoorNR+")";
@@ -1250,6 +1354,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sectorID"></param>
+        /// <returns></returns>
         public bool BlokkeerSector(string sectorID) 
         {
             string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
@@ -1271,6 +1380,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sectorID"></param>
+        /// <returns></returns>
         public bool DeblokkeerSector(string sectorID) {
             string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
             OracleCommand command = new OracleCommand(cmd, connection);
@@ -1291,6 +1405,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="spoorID"></param>
+        /// <returns></returns>
         public bool BlokkeerSpoor(string spoorID) 
         {
             string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
@@ -1309,6 +1428,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="spoorID"></param>
+        /// <returns></returns>
         public bool DeblokkeerSpoor(string spoorID) 
         {
             string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
@@ -1327,6 +1451,10 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// Deze methode haalt alle sectoren op uit de database en 
+        /// </summary>
+        /// <returns></returns>
         public string[] SpoorSectorArray()
         {
             String cmd = "SELECT T.NUMMER, SE.ID, SE.Blokkade FROM TRAM T Right JOIN Sector SE ON T.ID = SE.TramId ORDER BY SE.ID";

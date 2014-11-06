@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     abstract class Beurt
     {
         private int id;
@@ -16,14 +19,48 @@ namespace RemiseSysteem_Groep_B
         private DateTime beginDatum;
         private bool isGoedgekeurd;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int ID { get { return id; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public BeurtType Soort { get { return soort; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsKlaar { get { return isKlaar; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public List<Medewerker> Medewerkers { get { return medewerkers; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Tram Tram { get { return tram; } protected set { tram = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime BeginDatum { get { return beginDatum; } protected set { beginDatum = value; } }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsGoedgekeurd { get { return isGoedgekeurd; } set { isGoedgekeurd = value; } }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="beginDatum"></param>
+        /// <param name="id"></param>
+        /// <param name="soort"></param>
+        /// <param name="tram"></param>
         public Beurt(DateTime beginDatum, int id, BeurtType soort, Tram tram)
         {
             this.tram = tram;
@@ -33,12 +70,28 @@ namespace RemiseSysteem_Groep_B
             medewerkers = new List<Medewerker>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public abstract List<Medewerker> MedewerkersOpvragen();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="medewerker"></param>
         public abstract void VoegMedewerkerToe(Medewerker medewerker);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="medewerker"></param>
         public abstract void VerwijderMedewerker(Medewerker medewerker);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string beurt = "";

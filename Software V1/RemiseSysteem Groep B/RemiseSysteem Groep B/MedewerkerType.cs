@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum MedewerkerType
     {
         Beheerder,

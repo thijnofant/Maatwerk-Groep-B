@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class TramVerplaatsen : Form
     {
         List<Sector> sectoren;
         List<Spoor> sporen;
         List<Tram> trams;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public TramVerplaatsen()
         {
             InitializeComponent();
@@ -24,6 +31,9 @@ namespace RemiseSysteem_Groep_B
             Update1();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void Update1()
         {
             sporen.Clear();
@@ -44,6 +54,10 @@ namespace RemiseSysteem_Groep_B
                 cbbSector.Items.Add(se.Id);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         void UpdateSector()
         {
             cbbSector.Items.Clear();
@@ -53,7 +67,12 @@ namespace RemiseSysteem_Groep_B
                 cbbSector.Items.Add(se.Id);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPlaats_Click(object sender, EventArgs e)
         {
             int tram = Convert.ToInt32(cbbTram.SelectedItem.ToString());
@@ -67,6 +86,12 @@ namespace RemiseSysteem_Groep_B
             else
                 MessageBox.Show("Er is iets misgegaan bij het plaatsen van de tram");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int temp = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
