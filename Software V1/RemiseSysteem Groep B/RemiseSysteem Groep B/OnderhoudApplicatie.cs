@@ -102,6 +102,11 @@ namespace RemiseSysteem_Groep_B
             {
                 tbxMedewerkerOnderhoud.Text = "Geen medewerker.";
             }
+
+            if(this.databaseManager.IsKlaar(onderhoud))
+            {
+                chxKlaar.Checked = false;
+            }
         }
 
         /// <summary>
@@ -162,6 +167,18 @@ namespace RemiseSysteem_Groep_B
                 MessageBox.Show("Tijdsindicatie wijzigen mislukt.");
             }
             UpdateOnderhoudInfo(onderhoud);
+        }
+
+        private void chxKlaar_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chxKlaar.Checked == true)
+            {
+                this.databaseManager.WijzigKlaar(onderhoud, false);
+            }
+            else
+            {
+                this.databaseManager.WijzigKlaar(onderhoud, true);
+            }
         }
     }
 }

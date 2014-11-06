@@ -220,6 +220,54 @@ namespace RemiseSysteem_Groep_B
             return sporenlijst;
         }
 
+        public bool IsKlaar(Onderhoud onderhoud)
+        {
+            string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = " + onderhoud.ID;
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = comm.ExecuteReader();
+                reader.Read();
+                if (Convert.ToString(reader["Klaar"]) == "Y")
+                {
+                    return true;
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        public bool WijzigKlaar(Onderhoud onderhoud, bool klaar)
+        {
+            string cmd = "";
+            if(klaar)
+            {
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'Y' WHERE ID = " + onderhoud.ID;
+            }
+            else
+            {
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = " + onderhoud.ID;
+            }
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                comm.ExecuteNonQuery();
+                return true;
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
         /// <summary>
         /// 
         /// </summary>
