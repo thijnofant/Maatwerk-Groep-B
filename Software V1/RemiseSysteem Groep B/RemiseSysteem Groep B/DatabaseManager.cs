@@ -88,6 +88,39 @@ namespace RemiseSysteem_Groep_B
             return medewerkers;
         }
 
+        public List<Medewerker> SchoonmaakMedewerkersOpvragen()
+        {
+            List<Medewerker> schoonmaakmedewerkers = new List<Medewerker>();
+            String cmd = "SELECT M.ID, M.Naam FROM Medewerker M, Functie F WHERE F.ID = M.FunctieID AND F.Naam = 'Schoonmaker'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+                    int foundID = Convert.ToInt32(reader["ID"]);
+                    string foundNaam = reader["Naam"].ToString();
+                    Medewerker m = new Medewerker(foundID, foundNaam, MedewerkerType.Schoonmaker);
+                    schoonmaakmedewerkers.Add(m);
+                }
+            }
+            catch 
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return schoonmaakmedewerkers;
+        }
+
         public int MedewerkerOpvragen(Onderhoud onderhoud)
         {
             int medewerkerID = -1;
@@ -1070,10 +1103,10 @@ namespace RemiseSysteem_Groep_B
             return 0;
         }
         
-        public int GetAantalBeurten(string kleingroot, DateTime datum, int tramID)
+        public int GetAantalBeurten(string kleingroot, string OnderhoudOfSchoonmaak, DateTime datum, int tramID)
         {
             string test = Convert.ToString(datum).Substring(0, 10);
-            String cmd = "SELECT count(*) FROM tram_beurt WHERE BeurtType = '" + kleingroot + "' AND Typeonderhoud = 'Onderhoud' and DatumTijdstip = '" + Convert.ToString(datum).Substring(0, 10) +  "' AND TramID = '" + tramID + "' ";
+            String cmd = "SELECT count(*) FROM tram_beurt WHERE BeurtType = '" + kleingroot + "' AND Typeonderhoud = '" + OnderhoudOfSchoonmaak + "' and DatumTijdstip = '" + Convert.ToString(datum).Substring(0, 10) +  "' AND TramID = '" + tramID + "' ";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
