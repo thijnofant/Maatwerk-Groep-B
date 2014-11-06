@@ -68,7 +68,7 @@ namespace RemiseSysteem_Groep_B
 
         void UpdateOnderhoudInfo(Onderhoud onderhoud)
         {
-            tbxDatum.Text = Convert.ToString(onderhoud.BeginDatum);
+            tbxDatum.Text = Convert.ToString(onderhoud.TijdsIndicatie);
 
             medewerkerID = Remise.Instance.Database.MedewerkerOpvragen(onderhoud);
 
@@ -86,37 +86,11 @@ namespace RemiseSysteem_Groep_B
 
         private void btnVerwijderMedewerker_Click(object sender, EventArgs e)
         {
-            onderhoud.VerwijderMedewerker(medewerker);
-        }
-
-        //private void lbxOnderhoudsMedewerkers_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    medewerker = medewerkers[lbxOnderhoudsMedewerkers.SelectedIndex];
-        //}
-
-        private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
-        {
-            if (onderhoud != null)
+            if(!this.databaseManager.VerwijderMedewerkerVanOnderhoud(onderhoud))
             {
-                onderhoud.TijdsIndicatieWijzigen(dtpDatum.Value);
+                MessageBox.Show("Medewerker verwijderen mislukt.");
             }
-            else
-            {
-                MessageBox.Show("Er is nog geen onderhoud geselecteerd.");
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if(databaseManager.Test())
-            {
-                MessageBox.Show("Succes");
-            }
-            else
-            {
-                MessageBox.Show("Fail");
-            }
-
+            UpdateOnderhoudInfo(onderhoud);
         }
 
         private void btnVoegMedewerkerToe_Click(object sender, EventArgs e)
@@ -127,11 +101,32 @@ namespace RemiseSysteem_Groep_B
                 {
                     MessageBox.Show("Toevoegen mislukt.");
                 }
+                UpdateOnderhoudInfo(onderhoud);
             }
             else
             {
                 MessageBox.Show("Geen medewerker of onderhoudsbeurt geselecteerd.");
             }
+        }
+
+        private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
+        {
+            string uur = Convert.ToString(nudUur.Value);
+            string minuut = Convert.ToString(nudMinuut.Value);
+            if(nudUur.Value < 10)
+            {
+                uur = "0" + Convert.ToString(nudUur.Value);
+            }
+            if(nudMinuut.Value < 10)
+            {
+                minuut = "0" + Convert.ToString(nudMinuut.Value);
+            }
+            DateTime datum = Convert.ToDateTime(dtpDatum.Value + " " + uur + ":" + minuut);
+            if(!this.databaseManager.WijzigTijdsIndicatieOnderhoud(datum, onderhoud))
+            {
+                MessageBox.Show("Tijdsindicatie wijzigen mislukt.");
+            }
+            UpdateOnderhoudInfo(onderhoud);
         }
     }
 }

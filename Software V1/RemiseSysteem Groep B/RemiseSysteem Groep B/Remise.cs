@@ -55,7 +55,7 @@ namespace RemiseSysteem_Groep_B
                     SpoorID = Database.GetBeurtSporen();
                     if (onderhoud)
                     {
-                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT") + 1, BeurtType.Incident, Database.ZoekTram(tramNr)));
+                        Database.OnderhoudInvoeren(new Onderhoud(DateTime.Now, Database.GetInsertID("ID", "TRAM_BEURT") + 1, BeurtType.Incident, Database.ZoekTram(tramNr), DateTime.Now));
                         Tram tram = Database.ZoekTram(tramNr);
                         Database.TramstatusVeranderen(TramStatus.Defect, tram.Id);
                     }

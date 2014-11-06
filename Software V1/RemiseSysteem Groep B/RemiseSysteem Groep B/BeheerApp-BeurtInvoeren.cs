@@ -138,7 +138,7 @@ namespace RemiseSysteem_Groep_B
                 Tram tram = tramlijst.Find(x => x.Nummer == tramnummer);
                 DateTime datum = Convert.ToDateTime(dtpDatum.Value);
 
-                Onderhoud onderhoud = new Onderhoud(datum, beurtid, beurttype, tram);
+                Onderhoud onderhoud = new Onderhoud(datum, beurtid, beurttype, tram, DateTime.Now);
                 
                 if(db.OnderhoudInvoeren(onderhoud))
                     MessageBox.Show("Invoeren succesvol.");

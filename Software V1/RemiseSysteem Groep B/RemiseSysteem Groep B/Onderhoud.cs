@@ -10,10 +10,10 @@ namespace RemiseSysteem_Groep_B
     {
         private DateTime tijdsIndicatie;
 
-        public DateTime TijdsIndicatie { get { return tijdsIndicatie; } }
+        public DateTime TijdsIndicatie { get { return tijdsIndicatie; } protected set { tijdsIndicatie = value; } }
 
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram, DateTime tijdsIndicatie)
-            :base(beginDatum, id, soort, tram)
+            : base(beginDatum, id, soort, tram)
         {
             this.tijdsIndicatie = tijdsIndicatie;
         }
@@ -21,6 +21,7 @@ namespace RemiseSysteem_Groep_B
         public Onderhoud(DateTime beginDatum, int id, BeurtType soort, Tram tram)
             : base(beginDatum, id, soort, tram)
         {
+
         }
 
         /// <summary>
@@ -30,19 +31,6 @@ namespace RemiseSysteem_Groep_B
         public override List<Medewerker> MedewerkersOpvragen()
         {
             return this.Medewerkers;
-        }
-
-        /// <summary>
-        /// Vraagt de tijdsindicatie op voor deze onderhoudsbeurt.
-        /// </summary>
-        public DateTime TijdsIndicatieOpvragen()
-        {
-            return this.TijdsIndicatie;
-        }
-
-        public void TijdsIndicatieWijzigen(DateTime datum)
-        {
-            this.tijdsIndicatie = datum;
         }
 
         /// <summary>

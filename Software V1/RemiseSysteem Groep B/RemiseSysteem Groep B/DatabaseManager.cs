@@ -194,7 +194,7 @@ namespace RemiseSysteem_Groep_B
 
             List<Onderhoud> returnList = new List<Onderhoud>();
 
-            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType, BeschikbaarDatum FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Onderhoud'";
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeschikbaarDatum BeurtType, BeschikbaarDatum FROM TRAM_BEURT WHERE Klaar = 'N' AND TypeOnderhoud = 'Onderhoud'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -224,7 +224,7 @@ namespace RemiseSysteem_Groep_B
                     }
 
                     /*startTijd, OnderhoudID, tempEnum, tempTram*/
-                    Onderhoud tempSchoon = new Onderhoud(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId));
+                    Onderhoud tempSchoon = new Onderhoud(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId), Convert.ToDateTime(reader["BeschikbaarDatum"]));
                     returnList.Add(tempSchoon);
                 }
             }
@@ -264,6 +264,43 @@ namespace RemiseSysteem_Groep_B
             {
                 connection.Close();
             }
+            return false;
+        }
+
+        public bool VerwijderMedewerkerVanOnderhoud(Onderhoud onderhoud)
+        {
+            string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = null WHERE ID = " + onderhoud.ID;
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                comm.ExecuteNonQuery();
+                return true;
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        public bool WijzigTijdsIndicatieOnderhoud(DateTime datum, Onderhoud onderhoud)
+        {
+            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = '" + datum + "' WHERE ID = " + onderhoud.ID;
+            OracleCommand comm = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                comm.ExecuteNonQuery();
+                return true;
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+
             return false;
         }
 
@@ -612,6 +649,15 @@ namespace RemiseSysteem_Groep_B
 
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
+            List<Sector> tempSectoren= GetSectorenVoorBlokkade();
+            foreach (Sector s in tempSectoren)
+            {
+                if (s.Id == sect.Id && (s.IsGeblokkeerd || s.Tram != null))
+                {
+                    return false;
+                }
+            }
+
             Tram tempTram = ZoekTram(tramNr);
             String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" +sect.Id;
             String cmd2 = "UPDATE SECTOR SET TramID = null where tramID = " + tempTram.Id;
@@ -1139,25 +1185,81 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-        public bool BlokkeerSector(int sectorID) 
+        public bool BlokkeerSector(string sectorID) 
         {
-            string cmd = "";
+            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try 
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+        {
             return false;
         }
-
-        public bool DeblokkeerSector(int sectorID) {
-            string cmd = "";
-            return false;
+            finally 
+            {
+                connection.Close();
+            }
         }
 
-        public bool BlokkeerSpoor(int sectorID) {
-            string cmd = "";
+        public bool DeblokkeerSector(string sectorID) {
+            string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try 
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch 
+            {
             return false;
         }
+            finally 
+            {
+                connection.Close();
+            }
+        }
 
-        public bool DeblokkeerSpoor(int sectorID) {
-            string cmd = "";
+        public bool BlokkeerSpoor(string spoorID) 
+        {
+            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch {
             return false;
+        }
+            finally {
+                connection.Close();
+            }
+        }
+
+        public bool DeblokkeerSpoor(string spoorID) 
+        {
+            string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try {
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch {
+            return false;
+        }
+            finally {
+                connection.Close();
+            }
         }
     }
 }
