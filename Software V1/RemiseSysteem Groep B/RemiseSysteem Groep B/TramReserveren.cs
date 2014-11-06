@@ -11,26 +11,20 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// form die gebruiker wordt voor het reservering van een tram op een spoor, met eventuele reparatie
     /// </summary>
     public partial class TramReserveren : Form
     {
         DatabaseManager db = DatabaseManager.Instance;
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         public TramReserveren()
         {
             InitializeComponent();
             gbReparatie.Visible = false;//laat reparatie controlls pas zien wanneer er gekozen is voor een reparatie
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void chbReparatie_CheckedChanged(object sender, EventArgs e)
         {
             if(chbReparatie.Checked)
@@ -44,7 +38,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// de confirm knop , om een reservering door te voeren
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

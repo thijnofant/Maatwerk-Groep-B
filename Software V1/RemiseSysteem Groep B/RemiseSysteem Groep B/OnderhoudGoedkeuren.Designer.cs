@@ -35,12 +35,13 @@
             // 
             // btnGoedkeuren
             // 
-            this.btnGoedkeuren.Location = new System.Drawing.Point(156, 333);
+            this.btnGoedkeuren.Location = new System.Drawing.Point(323, 387);
             this.btnGoedkeuren.Name = "btnGoedkeuren";
             this.btnGoedkeuren.Size = new System.Drawing.Size(213, 40);
             this.btnGoedkeuren.TabIndex = 3;
             this.btnGoedkeuren.Text = "Goedkeuren";
             this.btnGoedkeuren.UseVisualStyleBackColor = true;
+            this.btnGoedkeuren.Click += new System.EventHandler(this.btnGoedkeuren_Click);
             // 
             // lbxOnderhoud
             // 
@@ -48,12 +49,12 @@
             this.lbxOnderhoud.ItemHeight = 16;
             this.lbxOnderhoud.Location = new System.Drawing.Point(12, 12);
             this.lbxOnderhoud.Name = "lbxOnderhoud";
-            this.lbxOnderhoud.Size = new System.Drawing.Size(752, 308);
+            this.lbxOnderhoud.Size = new System.Drawing.Size(1075, 356);
             this.lbxOnderhoud.TabIndex = 2;
             // 
             // btnAfkeuren
             // 
-            this.btnAfkeuren.Location = new System.Drawing.Point(375, 333);
+            this.btnAfkeuren.Location = new System.Drawing.Point(542, 387);
             this.btnAfkeuren.Name = "btnAfkeuren";
             this.btnAfkeuren.Size = new System.Drawing.Size(213, 40);
             this.btnAfkeuren.TabIndex = 4;
@@ -65,13 +66,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 385);
+            this.ClientSize = new System.Drawing.Size(1099, 449);
             this.Controls.Add(this.btnAfkeuren);
             this.Controls.Add(this.btnGoedkeuren);
             this.Controls.Add(this.lbxOnderhoud);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(794, 432);
-            this.MinimumSize = new System.Drawing.Size(794, 432);
             this.Name = "OnderhoudGoedkeuren";
             this.Text = "OnderhoudGoedkeuren";
             this.ResumeLayout(false);
