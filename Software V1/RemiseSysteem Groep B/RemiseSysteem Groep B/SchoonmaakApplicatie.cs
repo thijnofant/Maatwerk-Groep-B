@@ -19,7 +19,6 @@ namespace RemiseSysteem_Groep_B
         List<Tram> tramlijst;
         DatabaseManager db;
 
-<<<<<<< HEAD
         Medewerker medewerkerSchoonmaak;
         List<Schoonmaak> schoonmaakBeurten;
         Schoonmaak schoonmaak;
@@ -28,9 +27,6 @@ namespace RemiseSysteem_Groep_B
         /// <summary>
         /// 
         /// </summary>
-=======
-
->>>>>>> origin/master
         public SchoonmaakApplicatie()
         {
             InitializeComponent();
