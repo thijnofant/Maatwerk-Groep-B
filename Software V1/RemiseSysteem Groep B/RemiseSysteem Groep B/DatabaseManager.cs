@@ -550,12 +550,19 @@ namespace RemiseSysteem_Groep_B
                 //aanvullen
                 TramType tramtype = new TramType(GevondenDescription, 1);
                 Tram tram = new Tram(GevondenID, tramtype);
-                TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
-                tram.StatusWijzigen(tramStatus);
+                
+                try
+                {
+                    TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
+                    tram.StatusWijzigen(tramStatus);
+                }
+                catch (Exception)
+                {
+
+                }
+                
                 tram.Nummer = nummer;
                 return tram;
-
-
             }
             catch
             {
@@ -881,6 +888,7 @@ namespace RemiseSysteem_Groep_B
                 {
                     connection.Open();
                     OracleCommand command = new OracleCommand(cmd, connection);
+                    connection.Open();
                     command.Parameters.Add("tramid", tempTram.Id);
                     int resultaat = command.ExecuteNonQuery();
                     if (resultaat > 0)
@@ -909,12 +917,19 @@ namespace RemiseSysteem_Groep_B
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
             List<Sector> tempSectoren= GetSectorenVoorBlokkade();
-            foreach (Sector s in tempSectoren)
+            try
             {
-                if (s.Id == sect.Id && (s.IsGeblokkeerd || s.Tram != null))
+                foreach (Sector s in tempSectoren)
                 {
-                    return false;
+                    if (s.Id == sect.Id && (s.IsGeblokkeerd || s.Tram != null))
+                    {
+                        return false;
+                    }
                 }
+            }
+            catch
+            {
+                return false;
             }
 
             Tram tempTram = ZoekTram(tramNr);

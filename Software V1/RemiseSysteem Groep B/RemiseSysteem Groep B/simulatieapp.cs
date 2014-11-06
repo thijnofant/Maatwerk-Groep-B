@@ -16,7 +16,7 @@ namespace RemiseSysteem_Groep_B
     public partial class simulatieapp : Form
     {
         private Remise remise;
-
+        private int tramcount;
         /// <summary>
         /// 
         /// </summary>
@@ -25,6 +25,7 @@ namespace RemiseSysteem_Groep_B
             InitializeComponent();
             this.remise = Remise.Instance;
             Simuleren();
+            tramcount = 0;
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace RemiseSysteem_Groep_B
         /// </summary>
         public void Simuleren()
         {
-            timer1.Interval = 5000;
+            timer1.Interval = 100; //5000;
             timer1.Tick += timer1_Tick;
             timer1.Start();
             //backgroundWorker1.RunWorkerAsync();
@@ -45,6 +46,11 @@ namespace RemiseSysteem_Groep_B
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if(tramcount > 14)
+            {
+                timer1.Enabled = false;
+            }
+            tramcount++;
             List<Tram> trams = new List<Tram>();
             bool isGelukt;
             Random willekeurigGetalGenerator = new Random();
@@ -125,7 +131,7 @@ namespace RemiseSysteem_Groep_B
                     if (trams.Count > 0)
                     {
                         Tram gekozenTram = trams[willekeurigGetalGenerator.Next(0, trams.Count - 1)];
-                        this.remise.Database.TramRijdUitRemise(gekozenTram.Id);
+                        this.remise.Database.TramRijdUitRemise(gekozenTram.Nummer);
                         this.remise.Database.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id);
                         lbxSimulatie.Items.Add("Tram uitgereden");
                     }

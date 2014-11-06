@@ -90,7 +90,19 @@ namespace RemiseSysteem_Groep_B
 
             while (P < 3)
             {
-                int SectorID = Database.GetSectorX(X, SpoorID[N]);
+                int SectorID = new int();
+                
+                if(SpoorID.Count == 0)
+                {
+                }
+                else if (SpoorID.Count == N )
+                {
+                    SectorID = Database.GetSectorX(X, SpoorID[N-1]);
+                }
+                else
+                {
+                    SectorID = Database.GetSectorX(X, SpoorID[N]);
+                }
                 if (!Database.SectorBezet(SectorID))
                 {
                     Database.TramVerplaatsen(tramNr, new Sector(SectorID));
@@ -100,7 +112,7 @@ namespace RemiseSysteem_Groep_B
                 }
                 else
                 {
-                    if (N < SpoorID.Count)
+                    if (N < SpoorID.Count - 1)
                     {
                         N++;
                     }
@@ -169,7 +181,7 @@ namespace RemiseSysteem_Groep_B
         {
             throw new NotImplementedException();
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
