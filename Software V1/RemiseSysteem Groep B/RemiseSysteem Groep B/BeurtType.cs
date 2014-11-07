@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit is de Enum waarin alle Types Beurt staan.
     /// </summary>
     public enum BeurtType
     {

@@ -10,10 +10,17 @@ using System.Windows.Forms;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// Dit is de form waar de Status van een Tram gewijzigd kan worden.
+    /// </summary>
     public partial class TramstatusWijzigen : Form
     {
         private Remise remise;
         private List<Tram> trams;
+
+        /// <summary>
+        /// Dit is de Constructor van deze Form.
+        /// </summary>
         public TramstatusWijzigen()
         {
             InitializeComponent();
@@ -25,6 +32,9 @@ namespace RemiseSysteem_Groep_B
             HaalTramsOp();
         }
 
+        /// <summary>
+        /// Dit is de Methode die zorgt dat alle Trams met hun actueele Status uit de Database worden geladen en in de Listbox op het Form komen.
+        /// </summary>
         private void HaalTramsOp()
         {
             lbxTrams.Items.Clear();
@@ -36,6 +46,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// Deze Methode wordt aangeroepen als er op de Status Wijzigen Knop gedrukt wordt. Dit veranderd de Status van de Tram in de Database en vernieuwd daarna de Listbox op het Form.
+        /// </summary>
         private void btnWijzigStatus_Click(object sender, EventArgs e)
         {
             TramStatus status = (TramStatus) Enum.Parse(typeof (TramStatus), cbxStatus.SelectedItem.ToString());
@@ -53,6 +66,11 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// Deze Methode wordt aangeroepen als de SelectedIndex word veranderd in de ListBox op het form. Deze laat in de ComboBox op het form de juiste status zien die de geselecteerde Tram heeft.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbxTrams_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbxTrams.SelectedIndex >= 0)

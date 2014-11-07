@@ -8,6 +8,9 @@ using System.Data.OracleClient;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// Deze Klasse wordt gebruikt voor alle Database Functies.
+    /// </summary>
     class DatabaseManager
     {
         #region singleton
@@ -40,9 +43,9 @@ namespace RemiseSysteem_Groep_B
         public OracleConnection connection;
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt alle Onderhouds Medewerkers op.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Een List met alle Onderhouds Medewerkers</returns>
         public List<Medewerker> OnderhoudsMedewerkersOpvragen()
         {
             List<Medewerker> medewerkers = new List<Medewerker>();
@@ -71,9 +74,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt alle Schoonmaak Medewerkers op.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Een List met alle Schoonmaak Medewerkers</returns>
         public List<Medewerker> SchoonmaakMedewerkersOpvragen()
         {
             List<Medewerker> schoonmaakmedewerkers = new List<Medewerker>();
@@ -108,10 +111,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode haalt de Id van een medewerker op die aan een tram werkt
         /// </summary>
-        /// <param name="onderhoud"></param>
-        /// <returns></returns>
+        /// <param name="onderhoud">Onderhoud met Medewerkers</param>
+        /// <returns>Id van de medewerkers</returns>
         public int MedewerkerOpvragen(Onderhoud onderhoud)
         {
             int medewerkerID = -1;
@@ -141,6 +144,11 @@ namespace RemiseSysteem_Groep_B
             return medewerkerID;
         }
 
+        /// <summary>
+        /// Deze Methode haalt de Id van een medewerker op die aan een tram werkt
+        /// </summary>
+        /// <param name="onderhoud">Schoonmaak met Medewerkers</param>
+        /// <returns>Id van de medewerkers</returns>
         public int MedewerkerOpvragen(Schoonmaak schoonmaak)
         {
             int medewerkerID = -1;
@@ -171,11 +179,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Inloggen
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="wachtwoord"></param>
-        /// <returns></returns>
+        /// <param name="username">Username</param>
+        /// <param name="wachtwoord">password</param>
+        /// <returns>gelukt (True, false)</returns>
         public bool Inloggen(string username, string wachtwoord)
         {
             //TODO: LogIn
@@ -183,11 +191,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// NOG TESTEN
-        /// 
         /// Haalt de lijst met alle Reparatie die niet nog niet af zijn.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lijst Onderhoud die nog niet Klaar zijn.</returns>
         public List<Onderhoud> OnderhoudOpvragen()
         {
             List<Tram> trams = AlleTrams();
@@ -244,6 +250,10 @@ namespace RemiseSysteem_Groep_B
             return returnList;
         }
 
+        /// <summary>
+        /// Haalt de lijst met alle Schoonmaak die niet nog niet af zijn.
+        /// </summary>
+        /// <returns>Lijst Onderhoud die nog niet Klaar zijn.</returns>
         public List<Schoonmaak> SchoonmaakOpvragen()
         {
             List<Tram> trams = AlleTrams();
@@ -293,18 +303,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Method Controleert of een Onderhoud Klaar is.
         /// </summary>
-        /// <returns></returns>
-        public DataTable SporenOpvragen()
-        {
-            DataTable sporenlijst = new DataTable();
-
-
-            //TODO: SQL
-            return sporenlijst;
-        }
-
+        /// <param name="onderhoud">Onderhoud</param>
+        /// <returns>True,false</returns>
         public bool IsKlaar(Onderhoud onderhoud)
         {
             string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = " + onderhoud.ID;
@@ -327,6 +329,11 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// Deze Method Controleert of een Schoonmaak Klaar is.
+        /// </summary>
+        /// <param name="schoonmaak">Schoonmaak</param>
+        /// <returns>True, False</returns>
         public bool IsKlaar(Schoonmaak schoonmaak)
         {
             string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = " + schoonmaak.ID;
@@ -349,6 +356,12 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// Deze Method Maakt een Onderhoud Klaar als hij dit niet is en een Onderhoud Niet Klaar als hij dit wel is.
+        /// </summary>
+        /// <param name="onderhoud">onderhoud</param>
+        /// <param name="klaar">is hij klaar?</param>
+        /// <returns>gelukt</returns>
         public bool WijzigKlaar(Onderhoud onderhoud, bool klaar)
         {
             string cmd = "";
@@ -375,6 +388,12 @@ namespace RemiseSysteem_Groep_B
             return false;
         }
 
+        /// <summary>
+        /// Deze Method Maakt een Onderhoud Klaar als hij dit niet is en een Onderhoud Niet Klaar als hij dit wel is.
+        /// </summary>
+        /// <param name="schoonmaak">Schoonmaak</param>
+        /// <param name="klaar">is hij klaar?</param>
+        /// <returns>gelukt</returns>
         public bool WijzigKlaar(Schoonmaak schoonmaak, bool klaar)
         {
             string cmd = "";
@@ -402,7 +421,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Voegt een Medewerker toe aan een Onderhoud in de database.
         /// </summary>
         /// <param name="medewerker"></param>
         /// <param name="onderhoud"></param>
@@ -426,10 +445,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Verwijdert een Medewerker van een Onderhoud in de database.
         /// </summary>
         /// <param name="onderhoud"></param>
-        /// <returns></returns>
+        /// <returns>gelukt?</returns>
         public bool VerwijderMedewerkerVanOnderhoud(Onderhoud onderhoud)
         {
             string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = null WHERE ID = " + onderhoud.ID;
@@ -449,11 +468,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode wijzigd een TijdsIndicatie van een onderhoud.
         /// </summary>
-        /// <param name="datum"></param>
-        /// <param name="onderhoud"></param>
-        /// <returns></returns>
+        /// <param name="datum">nieuwe Tijds indicatie</param>
+        /// <param name="onderhoud">onderhoud</param>
+        /// <returns>gelukt?</returns>
         public bool WijzigTijdsIndicatieOnderhoud(DateTime datum, Onderhoud onderhoud)
         {
             string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = TO_DATE('" + datum + "', 'DD-MM-YYYY HH24:MI:SS') WHERE ID = " + onderhoud.ID;
@@ -474,9 +493,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt een Lijst op uit de database met alle sporen.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Een Lijst met alle sporen die bestaan in de database.</returns>
         public List<Spoor> SporenlijstOpvragen()
         {
             List<Spoor> sporen = new List<Spoor>();
@@ -576,47 +595,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt een medewerker uit de Database aan de hand van de ID
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Tram ZoekTramOpID(int id)
-        {
-            String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.ID = '" + id + "' AND t.TramtypeID = tt.ID";
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
-            try
-            {
-                this.connection.Open();
-
-                OracleDataReader reader = command.ExecuteReader();
-                reader.Read();
-                string GevondenStatus = reader["Status"].ToString();
-                string GevondenDescription = reader["Omschrijving"].ToString();
-
-                //aanvullen
-                TramType tramtype = new TramType(GevondenDescription, 1);
-                Tram tram = new Tram(id, tramtype);
-                TramStatus tramStatus = (TramStatus)Enum.Parse(typeof(TramStatus), GevondenStatus, true);
-                tram.StatusWijzigen(tramStatus);
-                return tram; 
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                this.connection.Close();
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Medewerker ID</param>
+        /// <returns>Medewerker die bij de ID hoort.</returns>
         public Medewerker ZoekMedewerkerOpID(int id)
         {
             String cmd = "Select M.Naam AS MNaam, F.Naam AS FNaam FROM MEDEWERKER M, FUNCTIE F WHERE M.FunctieID = F.ID AND M.ID = " + id.ToString();
@@ -662,11 +644,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Met deze Methode is het mogenlijk om een Beurt goed te keuren of af te keuren.
         /// </summary>
-        /// <param name="beurtid"></param>
-        /// <param name="isGoedgekeurd"></param>
-        /// <returns></returns>
+        /// <param name="beurtid">BeurtID</param>
+        /// <param name="isGoedgekeurd">is hij goedgekeurt?</param>
+        /// <returns>Gelukt?</returns>
         public bool BeurtGoedkeurenAfkeuren(int beurtid, bool isGoedgekeurd)
         {
             try
@@ -704,9 +686,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt een Lijst op uit de database met alle Beurten.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lijst Met alle beurten</returns>
         public List<Beurt> ZoekAlleBeurten() 
         {
             List<Tram> trams = AlleTrams();
@@ -768,10 +750,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Maakt een nieuwe Schoonmaak aan in de database.
         /// </summary>
-        /// <param name="schoonmaak"></param>
-        /// <returns></returns>
+        /// <param name="schoonmaak">Schoonmaak om in te voeren</param>
+        /// <returns>Gelukt?</returns>
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak) 
         {
             try 
@@ -794,11 +776,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Maakt een nieuwe Schoonmaak aan in de database.
         /// </summary>
-        /// <param name="schoonmaak"></param>
-        /// <param name="medewerkerID"></param>
-        /// <returns></returns>
+        /// <param name="schoonmaak">Schoonmaak om in te voeren</param>
+        /// <param name="medewerkerID">Medewerker die schoonmaak doet</param>
+        /// <returns>Gelukt?</returns>
         public bool SchoonmaakInvoeren(Schoonmaak schoonmaak, int medewerkerID)
         {
             try
@@ -821,10 +803,10 @@ namespace RemiseSysteem_Groep_B
         } 
 
         /// <summary>
-        /// 
+        /// Deze Methode Maakt een nieuwe Schoonmaak aan in de database.
         /// </summary>
-        /// <param name="onderhoud"></param>
-        /// <returns></returns>
+        /// <param name="onderhoud">Schoonmaak om in te voeren</param>
+        /// <returns>Gelukt?</returns>
         public bool OnderhoudInvoeren(Onderhoud onderhoud) 
         {
             try 
@@ -845,11 +827,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Method Veranderd de status van de tram waarvan de ID wordt ingegeven
         /// </summary>
-        /// <param name="nieuwStatus"></param>
-        /// <param name="tramid"></param>
-        /// <returns></returns>
+        /// <param name="nieuwStatus">Nieuwe status</param>
+        /// <param name="tramid">DatabaseID van aan te passen Tram</param>
+        /// <returns>Gelukt?</returns>
         public bool TramstatusVeranderen(TramStatus nieuwStatus, int tramid)
         {
             try
@@ -874,10 +856,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Zorgt dat de Tram Niet meer op een sector staat
         /// </summary>
-        /// <param name="tramNr"></param>
-        /// <returns></returns>
+        /// <param name="tramNr">Nummer van de te verwijderen Tram</param>
+        /// <returns>Gelukt?</returns>
         public bool TramRijdUitRemise(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
@@ -909,10 +891,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode kan een Tram Plaatsen die nog niet in de Remise staat en een tram verplaatsen die er al wel instaat.
         /// </summary>
-        /// <param name="tramNr"></param>
-        /// <param name="sect"></param>
+        /// <param name="tramNr">NR van de Tram.</param>
+        /// <param name="sect">Sector Waar Tram naar toe moet.</param>
         /// <returns></returns>
         public bool TramVerplaatsen(int tramNr, Sector sect)
         {
@@ -958,9 +940,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Method kan alle trams met status X vinden.
         /// </summary>
-        /// <param name="status"></param>
+        /// <param name="status">De status waar de trams aan moeten voldeon.</param>
         /// <returns></returns>
         public List<Tram> AlleTramsMetStatus(TramStatus status)
         {
@@ -997,9 +979,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Method Returned alle Trams
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lijst Met alle trams</returns>
         public List<Tram> AlleTrams() 
         {
             List<Tram> tramlist = new List<Tram>();
@@ -1036,10 +1018,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Method Kan een Spoor Reserveren voor een Tram
         /// </summary>
-        /// <param name="tramnummer"></param>
-        /// <param name="spoornummer"></param>
+        /// <param name="tramnummer">TramNR</param>
+        /// <param name="spoornummer">SpoorNR</param>
         /// <returns></returns>
         public bool TramReserveren(int tramnummer, int spoornummer)
         {
@@ -1064,11 +1046,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Met deze Method kun je de Hoogste ID uit een Tabel halen
         /// </summary>
-        /// <param name="ID"></param>
-        /// <param name="tabelnaam"></param>
-        /// <returns></returns>
+        /// <param name="ID">Naam van ID kollom</param>
+        /// <param name="tabelnaam">Naam van Tabel</param>
+        /// <returns>De hoogste ID</returns>
         public int GetInsertID(string ID, string tabelnaam)
         {
             string insertID = "Select Max(" + ID + ") From " + tabelnaam;
@@ -1099,9 +1081,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt alle Sporen Op uit de database die zijn gereserveerd voor beurten.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lijst met beurtSporen</returns>
         public List<int> GetBeurtSporen()
         {
             String cmd = "SELECT ID FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77))";
@@ -1133,10 +1115,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om te controleren welke sporen en bij een lijn horen.
         /// </summary>
-        /// <param name="lijnID"></param>
-        /// <returns></returns>
+        /// <param name="lijnID">De DatabaseID van een Lijn.</param>
+        /// <returns>De lijst met de DatabaseId's van de sporen die bij de Lijn horen.</returns>
         public List<int> GetSporenIDByLijnID(int lijnID)
         {
             String cmd = "SELECT ID FROM SPOOR WHERE ID In (SELECT SpoorID FROM LIJN_SPOOR WHERE LijnID =" + lijnID + ")";
@@ -1168,9 +1150,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode haalt alle sporen op die niet bij een lijn horen en ook geen Beurt Sporen zijn.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List Id's voor Vrije Sporen</returns>
         public List<int> GetSporenIDForFreeSporen()
         {
             String cmd = "SELECT ID FROM SPOOR WHERE ID NOT IN (SELECT SpoorID FROM Lijn_Spoor) AND NOT(Nummer BETWEEN 12 AND 21) AND NOT(Nummer NOT BETWEEN 74 AND 77)";
@@ -1202,11 +1184,11 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode haalt Sector X op van een spoor.
         /// </summary>
         /// <param name="X"></param>
-        /// <param name="spoorID"></param>
-        /// <returns></returns>
+        /// <param name="spoorID">welk spoor</param>
+        /// <returns>de id van de sector</returns>
         public int GetSectorX(int X, int spoorID)
         {
             String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
@@ -1240,10 +1222,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode kijk of de Sector bezet of geblokeerd is.
         /// </summary>
-        /// <param name="SectorID"></param>
-        /// <returns></returns>
+        /// <param name="SectorID">SectorID</param>
+        /// <returns>True als bezet. false bij niet bezet.</returns>
         public bool SectorBezet(int SectorID)
         {
             String cmd = "SELECT TramId FROM SECTOR WHERE ID =" + SectorID + "OR Blokkade = 'y' OR Blokkade = 'Y'";
@@ -1271,9 +1253,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om De sectoren op te halen uit de database die geblokeerd moeten worden als het spoor geblokeerd word.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lijst met Sectoren die geblokeerd moeten worden.</returns>
         public List<Sector> GetSectorenVoorBlokkade() 
         {
             List<Sector> sectoren = new List<Sector>();
@@ -1320,10 +1302,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Geeft De Database ID terug van de Lijn die gekoppelt zit aan de Tram.
         /// </summary>
-        /// <param name="tramNr"></param>
-        /// <returns></returns>
+        /// <param name="tramNr">het nummer van de Tram</param>
+        /// <returns>ID van de Lijn die bij de Tram hoort</returns>
         public int LijnNrOpvragen(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
@@ -1351,7 +1333,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt het gereserveerde Spoor op die bij een tram horen als deze er zijn.
         /// </summary>
         /// <param name="tramID"></param>
         /// <returns></returns>
@@ -1381,10 +1363,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Haalt uit de database op welk Spoor een Tram op staat.
         /// </summary>
-        /// <param name="tramID"></param>
-        /// <returns></returns>
+        /// <param name="tramID">Welke Tram</param>
+        /// <returns>ID van spoor</returns>
         public int GetToegewezenSpoor(int tramID)
         {
             String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
@@ -1412,13 +1394,13 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Zoekt in de Database naar de Count van beurten die in de database staan die aan bepaalde criteria voldoen.
         /// </summary>
         /// <param name="kleingroot"></param>
         /// <param name="OnderhoudOfSchoonmaak"></param>
         /// <param name="datum"></param>
         /// <param name="tramID"></param>
-        /// <returns></returns>
+        /// <returns>aantal beurten met die criteria</returns>
         public int GetAantalBeurten(string kleingroot, string OnderhoudOfSchoonmaak, DateTime datum, int tramID)
         {
             string test = Convert.ToString(datum).Substring(0, 10);
@@ -1448,79 +1430,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Met deze Methode worden Sectoren opgehaalt die bij een spoor horen.
         /// </summary>
-        /// <param name="X"></param>
-        /// <param name="spoorID"></param>
-        /// <returns></returns>
-        public Sector SectorXfromSpoor(int X, int spoorID)
-        {
-            String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
-            try
-            {
-                this.connection.Open();
-                List<Sector> reList = new List<Sector>();
-
-                OracleDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int SpoorNR = reader.GetInt32(0);
-                    Sector temp = new Sector(SpoorNR);
-                    reList.Add(temp);
-                }
-
-                return reList[X - 1];
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                this.connection.Close();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="SectorID"></param>
-        /// <returns></returns>
-        public int tramNRFromSectorID(int SectorID)
-        {
-            String cmd = "SELECT Nummer FROM TRAM WHERE ID = (SELECT TramID FROM SECTOR WHERE ID =" + SectorID + ")";
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
-            try
-            {
-                this.connection.Open();
-                int TramNR = 0;
-
-                OracleDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    TramNR = reader.GetInt32(0);
-                }
-
-                return TramNR;
-            }
-            catch
-            {
-                return 0;
-            }
-            finally
-            {
-                this.connection.Close();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="spoorNR"></param>
-        /// <returns></returns>
+        /// <param name="spoorNR">welk spoor</param>
+        /// <returns>lijst sectoren.</returns>
         public List<Sector>GetSectorenFromSpoorNR(int spoorNR)
         {
             String cmd = "SELECT * FROM Sector WHERE SpoorID = (SELECT ID FROM SPOOR WHERE nummer ="+spoorNR+")";
@@ -1553,10 +1466,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode blokeert een Sector
         /// </summary>
-        /// <param name="sectorID"></param>
-        /// <returns></returns>
+        /// <param name="sectorID">SectorID</param>
+        /// <returns>Gelukt?</returns>
         public bool BlokkeerSector(string sectorID) 
         {
             string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
@@ -1579,10 +1492,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode De-Blokeert een Sector
         /// </summary>
-        /// <param name="sectorID"></param>
-        /// <returns></returns>
+        /// <param name="sectorID">SectorID</param>
+        /// <returns>Gelukt?</returns>
         public bool DeblokkeerSector(string sectorID) {
             string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
             OracleCommand command = new OracleCommand(cmd, connection);
@@ -1604,10 +1517,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Blokeert alle sectoren in een spoor
         /// </summary>
-        /// <param name="spoorID"></param>
-        /// <returns></returns>
+        /// <param name="spoorID">Id van het spoor dat je wilt blokeren</param>
+        /// <returns>Gelukt?</returns>
         public bool BlokkeerSpoor(string spoorID) 
         {
             string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
@@ -1627,10 +1540,10 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode De-Blokeert alle sectoren in een spoor
         /// </summary>
-        /// <param name="spoorID"></param>
-        /// <returns></returns>
+        /// <param name="spoorID">Id van het spoor dat je wilt de-blokeren</param>
+        /// <returns>Gelukt?</returns>
         public bool DeblokkeerSpoor(string spoorID) 
         {
             string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
@@ -1652,7 +1565,7 @@ namespace RemiseSysteem_Groep_B
         /// <summary>
         /// Deze methode haalt alle sectoren op uit de database en 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Een Array met daarin Informatie over de Sporen</returns>
         public string[] SpoorSectorArray()
         {
             String cmd = "SELECT T.NUMMER, SE.ID, SE.Blokkade FROM TRAM T Right JOIN Sector SE ON T.ID = SE.TramId ORDER BY SE.ID";

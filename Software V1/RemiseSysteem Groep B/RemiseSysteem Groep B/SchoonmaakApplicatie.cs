@@ -25,7 +25,7 @@ namespace RemiseSysteem_Groep_B
         int medewerkerID;
 
         /// <summary>
-        /// 
+        /// Dit is de Constructor voor deze Form.
         /// </summary>
         public SchoonmaakApplicatie()
         {
@@ -45,6 +45,9 @@ namespace RemiseSysteem_Groep_B
             LaadSchoonmaakBeurten();
         }
 
+        /// <summary>
+        /// Dit is de Methode die de Schoonmaakbeurten die in de Dabase Staan ophaalt en deze in de Lijst op het form zet.
+        /// </summary>
         private void LaadSchoonmaakBeurten()
         {
             schoonmaakBeurten = this.db.SchoonmaakOpvragen();
@@ -55,7 +58,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-
+        /// <summary>
+        /// Dit is de Methode die word gebruikt om de Lijsten op het Form van de nieuwste informatie te vorzien.
+        /// </summary>
         public void Updateform()
         {
             foreach(Medewerker m in schoonmaakmedewerkers)
@@ -68,7 +73,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
-
+        /// <summary>
+        /// Deze Methode word aangeroepen als op de aanvragenknop word gedrukt. Dit maakt een nieuwe (nog) niet goedgekeurde Schoonmaak aan in de Database.
+        /// </summary>
         private void btnAanvragen_Click(object sender, EventArgs e)
         {
             int selectedtramnr = Convert.ToInt32(cbTram.SelectedItem.ToString());//het geselecteerde tramnr
@@ -112,24 +119,35 @@ namespace RemiseSysteem_Groep_B
             
         }
 
-
+        /// <summary>
+        /// Deze metode word aangeroepen als de checkbox voor een Grote Beurt wordt gechecked. Hierdoor wordt de Aanvraag-Button Beschikbaar.
+        /// </summary>
         private void rbGroot_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;
         }
 
-
+        /// <summary>
+        /// Deze metode word aangeroepen als de checkbox voor een Grote Beurt wordt gechecked. Hierdoor wordt de Aanvraag-Button Beschikbaar.
+        /// </summary>
         private void rbKlein_CheckedChanged(object sender, EventArgs e)
         {
             btnAanvragen.Visible = true;
         }
 
+        /// <summary>
+        /// Deze Methode wordt aangeroepen als de SelectedIndex veranderd in de lijst van Schoonmaakbeurten en zorgt dat de lijst ge-update wordt.
+        /// </summary>
         private void lbxSchoonmaakBeurten_SelectedIndexChanged(object sender, EventArgs e)
         {
             schoonmaak = schoonmaakBeurten[lbxSchoonmaakBeurten.SelectedIndex];
             UpdateSchoonmaakInfo(schoonmaak);
         }
 
+        /// <summary>
+        /// Deze Methode Update de informatie van een schoonmaak.
+        /// </summary>
+        /// <param name="schoonmaak">De schoonmaak die ge-update wordt.</param>
         private void UpdateSchoonmaakInfo(Schoonmaak schoonmaak)
         {
             tbxDatum.Text = Convert.ToString(schoonmaak.BeginDatum);
@@ -160,6 +178,9 @@ namespace RemiseSysteem_Groep_B
             }
         }
 
+        /// <summary>
+        /// Deze Methode wordt aangeroepen als er in de checkbox Klaar wordt geklikt en deze veranderd de geselecteerde Schoonmaak naar Klaar.
+        /// </summary>
         private void chxKlaar_MouseClick(object sender, MouseEventArgs e)
         {
             if (chxKlaar.Checked == true)

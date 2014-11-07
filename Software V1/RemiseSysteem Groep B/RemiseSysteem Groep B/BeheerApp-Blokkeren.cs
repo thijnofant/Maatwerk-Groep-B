@@ -53,8 +53,6 @@ namespace RemiseSysteem_Groep_B
         /// <summary>
         /// Wanneer er een spoor wordt aangeklikt in de listbox worden de bijbehorende sectoren gezocht en in de tweede listbox gezet.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lbxSporen_SelectedIndexChanged(object sender, EventArgs e) 
         {
             btnBlokkeer.Enabled = true;
@@ -93,8 +91,6 @@ namespace RemiseSysteem_Groep_B
         /// <summary>
         /// Wanneer er op deze button geklikt wordt worden de geselecteerde sectoren geblokkeerd.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnBlokkeer_Click(object sender, EventArgs e) 
         {
             UpdateDataAlleen();
@@ -140,8 +136,6 @@ namespace RemiseSysteem_Groep_B
         /// <summary>
         /// Wanneer er op deze button geklikt wordt worden de geselecteerde sectoren gedeblokkeerd.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnDeblokkeer_Click(object sender, EventArgs e) 
         {
             UpdateDataAlleen();

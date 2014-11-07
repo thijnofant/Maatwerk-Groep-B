@@ -20,6 +20,9 @@ namespace RemiseSysteem_Groep_B
         List<Tram> tramlijst;
         List<Beurt> beurtenlijst;
 
+        /// <summary>
+        /// de Constructor voor deze Form.
+        /// </summary>
         public BeheerderApp_SchoonmaakInvoeren() 
         {
             InitializeComponent();
@@ -31,10 +34,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode zorgt ervoor dat er een nieuwe Beurt word gemaakt met de informatie ingevuld op het form.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnInvoeren_Click(object sender, EventArgs e) 
         {
             if (cbxSoortBeurt.SelectedItem == null) 
@@ -156,17 +157,15 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode Sluit deze Form.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnAnnuleren_Click(object sender, EventArgs e) 
         {
             this.Close();
         }
 
         /// <summary>
-        /// 
+        /// Deze Method word aangeroepen als deze Form word opgestart en zorgt dat de lijsten vol zijn.
         /// </summary>
         private void OpstartMethode() 
         {

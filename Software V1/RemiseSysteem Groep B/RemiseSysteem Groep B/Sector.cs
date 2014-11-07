@@ -7,94 +7,42 @@ using System.Threading.Tasks;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit is de Klasse voor een Sector.
     /// </summary>
     class Sector
     {
         private int id;
-        private bool isWissel;
         private bool isGeblokkeerd;
         private Tram tram;
 
         /// <summary>
-        /// 
+        /// Deze Property haalt de Database ID van deze Sector op.
         /// </summary>
         public int Id { get { return id; } }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public bool IsWissel { get { return isWissel; } }
-
-        /// <summary>
-        /// 
+        /// Deze Property haalt van deze Sector op of deze Geblokeerd is of niet.
         /// </summary>
         public bool IsGeblokkeerd { get { return isGeblokkeerd; } set { isGeblokkeerd = value; } }
 
         /// <summary>
-        /// 
+        /// Deze Property haalt de Tram op die op deze Sector staat.
         /// </summary>
         public Tram Tram { get { return tram; } set { tram = value; } }
 
         /// <summary>
-        /// 
+        /// Deze Property haalt de Database ID van het Spoor op waar deze Sector een onderdeel van is.
         /// </summary>
         public int SpoorID { get; set; }
 
         /// <summary>
-        /// 
+        /// Dit is de Constructor van een Sector.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">De DatabaseId van de Sector.</param>
         public Sector(int id) 
         {
             this.id = id;
             this.isGeblokkeerd = false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void BlokkeerSector() 
-        {
-            if(this.Tram == null) 
-            {
-                this.isGeblokkeerd = true;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void DeblokkeerSector() 
-        {
-            this.isGeblokkeerd = false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tram"></param>
-        /// <returns></returns>
-        public bool TramToevoegen(Tram tram) 
-        {
-            if(this.tram == null) 
-            {
-                this.tram = tram;
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-            
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void TramVerwijderen() 
-        {
-            this.tram = null;
         }
     }
 }

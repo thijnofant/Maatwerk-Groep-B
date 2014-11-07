@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit Form word gebruikt voor het plaatsen, verplaatsen en het uitlaten rijden van Trams in de remise.
     /// </summary>
     public partial class TramVerplaatsen : Form
     {
@@ -20,7 +20,7 @@ namespace RemiseSysteem_Groep_B
         List<Tram> trams;
 
         /// <summary>
-        /// 
+        /// Dit is de constructor voor deze form.
         /// </summary>
         public TramVerplaatsen()
         {
@@ -32,13 +32,13 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Dit is de methode die de Sporen-ComboBox en de Trams-ComboBox vult zodat deze hier gekozen kunnen worden.
         /// </summary>
         void Update1()
         {
             sporen.Clear();
             trams.Clear();
-            
+
 
             sporen = DatabaseManager.Instance.SporenlijstOpvragen();
             trams = DatabaseManager.Instance.AlleTrams();
@@ -60,7 +60,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om de Sectoren-ComboBox te vullen als er een Spoor geselcteerd word uit de Sporen-ComboBox.
         /// </summary>
         void UpdateSector()
         {
@@ -73,30 +73,52 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word aangeroepen als er op de plaats knop word gedrukt, deze gebruikt de waarden in de ComboBoxen om een Tram te (ver)plaatsen.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnPlaats_Click(object sender, EventArgs e)
         {
-            int tram = Convert.ToInt32(cbbTram.SelectedItem.ToString());
-            int spoor = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
-            int sector = Convert.ToInt32(cbbSector.SelectedItem.ToString());
+            int tram;
+            int spoor;
+            int sector;
+            try
+            {
+                tram = Convert.ToInt32(cbbTram.SelectedItem.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Controleer of er een tram is geselecteerd.");
+                return;
+            }
+            try
+            {
+                spoor = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Controleer of er een Spoor is geselecteerd.");
+                return;
+            }
+            try
+            {
+                sector = Convert.ToInt32(cbbSector.SelectedItem.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Controleer of er een Sector is geselecteerd.");
+                return;
+            }
 
             Sector s = new Sector(sector);
 
             if (DatabaseManager.Instance.TramVerplaatsen(tram, s))
-                lblStatus.Text = "Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector;
-
+                MessageBox.Show("Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector +".");
             else
-                lblStatus.Text = "Er is iets misgegaan bij het plaatsen van de tram";
+                MessageBox.Show( "Er is iets misgegaan bij het plaatsen van de tram. Controleer of de sector niet Geblokkeerd is of bezet door een andere tram.");
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word aangeroepen als de index van de Spoor-ComboBox veranderd. Deze zorgt dat de Sector-ComboBox gevuld word met sectoren die bij het spoor horen.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void cbbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int temp = Convert.ToInt32(cbbSpoor.SelectedItem.ToString());
@@ -104,6 +126,11 @@ namespace RemiseSysteem_Groep_B
             UpdateSector();
         }
 
+        /// <summary>
+        /// Deze Methode word aangeroepen als op de vertrek knop word gedrukt. Deze zorgt dat de geselcteerde tram uit de remise wegrijdt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVertrek_Click(object sender, EventArgs e)
         {
             int tramnummer = Convert.ToInt32(cbbTram.SelectedItem.ToString());
@@ -112,11 +139,11 @@ namespace RemiseSysteem_Groep_B
 
             if (DatabaseManager.Instance.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id))
             {
-                lblStatus.Text = "Tram " + tramnummer + " is uit Remise gereden";
+                MessageBox.Show("Tram " + tramnummer + " is uit Remise gereden");
             }
             else
             {
-                lblStatus.Text = "Tram " + tramnummer + " uit remise rijden is mislukt";
+                MessageBox.Show("Tram " + tramnummer + " uit remise rijden is mislukt");
             }
         }
     }

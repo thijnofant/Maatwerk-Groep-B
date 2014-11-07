@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit is de Form voor Onderhoud.
     /// </summary>
     public partial class OnderhoudApplicatie : Form
     {
@@ -25,7 +25,7 @@ namespace RemiseSysteem_Groep_B
         DatabaseManager databaseManager;
 
         /// <summary>
-        /// 
+        /// Dit is de Constructor voor deze Form.
         /// </summary>
         public OnderhoudApplicatie()
         {
@@ -46,7 +46,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om alle Medewerkers in de Lijsten te laden.
         /// </summary>
         public void LaadMedewerkers()
         {
@@ -59,7 +59,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om alle Onderhoud in de Lijsten te laden.
         /// </summary>
         public void LaadOnderhoud()
         {
@@ -72,10 +72,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode wordt aangeroepen als de Geslecteerde Index van onderhouds beurt veranderd wordt. Dit zorgt dat de Lijsten worden ge-update.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lbxOnderhoudsBeurten_SelectedIndexChanged(object sender, EventArgs e)
         {
             onderhoud = onderhoudsBeurten[lbxOnderhoudsBeurten.SelectedIndex];
@@ -83,9 +81,9 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode wordt gebruikt om een Onderhoud bij te werken in de database. 
         /// </summary>
-        /// <param name="onderhoud"></param>
+        /// <param name="onderhoud">De Onderhoud die bij gewerkt moet worden.</param>
         private void UpdateOnderhoudInfo(Onderhoud onderhoud)
         {
             tbxDatum.Text = Convert.ToString(onderhoud.TijdsIndicatie);
@@ -117,10 +115,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om een Medewerker van een Onderhoud te halen.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnVerwijderMedewerker_Click(object sender, EventArgs e)
         {
             if(!this.databaseManager.VerwijderMedewerkerVanOnderhoud(onderhoud))
@@ -131,10 +127,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode word gebruikt om een Medewerker op een Onderhoud te zetten.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnVoegMedewerkerToe_Click(object sender, EventArgs e)
         {
             if(lbxMedewerkers.SelectedIndex != -1 && lbxOnderhoudsBeurten.SelectedIndex != -1)
@@ -152,10 +146,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode wordt aangeroepen alse er op de Knop TijdsIndicatieWijzigen geklikt wordt. Deze wijzigt de tijds indicatie van een Onderhoud in de Database.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnTijdsIndicatieWijzigen_Click(object sender, EventArgs e)
         {
             string uur = Convert.ToString(nudUur.Value);
@@ -193,6 +185,9 @@ namespace RemiseSysteem_Groep_B
             //}
         }
 
+        /// <summary>
+        /// Deze Methode zorgt ervoor dat een Onderhoud als Klaar word genoteerd.
+        /// </summary>
         private void chxKlaar_MouseClick(object sender, MouseEventArgs e)
         {
             if (chxKlaar.Checked == true)

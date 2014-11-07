@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit is een enumeratie met de verschillende Statussen die een Tram kan hebben.
     /// </summary>
     public enum TramStatus
     {

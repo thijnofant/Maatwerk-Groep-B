@@ -108,7 +108,9 @@ namespace RemiseSysteem_Groep_B
             
         }
 
-
+        /// <summary>
+        /// Deze Methode wordt aangeroepen als op de confirm-button wordt geklikt. Deze roept Remise.AutomatischInvoeren aan om de invoer af te handelen.
+        /// </summary>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             bool onderhoud = false;

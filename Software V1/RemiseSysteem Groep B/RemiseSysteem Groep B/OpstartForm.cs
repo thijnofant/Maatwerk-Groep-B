@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit Form word gebruikt om de aplicatie te openen voor testen en presentatie.
     /// </summary>
     public partial class OpstartForm : Form
     {
@@ -21,7 +21,7 @@ namespace RemiseSysteem_Groep_B
         SchoonmaakApplicatie schoonmaakApp;
 
         /// <summary>
-        /// 
+        /// Dit is de Constructor voor dit Form.
         /// </summary>
         public OpstartForm() 
         {
@@ -29,10 +29,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Dit is de Methode die wordt aangeroepen als de Beheerder knop wordt aangeklikt. Dit opent het BeheerForm.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnBeheerdersApp_Click(object sender, EventArgs e) 
         {
             beheerdersApp = new BeheerApplicatie();
@@ -40,10 +38,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// /// Dit is de Methode die wordt aangeroepen als de Bestuurder knop wordt aangeklikt. Dit opent het BestuurderForm.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnBestuurdersApp_Click(object sender, EventArgs e) 
         {
             bestuurdersApp = new BestuurApplicatie();
@@ -51,10 +47,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// /// Dit is de Methode die wordt aangeroepen als de Onderhoud knop wordt aangeklikt. Dit opent het OnderhoudForm.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnOnderhoudsApp_Click(object sender, EventArgs e) 
         {
             onderhoudsApp = new OnderhoudApplicatie();
@@ -62,10 +56,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// /// Dit is de Methode die wordt aangeroepen als de Schoonmaak knop wordt aangeklikt. Dit opent het SchoonmaakForm.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSchoonmaakApp_Click(object sender, EventArgs e) 
         {
             schoonmaakApp = new SchoonmaakApplicatie();
@@ -73,10 +65,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// /// Dit is de Methode die wordt aangeroepen als de Simulatie knop wordt aangeklikt. Dit opent het SimulatieForm.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSimulatie_Click(object sender, EventArgs e)
         {
             simulatieapp simulatie = new simulatieapp();

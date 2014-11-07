@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RemiseSysteem_Groep_B
 {
+    /// <summary>
+    /// De Klasse die de Controller is voor deze aplicatie. Hier komt alles samen en worden touwtjes aan elkaar verbonden.
+    /// </summary>
     class Remise
     {
         #region singleton
@@ -29,23 +32,23 @@ namespace RemiseSysteem_Groep_B
         #region Methodes
 
         /// <summary>
-        /// 
+        /// Deze Methode wordt Gebruikt om handmatig een Sector toe te wijzen aan een Tram.
         /// </summary>
-        /// <param name="sector"></param>
-        /// <param name="tramNR"></param>
-        /// <returns></returns>
+        /// <param name="sector">De Sector waar de Tram naar toe moet.</param>
+        /// <param name="tramNR">Het Nummer van de Tram.</param>
+        /// <returns>True als het gelukt is, False als het niet gelukt is.</returns>
         public bool PlaatsToewijzen(Sector sector, int tramNR)
         {
             return (Database.TramVerplaatsen(tramNR, sector));
         }
 
         /// <summary>
-        /// 
+        /// Deze Methode wordt gebruikt om automatisch een Sector toe te wijzen aan een Tram.
         /// </summary>
-        /// <param name="tramNr"></param>
-        /// <param name="onderhoud"></param>
-        /// <param name="schoonmaak"></param>
-        /// <returns></returns>
+        /// <param name="tramNr">Het Nummer van de te plaatsen Tram.</param>
+        /// <param name="onderhoud">Heeft de Tram Onderhoud nodig?</param>
+        /// <param name="schoonmaak">Heeft de Tram Schoonmaak nodig?</param>
+        /// <returns>True als het gelukt is, False als het niet gelukt is.</returns>
         public bool PlaatsAutomatischToewijzen(int tramNr, bool onderhoud, bool schoonmaak)
         {
             List<int> SpoorID = new List<int>();
@@ -146,68 +149,6 @@ namespace RemiseSysteem_Groep_B
                 }
             }
             return false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="schoonmaak"></param>
-        /// <returns></returns>
-        public bool SchoonmaakOpgevenAlsBeheerder(Schoonmaak schoonmaak)
-        {
-            int aantalgroot = 0;
-            int aantalklein = 0;
-            DateTime datum = schoonmaak.BeginDatum;
-            //List<Beurt> allebeurten = 
-
-            return false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="onderhoud"></param>
-        /// <returns></returns>
-        public bool OnderhoudOpgeven(Onderhoud onderhoud)
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Schoonmaak> SchoonmaakOpvragen()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Onderhoud> OnderhoudOpvragen()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void BeurtVoltooien()
-        {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="naam"></param>
-        /// <param name="wachtwoord"></param>
-        /// <returns></returns>
-        public bool Inloggen(string naam, string wachtwoord)
-        {
-            return this.Database.Inloggen(naam, wachtwoord);
         }
 
         #endregion

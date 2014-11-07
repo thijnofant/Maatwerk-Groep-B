@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RemiseSysteem_Groep_B
 {
     /// <summary>
-    /// 
+    /// Dit is de Form voor het Goedkeuren of Afkeuren van een Onderhoud.
     /// </summary>
     public partial class OnderhoudGoedkeuren : Form
     {
@@ -20,7 +20,7 @@ namespace RemiseSysteem_Groep_B
         private List<Onderhoud> onderhoudsBeurten;
 
         /// <summary>
-        /// 
+        /// dit is de constructor van dit form
         /// </summary>
         public OnderhoudGoedkeuren()
         {
@@ -30,7 +30,7 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Dit is de Methode die gebruikt wordt om de Listbox op het Form te vullen met alle OnderhoudsBeurten die nog niet goed gekeurt zijn.
         /// </summary>
         private void HaalOnderhoudsBeurtenOp()
         {
@@ -50,10 +50,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Dit is de Methode die wordt aangeroepen als er op de Goedkeuren-Button word gedrukt en deze zorgt dat de geselecteerde Onderhoud in de Database Goedgekeurt word.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnGoedkeuren_Click(object sender, EventArgs e)
         {
             string text = lbxOnderhoud.SelectedItem.ToString();
@@ -68,10 +66,8 @@ namespace RemiseSysteem_Groep_B
         }
 
         /// <summary>
-        /// 
+        /// Dit is de Methode die wordt aangeroepen als er op de Afkeuren-Button word gedrukt en deze zorgt dat de geselecteerde Onderhoud in de Database Afgekeurt word.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnAfkeuren_Click(object sender, EventArgs e)
         {
             string text = lbxOnderhoud.SelectedItem.ToString();
