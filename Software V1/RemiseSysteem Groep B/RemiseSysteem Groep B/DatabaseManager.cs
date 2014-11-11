@@ -19,10 +19,15 @@ namespace RemiseSysteem_Groep_B
 
         private DatabaseManager()
         {
-            this.connection = new OracleConnection();
+            /*
             this.Pcn = "dbi292195";
             this.Password = "kd1qoIM98M";
             connection.ConnectionString = "User Id=" + this.Pcn + ";Password=" + this.Password + ";Data Source=" + "//192.168.15.50:1521/fhictora;";
+             * */
+            this.Pcn = "Proftaak";
+            this.Password = "proftaak";
+            connection.ConnectionString = "User Id=" + this.Pcn + "; Password=" + this.Password + ";Data Source =" + "//localhost:1521";
+       
         }
         public static DatabaseManager Instance
         {
@@ -1634,6 +1639,32 @@ namespace RemiseSysteem_Groep_B
             catch
             {
                 return null;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+        public int GetSpoorIDByNr(int spoorNr)
+        {
+            String cmd = "SELECT ID FROM SPOOR WHERE NUMMER =" + spoorNr;
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                int reint = 0;
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    reint = reader.GetInt32(0);
+                }
+                return reint;
+            }
+            catch
+            {
+                return 0;
             }
             finally
             {

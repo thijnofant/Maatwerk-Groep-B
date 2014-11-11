@@ -47,7 +47,15 @@ namespace RemiseSysteem_Groep_B
         private void btnBevestig_Click_1(object sender, EventArgs e)
         {
             Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnummer.Text));//haalt tram op uit de database
-            db.TramReserveren(tram.Id, Convert.ToInt32(tbSpoornummer.Text));//reserveerd de tram in de database
+            int tesmp = db.GetSpoorIDByNr(Convert.ToInt32(tbSpoornummer.Text));
+            if(db.TramReserveren(tram.Id, tesmp))//reserveerd de tram in de database
+            {
+                MessageBox.Show("De Reservatie is aangemaakt in de Database.");
+            }
+            else
+            {
+                MessageBox.Show("Er is iets misgegaan met het reserveren van de tram. Probeer het opnieuw.");
+            }
             BeurtType type = BeurtType.Klein;
             int aantalToegestaandeBeurten = 0;
 
@@ -72,15 +80,16 @@ namespace RemiseSysteem_Groep_B
                     if (db.GetAantalBeurten(type.ToString(), "Onderhoud", datum, tram.Id) > aantalToegestaandeBeurten)// kijkt of aantal gebeurde beurten niet het aantaal toegestane beurten overschrijd
                     {
                         db.OnderhoudInvoeren(onderhoud);//maakt reparatie aan in de database
+                        MessageBox.Show("De Tram is gereserveerd voor onderhoud.");
                     }
                     else
                     {
-                        lblMessage.Text = "De geselecteerde tram kan niet meer worden ingepland op de geselecteerde dag";
+                        MessageBox.Show("De geselecteerde tram kan niet meer worden ingepland op de geselecteerde dag");
                     }
                 }
                 else
                 {
-                    lblMessage.Text = "De ingevoerde tram bestaat niet";
+                    MessageBox.Show("De ingevoerde tram bestaat niet");
                 }
             }
         }
