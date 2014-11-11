@@ -800,7 +800,39 @@ namespace RemiseSysteem_Groep_B
             {
                 connection.Close();
             }
-        } 
+        }
+
+        /// <summary>
+        /// verwijdert specifieke beurt van database;
+        /// </summary>
+        /// <param name="onderhoud">onderhoudsbeurt</param>
+        /// <returns></returns>
+        public bool BeurtVerwijderen(Beurt beurt)
+        {
+            try
+            {
+                connection.Open();
+                string cmd = "Delete From tram_beurt where id = :id";
+                OracleCommand command = new OracleCommand(cmd, connection);
+                command.Parameters.Add("id", beurt.ID);
+                command.CommandType = System.Data.CommandType.Text;
+                int resultaat = command.ExecuteNonQuery();
+                if (resultaat > 0)
+                {
+                    return true;
+                }
+                
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
 
         /// <summary>
         /// Deze Methode Maakt een nieuwe Schoonmaak aan in de database.
@@ -815,7 +847,7 @@ namespace RemiseSysteem_Groep_B
                 string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(onderhoud.ID) + ", " + Convert.ToString(onderhoud.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(onderhoud.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Onderhoud', '" + Convert.ToString(onderhoud.Soort) + "')";
                 OracleCommand command = new OracleCommand(cmd, connection);
                 command.CommandType = System.Data.CommandType.Text;
-                command.ExecuteReader();
+                command.ExecuteNonQuery();
                 return true;
             }
             catch {

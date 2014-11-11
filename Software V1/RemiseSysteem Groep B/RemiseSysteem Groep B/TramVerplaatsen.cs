@@ -44,10 +44,7 @@ namespace RemiseSysteem_Groep_B
             trams = DatabaseManager.Instance.AlleTrams();
             foreach (Tram tr in trams)
             {
-                if (tr.Status != TramStatus.Dienst)
-                {
-                    cbbTram.Items.Add(tr.Nummer);
-                }
+                cbbTram.Items.Add(tr.Nummer);
             }
             foreach (Spoor sp in sporen)
             {
@@ -104,16 +101,16 @@ namespace RemiseSysteem_Groep_B
             }
             catch
             {
-                MessageBox.Show("Controleer of er een Sector is geselecteerd.");
+                MessageBox.Show("Controleer of er een Secto/r is geselecteerd.");
                 return;
             }
 
             Sector s = new Sector(sector);
 
             if (DatabaseManager.Instance.TramVerplaatsen(tram, s))
-                MessageBox.Show("Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector +".");
+                MessageBox.Show("Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector + ".");
             else
-                MessageBox.Show( "Er is iets misgegaan bij het plaatsen van de tram. Controleer of de sector niet Geblokkeerd is of bezet door een andere tram.");
+                MessageBox.Show("Er is iets misgegaan bij het plaatsen van de tram. Controleer of de sector niet Geblokkeerd is of bezet door een andere tram.");
         }
 
         /// <summary>

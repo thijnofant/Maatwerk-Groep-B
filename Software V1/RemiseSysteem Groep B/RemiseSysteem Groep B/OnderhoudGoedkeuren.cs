@@ -42,9 +42,12 @@ namespace RemiseSysteem_Groep_B
             {
                 if (beurt is Onderhoud)
                 {
-                        Onderhoud onderhoud = beurt as Onderhoud;
+                    Onderhoud onderhoud = beurt as Onderhoud;
+                    if (!onderhoud.IsGoedgekeurd)
+                    {
                         onderhoudsBeurten.Add(onderhoud);
                         lbxOnderhoud.Items.Add(onderhoud.ToString());
+                    }
                 }
             }
         }
@@ -75,7 +78,7 @@ namespace RemiseSysteem_Groep_B
             {
                 if (text == onderhoud.ToString())
                 {
-                    this.remise.Database.BeurtGoedkeurenAfkeuren(onderhoud.ID, false);
+                    this.remise.Database.BeurtVerwijderen(onderhoud);
                     HaalOnderhoudsBeurtenOp();
                 }
             }

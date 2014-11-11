@@ -67,57 +67,57 @@ namespace RemiseSysteem_Groep_B
                         {
                             case 1:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, true, false);
-                                lbxSimulatie.Items.Add("Tram ingereden met defect");
+                                lbxSimulatie.Items.Add("Tram "+gekozenTram.Nummer+" ingereden met defect");
                                 //defect
                                 break;
                             case 2:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden die vuil is");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden die vuil is");
                                 //doorrijden
                                 break;
                             case 3:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, true);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //vuil
                                 break;
                             case 4:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram "+gekozenTram.Nummer+" ingereden");
                                 //doorrijden
                                 break;
                             case 5:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram "+gekozenTram.Nummer+" ingereden");
                                 //doorrijden
                                 break;
                             case 6:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //doorrijden
                                 break;
                             case 7:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //doorrijden
                                 break;
                             case 8:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //doorrijden
                                 break;
                             case 9:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //doorrijden
                                 break;
                             case 10:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, false, false);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //doorrijden
                                 break;
                             default:
                                 isGelukt = this.remise.PlaatsAutomatischToewijzen(gekozenTram.Nummer, true, true);
-                                lbxSimulatie.Items.Add("Tram ingereden");
+                                lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " ingereden");
                                 //doorrijden
                                 break;
                         }
@@ -132,7 +132,7 @@ namespace RemiseSysteem_Groep_B
                         Tram gekozenTram = trams[willekeurigGetalGenerator.Next(0, trams.Count - 1)];
                         this.remise.Database.TramRijdUitRemise(gekozenTram.Nummer);
                         this.remise.Database.TramstatusVeranderen(TramStatus.Dienst, gekozenTram.Id);
-                        lbxSimulatie.Items.Add("Tram uitgereden");
+                        lbxSimulatie.Items.Add("Tram " + gekozenTram.Nummer + " uitgereden");
                     }
                 //uitrijden
 
