@@ -50,7 +50,7 @@ namespace RemiseSysteem_Groep_B
             int tesmp = db.GetSpoorIDByNr(Convert.ToInt32(tbSpoornummer.Text));
             if(db.TramReserveren(tram.Id, tesmp))//reserveerd de tram in de database
             {
-                MessageBox.Show("De Reservatie is aangemaakt in de Database.");
+                MessageBox.Show("De reservering is aangemaakt.");
             }
             else
             {
@@ -73,11 +73,11 @@ namespace RemiseSysteem_Groep_B
                     aantalToegestaandeBeurten = 4;
                 }
                 DateTime datum = Convert.ToDateTime(dtpDatum.Text);//geseleceteerde datum
-                Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT"), type, tram, DateTime.Now.AddDays(1.0));//nieuw onderhoud object.
+                Onderhoud onderhoud = new Onderhoud(datum, db.GetInsertID("ID", "TRAM_BEURT") +1, type, tram, DateTime.Now.AddDays(1.0));//nieuw onderhoud object.
 
                 if (tram != null)
                 {
-                    if (db.GetAantalBeurten(type.ToString(), "Onderhoud", datum, tram.Id) > aantalToegestaandeBeurten)// kijkt of aantal gebeurde beurten niet het aantaal toegestane beurten overschrijd
+                    if (db.GetAantalBeurten(type.ToString(), "Onderhoud", datum, tram.Id) < aantalToegestaandeBeurten)// kijkt of aantal gebeurde beurten niet het aantaal toegestane beurten overschrijd
                     {
                         db.OnderhoudInvoeren(onderhoud);//maakt reparatie aan in de database
                         MessageBox.Show("De Tram is gereserveerd voor onderhoud.");

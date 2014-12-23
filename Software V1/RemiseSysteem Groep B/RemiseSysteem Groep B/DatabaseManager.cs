@@ -19,15 +19,14 @@ namespace RemiseSysteem_Groep_B
 
         private DatabaseManager()
         {
-            /*
+           /*
             this.Pcn = "dbi292195";
             this.Password = "kd1qoIM98M";
             connection.ConnectionString = "User Id=" + this.Pcn + ";Password=" + this.Password + ";Data Source=" + "//192.168.15.50:1521/fhictora;";
-             * */
+            */
             this.Pcn = "Proftaak";
             this.Password = "proftaak";
             connection.ConnectionString = "User Id=" + this.Pcn + "; Password=" + this.Password + ";Data Source =" + "//localhost:1521";
-       
         }
         public static DatabaseManager Instance
         {
@@ -45,7 +44,7 @@ namespace RemiseSysteem_Groep_B
         public string Pcn { get; private set; }
         public string Password { get; private set; }
 
-        public OracleConnection connection;
+        public OracleConnection connection = new OracleConnection();
 
         /// <summary>
         /// Deze Methode Haalt alle Onderhouds Medewerkers op.
@@ -907,7 +906,6 @@ namespace RemiseSysteem_Groep_B
                 {
                     connection.Open();
                     OracleCommand command = new OracleCommand(cmd, connection);
-                    connection.Open();
                     command.Parameters.Add("tramid", tempTram.Id);
                     int resultaat = command.ExecuteNonQuery();
                     if (resultaat > 0)

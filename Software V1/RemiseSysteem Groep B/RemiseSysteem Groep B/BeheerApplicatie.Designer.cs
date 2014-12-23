@@ -30,8 +30,17 @@
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lblMeldingen = new System.Windows.Forms.Label();
+            this.s58_5 = new System.Windows.Forms.TextBox();
+            this.s58_4 = new System.Windows.Forms.TextBox();
+            this.s45_8 = new System.Windows.Forms.TextBox();
+            this.s45_7 = new System.Windows.Forms.TextBox();
+            this.s45_6 = new System.Windows.Forms.TextBox();
+            this.s45_5 = new System.Windows.Forms.TextBox();
+            this.s45_4 = new System.Windows.Forms.TextBox();
+            this.s44_4 = new System.Windows.Forms.TextBox();
+            this.s41_4 = new System.Windows.Forms.TextBox();
+            this.s43_4 = new System.Windows.Forms.TextBox();
+            this.s42_4 = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.s40_7 = new System.Windows.Forms.TextBox();
             this.s40_6 = new System.Windows.Forms.TextBox();
@@ -265,10 +274,6 @@
             this.statusWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sporenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blokkerenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lijnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beherenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.medewerkersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beherenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.actiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schoonmaakLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudLijstOpvragenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -279,22 +284,9 @@
             this.goedkeurenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bgwOverzicht = new System.ComponentModel.BackgroundWorker();
             this.bgwMeldingen = new System.ComponentModel.BackgroundWorker();
-            this.s44_4 = new System.Windows.Forms.TextBox();
-            this.s41_4 = new System.Windows.Forms.TextBox();
-            this.s43_4 = new System.Windows.Forms.TextBox();
-            this.s42_4 = new System.Windows.Forms.TextBox();
-            this.s45_4 = new System.Windows.Forms.TextBox();
-            this.s45_5 = new System.Windows.Forms.TextBox();
-            this.s45_7 = new System.Windows.Forms.TextBox();
-            this.s45_6 = new System.Windows.Forms.TextBox();
-            this.s45_8 = new System.Windows.Forms.TextBox();
-            this.s58_5 = new System.Windows.Forms.TextBox();
-            this.s58_4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -302,7 +294,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 559);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1908, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1276, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -311,11 +303,6 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 25);
             this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Panel1.Controls.Add(this.lblMeldingen);
             // 
             // splitContainer1.Panel2
             // 
@@ -554,28 +541,119 @@
             this.splitContainer1.Panel2.Controls.Add(this.textBox2);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.splitContainer1.Size = new System.Drawing.Size(1908, 534);
-            this.splitContainer1.SplitterDistance = 699;
+            this.splitContainer1.Size = new System.Drawing.Size(1276, 534);
+            this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.TabIndex = 2;
             // 
-            // dataGridView1
+            // s58_5
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(524, 444);
-            this.dataGridView1.TabIndex = 1;
+            this.s58_5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s58_5.Location = new System.Drawing.Point(1060, 123);
+            this.s58_5.Name = "s58_5";
+            this.s58_5.ReadOnly = true;
+            this.s58_5.Size = new System.Drawing.Size(59, 20);
+            this.s58_5.TabIndex = 281;
+            this.s58_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblMeldingen
+            // s58_4
             // 
-            this.lblMeldingen.AutoSize = true;
-            this.lblMeldingen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMeldingen.Location = new System.Drawing.Point(183, 15);
-            this.lblMeldingen.Name = "lblMeldingen";
-            this.lblMeldingen.Size = new System.Drawing.Size(82, 20);
-            this.lblMeldingen.TabIndex = 0;
-            this.lblMeldingen.Text = "Meldingen";
+            this.s58_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s58_4.Location = new System.Drawing.Point(1060, 103);
+            this.s58_4.Name = "s58_4";
+            this.s58_4.ReadOnly = true;
+            this.s58_4.Size = new System.Drawing.Size(59, 20);
+            this.s58_4.TabIndex = 280;
+            this.s58_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s45_8
+            // 
+            this.s45_8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s45_8.Location = new System.Drawing.Point(975, 184);
+            this.s45_8.Name = "s45_8";
+            this.s45_8.ReadOnly = true;
+            this.s45_8.Size = new System.Drawing.Size(59, 20);
+            this.s45_8.TabIndex = 279;
+            this.s45_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s45_7
+            // 
+            this.s45_7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s45_7.Location = new System.Drawing.Point(975, 163);
+            this.s45_7.Name = "s45_7";
+            this.s45_7.ReadOnly = true;
+            this.s45_7.Size = new System.Drawing.Size(59, 20);
+            this.s45_7.TabIndex = 278;
+            this.s45_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s45_6
+            // 
+            this.s45_6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s45_6.Location = new System.Drawing.Point(975, 143);
+            this.s45_6.Name = "s45_6";
+            this.s45_6.ReadOnly = true;
+            this.s45_6.Size = new System.Drawing.Size(59, 20);
+            this.s45_6.TabIndex = 277;
+            this.s45_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s45_5
+            // 
+            this.s45_5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s45_5.Location = new System.Drawing.Point(975, 123);
+            this.s45_5.Name = "s45_5";
+            this.s45_5.ReadOnly = true;
+            this.s45_5.Size = new System.Drawing.Size(59, 20);
+            this.s45_5.TabIndex = 276;
+            this.s45_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s45_4
+            // 
+            this.s45_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s45_4.Location = new System.Drawing.Point(975, 103);
+            this.s45_4.Name = "s45_4";
+            this.s45_4.ReadOnly = true;
+            this.s45_4.Size = new System.Drawing.Size(59, 20);
+            this.s45_4.TabIndex = 275;
+            this.s45_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s44_4
+            // 
+            this.s44_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s44_4.Location = new System.Drawing.Point(889, 103);
+            this.s44_4.Name = "s44_4";
+            this.s44_4.ReadOnly = true;
+            this.s44_4.Size = new System.Drawing.Size(59, 20);
+            this.s44_4.TabIndex = 274;
+            this.s44_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s41_4
+            // 
+            this.s41_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s41_4.Location = new System.Drawing.Point(694, 103);
+            this.s41_4.Name = "s41_4";
+            this.s41_4.ReadOnly = true;
+            this.s41_4.Size = new System.Drawing.Size(59, 20);
+            this.s41_4.TabIndex = 273;
+            this.s41_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s43_4
+            // 
+            this.s43_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s43_4.Location = new System.Drawing.Point(824, 103);
+            this.s43_4.Name = "s43_4";
+            this.s43_4.ReadOnly = true;
+            this.s43_4.Size = new System.Drawing.Size(59, 20);
+            this.s43_4.TabIndex = 272;
+            this.s43_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // s42_4
+            // 
+            this.s42_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.s42_4.Location = new System.Drawing.Point(759, 103);
+            this.s42_4.Name = "s42_4";
+            this.s42_4.ReadOnly = true;
+            this.s42_4.Size = new System.Drawing.Size(59, 20);
+            this.s42_4.TabIndex = 271;
+            this.s42_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnRefresh
             // 
@@ -2881,13 +2959,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tramsToolStripMenuItem,
             this.sporenToolStripMenuItem,
-            this.lijnenToolStripMenuItem,
-            this.medewerkersToolStripMenuItem,
             this.actiesToolStripMenuItem,
             this.beurtToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1908, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1276, 25);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -2961,36 +3037,6 @@
             this.blokkerenToolStripMenuItem.Text = "Blokkeren en Deblokkeren";
             this.blokkerenToolStripMenuItem.Click += new System.EventHandler(this.blokkerenToolStripMenuItem_Click);
             // 
-            // lijnenToolStripMenuItem
-            // 
-            this.lijnenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beherenToolStripMenuItem});
-            this.lijnenToolStripMenuItem.Name = "lijnenToolStripMenuItem";
-            this.lijnenToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
-            this.lijnenToolStripMenuItem.Text = "Lijnen";
-            // 
-            // beherenToolStripMenuItem
-            // 
-            this.beherenToolStripMenuItem.Name = "beherenToolStripMenuItem";
-            this.beherenToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.beherenToolStripMenuItem.Text = "Beheren";
-            this.beherenToolStripMenuItem.Click += new System.EventHandler(this.beherenToolStripMenuItem_Click);
-            // 
-            // medewerkersToolStripMenuItem
-            // 
-            this.medewerkersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beherenToolStripMenuItem1});
-            this.medewerkersToolStripMenuItem.Name = "medewerkersToolStripMenuItem";
-            this.medewerkersToolStripMenuItem.Size = new System.Drawing.Size(99, 21);
-            this.medewerkersToolStripMenuItem.Text = "Medewerkers";
-            // 
-            // beherenToolStripMenuItem1
-            // 
-            this.beherenToolStripMenuItem1.Name = "beherenToolStripMenuItem1";
-            this.beherenToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
-            this.beherenToolStripMenuItem1.Text = "Beheren";
-            this.beherenToolStripMenuItem1.Click += new System.EventHandler(this.beherenToolStripMenuItem1_Click);
-            // 
             // actiesToolStripMenuItem
             // 
             this.actiesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3028,13 +3074,13 @@
             this.schoonmaakToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goedkeurenToolStripMenuItem});
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
-            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
             // 
             // goedkeurenToolStripMenuItem
             // 
             this.goedkeurenToolStripMenuItem.Name = "goedkeurenToolStripMenuItem";
-            this.goedkeurenToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.goedkeurenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.goedkeurenToolStripMenuItem.Text = "Goedkeuren";
             this.goedkeurenToolStripMenuItem.Click += new System.EventHandler(this.goedkeurenToolStripMenuItem_Click);
             // 
@@ -3043,7 +3089,7 @@
             this.onderhoudToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goedkeurenToolStripMenuItem1});
             this.onderhoudToolStripMenuItem.Name = "onderhoudToolStripMenuItem";
-            this.onderhoudToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.onderhoudToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.onderhoudToolStripMenuItem.Text = "Onderhoud";
             // 
             // goedkeurenToolStripMenuItem1
@@ -3053,120 +3099,10 @@
             this.goedkeurenToolStripMenuItem1.Text = "Goedkeuren";
             this.goedkeurenToolStripMenuItem1.Click += new System.EventHandler(this.goedkeurenToolStripMenuItem1_Click);
             // 
-            // s44_4
-            // 
-            this.s44_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s44_4.Location = new System.Drawing.Point(889, 103);
-            this.s44_4.Name = "s44_4";
-            this.s44_4.ReadOnly = true;
-            this.s44_4.Size = new System.Drawing.Size(59, 20);
-            this.s44_4.TabIndex = 274;
-            this.s44_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s41_4
-            // 
-            this.s41_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s41_4.Location = new System.Drawing.Point(694, 103);
-            this.s41_4.Name = "s41_4";
-            this.s41_4.ReadOnly = true;
-            this.s41_4.Size = new System.Drawing.Size(59, 20);
-            this.s41_4.TabIndex = 273;
-            this.s41_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s43_4
-            // 
-            this.s43_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s43_4.Location = new System.Drawing.Point(824, 103);
-            this.s43_4.Name = "s43_4";
-            this.s43_4.ReadOnly = true;
-            this.s43_4.Size = new System.Drawing.Size(59, 20);
-            this.s43_4.TabIndex = 272;
-            this.s43_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s42_4
-            // 
-            this.s42_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s42_4.Location = new System.Drawing.Point(759, 103);
-            this.s42_4.Name = "s42_4";
-            this.s42_4.ReadOnly = true;
-            this.s42_4.Size = new System.Drawing.Size(59, 20);
-            this.s42_4.TabIndex = 271;
-            this.s42_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s45_4
-            // 
-            this.s45_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s45_4.Location = new System.Drawing.Point(975, 103);
-            this.s45_4.Name = "s45_4";
-            this.s45_4.ReadOnly = true;
-            this.s45_4.Size = new System.Drawing.Size(59, 20);
-            this.s45_4.TabIndex = 275;
-            this.s45_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s45_5
-            // 
-            this.s45_5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s45_5.Location = new System.Drawing.Point(975, 123);
-            this.s45_5.Name = "s45_5";
-            this.s45_5.ReadOnly = true;
-            this.s45_5.Size = new System.Drawing.Size(59, 20);
-            this.s45_5.TabIndex = 276;
-            this.s45_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s45_7
-            // 
-            this.s45_7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s45_7.Location = new System.Drawing.Point(975, 163);
-            this.s45_7.Name = "s45_7";
-            this.s45_7.ReadOnly = true;
-            this.s45_7.Size = new System.Drawing.Size(59, 20);
-            this.s45_7.TabIndex = 278;
-            this.s45_7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s45_6
-            // 
-            this.s45_6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s45_6.Location = new System.Drawing.Point(975, 143);
-            this.s45_6.Name = "s45_6";
-            this.s45_6.ReadOnly = true;
-            this.s45_6.Size = new System.Drawing.Size(59, 20);
-            this.s45_6.TabIndex = 277;
-            this.s45_6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s45_8
-            // 
-            this.s45_8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s45_8.Location = new System.Drawing.Point(975, 184);
-            this.s45_8.Name = "s45_8";
-            this.s45_8.ReadOnly = true;
-            this.s45_8.Size = new System.Drawing.Size(59, 20);
-            this.s45_8.TabIndex = 279;
-            this.s45_8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s58_5
-            // 
-            this.s58_5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s58_5.Location = new System.Drawing.Point(1060, 123);
-            this.s58_5.Name = "s58_5";
-            this.s58_5.ReadOnly = true;
-            this.s58_5.Size = new System.Drawing.Size(59, 20);
-            this.s58_5.TabIndex = 281;
-            this.s58_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // s58_4
-            // 
-            this.s58_4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.s58_4.Location = new System.Drawing.Point(1060, 103);
-            this.s58_4.Name = "s58_4";
-            this.s58_4.ReadOnly = true;
-            this.s58_4.Size = new System.Drawing.Size(59, 20);
-            this.s58_4.TabIndex = 280;
-            this.s58_4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // BeheerApplicatie
             // 
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1908, 581);
+            this.ClientSize = new System.Drawing.Size(1276, 581);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -3175,13 +3111,10 @@
             this.MaximizeBox = false;
             this.Name = "BeheerApplicatie";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -3193,20 +3126,14 @@
 
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label lblMeldingen;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tramsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sporenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lijnenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem medewerkersToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker bgwOverzicht;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.ComponentModel.BackgroundWorker bgwMeldingen;
         private System.Windows.Forms.ToolStripMenuItem verplaatsenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verwijderenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blokkerenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem beherenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem beherenToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem actiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakLijstOpvragenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reserverenToolStripMenuItem;
