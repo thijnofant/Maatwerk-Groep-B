@@ -9,8 +9,8 @@ namespace RemiseSite_Groep_B
 {
     public partial class Bestuurder : System.Web.UI.Page
     {
-        //DatabaseManager db = DatabaseManager.Instance;
-        //Remise remise = Remise.Instance;
+        DatabaseManager db = DatabaseManager.Instance;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {

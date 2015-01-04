@@ -303,6 +303,19 @@
     <Compile Include="Beurt.aspx.designer.cs">
       <DependentUpon>Beurt.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Beurt.cs" />
+    <Compile Include="Classes\BeurtType.cs" />
+    <Compile Include="Classes\Lijn.cs" />
+    <Compile Include="Classes\Medewerker.cs" />
+    <Compile Include="Classes\MedewerkerType.cs" />
+    <Compile Include="Classes\Onderhoud.cs" />
+    <Compile Include="Classes\Remise.cs" />
+    <Compile Include="Classes\Schoonmaak.cs" />
+    <Compile Include="Classes\Sector.cs" />
+    <Compile Include="Classes\Spoor.cs" />
+    <Compile Include="Classes\Tram.cs" />
+    <Compile Include="Classes\TramStatus.cs" />
+    <Compile Include="Classes\TramType.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -310,6 +323,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

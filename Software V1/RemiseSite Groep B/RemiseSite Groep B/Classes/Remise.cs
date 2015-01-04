@@ -5,7 +5,12 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class Remise
+    
+    /// <summary>
+    /// De Klasse die de Controller is voor deze aplicatie. Hier komt alles samen en worden touwtjes aan elkaar verbonden.
+    /// </summary>
+    /// 
+    class Remise
     {
         #region singleton
         private static Remise instance;
