@@ -6,7 +6,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B
 {
-    public class DatabaseManager
+    class DatabaseManager
     {
         #region singleton
         private static DatabaseManager instance;

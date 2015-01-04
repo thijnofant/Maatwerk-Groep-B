@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class Lijn
+    class Lijn
     {
         /// <summary>
         /// Dt is de Property die het Nummer van een Lijn bevat.

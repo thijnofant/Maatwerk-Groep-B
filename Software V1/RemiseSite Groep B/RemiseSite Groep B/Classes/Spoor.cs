@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class Spoor
+    class Spoor
     {
         private int id;
         private int nummer;

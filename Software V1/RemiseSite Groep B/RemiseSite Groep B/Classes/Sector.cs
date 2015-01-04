@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class Sector
+    class Sector
     {
         private int id;
         private bool isGeblokkeerd;

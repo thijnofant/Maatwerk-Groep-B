@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class TramType
+    class TramType
     {
         /// <summary>
         /// Dit is de naam van het type.

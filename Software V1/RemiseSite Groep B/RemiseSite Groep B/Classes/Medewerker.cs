@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class Medewerker
+    class Medewerker
     {
         /// <summary>
         /// Deze Property bevat het Type van de Medewerker.

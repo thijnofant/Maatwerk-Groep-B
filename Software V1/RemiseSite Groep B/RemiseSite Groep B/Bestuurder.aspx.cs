@@ -110,6 +110,5 @@ namespace RemiseSite_Groep_B
             }
 
         }
-        }
     }
 }
