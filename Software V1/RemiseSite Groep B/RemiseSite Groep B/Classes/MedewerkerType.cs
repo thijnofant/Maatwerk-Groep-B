@@ -5,7 +5,11 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    public class MedewerkerType
+    public enum MedewerkerType
     {
+        Beheerder,
+        Bestuurder,
+        Schoonmaker,
+        Technicus,
     }
 }
