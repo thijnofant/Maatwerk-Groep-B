@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    class Onderhoud : Beurt
+    class Onderhoud: Beurt
     {
         private DateTime tijdsIndicatie;
 

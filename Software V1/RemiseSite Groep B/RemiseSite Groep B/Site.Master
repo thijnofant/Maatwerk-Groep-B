@@ -51,7 +51,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Beurt">Beurt</a></li>
+                        <li><a runat="server" href="~/BeurtPage">Beurt</a></li>
                         <li><a runat="server" href="~/administrator">Administrator</a></li>
                         <li><a runat="server" href="~/Bestuurder">Bestuurder</a></li>
                     </ul>

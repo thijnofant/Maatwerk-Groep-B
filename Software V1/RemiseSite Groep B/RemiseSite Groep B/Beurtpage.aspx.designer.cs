@@ -11,7 +11,7 @@ namespace RemiseSite_Groep_B
 {
 
 
-    public partial class Beurt
+    public partial class BeurtPage
     {
     }
 }

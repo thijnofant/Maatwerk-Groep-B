@@ -1,8 +1,8 @@
-﻿using Oracle.DataAccess.Client;
-using RemiseSite_Groep_B.Classes;
+﻿using RemiseSite_Groep_B.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OracleClient;
 using System.Linq;
 using System.Web;
 
