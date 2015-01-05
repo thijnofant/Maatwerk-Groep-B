@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RemiseSite_Groep_B.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -92,7 +93,7 @@ namespace RemiseSite_Groep_B
 
             if (db.ZoekTram(tramnr) != null)//kijkt of de tram bestaat, anders foutmelding
             {
-                if (remise.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))//roept het algoritme aan
+                if (Remise.Instance.PlaatsAutomatischToewijzen(tramnr, onderhoud, schoonmaak))//roept het algoritme aan
                 {
                     if (db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id) != 0)//kijkt of er een toegeweze spoor is
                     {

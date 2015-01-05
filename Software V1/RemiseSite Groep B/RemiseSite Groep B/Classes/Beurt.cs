@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    class Beurt
+    abstract class Beurt
     {
         private int id;
         private BeurtType soort;
