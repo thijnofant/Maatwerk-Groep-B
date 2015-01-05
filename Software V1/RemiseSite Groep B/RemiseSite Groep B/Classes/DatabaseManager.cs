@@ -44,11 +44,21 @@ namespace RemiseSite_Groep_B
 
         public OracleConnection connection = new OracleConnection();
 
+        /// <summary>
+        /// wordt gebruikt om te kijken of user bestaat
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool Login(string ID, string password)
         {
-            string cmd = "Select Count(*) as UserExists From Medewerker Where ID = '" + ID + "' AND password = '" + password + "'";
+            string cmd = "Select Count(*) as UserExists From Medewerker Where ID = :ID AND password = :Password";
             OracleCommand command = new OracleCommand(cmd, this.connection);
             command.CommandType = System.Data.CommandType.Text;
+            
+            command.Parameters.Add(":ID", ID);
+            command.Parameters.Add(":Password", password);
+
             try
             {
                 this.connection.Open();
@@ -148,9 +158,11 @@ namespace RemiseSite_Groep_B
         {
             int medewerkerID = -1;
 
-            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = " + onderhoud.ID;
+            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = :onderhoudID";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+
+            command.Parameters.Add(":onderhoudID", onderhoud.ID);
 
             try
             {
@@ -182,9 +194,11 @@ namespace RemiseSite_Groep_B
         {
             int medewerkerID = -1;
 
-            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = " + schoonmaak.ID;
+            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = :schoonmaakID";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+
+            command.Parameters.Add(":schoonmaakID", schoonmaak.ID);
 
             try
             {
@@ -338,8 +352,11 @@ namespace RemiseSite_Groep_B
         /// <returns>True,false</returns>
         public bool IsKlaar(Onderhoud onderhoud)
         {
-            string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = " + onderhoud.ID;
+            string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = :onderhoudID";
             OracleCommand comm = new OracleCommand(cmd, connection);
+
+            comm.Parameters.Add(":onderhoudID", onderhoud.ID);
+
             try
             {
                 connection.Open();
@@ -365,8 +382,10 @@ namespace RemiseSite_Groep_B
         /// <returns>True, False</returns>
         public bool IsKlaar(Schoonmaak schoonmaak)
         {
-            string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = " + schoonmaak.ID;
+            string cmd = "SELECT Klaar FROM TRAM_BEURT WHERE ID = :schoonmaakID";
             OracleCommand comm = new OracleCommand(cmd, connection);
+
+            comm.Parameters.Add(":schoonmaakID", schoonmaak.ID);
             try
             {
                 connection.Open();
@@ -396,13 +415,15 @@ namespace RemiseSite_Groep_B
             string cmd = "";
             if (klaar)
             {
-                cmd = "UPDATE TRAM_BEURT SET Klaar = 'Y' WHERE ID = " + onderhoud.ID;
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'Y' WHERE ID = :onderhoudID";
             }
             else
             {
-                cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = " + onderhoud.ID;
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = :onderhoudID";
             }
             OracleCommand comm = new OracleCommand(cmd, connection);
+            comm.Parameters.Add(":onderhoudID", onderhoud.ID);
+
             try
             {
                 connection.Open();
@@ -428,13 +449,15 @@ namespace RemiseSite_Groep_B
             string cmd = "";
             if (klaar)
             {
-                cmd = "UPDATE TRAM_BEURT SET Klaar = 'Y' WHERE ID = " + schoonmaak.ID;
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'Y' WHERE ID = :schoonmaakID";
             }
             else
             {
-                cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = " + schoonmaak.ID;
+                cmd = "UPDATE TRAM_BEURT SET Klaar = 'N' WHERE ID = :schoonmaakID";
             }
             OracleCommand comm = new OracleCommand(cmd, connection);
+            comm.Parameters.Add(":schoonmaakID", schoonmaak.ID);
+
             try
             {
                 connection.Open();
@@ -457,8 +480,10 @@ namespace RemiseSite_Groep_B
         /// <returns></returns>
         public bool VoegMedewerkerToeAanOnderhoud(Medewerker medewerker, Onderhoud onderhoud)
         {
-            string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = " + medewerker.Id + " WHERE ID = " + onderhoud.ID;
+            string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = :medewerkerID +  WHERE ID = :onderhoudID";
             OracleCommand comm = new OracleCommand(cmd, connection);
+            comm.Parameters.Add(":medewerkerID", medewerker.Id);
+            comm.Parameters.Add(":onderhoudID", onderhoud.ID);
             try
             {
                 connection.Open();
@@ -480,8 +505,9 @@ namespace RemiseSite_Groep_B
         /// <returns>gelukt?</returns>
         public bool VerwijderMedewerkerVanOnderhoud(Onderhoud onderhoud)
         {
-            string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = null WHERE ID = " + onderhoud.ID;
+            string cmd = "UPDATE TRAM_BEURT SET MedewerkerID = null WHERE ID = :onderhoudID";
             OracleCommand comm = new OracleCommand(cmd, connection);
+            comm.Parameters.Add(":onderhoudID", onderhoud.ID);
             try
             {
                 connection.Open();
@@ -504,8 +530,12 @@ namespace RemiseSite_Groep_B
         /// <returns>gelukt?</returns>
         public bool WijzigTijdsIndicatieOnderhoud(DateTime datum, Onderhoud onderhoud)
         {
-            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = TO_DATE('" + datum + "', 'DD-MM-YYYY HH24:MI:SS') WHERE ID = " + onderhoud.ID;
+            string cmd = "UPDATE TRAM_BEURT SET BeschikbaarDatum = TO_DATE(:datum, 'DD-MM-YYYY HH24:MI:SS') WHERE ID = :onderhoudID";
             OracleCommand comm = new OracleCommand(cmd, connection);
+
+            comm.Parameters.Add(":onderhoudID", onderhoud.ID);
+            comm.Parameters.Add(":datum", datum);
+            
             try
             {
                 connection.Open();
@@ -582,9 +612,10 @@ namespace RemiseSite_Groep_B
         /// <returns></returns>
         public Tram ZoekTram(int nummer)
         {
-            String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.Nummer = '" + nummer + "' AND t.TramtypeID = tt.ID";
+            String cmd = "Select t.*, tt.* From TRAM t, TRAMTYPE tt Where t.Nummer = :nummer AND t.TramtypeID = tt.ID";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+            command.Parameters.Add(":nummer", nummer);
             try
             {
                 this.connection.Open();
@@ -630,9 +661,10 @@ namespace RemiseSite_Groep_B
         /// <returns>Medewerker die bij de ID hoort.</returns>
         public Medewerker ZoekMedewerkerOpID(int id)
         {
-            String cmd = "Select M.Naam AS MNaam, F.Naam AS FNaam FROM MEDEWERKER M, FUNCTIE F WHERE M.FunctieID = F.ID AND M.ID = " + id.ToString();
+            String cmd = "Select M.Naam AS MNaam, F.Naam AS FNaam FROM MEDEWERKER M, FUNCTIE F WHERE M.FunctieID = F.ID AND M.ID = :id";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+            command.Parameters.Add(":id", id.ToString());
             try
             {
                 this.connection.Open();
@@ -788,8 +820,11 @@ namespace RemiseSite_Groep_B
             try
             {
                 connection.Open();
-                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(" + Convert.ToString(schoonmaak.ID) + ", " + Convert.ToString(schoonmaak.Tram.Id) + ", " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', '" + Convert.ToString(schoonmaak.Soort) + "')";
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(:schoonmaakID, :schoonmaakTramID, " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', :schoonmaakSoort)";
                 OracleCommand command = new OracleCommand(cmd, connection);
+                command.Parameters.Add(":schoonmaakID", Convert.ToString(schoonmaak.ID));
+                command.Parameters.Add(":schoonmaakTramID", Convert.ToString(schoonmaak.Tram.Id));
+                command.Parameters.Add(":schoonmaakSoort", Convert.ToString(schoonmaak.Soort));
                 command.CommandType = System.Data.CommandType.Text;
                 command.ExecuteReader();
                 return true;
@@ -803,6 +838,10 @@ namespace RemiseSite_Groep_B
                 connection.Close();
             }
         }
+
+
+        //VANAF HIER MOETEN DE PARAMETERS NOG GEDAAN WORDEN
+
 
         /// <summary>
         /// Deze Methode Maakt een nieuwe Schoonmaak aan in de database.
