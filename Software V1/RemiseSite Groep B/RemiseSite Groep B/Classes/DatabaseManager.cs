@@ -44,6 +44,33 @@ namespace RemiseSite_Groep_B
 
         public OracleConnection connection = new OracleConnection();
 
+        public bool Login(string ID, string password)
+        {
+            string cmd = "Select Count(*) as UserExists From Medewerker Where ID = '" + ID + "' AND password = '" + password + "'";
+            OracleCommand command = new OracleCommand(cmd, this.connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                int userExists = Convert.ToInt32(reader["UserExists"]);
+                return userExists == 1;
+            }
+            catch (OracleException)
+            {
+            }
+            catch (InvalidOperationException)
+            {
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
+
         /// <summary>
         /// Deze Methode Haalt alle Onderhouds Medewerkers op.
         /// </summary>
