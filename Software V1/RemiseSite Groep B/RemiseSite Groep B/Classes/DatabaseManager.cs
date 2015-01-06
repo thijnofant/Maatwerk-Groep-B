@@ -17,14 +17,15 @@ namespace RemiseSite_Groep_B
 
         private DatabaseManager()
         {
-            /*
+           
              this.Pcn = "dbi292195";
              this.Password = "kd1qoIM98M";
              connection.ConnectionString = "User Id=" + this.Pcn + ";Password=" + this.Password + ";Data Source=" + "//192.168.15.50:1521/fhictora;";
-             */
+            /*
             this.Pcn = "Proftaak";
             this.Password = "proftaak";
             connection.ConnectionString = "User Id=" + this.Pcn + "; Password=" + this.Password + ";Data Source =" + "//localhost:1521";
+             */
         }
         public static DatabaseManager Instance
         {
@@ -1410,7 +1411,7 @@ namespace RemiseSite_Groep_B
         public int LijnNrOpvragen(int tramNr)
         {
             Tram tempTram = ZoekTram(tramNr);
-            String cmd = "SELECT ID FROM Lijn WHERE ID IN (SELECT LIJNID FROM TRAM_LIJN WHERE TramID =" + tempTram.Id + ")";
+            String cmd = "SELECT Nummer FROM Lijn WHERE Nummer IN (SELECT LIJNNr FROM TRAM_LIJN WHERE TramNr =" + tempTram.Id + ")";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
