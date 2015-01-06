@@ -623,12 +623,11 @@ namespace RemiseSite_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
                 string GevondenStatus = reader["Status"].ToString();
-                int GevondenID = Convert.ToInt32(reader["ID"]);
                 string GevondenDescription = reader["Omschrijving"].ToString();
 
                 //aanvullen
                 TramType tramtype = new TramType(GevondenDescription, 1);
-                Tram tram = new Tram(GevondenID, tramtype);
+                Tram tram = new Tram(nummer, tramtype);
 
                 try
                 {
@@ -997,8 +996,9 @@ namespace RemiseSite_Groep_B
         /// <param name="tramNr">NR van de Tram.</param>
         /// <param name="sect">Sector Waar Tram naar toe moet.</param>
         /// <returns></returns>
-        public bool TramVerplaatsen(int tramNr, Sector sect)
+        public bool TramVerplaatsen(int tramNr, Sector sect, int Spoor)
         {
+            /*
             List<Sector> tempSectoren = GetSectorenVoorBlokkade();
             try
             {
@@ -1013,25 +1013,20 @@ namespace RemiseSite_Groep_B
             catch
             {
                 return false;
-            }
+            }*/
 
             Tram tempTram = ZoekTram(tramNr);
-            String cmd = "UPDATE SECTOR SET TramID =" + tempTram.Id + " WHERE ID =" + sect.Id;
-            String cmd2 = "UPDATE SECTOR SET TramID = null where tramID = " + tempTram.Id;
+            String cmd = "INSERT INTO TRAM_SECTOR(TRAMNR, SPOORNR, SECTORNR, ENTERDAY) VALUES(" + tramNr + "," + Spoor + "," + sect.Id + ",to_date('" + DateTime.Now.ToString() + "','DD-MM-YYYY HH24:MI:SS'))";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
-            OracleCommand command2 = new OracleCommand(cmd2, connection);
-            command2.CommandType = System.Data.CommandType.Text;
             try
             {
                 this.connection.Open();
-                command2.ExecuteNonQuery();
                 command.ExecuteNonQuery();
                 return true;
             }
             catch
             {
-
             }
             finally
             {
@@ -1222,7 +1217,7 @@ namespace RemiseSite_Groep_B
         /// <returns>De lijst met de DatabaseId's van de sporen die bij de Lijn horen.</returns>
         public List<int> GetSporenIDByLijnID(int lijnID)
         {
-            String cmd = "SELECT ID FROM SPOOR WHERE ID In (SELECT SpoorID FROM LIJN_SPOOR WHERE LijnID =" + lijnID + ")";
+            String cmd = "SELECT NUMMER FROM SPOOR WHERE NUMMER In (SELECT SpoorNR FROM LIJN_SPOOR WHERE LijnNR =(SELECT LijnNR FROM TRAM_LIJN WHERE TRAMNR="+lijnID+"))";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1292,7 +1287,7 @@ namespace RemiseSite_Groep_B
         /// <returns>de id van de sector</returns>
         public int GetSectorX(int X, int spoorID)
         {
-            String cmd = "SELECT * FROM SECTOR WHERE SpoorID =" + spoorID;
+            String cmd = "SELECT * FROM SECTOR WHERE SpoorNR =" + spoorID;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             List<int> reList = new List<int>();
@@ -1327,20 +1322,36 @@ namespace RemiseSite_Groep_B
         /// </summary>
         /// <param name="SectorID">SectorID</param>
         /// <returns>True als bezet. false bij niet bezet.</returns>
-        public bool SectorBezet(int SectorID)
+        public bool SectorBezet(int SectorID, int spoorNR)
         {
-            String cmd = "SELECT TramId FROM SECTOR WHERE ID =" + SectorID + "OR Blokkade = 'y' OR Blokkade = 'Y'";
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
+
+            string cmd2 = "ISSECTORBEZET";
+            OracleCommand command2 = new OracleCommand(cmd2, connection);
+            command2.CommandType = CommandType.StoredProcedure;
+            OracleParameter op1 = new OracleParameter("p_sectorNr", SectorID);
+            op1.Direction = ParameterDirection.Input;
+            command2.Parameters.Add(op1);
+            OracleParameter op2 = new OracleParameter("p_spoortNr", spoorNR);
+            op2.Direction = ParameterDirection.Input;
+            command2.Parameters.Add(op2);
+            OracleParameter op3 = new OracleParameter("reval", OracleType.Number);
+            op3.Direction = ParameterDirection.ReturnValue;
+            command2.Parameters.Add(op3);
+
             try
             {
                 this.connection.Open();
-
-                OracleDataReader reader = command.ExecuteReader();
-                reader.Read();
-
-                int TramID = reader.GetInt32(0);
-                return true;
+  
+                command2.ExecuteNonQuery();
+                Console.WriteLine(op3.Value);
+                if (Convert.ToInt32(op3.Value) == 0)
+                {
+                    return false;
+                }
+                if (Convert.ToInt32(op3.Value) == 1)
+                {
+                    return true;
+                }
             }
             catch
             {
@@ -1360,7 +1371,7 @@ namespace RemiseSite_Groep_B
         public List<Sector> GetSectorenVoorBlokkade()
         {
             List<Sector> sectoren = new List<Sector>();
-            string cmd = "SELECT ID, SpoorID, TramID, Blokkade FROM Sector";
+            string cmd = "SELECT Nummer, SpoorNr, Blokkade FROM Sector";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1440,7 +1451,7 @@ namespace RemiseSite_Groep_B
         /// <returns></returns>
         public int GetGereserveerdSpoor(int tramID)
         {
-            String cmd = "SELECT SpoorID FROM RESERVERING WHERE TRAMID =" + tramID;
+            String cmd = "SELECT SpoorNR FROM RESERVERING WHERE TRAMNR =" + tramID;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
