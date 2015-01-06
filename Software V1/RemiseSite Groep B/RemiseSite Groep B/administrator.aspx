@@ -3,6 +3,11 @@
     <asp:UpdatePanel ID="upPlattegrond" runat="server">
         <ContentTemplate>
             <asp:ListView ID="lvSporen" runat="server">
+                <ItemTemplate>
+                    <div style="float:left;margin:10px">
+                        <b>Spoornummer:</b> <%# Eval("Nummer") %>
+                    </div>
+                </ItemTemplate>
             </asp:ListView>
         </ContentTemplate>
     </asp:UpdatePanel>

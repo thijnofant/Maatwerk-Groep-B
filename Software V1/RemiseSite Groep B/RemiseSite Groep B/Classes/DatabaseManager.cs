@@ -559,7 +559,7 @@ namespace RemiseSite_Groep_B
         public List<Spoor> SporenlijstOpvragen()
         {
             List<Spoor> sporen = new List<Spoor>();
-            string cmd = "Select id, nummer from spoor";
+            string cmd = "Select nummer from spoor";
             OracleCommand comm = new OracleCommand(cmd, connection);
             try
             {
@@ -567,9 +567,8 @@ namespace RemiseSite_Groep_B
                 OracleDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
-                    int spoorid = reader.GetInt32(0);
-                    int spoornummer = reader.GetInt32(1);
-                    string cmdSector = "Select id from sector where spoorid = " + spoorid;
+                    int spoornummer = reader.GetInt32(0);
+                    string cmdSector = "Select nummer from sector where spoornr = " + spoornummer;
                     OracleCommand commSector = new OracleCommand(cmdSector, connection);
                     OracleDataReader readerSector = commSector.ExecuteReader();
                     List<Sector> sectoren = new List<Sector>();
@@ -579,7 +578,7 @@ namespace RemiseSite_Groep_B
                         Sector sector = new Sector(reader.GetInt32(0));
                         sectoren.Add(sector);
                     }
-                    Spoor spoor = new Spoor(spoorid, sectoren, lijnen);
+                    Spoor spoor = new Spoor(spoornummer, sectoren, lijnen);
                     spoor.Nummer = spoornummer;
                     sporen.Add(spoor);
                 }
