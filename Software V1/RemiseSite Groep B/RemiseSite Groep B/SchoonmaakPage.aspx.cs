@@ -70,16 +70,6 @@ namespace RemiseSite_Groep_B
 
                 UpdateSchoonmaakPanel((Classes.Schoonmaak)Session["SelectedSchoonmaak"]);
             }
-
-            if (Session["SelectedBeurt"] != null)
-            {
-                UpdateInfo((int)Session["SelectedBeurt"]);
-            }
-        }
-
-        protected void UpdateInfo(int beurtId)
-        {
-
         }
 
         protected void FillSchoonmaakBeurten(int mwId)
