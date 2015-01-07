@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using RemiseSite_Groep_B.Models;
+using RemiseSite_Groep_B.Classes;
 
 namespace RemiseSite_Groep_B.Account
 {
@@ -27,18 +28,11 @@ namespace RemiseSite_Groep_B.Account
         {
             if (IsValid)
             {
-                // Validate the user password
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                ApplicationUser user = manager.Find(Email.Text, Password.Text);
-                if (user != null)
+                int MedID = DatabaseManager.Instance.Inloggen(Username.Text, Password.Text);
+                Medewerker tempMed = DatabaseManager.Instance.ZoekMedewerkerOpID(MedID);
+                if (!(MedID == 0))
                 {
-                    IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                }
-                else
-                {
-                    FailureText.Text = "Invalid username or password.";
-                    ErrorMessage.Visible = true;
+                    Session["LoggedInMedewerker"] = tempMed; 
                 }
             }
         }

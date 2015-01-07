@@ -246,10 +246,33 @@ namespace RemiseSite_Groep_B
         /// <param name="username">Username</param>
         /// <param name="wachtwoord">password</param>
         /// <returns>gelukt (True, false)</returns>
-        public bool Inloggen(string username, string wachtwoord)
+        public int Inloggen(string username, string wachtwoord)
         {
-            //TODO: LogIn
-            throw new NotImplementedException();
+            int reVal = 0;
+            String cmd = "SELECT * FROM MEDEWERKER WHERE USERNAME = :USERNAME AND PASSWORD = :PASSWORD";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+
+            command.Parameters.Add(":USERNAME", username);
+            command.Parameters.Add(":PASSWORD", wachtwoord);
+
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    reVal = Convert.ToInt32(reader["ID"]);
+                }
+                return reVal;
+            }
+            catch {
+                return 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         /// <summary>
