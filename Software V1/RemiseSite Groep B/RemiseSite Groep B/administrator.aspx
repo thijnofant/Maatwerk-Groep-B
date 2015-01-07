@@ -25,15 +25,14 @@
                                         <b> <%# Eval("Id") %> <b /> : <%# Eval("Blokkade") %> <%# Eval("Tram.Id") %> <br />
                                     </ItemTemplate>
                                 </asp:ListView>
-                            </div>
+                            </div> 
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
-
-    <asp:UpdatePanel ID="upPlattegrond" runat="server">
+    <!--<asp:UpdatePanel ID="upPlattegrond" runat="server">
         <ContentTemplate>
             <asp:UpdatePanel ID="upSporen" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
@@ -99,7 +98,7 @@
                     <asp:AsyncPostBackTrigger ControlID="Timer1" />
                 </Triggers>
             </asp:UpdatePanel>
-            <!--<asp:Timer ID="Timer1" runat="server" Interval="500"></asp:Timer> -->
+            <asp:Timer ID="Timer1" runat="server" Interval="500"></asp:Timer>
         </ContentTemplate>
-    </asp:UpdatePanel>
+    </asp:UpdatePanel> -->
 </asp:Content>
