@@ -9,15 +9,20 @@ namespace RemiseSite_Groep_B
 {
     public partial class administrator : System.Web.UI.Page
     {
-        List<Classes.Spoor> Sporen = DatabaseManager.Instance.SporenlijstOpvragen();
+        List<Classes.Spoor> Sporen;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            updateData();
+            if (!IsPostBack) {
+                updateData();
+            }
         }
 
         private void updateData() {
-            Sporen = DatabaseManager.Instance.SporenlijstOpvragen();
+            List<Classes.Spoor> tempSporen = DatabaseManager.Instance.SporenlijstOpvragen();
+            if (tempSporen != null) {
+                Sporen = tempSporen;
+            }
             foreach (Classes.Spoor s in Sporen) {
                 foreach (Classes.Sector sec in s.Sectoren) {
                     if (DatabaseManager.Instance.StaatTramOpSector(sec.Id) == 0)
