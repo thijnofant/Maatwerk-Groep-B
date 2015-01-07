@@ -9,9 +9,14 @@ namespace RemiseSite_Groep_B
 {
     public partial class administrator : System.Web.UI.Page
     {
+        List<Classes.Spoor> Sporen = DatabaseManager.Instance.SporenlijstOpvragen();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack) {
+                lvSporen.DataSource = Sporen;
+                lvSporen.DataBind();
+            }
         }
     }
 }
