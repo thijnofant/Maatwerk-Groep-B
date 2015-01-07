@@ -1,6 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="administrator.aspx.cs" Inherits="RemiseSite_Groep_B.administrator" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    <div style="width: 509px; height: 109px">
+&nbsp; Tram:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button1" runat="server" Text="Button" />
+&nbsp;Spoor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sector<br />
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
+&nbsp;<asp:Button ID="Button2" runat="server" Text="Button" />
+&nbsp;<asp:DropDownList ID="DropDownList2" runat="server">
+        </asp:DropDownList>
+&nbsp;<asp:DropDownList ID="DropDownList3" runat="server">
+        </asp:DropDownList>
+    </div>
+    <br />
     <asp:Panel ID="Panel1" runat="server" Height="105px" Width="138px">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
