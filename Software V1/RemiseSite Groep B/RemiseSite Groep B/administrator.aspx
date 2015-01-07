@@ -2,13 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-    <div style="width: 509px; height: 109px">
-&nbsp; Tram:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button1" runat="server" Text="Button" />
+    <div style="width: 378px; height: 77px">
+&nbsp; Tram:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnPlace" runat="server" Text="(Ver)Plaatsen" OnClick="btnPlace_Click" Width="99px" />
 &nbsp;Spoor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sector<br />
         <asp:DropDownList ID="DropDownList1" runat="server">
         </asp:DropDownList>
-&nbsp;<asp:Button ID="Button2" runat="server" Text="Button" />
+&nbsp;<asp:Button ID="btnDel" runat="server" Text="Delete" OnClick="btnDel_Click" Width="100px" />
 &nbsp;<asp:DropDownList ID="DropDownList2" runat="server">
         </asp:DropDownList>
 &nbsp;<asp:DropDownList ID="DropDownList3" runat="server">
@@ -18,7 +17,7 @@
     <asp:Panel ID="Panel1" runat="server" Height="105px" Width="138px">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div runat="server" style="width:1200px">
+                <div runat="server" style="width:1200px; height: 456px;">
                     <asp:ListView ID="lvSporen" runat="server" GroupItemCount="12">
                         <LayoutTemplate>
                             <div runat="server">

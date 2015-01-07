@@ -35,5 +35,15 @@ namespace RemiseSite_Groep_B
             lvSporen.DataSource = Sporen;
             lvSporen.DataBind();
         }
+
+        protected void btnPlace_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

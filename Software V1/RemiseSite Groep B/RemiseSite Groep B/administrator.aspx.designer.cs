@@ -13,13 +13,13 @@ namespace RemiseSite_Groep_B {
     public partial class administrator {
         
         /// <summary>
-        /// Button1 control.
+        /// btnPlace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnPlace;
         
         /// <summary>
         /// DropDownList1 control.
@@ -31,13 +31,13 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
-        /// Button2 control.
+        /// btnDel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnDel;
         
         /// <summary>
         /// DropDownList2 control.

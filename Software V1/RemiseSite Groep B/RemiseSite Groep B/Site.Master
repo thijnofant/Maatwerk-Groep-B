@@ -54,7 +54,8 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/BeurtPage">Beurt</a></li>
+                        <li><a runat="server" href="~/SchoonmaakPage">Schoonmaak</a></li>
+                        <li><a runat="server" href="~/OnderhoudPage">Onderhoud</a></li>
                         <li><a runat="server" href="~/administrator">Administrator</a></li>
                         <li><a runat="server" href="~/Bestuurder">Bestuurder</a></li>
                         <li><a runat="server" href="~/Reserveren">Reserveren</a></li>
