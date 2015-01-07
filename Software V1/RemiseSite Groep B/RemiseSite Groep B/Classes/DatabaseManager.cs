@@ -1257,7 +1257,7 @@ namespace RemiseSite_Groep_B
         {
             ReserveringIdIn = GetInsertID("ID", "RESERVERING");
             ReserveringIdIn++;
-            string sql = "INSERT INTO RESERVERING (ID, TRAMID, SPOORID ) VALUES (" + ReserveringIdIn + "," + tramnummer + ", " + spoornummer + ")";
+            string sql = "INSERT INTO RESERVERING (ID, TRAMNR, SPOORNR ) VALUES (" + ReserveringIdIn + "," + tramnummer + ", " + spoornummer + ")";
             OracleCommand command = new OracleCommand(sql, connection);
             try
             {
@@ -1921,7 +1921,7 @@ namespace RemiseSite_Groep_B
         }
         public int GetSpoorIDByNr(int spoorNr)
         {
-            String cmd = "SELECT ID FROM SPOOR WHERE NUMMER =" + spoorNr;
+            String cmd = "SELECT Nummer FROM SPOOR WHERE NUMMER =" + spoorNr;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1965,6 +1965,38 @@ namespace RemiseSite_Groep_B
             finally {
                 connection.Close();
             }
+        }
+
+        public string[] GetAllReserveringen()
+        {
+            string[] reArray = new string[3000];
+            string cmd = "SELECT * FROM RESERVERING";
+            OracleCommand command = new OracleCommand(cmd, connection);
+
+            try
+            {
+                connection.Open();
+                int x = 0;
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string temp = "";
+                    temp += "Tram: ";
+                    temp += Convert.ToString(reader["TRAMNR"]);
+                    temp += " Spoor: ";
+                    temp += Convert.ToString(reader["SPOORNR"]);
+                    reArray[x] = temp;
+                    x++;
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return reArray;
         }
     }
 }

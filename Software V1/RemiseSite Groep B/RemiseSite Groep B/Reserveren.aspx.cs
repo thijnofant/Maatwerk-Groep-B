@@ -15,6 +15,12 @@ namespace RemiseSite_Groep_B
         protected void Page_Load(object sender, EventArgs e)
         {
             //Panel1.Visible = false;
+            String[] temp = DatabaseManager.Instance.GetAllReserveringen();
+            lbReserveringen.Items.Clear();
+            for (int i = 0; i < temp.Count(); i++)
+            {
+                lbReserveringen.Items.Add(temp[i]);
+            }
         }
 
         protected void cbReparatie_CheckedChanged(object sender, EventArgs e)
@@ -34,7 +40,7 @@ namespace RemiseSite_Groep_B
         protected void btnBevestig_Click(object sender, EventArgs e)
         {
             Classes.Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnr.Text));//haalt tram op uit de database
-            int spoornr = db.GetSpoorIDByNr(Convert.ToInt32(tbSpoornr.Text));
+            int spoornr = Convert.ToInt32(tbSpoornr.Text);
             if (db.TramReserveren(tram.Id, spoornr))//reserveerd de tram in de database
             {
                 lblMessage.Text = "De reservering is aangemaakt.";
@@ -69,6 +75,7 @@ namespace RemiseSite_Groep_B
                     {
                         db.OnderhoudInvoeren(onderhoud);//maakt reparatie aan in de database
                         lblMessage.Text = "De Tram is gereserveerd voor onderhoud.";
+                        Response.Redirect("/Reserveren");
                     }
                     else
                     {
