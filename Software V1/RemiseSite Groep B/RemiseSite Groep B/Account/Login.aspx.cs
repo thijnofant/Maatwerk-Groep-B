@@ -32,7 +32,12 @@ namespace RemiseSite_Groep_B.Account
                 Medewerker tempMed = DatabaseManager.Instance.ZoekMedewerkerOpID(MedID);
                 if (!(MedID == 0))
                 {
-                    Session["LoggedInMedewerker"] = tempMed; 
+                    Session["LoggedInMedewerker"] = tempMed;
+                    lblConfirm.Text = "";
+                }
+                else
+                {
+                    lblConfirm.Text = "De combinatie van username en wachtwoord die u heeft ingevult bestaan niet.";
                 }
             }
         }
