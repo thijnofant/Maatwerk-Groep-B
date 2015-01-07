@@ -49,7 +49,8 @@
             </tr>
         </table>
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</asp:Panel>
+        &nbsp; Reserveringen:<br />&nbsp;&nbsp;<asp:ListBox ID="lbReserveringen" runat="server" Height="166px" Width="283px"></asp:ListBox>
+</asp:Panel>
     <br />
 &nbsp;<asp:Label ID="lblMessage" runat="server" Text="..."></asp:Label>
 </asp:Content>

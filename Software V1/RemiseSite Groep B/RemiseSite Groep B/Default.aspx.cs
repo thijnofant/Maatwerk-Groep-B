@@ -11,7 +11,20 @@ namespace RemiseSite_Groep_B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["LoggedInMedewerker"] == null)
+            {
+                Button1.Visible = false;
+            }
+            else
+            {
+                Button1.Visible = true;
+            }
+        }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["LoggedInMedewerker"] = null;
+            Response.Redirect("/Login");
         }
     }
 }

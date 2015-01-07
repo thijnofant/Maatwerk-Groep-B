@@ -103,6 +103,15 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.RadioButton rbGroot;
         
         /// <summary>
+        /// lbReserveringen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbReserveringen;
+        
+        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RemiseSite_Groep_B.Classes;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -17,6 +18,15 @@ namespace RemiseSite_Groep_B
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            if(Session["LoggedInMedewerker"] == null)
+            {
+                lblLoggedIn.Text = "";
+            }
+            else
+            {
+                lblLoggedIn.Text = "Welkom "+(Session["LoggedInMedewerker"] as Medewerker).Naam;
+            }
+
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;

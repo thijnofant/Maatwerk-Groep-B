@@ -34,6 +34,7 @@ namespace RemiseSite_Groep_B.Account
                 {
                     Session["LoggedInMedewerker"] = tempMed;
                     lblConfirm.Text = "";
+                    Response.Redirect("/Default");
                 }
                 else
                 {
