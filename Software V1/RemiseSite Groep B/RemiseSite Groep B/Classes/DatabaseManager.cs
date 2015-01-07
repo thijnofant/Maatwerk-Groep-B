@@ -575,7 +575,7 @@ namespace RemiseSite_Groep_B
                     List<Lijn> lijnen = new List<Lijn>();
                     while (readerSector.Read())
                     {
-                        Sector sector = new Sector(reader.GetInt32(0));
+                        Sector sector = new Sector(readerSector.GetInt32(0));
                         sectoren.Add(sector);
                     }
                     Spoor spoor = new Spoor(spoornummer, sectoren, lijnen);
