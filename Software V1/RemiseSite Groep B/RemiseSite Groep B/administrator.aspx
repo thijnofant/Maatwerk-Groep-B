@@ -40,6 +40,10 @@
         </asp:ListView>
     </div>
 
+    <div>
+        <asp:Label ID="blokkadeLabel" runat="server"></asp:Label>
+    </div>
+
     <!--<asp:UpdatePanel ID="upPlattegrond" runat="server">
         <ContentTemplate>
             <asp:UpdatePanel ID="upSporen" runat="server" UpdateMode="Conditional">
