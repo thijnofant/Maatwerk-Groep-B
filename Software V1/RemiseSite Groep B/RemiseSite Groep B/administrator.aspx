@@ -94,5 +94,4 @@
             <asp:Timer ID="Timer1" runat="server" Interval="500"></asp:Timer>
         </ContentTemplate>
     </asp:UpdatePanel>
->>>>>>> origin/master
 </asp:Content>
