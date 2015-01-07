@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="administrator.aspx.cs" Inherits="RemiseSite_Groep_B.administrator" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div>
+    </div>
     <br />
     <div style="width: 509px; height: 109px">
 &nbsp; Tram:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -15,37 +17,33 @@
         </asp:DropDownList>
     </div>
     <br />
-    <asp:Panel ID="Panel1" runat="server" Height="105px" Width="138px">
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <div runat="server" style="width:1200px">
-                    <asp:ListView ID="lvSporen" runat="server" GroupItemCount="12">
-                        <LayoutTemplate>
-                            <div runat="server">
-                                <div id="groupPlaceHolder" runat="server"></div>
-                            </div>
-                        </LayoutTemplate>
-                        <GroupTemplate>
-                            <div id="itemPlaceHolder" runat="server"></div>
-                        </GroupTemplate>
-                        <GroupSeparatorTemplate>
-                            <div runat="server" style="clear:both"></div>                       
-                        </GroupSeparatorTemplate>
+
+    <div runat="server" style="width:1200px">
+        <asp:ListView ID="lvSporen" runat="server" GroupItemCount="12">
+            <LayoutTemplate>
+                <div runat="server">
+                    <div id="groupPlaceHolder" runat="server"></div>
+                </div>
+            </LayoutTemplate>
+            <GroupTemplate>
+                <div id="itemPlaceHolder" runat="server"></div>
+            </GroupTemplate>
+            <GroupSeparatorTemplate>
+                <div runat="server" style="clear:both"></div>                       
+            </GroupSeparatorTemplate>
+            <ItemTemplate>
+                <div runat="server" style="float:left;border:solid;width:80px;height:210px">
+                    <b> Spoor: <%# Eval("Nummer") %> <b /><br />
+                    <asp:ListView ID="lvSectoren" runat="server" DataSource='<%# Eval("sectoren") %>'>
                         <ItemTemplate>
-                            <div runat="server" style="float:left;border:solid;width:80px;height:210px">
-                                <b> Spoor: <%# Eval("Nummer") %> <b /><br />
-                                <asp:ListView ID="lvSectoren" runat="server" DataSource='<%# Eval("sectoren") %>'>
-                                    <ItemTemplate>
-                                        <b> <%# Eval("Id") %> <b /> : <%# Eval("Blokkade") %> <%# Eval("Tram.Id") %> <br />
-                                    </ItemTemplate>
-                                </asp:ListView>
-                            </div> 
+                            <b> <%# Eval("Id") %> <b /> : <%# Eval("Blokkade") %> <%# Eval("Tram.Id") %> <br />
                         </ItemTemplate>
                     </asp:ListView>
-                </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
+                </div> 
+            </ItemTemplate>
+        </asp:ListView>
+    </div>
+
     <!--<asp:UpdatePanel ID="upPlattegrond" runat="server">
         <ContentTemplate>
             <asp:UpdatePanel ID="upSporen" runat="server" UpdateMode="Conditional">
