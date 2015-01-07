@@ -248,7 +248,7 @@ namespace RemiseSite_Groep_B
         {
             List<Medewerker> mwList = new List<Medewerker>();
 
-            String cmd = "SELECT MEDEWERKER.ID AS MWID, MEDEWERKER.NAAM AS MWNAAM FROM MEDEWERKER, FUNTIE WHERE MEDEWERKER.FUNCTIEID = FUNCTIE.ID AND FUNCTIENAAM ='Schoonmaker'";
+            String cmd = "SELECT MEDEWERKER.ID AS MWID, MEDEWERKER.NAAM AS MWNAAM FROM MEDEWERKER, FUNCTIE WHERE MEDEWERKER.FUNCTIEID = FUNCTIE.ID AND FUNCTIENAAM ='Schoonmaker'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
 
@@ -258,7 +258,7 @@ namespace RemiseSite_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Medewerker mw = new Medewerker((int)reader["MWID"],
+                    Medewerker mw = new Medewerker(reader.GetInt32(0),
                                                    (string)reader["MWNAAM"],
                                                    MedewerkerType.Schoonmaker);
 
@@ -379,7 +379,7 @@ namespace RemiseSite_Groep_B
 
             List<Schoonmaak> returnList = new List<Schoonmaak>();
 
-            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak'";
+            String cmd = "SELECT ID, TramNr, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
