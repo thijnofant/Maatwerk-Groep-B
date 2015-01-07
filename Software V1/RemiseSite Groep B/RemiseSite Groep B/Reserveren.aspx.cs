@@ -34,8 +34,8 @@ namespace RemiseSite_Groep_B
         protected void btnBevestig_Click(object sender, EventArgs e)
         {
             Classes.Tram tram = db.ZoekTram(Convert.ToInt32(tbTramnr.Text));//haalt tram op uit de database
-            int tesmp = db.GetSpoorIDByNr(Convert.ToInt32(tbSpoornr.Text));
-            if (db.TramReserveren(tram.Id, tesmp))//reserveerd de tram in de database
+            int spoornr = db.GetSpoorIDByNr(Convert.ToInt32(tbSpoornr.Text));
+            if (db.TramReserveren(tram.Id, spoornr))//reserveerd de tram in de database
             {
                 lblMessage.Text = "De reservering is aangemaakt.";
             }
