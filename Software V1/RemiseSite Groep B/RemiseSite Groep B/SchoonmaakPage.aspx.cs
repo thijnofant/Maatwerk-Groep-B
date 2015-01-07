@@ -17,6 +17,9 @@ namespace RemiseSite_Groep_B
 
         List<Classes.Medewerker> mwsmList;
 
+        List<Classes.Medewerker> bhmwList;
+        List<Classes.Schoonmaak> bhsmList;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             dm = DatabaseManager.Instance;
@@ -40,6 +43,8 @@ namespace RemiseSite_Groep_B
                 lbxBeheerderMedewerker.Visible = true;
                 btnSchoonmaakMedewerkers.Visible = true;
                 pnlBeheerder.Visible = true;
+
+                FillBeheerderPanel();
 
                 FillBeheerderMedewerker();
 
@@ -119,6 +124,32 @@ namespace RemiseSite_Groep_B
             Session["SelectedMedewerker"] = mwList[lbxBeheerderMedewerker.SelectedIndex].Id;
 
             Response.Redirect("SchoonmaakPage.aspx");
+        }
+
+        protected void FillBeheerderPanel()
+        {
+            FillBeheerderMedewerkers();
+            FillBeheerderSchoonmaakBeurten();
+        }
+
+        protected void FillBeheerderMedewerkers()
+        {
+            bhmwList = dm.MedewerkersSchoonmaakOpvragen();
+
+            foreach(Classes.Medewerker mwTemp in bhmwList)
+            {
+                lbxBeheerderMedewerkers.Items.Add("ID: " + mwTemp.Id + " Naam: " + mwTemp.Naam);
+            }
+        }
+
+        protected void FillBeheerderSchoonmaakBeurten()
+        {
+            bhsmList = dm.SchoonmaakOpvragen();
+
+            foreach(Classes.Schoonmaak smTemp in bhsmList)
+            {
+                lbxBeheerderSchoonmaakBeurten.Items.Add("ID: " + smTemp.ID + " Tram: " + smTemp.Tram.Nummer);
+            }
         }
     }
 }

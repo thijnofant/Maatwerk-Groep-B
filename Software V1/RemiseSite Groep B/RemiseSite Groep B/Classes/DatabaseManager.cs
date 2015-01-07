@@ -241,6 +241,40 @@ namespace RemiseSite_Groep_B
         }
 
         /// <summary>
+        /// Deze methode haalt een lijst van schoonmakers op
+        /// </summary>
+        /// <returns></returns>
+        public List<Medewerker> MedewerkersSchoonmaakOpvragen()
+        {
+            List<Medewerker> mwList = new List<Medewerker>();
+
+            String cmd = "SELECT MEDEWERKER.ID AS MWID, MEDEWERKER.NAAM AS MWNAAM FROM MEDEWERKER, FUNTIE WHERE MEDEWERKER.FUNCTIEID = FUNCTIE.ID AND FUNCTIENAAM ='Schoonmaker'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Medewerker mw = new Medewerker((int)reader["MWID"],
+                                                   (string)reader["MWNAAM"],
+                                                   MedewerkerType.Schoonmaker);
+
+                    mwList.Add(mw);
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+
+            return mwList;
+        }
+
+        /// <summary>
         /// Inloggen
         /// </summary>
         /// <param name="username">Username</param>
