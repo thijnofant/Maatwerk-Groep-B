@@ -25,10 +25,11 @@ namespace RemiseSite_Groep_B
             }
             foreach (Classes.Spoor s in Sporen) {
                 foreach (Classes.Sector sec in s.Sectoren) {
-                    if (DatabaseManager.Instance.StaatTramOpSector(sec.Id) == 0)
+                    int tramid = DatabaseManager.Instance.StaatTramOpSector(sec.Id, s.Id);
+                    if (tramid == 0)
                         continue;
                     else
-                        sec.Tram = new Classes.Tram(DatabaseManager.Instance.StaatTramOpSector(sec.Id), null);
+                        sec.Tram = new Classes.Tram(tramid, null);
                 }
             }
             lvSporen.DataSource = Sporen;
