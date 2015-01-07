@@ -31,6 +31,8 @@ namespace RemiseSite_Groep_B.Classes
         /// </summary>
         public int SpoorID { get; set; }
 
+        public string Blokkade { get; set; }
+
         /// <summary>
         /// Dit is de Constructor van een Sector.
         /// </summary>
@@ -39,6 +41,9 @@ namespace RemiseSite_Groep_B.Classes
         {
             this.id = id;
             this.isGeblokkeerd = false;
+            if (isGeblokkeerd) {
+                Blokkade = "x";
+            }
         }
     }
 }

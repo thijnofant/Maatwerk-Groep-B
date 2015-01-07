@@ -662,7 +662,7 @@ namespace RemiseSite_Groep_B
                 while (reader.Read())
                 {
                     int spoornummer = reader.GetInt32(0);
-                    string cmdSector = "Select nummer from sector where spoornr = " + spoornummer;
+                    string cmdSector = "Select nummer, blokkade from sector where spoornr = " + spoornummer;
                     OracleCommand commSector = new OracleCommand(cmdSector, connection);
                     OracleDataReader readerSector = commSector.ExecuteReader();
                     List<Sector> sectoren = new List<Sector>();
@@ -670,6 +670,11 @@ namespace RemiseSite_Groep_B
                     while (readerSector.Read())
                     {
                         Sector sector = new Sector(readerSector.GetInt32(0));
+                        string blokkade = readerSector.GetString(1);
+                        if (blokkade == "y")
+                            sector.IsGeblokkeerd = true;
+                        else
+                            sector.IsGeblokkeerd = false;
                         sectoren.Add(sector);
                     }
                     Spoor spoor = new Spoor(spoornummer, sectoren, lijnen);

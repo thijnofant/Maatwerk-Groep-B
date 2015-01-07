@@ -13,10 +13,13 @@ namespace RemiseSite_Groep_B
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                lvSporen.DataSource = Sporen;
-                lvSporen.DataBind();
-            }
+            updateData();
+        }
+
+        private void updateData() {
+            Sporen = DatabaseManager.Instance.SporenlijstOpvragen();
+            lvSporen.DataSource = Sporen;
+            lvSporen.DataBind();
         }
     }
 }
