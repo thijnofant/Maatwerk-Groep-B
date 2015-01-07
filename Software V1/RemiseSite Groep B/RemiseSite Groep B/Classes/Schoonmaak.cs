@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    class Schoonmaak: Beurt
+    public class Schoonmaak: Beurt
     {
         /// <summary>
         /// Dit is de Constructor voor deze Klasse. Deze klasse inherit all zijn properties van Beurt.

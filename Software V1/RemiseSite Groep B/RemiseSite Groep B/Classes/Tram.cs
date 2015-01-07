@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B.Classes
 {
-    class Tram: IEquatable<Tram>
+    public class Tram: IEquatable<Tram>
     {
         /// <summary>
         /// Dit is de Status van een Tram.

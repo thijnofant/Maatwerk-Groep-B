@@ -9,7 +9,7 @@ using System.Web;
 
 namespace RemiseSite_Groep_B
 {
-    class DatabaseManager
+    public class DatabaseManager
     {
         #region singleton
         private static DatabaseManager instance;
@@ -187,19 +187,19 @@ namespace RemiseSite_Groep_B
         }
 
         /// <summary>
-        /// Deze Methode haalt de Id van een medewerker op die aan een tram werkt
+        /// Deze methode haalt een lijst van medewerkers op die aan een schoonmaak beurt werken
         /// </summary>
-        /// <param name="onderhoud">Schoonmaak met Medewerkers</param>
-        /// <returns>Id van de medewerkers</returns>
-        public int MedewerkerOpvragen(Schoonmaak schoonmaak)
+        /// <param name="smId">Schoonmaak beurt ID</param>
+        /// <returns></returns>
+        public List<Medewerker> MedewerkersSchoonmaakOpvragen(int smId)
         {
-            int medewerkerID = -1;
+            List<Medewerker> mwList = new List<Medewerker>();
 
-            String cmd = "SELECT * FROM TRAM_BEURT WHERE ID = :schoonmaakID";
+            String cmd = "SELECT MEDEWERKER.ID AS MWID, MEDEWERKER.NAAM AS MWNAAM, FUNCTIE.NAAM AS FNAAM FROM FUNCTIE, MEDEWERKER, MEDEWERKER_BEURT, TRAM_BEURT WHERE TRAM_BEURT.ID = :schoonmaakID AND TRAM_BEURT.ID = MEDEWERKER_BEURT.BEURTID AND MEDEWERKER_BEURT.MEDEWERKERID = MEDEWERKER.ID AND MEDEWERKER.FUNCTIEID = FUNCTIE.ID";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
 
-            command.Parameters.Add(":schoonmaakID", schoonmaak.ID);
+            command.Parameters.Add(":schoonmaakID", smId);
 
             try
             {
@@ -207,10 +207,28 @@ namespace RemiseSite_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (reader["MedewerkerID"] != "")
+                    MedewerkerType mwtTemp = MedewerkerType.Beheerder;
+                    switch ((string)reader["FNAAM"])
                     {
-                        medewerkerID = Convert.ToInt32(reader["MedewerkerID"]);
+                        case "Beheerder":
+                            mwtTemp = MedewerkerType.Beheerder;
+                            break;
+                        case "Bestuurder":
+                            mwtTemp = MedewerkerType.Bestuurder;
+                            break;
+                        case "Schoonmaker":
+                            mwtTemp = MedewerkerType.Schoonmaker;
+                            break;
+                        case "Technicus":
+                            mwtTemp = MedewerkerType.Technicus;
+                        break;
                     }
+
+                    Medewerker mw = new Medewerker((int)reader["MWID"],
+                                                   (string)reader["MWNAAM"],
+                                                   mwtTemp);
+
+                    mwList.Add(mw);
                 }
             }
             catch { }
@@ -219,7 +237,7 @@ namespace RemiseSite_Groep_B
                 connection.Close();
             }
 
-            return medewerkerID;
+            return mwList;
         }
 
         /// <summary>
@@ -305,6 +323,59 @@ namespace RemiseSite_Groep_B
             List<Schoonmaak> returnList = new List<Schoonmaak>();
 
             String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak'";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int OnderhoudID = reader.GetInt32(0);
+                    int tramId = reader.GetInt32(2);
+                    DateTime startTijd = reader.GetDateTime(3);
+                    string beurtType = reader["BeurtType"].ToString();
+
+                    BeurtType tempEnum = BeurtType.Groot;
+
+                    switch (beurtType)
+                    {
+                        case "Klein":
+                            tempEnum = BeurtType.Klein;
+                            break;
+                        case "Groot":
+                            tempEnum = BeurtType.Groot;
+                            break;
+                        case "Incident":
+                            tempEnum = BeurtType.Incident;
+                            break;
+                    }
+
+                    /*startTijd, OnderhoudID, tempEnum, tempTram*/
+                    Schoonmaak tempSchoon = new Schoonmaak(startTijd, OnderhoudID, tempEnum, trams.Find(x => x.Id == tramId));
+                    returnList.Add(tempSchoon);
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return returnList;
+        }
+
+        /// <summary>
+        /// Haalt de lijst met alle Schoonmaak die niet nog niet af zijn van een medewerker.
+        /// </summary>
+        /// <param name="mwId">Medewerker ID</param>
+        /// <returns></returns>
+        public List<Schoonmaak> SchoonmaakOpvragen(int mwId)
+        {
+            List<Tram> trams = AlleTrams();
+
+            List<Schoonmaak> returnList = new List<Schoonmaak>();
+
+            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak' AND MedewerkerID = " + mwId;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
