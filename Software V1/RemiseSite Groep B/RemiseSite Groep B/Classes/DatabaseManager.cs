@@ -248,7 +248,7 @@ namespace RemiseSite_Groep_B
         {
             List<Medewerker> mwList = new List<Medewerker>();
 
-            String cmd = "SELECT MEDEWERKER.ID AS MWID, MEDEWERKER.NAAM AS MWNAAM FROM MEDEWERKER, FUNCTIE WHERE MEDEWERKER.FUNCTIEID = FUNCTIE.ID AND FUNCTIENAAM ='Schoonmaker'";
+            String cmd = "SELECT MEDEWERKER.ID AS MWID, MEDEWERKER.NAAM AS MWNAAM FROM MEDEWERKER, FUNCTIE WHERE MEDEWERKER.FUNCTIEID = FUNCTIE.ID AND FUNCTIE.NAAM ='Schoonmaker'";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
 
@@ -432,7 +432,7 @@ namespace RemiseSite_Groep_B
 
             List<Schoonmaak> returnList = new List<Schoonmaak>();
 
-            String cmd = "SELECT ID, MedewerkerID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak' AND MedewerkerID = " + mwId;
+            String cmd = "SELECT ID, TramID, DatumTijdstip, BeurtType FROM TRAM_BEURT WHERE TypeOnderhoud = 'Schoonmaak' AND MedewerkerID = " + mwId;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -442,8 +442,8 @@ namespace RemiseSite_Groep_B
                 while (reader.Read())
                 {
                     int OnderhoudID = reader.GetInt32(0);
-                    int tramId = reader.GetInt32(2);
-                    DateTime startTijd = reader.GetDateTime(3);
+                    int tramId = reader.GetInt32(1);
+                    DateTime startTijd = reader.GetDateTime(2);
                     string beurtType = reader["BeurtType"].ToString();
 
                     BeurtType tempEnum = BeurtType.Groot;
@@ -1215,7 +1215,7 @@ namespace RemiseSite_Groep_B
         public List<Tram> AlleTrams()
         {
             List<Tram> tramlist = new List<Tram>();
-            string cmd = "SELECT t.ID, t.Nummer, t.Status, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt WHERE t.TramtypeID = tt.ID";
+            string cmd = "SELECT t.Nummer, t.Status, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt WHERE t.TramtypeID = tt.ID";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1225,10 +1225,10 @@ namespace RemiseSite_Groep_B
                 while (reader.Read())
                 {
                     int tramid = reader.GetInt32(0);
-                    int tramnummer = reader.GetInt32(1);
-                    TramStatus status = (TramStatus)Enum.Parse(typeof(TramStatus), reader.GetString(2), true);
-                    string typenaam = reader.GetString(3);
-                    double lengte = reader.GetDouble(4);
+                    int tramnummer = reader.GetInt32(0);
+                    TramStatus status = (TramStatus)Enum.Parse(typeof(TramStatus), reader.GetString(1), true);
+                    string typenaam = reader.GetString(2);
+                    double lengte = reader.GetDouble(3);
 
                     TramType type = new TramType(typenaam, lengte);
                     Tram tram = new Tram(tramid, type, tramnummer);

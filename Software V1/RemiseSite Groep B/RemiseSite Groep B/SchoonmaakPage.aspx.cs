@@ -43,6 +43,7 @@ namespace RemiseSite_Groep_B
                 lbxBeheerderMedewerker.Visible = true;
                 btnSchoonmaakMedewerkers.Visible = true;
                 pnlBeheerder.Visible = true;
+                lbxSchoonmaakBeurten.Visible = false;
 
                 FillBeheerderPanel();
 
@@ -50,6 +51,7 @@ namespace RemiseSite_Groep_B
 
                 if (Session["SelectedMedewerker"] != null)
                 {
+                    lbxSchoonmaakBeurten.Visible = true;
                     FillSchoonmaakBeurten((int)Session["SelectedMedewerker"]);
                 }
             }
