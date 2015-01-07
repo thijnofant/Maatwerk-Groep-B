@@ -104,6 +104,10 @@ namespace RemiseSite_Groep_B
                         lblMessage.Text = "Het systeem heeft geen spoor kunnen toekennen";
                     }
                 }
+                else
+                {
+                    lblMessage.Text = "Deze tram staat al in de remise";
+                }
             }
             else//error wanneer ongeldig tramnr wordt ingevoerd
             {

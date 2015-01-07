@@ -38,9 +38,9 @@ namespace RemiseSite_Groep_B.Classes
         /// <param name="sector">De Sector waar de Tram naar toe moet.</param>
         /// <param name="tramNR">Het Nummer van de Tram.</param>
         /// <returns>True als het gelukt is, False als het niet gelukt is.</returns>
-        public bool PlaatsToewijzen(Sector sector, int tramNR)
+        public bool PlaatsToewijzen(Sector sector, int tramNR, int spoorNr)
         {
-            return (Database.TramVerplaatsen(tramNR, sector));
+            return (Database.TramVerplaatsen(tramNR, sector, spoorNr));
         }
 
         /// <summary>
@@ -54,6 +54,10 @@ namespace RemiseSite_Groep_B.Classes
         {
             List<int> SpoorID = new List<int>();
             if (Database.ZoekTram(tramNr) == null)
+            {
+                return false;
+            }
+            if (Database.TramAlInRemise(tramNr) == true)
             {
                 return false;
             }
@@ -84,8 +88,8 @@ namespace RemiseSite_Groep_B.Classes
                 }
                 else
                 {
-                    int TramLijnID = Database.LijnNrOpvragen(tramNr);
-                    SpoorID = Database.GetSporenIDByLijnID(TramLijnID);
+
+                    SpoorID = Database.GetSporenIDByLijnID(tramNr);
                 }
             }
             int X = 0;
@@ -107,11 +111,11 @@ namespace RemiseSite_Groep_B.Classes
                 {
                     SectorID = Database.GetSectorX(X, SpoorID[N]);
                 }
-                if (!Database.SectorBezet(SectorID))
+                if (!Database.SectorBezet(SectorID,SpoorID[N]))
                 {
-                    Database.TramVerplaatsen(tramNr, new Sector(SectorID));
+                    Database.TramVerplaatsen(tramNr, new Sector(SectorID), SpoorID[N]);
                     Tram tram = Database.ZoekTram(tramNr);
-                    Database.TramstatusVeranderen(TramStatus.Remise, tram.Id);
+                    Database.TramstatusVeranderen(TramStatus.Remise, tram.Nummer);
                     return true;
                 }
                 else
