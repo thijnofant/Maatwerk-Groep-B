@@ -22,7 +22,7 @@
                                 Spoor: <%# Eval("Nummer") %> <br />
                                 <asp:ListView ID="lvSectoren" runat="server" DataSource='<%# Eval("sectoren") %>'>
                                     <ItemTemplate>
-                                        <%# Eval("Id") %> : <%# Eval("Blokkade") %><br />
+                                        <%# Eval("Id") %> : <%# Eval("Blokkade") %> <br />
                                     </ItemTemplate>
                                 </asp:ListView>
                             </div>

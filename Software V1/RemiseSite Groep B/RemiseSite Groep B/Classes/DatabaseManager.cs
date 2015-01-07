@@ -669,7 +669,8 @@ namespace RemiseSite_Groep_B
                     List<Lijn> lijnen = new List<Lijn>();
                     while (readerSector.Read())
                     {
-                        Sector sector = new Sector(readerSector.GetInt32(0));
+                        int sectornr = readerSector.GetInt32(0);
+                        Sector sector = new Sector(sectornr);
                         string blokkade = readerSector.GetString(1);
                         if (blokkade == "y")
                             sector.IsGeblokkeerd = true;
@@ -1879,6 +1880,25 @@ namespace RemiseSite_Groep_B
             finally
             {
                 this.connection.Close();
+            }
+        }
+
+        public int StaatTramOpSector(int sectorid) {
+            string cmd = "select tramnr from tram_sector where sectornr = " + Convert.ToString(sectorid) + "and leaveday is null";
+            OracleCommand command = new OracleCommand(cmd, connection);
+
+            try {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+                int tramnr = reader.GetInt32(0);
+                return tramnr;
+            }
+            catch {
+                return 0;
+            }
+            finally {
+                connection.Close();
             }
         }
     }
