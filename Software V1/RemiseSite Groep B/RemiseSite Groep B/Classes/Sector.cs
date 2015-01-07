@@ -19,7 +19,12 @@ namespace RemiseSite_Groep_B.Classes
         /// <summary>
         /// Deze Property haalt van deze Sector op of deze Geblokeerd is of niet.
         /// </summary>
-        public bool IsGeblokkeerd { get { return isGeblokkeerd; } set { isGeblokkeerd = value; } }
+        public bool IsGeblokkeerd { get { return isGeblokkeerd; }
+            set {
+                if (value) {
+                    Blokkade = "x";
+                } 
+                isGeblokkeerd = value; } }
 
         /// <summary>
         /// Deze Property haalt de Tram op die op deze Sector staat.
@@ -41,9 +46,6 @@ namespace RemiseSite_Groep_B.Classes
         {
             this.id = id;
             this.isGeblokkeerd = false;
-            if (isGeblokkeerd) {
-                Blokkade = "x";
-            }
         }
     }
 }
