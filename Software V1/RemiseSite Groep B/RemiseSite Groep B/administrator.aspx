@@ -19,10 +19,10 @@
                         </GroupSeparatorTemplate>
                         <ItemTemplate>
                             <div runat="server" style="float:left;border:solid;width:80px;height:210px">
-                                Spoor: <%# Eval("Nummer") %> <br />
+                                <b> Spoor: <%# Eval("Nummer") %> <b /><br />
                                 <asp:ListView ID="lvSectoren" runat="server" DataSource='<%# Eval("sectoren") %>'>
                                     <ItemTemplate>
-                                        <%# Eval("Id") %> : <%# Eval("Blokkade") %> <%# Eval("Tram.Id") %> <br />
+                                        <b> <%# Eval("Id") %> <b /> : <%# Eval("Blokkade") %> <%# Eval("Tram.Id") %> <br />
                                     </ItemTemplate>
                                 </asp:ListView>
                             </div>
