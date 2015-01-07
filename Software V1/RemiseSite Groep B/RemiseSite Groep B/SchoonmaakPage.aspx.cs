@@ -25,7 +25,7 @@ namespace RemiseSite_Groep_B
             if (Session["LoggedInMedewerker"] == null)
             {
                 //TODO: Modify!!!
-                Response.Redirect("Home.aspx");
+                Response.Redirect("Account/Login.aspx");
             }
             else
             {
