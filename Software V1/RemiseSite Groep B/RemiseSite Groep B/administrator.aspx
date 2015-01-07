@@ -43,9 +43,30 @@
         <ContentTemplate>
             <asp:UpdatePanel ID="upSporen" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
+                    <asp:ListView ID="lvSporen" runat="server">
+                        <ItemTemplate>
+                            <div style="float: left; margin: 10px">
+                                <b>Spoornummer:</b> <%# Eval("Nummer") %>
+                            </div>
+                        </ItemTemplate>
+                    </asp:ListView>
                     <asp:Table ID="tableSporen1" runat="server" BorderStyle="None">
                         <asp:TableRow ID="rowSporen1">
-                            <asp:TableCell ID="CellSpoor38" runat="server"></asp:TableCell>
+                            <asp:TableCell ID="CellSpoor38" runat="server">
+                                <asp:Table ID="spoor38" runat="server">
+                                    <asp:TableHeaderRow>
+                                        <asp:TableCell Width="80" Height="30" HorizontalAlign="Center">
+                                            <asp:Button ID="btnSpoor38" runat="server" Width="70" Height="30" Text="38" />
+                                        </asp:TableCell>
+                                    </asp:TableHeaderRow>
+                                    <asp:TableRow>
+                                        <asp:TableCell><asp:Button ID="Button1" runat="server" Width="70" Height="30" Text="38" /></asp:TableCell>
+                                    </asp:TableRow>
+                                    <asp:TableRow>
+                                        <asp:TableCell></asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                            </asp:TableCell>
                             <asp:TableCell ID="CellSpoor37" runat="server"></asp:TableCell>
                             <asp:TableCell ID="CellSpoor36" runat="server"></asp:TableCell>
                             <asp:TableCell ID="CellSpoor35" runat="server"></asp:TableCell>
