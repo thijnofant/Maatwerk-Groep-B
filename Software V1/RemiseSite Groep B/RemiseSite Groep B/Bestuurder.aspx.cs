@@ -97,6 +97,7 @@ namespace RemiseSite_Groep_B
                 {
                     if (db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id) != 0)//kijkt of er een toegeweze spoor is
                     {
+                        DatabaseManager.Instance.DelReservation(tramnr);
                         lblGoToTrack.Text = Convert.ToString(db.GetToegewezenSpoor(db.ZoekTram(tramnr).Id));//geeft het toegewezen spoor weer
                     }
                     else//wanneer er geen toegeweze spoor is komt de volgende error

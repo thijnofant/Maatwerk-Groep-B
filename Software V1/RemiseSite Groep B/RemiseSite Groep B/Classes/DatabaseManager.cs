@@ -1574,6 +1574,35 @@ namespace RemiseSite_Groep_B
             }
         }
 
+        /// <summary>
+        /// Deze Methode Haalt het gereserveerde Spoor op die bij een tram horen als deze er zijn.
+        /// </summary>
+        /// <param name="tramID"></param>
+        /// <returns></returns>
+        public bool DelReservation(int tramID)
+        {
+            String cmd = "DELETE FROM RESERVERING WHERE ID IN (SELECT r.ID FROM RESERVERING r INNER JOIN TRAM_SECTOR ts ON (r.TRAMNR = ts.TRAMNR) AND (r.SPOORNR = ts.SPOORNR) WHERE ts.LEAVEDAY IS NULL AND r.TRAMNR = :Tramnr)";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            command.Parameters.Add(":Tramnr", tramID);
+            try
+            {
+                this.connection.Open();
+
+                command.ExecuteNonQuery();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
         public bool TramAlInRemise(int tramNR)
         {
             String cmd = "SELECT COUNT(TRAMNR) as res FROM TRAM_SECTOR WHERE TRAMNR =" + tramNR + " AND LEAVEDAY IS NULL";
