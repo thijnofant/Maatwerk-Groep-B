@@ -38,10 +38,12 @@
                 </div> 
             </ItemTemplate>
         </asp:ListView>
-    </div>
+    </div> <br/>
 
-    <div>
-        <asp:Label ID="blokkadeLabel" runat="server"></asp:Label>
+    <div runat="server" style="width:800px">
+        <asp:Label ID="blokkadeLabel" runat="server"><b>(De)Blokkeren</b></asp:Label> <br />
+        Spoornummer: <asp:TextBox ID="textBoxSpoorID" runat="server"></asp:TextBox> <asp:Button ID="buttonBlokkeerSpoor" Text="Blokkeer spoor" runat="server" /> <br />
+        Spoornummer: <asp:TextBox ID="textBoxSpoorID2" runat="server"></asp:TextBox> Sectornummer: <asp:TextBox ID="textBoxSectorID" runat="server"></asp:TextBox> <asp:Button ID="buttonBlokkeerSector" Text="Blokkeer sector" runat="server" />
     </div>
 
     <!--<asp:UpdatePanel ID="upPlattegrond" runat="server">
