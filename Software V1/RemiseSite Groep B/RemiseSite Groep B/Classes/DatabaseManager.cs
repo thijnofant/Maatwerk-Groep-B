@@ -938,8 +938,8 @@ namespace RemiseSite_Groep_B
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("Update tram set status = :status where id = :id", connection);
-                command.Parameters.Add("status", nieuwStatus.ToString().ToLower());
+                OracleCommand command = new OracleCommand("Update tram set status = :status where Nummer = :id", connection);
+                command.Parameters.Add("status", nieuwStatus.ToString());
                 command.Parameters.Add("id", tramid);
                 int resultaat = command.ExecuteNonQuery();
                 if (resultaat > 0)
@@ -1182,7 +1182,7 @@ namespace RemiseSite_Groep_B
         /// <returns>Lijst met beurtSporen</returns>
         public List<int> GetBeurtSporen()
         {
-            String cmd = "SELECT ID FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77))";
+            String cmd = "SELECT Nummer FROM Spoor S Where ((Nummer BETWEEN 12 AND 21) OR (Nummer BETWEEN 74 AND 77))";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1474,14 +1474,9 @@ namespace RemiseSite_Groep_B
             }
         }
 
-        /// <summary>
-        /// Deze Methode Haalt uit de database op welk Spoor een Tram op staat.
-        /// </summary>
-        /// <param name="tramID">Welke Tram</param>
-        /// <returns>ID van spoor</returns>
-        public int GetToegewezenSpoor(int tramID)
+        public bool TramAlInRemise(int tramNR)
         {
-            String cmd = "SELECT sp.Nummer FROM spoor sp, sector se  WHERE se.SpoorID = sp.ID and TramID = '" + tramID + "'";
+            String cmd = "SELECT COUNT(TRAMNR) as res FROM TRAM_SECTOR WHERE TRAMNR =" + tramNR + " AND LEAVEDAY IS NULL";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1491,7 +1486,41 @@ namespace RemiseSite_Groep_B
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
 
-                int SpoorID = Convert.ToInt32(reader["Nummer"]);
+                int SpoorID = Convert.ToInt32(reader["res"]);
+                if (!( SpoorID > 0))
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Deze Methode Haalt uit de database op welk Spoor een Tram op staat.
+        /// </summary>
+        /// <param name="tramID">Welke Tram</param>
+        /// <returns>ID van spoor</returns>
+        public int GetToegewezenSpoor(int tramID)
+        {
+            String cmd = "SELECT spoornr FROM TRAM_SECTOR WHERE TRAMNR =" + tramID + " AND LEAVEDAY IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                this.connection.Open();
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                int SpoorID = Convert.ToInt32(reader["spoornr"]);
                 return SpoorID;
             }
             catch

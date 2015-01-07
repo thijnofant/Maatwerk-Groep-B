@@ -57,6 +57,10 @@ namespace RemiseSite_Groep_B.Classes
             {
                 return false;
             }
+            if (Database.TramAlInRemise(tramNr) == true)
+            {
+                return false;
+            }
             int geserveerdSpoor = Database.GetGereserveerdSpoor(Database.ZoekTram(tramNr).Id);
             if (geserveerdSpoor != 0)
             {
@@ -111,7 +115,7 @@ namespace RemiseSite_Groep_B.Classes
                 {
                     Database.TramVerplaatsen(tramNr, new Sector(SectorID), SpoorID[N]);
                     Tram tram = Database.ZoekTram(tramNr);
-                    Database.TramstatusVeranderen(TramStatus.Remise, tram.Id);
+                    Database.TramstatusVeranderen(TramStatus.Remise, tram.Nummer);
                     return true;
                 }
                 else
