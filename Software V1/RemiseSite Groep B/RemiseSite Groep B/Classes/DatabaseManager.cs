@@ -389,8 +389,8 @@ namespace RemiseSite_Groep_B
                 while (reader.Read())
                 {
                     int OnderhoudID = reader.GetInt32(0);
-                    int tramId = reader.GetInt32(2);
-                    DateTime startTijd = reader.GetDateTime(3);
+                    int tramId = reader.GetInt32(1);
+                    DateTime startTijd = reader.GetDateTime(2);
                     string beurtType = reader["BeurtType"].ToString();
 
                     BeurtType tempEnum = BeurtType.Groot;
