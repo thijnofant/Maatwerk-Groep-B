@@ -31,25 +31,12 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
-        Spoor blokkeren 
-        <br />
-        Spoor:<br /><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <br />
-        <asp:Button ID="Button1" runat="server" Text="Button" />
-        <asp:Button ID="Button2" runat="server" Text="Button" />
     </asp:Panel>
 
     <asp:UpdatePanel ID="upPlattegrond" runat="server">
         <ContentTemplate>
             <asp:UpdatePanel ID="upSporen" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <asp:ListView ID="lvSporen" runat="server">
-                        <ItemTemplate>
-                            <div style="float: left; margin: 10px">
-                                <b>Spoornummer:</b> <%# Eval("Nummer") %>
-                            </div>
-                        </ItemTemplate>
-                    </asp:ListView>
                     <asp:Table ID="tableSporen1" runat="server" BorderStyle="None">
                         <asp:TableRow ID="rowSporen1">
                             <asp:TableCell ID="CellSpoor38" runat="server">
@@ -112,7 +99,7 @@
                     <asp:AsyncPostBackTrigger ControlID="Timer1" />
                 </Triggers>
             </asp:UpdatePanel>
-            <asp:Timer ID="Timer1" runat="server" Interval="500"></asp:Timer>
+            <!--<asp:Timer ID="Timer1" runat="server" Interval="500"></asp:Timer> -->
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
