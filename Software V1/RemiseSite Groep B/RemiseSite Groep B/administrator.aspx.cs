@@ -22,7 +22,7 @@ namespace RemiseSite_Groep_B
             trams = new List<Classes.Tram>();
             Update1();
 
-            if (/*(Session["LoggedInMedewerker"] as Classes.Medewerker).MedewerkerType != Classes.MedewerkerType.Beheerder || */ Session["LoggedInMedewerker"] == null || (Session["LoggedInMedewerker"] as Classes.Medewerker).MedewerkerType != Classes.MedewerkerType.Beheerder)
+            if (Session["LoggedInMedewerker"] == null || (Session["LoggedInMedewerker"] as Classes.Medewerker).MedewerkerType != Classes.MedewerkerType.Beheerder)
             {
                 Panel1.Visible = false;
             }
