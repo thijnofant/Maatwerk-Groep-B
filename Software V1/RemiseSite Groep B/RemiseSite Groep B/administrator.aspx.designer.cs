@@ -22,13 +22,13 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.Button btnPlace;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ddTram control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddTram;
         
         /// <summary>
         /// btnDel control.
@@ -40,22 +40,22 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.Button btnDel;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// ddSpoor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList ddSpoor;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// ddSector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList ddSector;
         
         /// <summary>
         /// lvSporen control.

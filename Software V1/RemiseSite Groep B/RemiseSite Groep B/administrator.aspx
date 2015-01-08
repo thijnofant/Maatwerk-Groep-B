@@ -5,12 +5,12 @@
     <div style="width: 378px; height: 77px">
 &nbsp; Tram:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnPlace" runat="server" Text="(Ver)Plaatsen" OnClick="btnPlace_Click" Width="99px" />
 &nbsp;Spoor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sector<br />
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="ddTram" runat="server" Width="82px">
         </asp:DropDownList>
-&nbsp;<asp:Button ID="btnDel" runat="server" Text="Delete" OnClick="btnDel_Click" Width="100px" />
-&nbsp;<asp:DropDownList ID="DropDownList2" runat="server">
+&nbsp;<asp:Button ID="btnDel" runat="server" Text="Uitrijden" OnClick="btnDel_Click" Width="100px" />
+&nbsp;<asp:DropDownList ID="ddSpoor" runat="server" Height="16px" Width="82px" AutoPostBack="True" OnSelectedIndexChanged="ddSpoor_SelectedIndexChanged">
         </asp:DropDownList>
-&nbsp;<asp:DropDownList ID="DropDownList3" runat="server">
+&nbsp;<asp:DropDownList ID="ddSector" runat="server" Height="16px" Width="82px">
         </asp:DropDownList>
     </div>
     <br />

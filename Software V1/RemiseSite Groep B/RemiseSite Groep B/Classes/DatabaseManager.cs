@@ -1100,7 +1100,7 @@ namespace RemiseSite_Groep_B
             Tram tempTram = ZoekTram(tramNr);
             if (tempTram != null)
             {
-                string cmd = "UPDATE sector set tramid = null where tramid = :tramid";
+                string cmd = "UPDATE TRAM_SECTOR set LEAVEDAY = to_date('" + DateTime.Now.ToString() + "','DD-MM-YYYY HH24:MI:SS') where tramNR = :tramid";
                 try
                 {
                     connection.Open();
@@ -1124,6 +1124,34 @@ namespace RemiseSite_Groep_B
             return false;
         }
 
+        public bool StaatTramInRemise(int tramNr)
+        {
+            string cmd = "SELECT COUNT(*) FROM Tram_SECTOR WHERE LEAVEDAY IS NULL";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            command.CommandType = System.Data.CommandType.Text;
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int beurtid = reader.GetInt32(0);
+                    if (beurtid >= 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
         /// <summary>
         /// Deze Methode kan een Tram Plaatsen die nog niet in de Remise staat en een tram verplaatsen die er al wel instaat.
         /// </summary>
@@ -1132,25 +1160,16 @@ namespace RemiseSite_Groep_B
         /// <returns></returns>
         public bool TramVerplaatsen(int tramNr, Sector sect, int Spoor)
         {
-            /*
-            List<Sector> tempSectoren = GetSectorenVoorBlokkade();
-            try
-            {
-                foreach (Sector s in tempSectoren)
-                {
-                    if (s.Id == sect.Id && (s.IsGeblokkeerd || s.Tram != null))
-                    {
-                        return false;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }*/
 
-            Tram tempTram = ZoekTram(tramNr);
-            String cmd = "INSERT INTO TRAM_SECTOR(TRAMNR, SPOORNR, SECTORNR, ENTERDAY) VALUES(" + tramNr + "," + Spoor + "," + sect.Id + ",to_date('" + DateTime.Now.ToString() + "','DD-MM-YYYY HH24:MI:SS'))";
+            String cmd;
+            if (StaatTramInRemise(tramNr))
+            {
+                cmd = "UPDATE TRAM_SECTOR SET SPOORNR = " + Spoor + ", SECTORNR = " + sect.Id + " WHERE TRAMNR=" + tramNr + " AND LEAVEDAY IS NULL";
+            }
+            else
+            {
+                cmd = "INSERT INTO TRAM_SECTOR(TRAMNR, SPOORNR, SECTORNR, ENTERDAY) VALUES(" + tramNr + "," + Spoor + "," + sect.Id + ",to_date('" + DateTime.Now.ToString() + "','DD-MM-YYYY HH24:MI:SS'))";
+            }
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1167,6 +1186,7 @@ namespace RemiseSite_Groep_B
                 this.connection.Close();
             }
             return false;
+            
         }
 
         /// <summary>
