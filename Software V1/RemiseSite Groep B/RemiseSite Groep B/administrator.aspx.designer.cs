@@ -13,6 +13,15 @@ namespace RemiseSite_Groep_B {
     public partial class administrator {
         
         /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
         /// btnPlace control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace RemiseSite_Groep_B {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPlace;
+        
+        /// <summary>
+        /// btnBlok control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBlok;
         
         /// <summary>
         /// ddTram control.
@@ -58,6 +76,15 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.DropDownList ddSector;
         
         /// <summary>
+        /// btnDeBlok control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeBlok;
+        
+        /// <summary>
         /// lvSporen control.
         /// </summary>
         /// <remarks>
@@ -65,60 +92,6 @@ namespace RemiseSite_Groep_B {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvSporen;
-        
-        /// <summary>
-        /// blokkadeLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label blokkadeLabel;
-        
-        /// <summary>
-        /// textBoxSpoorID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBoxSpoorID;
-        
-        /// <summary>
-        /// buttonBlokkeerSpoor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonBlokkeerSpoor;
-        
-        /// <summary>
-        /// textBoxSpoorID2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBoxSpoorID2;
-        
-        /// <summary>
-        /// textBoxSectorID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBoxSectorID;
-        
-        /// <summary>
-        /// buttonBlokkeerSector control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonBlokkeerSector;
         
         /// <summary>
         /// upPlattegrond control.

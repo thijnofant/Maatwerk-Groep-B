@@ -21,6 +21,15 @@ namespace RemiseSite_Groep_B
             sectoren = new List<Classes.Sector>();
             trams = new List<Classes.Tram>();
             Update1();
+
+            if (/*(Session["LoggedInMedewerker"] as Classes.Medewerker).MedewerkerType != Classes.MedewerkerType.Beheerder || */ Session["LoggedInMedewerker"] == null || (Session["LoggedInMedewerker"] as Classes.Medewerker).MedewerkerType != Classes.MedewerkerType.Beheerder)
+            {
+                Panel1.Visible = false;
+            }
+            else
+            {
+                Panel1.Visible = true;
+            }
         }
 
         private void updateData() {
@@ -155,6 +164,113 @@ namespace RemiseSite_Groep_B
             int temp = Convert.ToInt32(ddSpoor.SelectedIndex.ToString());
             sectoren = Sporen[ddSpoor.SelectedIndex].Sectoren; //DatabaseManager.Instance.GetSectorenFromSpoorNR(temp);
             UpdateSector();
+        }
+
+        protected void btnBlok_Click(object sender, EventArgs e)
+        {
+            //Hier wordt gecheckt of er een sector geselecteerd is, is dit niet het geval dan zullen alle sectoren in het geselecteerde spoor geblokkeerd worden.
+            if (ddSector.SelectedItem == null)
+            {
+                int spoornummer = Convert.ToInt32(ddSpoor.SelectedItem);
+                int spoorID = -1;
+
+                //Spoornummer wordt vertaald naar SpoorID
+                foreach (Classes.Spoor s in Sporen)
+                {
+                    if (spoornummer == s.Nummer)
+                    {
+                        spoorID = s.Id;
+                    }
+                }
+
+                if (DatabaseManager.Instance.BlokkeerSpoor(Convert.ToString(spoorID)))
+                {
+                    string script = "alert(\"Spoor is succesvol geblokkeerd\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                else
+                {
+                    string script = "alert(\"Spoor blokkeren mislukt.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                updateData();
+                Update1();
+                return;
+            }
+
+            //SectorID wordt opgehaald uit string.
+            string sectorID = Convert.ToString(ddSector.SelectedItem);
+            int SpoorID = Convert.ToInt32(ddSpoor.SelectedItem.ToString());
+
+            //Sector wordt geblokkeerd.
+            if (DatabaseManager.Instance.BlokkeerSector(sectorID, SpoorID))
+            {
+                string script = "alert(\"Sector is succesvol geblokkeerd.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            else
+            {
+                string script = "alert(\"Sector blokkeren mislukt.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+
+            
+            updateData();
+            Update1();
+        }
+
+        protected void btnDeBlok_Click(object sender, EventArgs e)
+        {
+            //Hier wordt gecheckt of er een sector geselecteerd is, is dit niet het geval dan zullen alle sectoren in het geselecteerde spoor gedeblokkeerd worden.
+            if (ddSector.SelectedItem == null)
+            {
+                int spoornummer = Convert.ToInt32(ddSpoor.SelectedItem);
+                int spoorID = -1;
+
+                //Spoornummer wordt vertaald naar SpoorID
+                foreach (Classes.Spoor s in Sporen)
+                {
+                    if (spoornummer == s.Nummer)
+                    {
+                        spoorID = s.Id;
+                    }
+                }
+
+                if (DatabaseManager.Instance.DeblokkeerSpoor(Convert.ToString(spoorID)))
+                {
+                    string script = "alert(\"Spoor is succesvol gedeblokkeerd.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                else
+                {
+                    string script = "alert(\"Spoor deblokkeren mislukt.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                
+                updateData();
+                Update1();
+                return;
+            }
+
+            //SectorID wordt opgehaald uit string.
+            string sectorID = Convert.ToString(ddSector.SelectedItem);
+            int spoorNR = Convert.ToInt32(ddSpoor.SelectedItem.ToString());
+
+            //Sector wordt gedeblokkeerd.
+            if (DatabaseManager.Instance.DeblokkeerSector(sectorID,spoorNR))
+            {
+                string script = "alert(\"Sector is succesvol gedeblokkeerd\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            else
+            {
+                string script = "alert(\"Sector deblokkeren mislukt.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+
+            
+            updateData();
+            Update1();
         }
     }
 }

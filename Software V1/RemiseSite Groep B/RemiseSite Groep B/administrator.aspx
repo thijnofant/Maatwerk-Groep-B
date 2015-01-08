@@ -2,17 +2,41 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-    <div style="width: 378px; height: 77px">
-&nbsp; Tram:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnPlace" runat="server" Text="(Ver)Plaatsen" OnClick="btnPlace_Click" Width="99px" />
-&nbsp;Spoor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sector<br />
-        <asp:DropDownList ID="ddTram" runat="server" Width="82px">
-        </asp:DropDownList>
-&nbsp;<asp:Button ID="btnDel" runat="server" Text="Uitrijden" OnClick="btnDel_Click" Width="100px" />
-&nbsp;<asp:DropDownList ID="ddSpoor" runat="server" Height="16px" Width="82px" AutoPostBack="True" OnSelectedIndexChanged="ddSpoor_SelectedIndexChanged">
-        </asp:DropDownList>
-&nbsp;<asp:DropDownList ID="ddSector" runat="server" Height="16px" Width="82px">
-        </asp:DropDownList>
-    </div>
+    <asp:Panel ID="Panel1" runat="server" Height="89px" Width="622px">
+        <table id="listAdmin" class="nav-justified">
+            <tr>
+                <td style="width: 9px">Tram:</td>
+                <td style="width: 90px">
+                    <asp:Button ID="btnPlace" runat="server" Text="(Ver)Plaatsen" OnClick="btnPlace_Click" Width="110px" />
+                </td>
+                <td style="width: 52px">Spoor:</td>
+                <td style="width: 11px">Sector</td>
+                <td style="width: 98px">
+                    <asp:Button ID="btnBlok" Text="Blokkeer" runat="server" OnClick="btnBlok_Click" Width="110px" />
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 9px">
+                    <asp:DropDownList ID="ddTram" runat="server" Width="82px">
+                    </asp:DropDownList>
+                </td>
+                <td style="width: 90px">
+                    <asp:Button ID="btnDel" runat="server" Text="Uitrijden" OnClick="btnDel_Click" Width="110px" />
+                </td>
+                <td style="width: 52px">
+                    <asp:DropDownList ID="ddSpoor" runat="server" Height="16px" Width="82px" AutoPostBack="True" OnSelectedIndexChanged="ddSpoor_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </td>
+                <td style="width: 11px">
+                    <asp:DropDownList ID="ddSector" runat="server" Height="16px" Width="82px">
+                    </asp:DropDownList>
+                </td>
+                <td style="width: 98px" id="panelAdmin">
+                    <asp:Button ID="btnDeBlok" Text="Deblokkeer" runat="server" OnClick="btnDeBlok_Click" Width="110px" />
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
     <br />
     <div runat="server" style="width:1200px">
         <asp:ListView ID="lvSporen" runat="server" GroupItemCount="12">
@@ -38,13 +62,7 @@
                 </div> 
             </ItemTemplate>
         </asp:ListView>
-    </div> <br/>
-
-    <div runat="server" style="width:800px">
-        <asp:Label ID="blokkadeLabel" runat="server"><b>(De)Blokkeren</b></asp:Label> <br />
-        Spoornummer: <asp:TextBox ID="textBoxSpoorID" runat="server"></asp:TextBox> <asp:Button ID="buttonBlokkeerSpoor" Text="Blokkeer spoor" runat="server" /> <br />
-        Spoornummer: <asp:TextBox ID="textBoxSpoorID2" runat="server"></asp:TextBox> Sectornummer: <asp:TextBox ID="textBoxSectorID" runat="server"></asp:TextBox> <asp:Button ID="buttonBlokkeerSector" Text="Blokkeer sector" runat="server" />
-    </div>
+    </div> 
 
     <!--<asp:UpdatePanel ID="upPlattegrond" runat="server">
         <ContentTemplate>

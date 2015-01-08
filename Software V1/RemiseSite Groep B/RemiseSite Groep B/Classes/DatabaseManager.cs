@@ -1794,24 +1794,32 @@ namespace RemiseSite_Groep_B
         /// </summary>
         /// <param name="sectorID">SectorID</param>
         /// <returns>Gelukt?</returns>
-        public bool BlokkeerSector(string sectorID)
+        public bool BlokkeerSector(string sectorID, int spoorNR)
         {
-            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
-            OracleCommand command = new OracleCommand(cmd, connection);
-            command.CommandType = System.Data.CommandType.Text;
-            try
+            if(!(SectorBezet(Convert.ToInt32(sectorID), spoorNR)))
             {
-                connection.Open();
-                command.ExecuteNonQuery();
-                return true;
+
+                string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE NUMMER = " + sectorID +" AND SpoorNR = " + spoorNR;
+                OracleCommand command = new OracleCommand(cmd, connection);
+                command.CommandType = System.Data.CommandType.Text;
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch
+            else
             {
                 return false;
-            }
-            finally
-            {
-                connection.Close();
             }
         }
 
@@ -1820,9 +1828,9 @@ namespace RemiseSite_Groep_B
         /// </summary>
         /// <param name="sectorID">SectorID</param>
         /// <returns>Gelukt?</returns>
-        public bool DeblokkeerSector(string sectorID)
+        public bool DeblokkeerSector(string sectorID, int spoorNr)
         {
-            string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE ID = '" + sectorID + "' AND TramID IS NULL";
+            string cmd = "UPDATE Sector SET Blokkade = 'n' WHERE Nummer = " + sectorID + " AND SpoorNR = " + spoorNr;
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1848,7 +1856,7 @@ namespace RemiseSite_Groep_B
         /// <returns>Gelukt?</returns>
         public bool BlokkeerSpoor(string spoorID)
         {
-            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE SpoorID = '" + spoorID + "' AND TramID IS NULL";
+            string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE SpoorNR = '" + spoorID + "' AND TramNR IS NULL";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
