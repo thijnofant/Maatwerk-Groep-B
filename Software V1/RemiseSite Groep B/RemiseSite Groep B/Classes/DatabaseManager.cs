@@ -953,7 +953,7 @@ namespace RemiseSite_Groep_B
             try
             {
                 connection.Open();
-                string cmd = "INSERT INTO Tram_Beurt(ID, TramID, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(:schoonmaakID, :schoonmaakTramID, " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', :schoonmaakSoort)";
+                string cmd = "INSERT INTO Tram_Beurt(ID, TramNR, DatumTijdstip, TypeOnderhoud, BeurtType) VALUES(:schoonmaakID, :schoonmaakTramID, " + "TO_DATE('" + Convert.ToString(schoonmaak.BeginDatum.Date).Substring(0, 10) + "', 'DD-MM-YYYY'), 'Schoonmaak', :schoonmaakSoort)";
                 OracleCommand command = new OracleCommand(cmd, connection);
                 command.Parameters.Add(":schoonmaakID", Convert.ToString(schoonmaak.ID));
                 command.Parameters.Add(":schoonmaakTramID", Convert.ToString(schoonmaak.Tram.Id));
@@ -1126,9 +1126,10 @@ namespace RemiseSite_Groep_B
 
         public bool StaatTramInRemise(int tramNr)
         {
-            string cmd = "SELECT COUNT(*) FROM Tram_SECTOR WHERE LEAVEDAY IS NULL";
+            string cmd = "SELECT COUNT(*) FROM Tram_SECTOR WHERE LEAVEDAY IS NULL AND TramNr = :TramNum";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
+            command.Parameters.Add(":TramNum", tramNr);
             try
             {
                 connection.Open();
@@ -1197,9 +1198,9 @@ namespace RemiseSite_Groep_B
         public List<Tram> AlleTramsMetStatus(TramStatus status)
         {
             List<Tram> tramlist = new List<Tram>();
-            string cmd = "SELECT t.ID, t.Nummer, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt WHERE t.TramtypeID = tt.ID and t.status = :status";
+            string cmd = "SELECT t.Nummer, tt.Omschrijving, tt.Lengte FROM Tram t, TramType tt, Tram_Lijn tl WHERE t.TramtypeID = tt.ID and tl.tramnr = t.nummer  and t.status = :status";
             OracleCommand command = new OracleCommand(cmd, connection);
-            command.Parameters.Add("status", status.ToString().ToLower());
+            command.Parameters.Add(":status", status.ToString());
             command.CommandType = System.Data.CommandType.Text;
             try
             {
@@ -1208,9 +1209,9 @@ namespace RemiseSite_Groep_B
                 while (reader.Read())
                 {
                     int tramid = reader.GetInt32(0);
-                    int tramnummer = reader.GetInt32(1);
-                    string typenaam = reader.GetString(2);
-                    double lengte = reader.GetDouble(3);
+                    int tramnummer = reader.GetInt32(0);
+                    string typenaam = reader.GetString(1);
+                    double lengte = reader.GetDouble(2);
 
                     TramType type = new TramType(typenaam, lengte);
                     Tram tram = new Tram(tramid, type, tramnummer);
@@ -2025,6 +2026,41 @@ namespace RemiseSite_Groep_B
                 connection.Close();
             }
             return reArray;
+        }
+
+        public List<string> GetUitrijlijst()
+        {
+            List<string> reList = new List<string>();
+            string cmd = "SELECT * FROM TRAM_SECTOR WHERE LEAVEDAY IS NOT NULL ORDER BY LEAVEDAY";
+            OracleCommand command = new OracleCommand(cmd, connection);
+            try
+            {
+                connection.Open();
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string temp = "";
+                    temp += "Tram: ";
+                    temp += Convert.ToString(reader["TRAMNR"]);
+                    temp += " Spoor: ";
+                    temp += Convert.ToString(reader["SPOORNR"]);
+                    temp += " Sector: ";
+                    temp += Convert.ToString(reader["SECTORNR"]);
+                    temp += " Inrij Datum: ";
+                    temp += Convert.ToString(reader["ENTERDAY"]);
+                    temp += " Vertrek Datum: ";
+                    temp += Convert.ToString(reader["LEAVEDAY"]);
+                    reList.Add(temp);
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return reList;
         }
     }
 }

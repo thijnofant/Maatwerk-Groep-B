@@ -205,7 +205,9 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Simulatie.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="uitrijlijst.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -362,6 +364,13 @@
     <Compile Include="SchoonmaakPage.aspx.designer.cs">
       <DependentUpon>SchoonmaakPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Simulatie.aspx.cs">
+      <DependentUpon>Simulatie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Simulatie.aspx.designer.cs">
+      <DependentUpon>Simulatie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -377,6 +386,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="uitrijlijst.aspx.cs">
+      <DependentUpon>uitrijlijst.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uitrijlijst.aspx.designer.cs">
+      <DependentUpon>uitrijlijst.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

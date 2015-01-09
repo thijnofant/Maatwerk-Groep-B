@@ -93,8 +93,8 @@ namespace RemiseSysteem_Groep_B
         /// </summary>
         private void btnBlokkeer_Click(object sender, EventArgs e) 
         {
+            
             UpdateDataAlleen();
-
             //Hier wordt gecheckt of er een sector geselecteerd is, is dit niet het geval dan zullen alle sectoren in het geselecteerde spoor geblokkeerd worden.
             if (lbxSectoren.SelectedItem == null) 
             {

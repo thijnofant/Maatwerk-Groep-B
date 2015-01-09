@@ -102,6 +102,7 @@ namespace RemiseSite_Groep_B.Classes
 
                 if (SpoorID.Count == 0)
                 {
+
                 }
                 else if (SpoorID.Count == N)
                 {
@@ -111,7 +112,8 @@ namespace RemiseSite_Groep_B.Classes
                 {
                     SectorID = Database.GetSectorX(X, SpoorID[N]);
                 }
-                if (!Database.SectorBezet(SectorID,SpoorID[N]))
+
+                if (!Database.SectorBezet(SectorID, SpoorID[N]))
                 {
                     Database.TramVerplaatsen(tramNr, new Sector(SectorID), SpoorID[N]);
                     Tram tram = Database.ZoekTram(tramNr);
@@ -151,6 +153,7 @@ namespace RemiseSite_Groep_B.Classes
                             X++;
                         }
                     }
+
                 }
             }
             return false;
