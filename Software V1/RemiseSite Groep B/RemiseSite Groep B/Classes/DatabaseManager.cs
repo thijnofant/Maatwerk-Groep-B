@@ -15,7 +15,7 @@ namespace RemiseSite_Groep_B
         private static DatabaseManager instance;
         int ReserveringIdIn;
 
-        private DatabaseManager()
+        public DatabaseManager()
         {
            
              this.Pcn = "dbi292195";
