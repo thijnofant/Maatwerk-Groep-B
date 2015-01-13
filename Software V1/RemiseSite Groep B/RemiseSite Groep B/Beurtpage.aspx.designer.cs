@@ -49,12 +49,21 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.DataList lijstBeurten;
         
         /// <summary>
-        /// Panel2 control.
+        /// PanelBeheerder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.Panel PanelBeheerder;
+        
+        /// <summary>
+        /// PanelMedewerker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelMedewerker;
     }
 }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Beurtpage.aspx.cs" Inherits="RemiseSite_Groep_B.BeurtPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Label ID="lblPaginaTitel" Text="Beurten" runat="server" Font-Size="XX-Large" CssClass="panel-title" ForeColor="#333333" ></asp:Label> 
+    <asp:Label ID="lblPaginaTitel" Text="Beurten" runat="server" Font-Size="XX-Large" CssClass="panel-title" ForeColor="#333333"></asp:Label>
     <asp:Table ID="StyleTable" runat="server" GridLines="Both" BorderStyle="Solid" BorderWidth="2">
         <asp:TableRow>
             <asp:TableCell>
@@ -21,9 +21,12 @@
                 </asp:Panel>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Panel ID="Panel2" runat="server" Width="600" Height="800" Visible="true">
-                    
+                <asp:Panel ID="PanelBeheerder" runat="server" Width="600" Height="800" Visible="false">
+
                 </asp:Panel>
+                <asp:Panel ID="PanelMedewerker" runat="server" Width="600" Height="800" Visible="true">
+                </asp:Panel>
+
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
