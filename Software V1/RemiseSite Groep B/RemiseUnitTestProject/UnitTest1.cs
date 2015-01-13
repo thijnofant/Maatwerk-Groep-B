@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data.OracleClient;
 using RemiseSite_Groep_B;
+using System.Data.OracleClient;
 
 
 namespace RemiseUnitTestProject
@@ -9,7 +9,7 @@ namespace RemiseUnitTestProject
     [TestClass]
     public class UnitTest1
     {
-        public OracleConnection conn = new OracleConnection("User Id=dbi292195;Password=kd1qoIM98M;Data Source=" + "//192.168.15.50:1521/fhictora;");
+        public OracleConnection conn = new OracleConnection("User Id=dbi292195; Password=kd1qoIM98M; Data Source=" + @"//192.168.15.50:1521/fhictora;");
 
         [TestMethod]
         public void TestInloggen()

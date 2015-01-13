@@ -27,10 +27,8 @@ namespace RemiseSite_Groep_B
                 ddStatus.Items.Add(TramStatus.Dienst.ToString());
                 ddStatus.Items.Add(TramStatus.Remise.ToString());
                 ddStatus.Items.Add(TramStatus.Schoonmaak.ToString());
+                HaalTramsOp();
             }
-
-            //Status Wijziggen
-            HaalTramsOp();
         }
 
         private void HaalTramsOp()
@@ -44,6 +42,7 @@ namespace RemiseSite_Groep_B
             }
         }
 
+        /*
         protected void lbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddTrams.SelectedIndex >= 0)
@@ -64,20 +63,19 @@ namespace RemiseSite_Groep_B
                 }
             }
         }
+         */
 
         protected void btnWijzig_Click(object sender, EventArgs e)
         {
             TramStatus status = (TramStatus)Enum.Parse(typeof(TramStatus), ddStatus.SelectedItem.ToString());
-            if (ddTrams.SelectedIndex >= 0)
+            this.trams = DatabaseManager.Instance.AlleTrams();
+            string text = ddTrams.SelectedItem.ToString();
+            foreach (Tram tram in this.trams)
             {
-                string text = ddTrams.SelectedItem.ToString();
-                foreach (Tram tram in this.trams)
+                if (text == tram.ToString())
                 {
-                    if (text == tram.ToString())
-                    {
-                        DatabaseManager.Instance.TramstatusVeranderen(status, tram.Id);
-                        HaalTramsOp();
-                    }
+                    DatabaseManager.Instance.TramstatusVeranderen(status, tram.Id);
+                    HaalTramsOp();
                 }
             }
         }

@@ -1614,9 +1614,11 @@ namespace RemiseSite_Groep_B
                 this.connection.Open();
 
                 OracleDataReader reader = command.ExecuteReader();
-                reader.Read();
-
-                int SpoorID = reader.GetInt32(0);
+                int SpoorID = 0;
+                while (reader.Read())
+                {
+                    SpoorID = reader.GetInt32(0);
+                }
                 return SpoorID;
             }
             catch
