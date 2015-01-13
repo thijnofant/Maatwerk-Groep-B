@@ -32,7 +32,8 @@ namespace RemiseSite_Groep_B
             }
         }
 
-        private void updateData() {
+        private void updateData() 
+        {
             List<Classes.Spoor> tempSporen = DatabaseManager.Instance.SporenlijstOpvragen();
             if (tempSporen != null) {
                 Sporen = tempSporen;

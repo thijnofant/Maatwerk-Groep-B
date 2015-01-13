@@ -17,10 +17,10 @@ namespace RemiseSite_Groep_B
 
         public DatabaseManager()
         {
-           
-             this.Pcn = "dbi292195";
-             this.Password = "kd1qoIM98M";
-             connection.ConnectionString = "User Id=" + this.Pcn + ";Password=" + this.Password + ";Data Source=" + "//192.168.15.50:1521/fhictora;";
+
+            this.Pcn = "dbi292195";
+            this.Password = "kd1qoIM98M";
+            connection.ConnectionString = "User Id=" + this.Pcn + ";Password=" + this.Password + ";Data Source=" + "//192.168.15.50:1521/fhictora;";
             /*
             this.Pcn = "Proftaak";
             this.Password = "proftaak";
@@ -56,7 +56,7 @@ namespace RemiseSite_Groep_B
             string cmd = "Select Count(*) as UserExists From Medewerker Where ID = :ID AND password = :Password";
             OracleCommand command = new OracleCommand(cmd, this.connection);
             command.CommandType = System.Data.CommandType.Text;
-            
+
             command.Parameters.Add(":ID", ID);
             command.Parameters.Add(":Password", password);
 
@@ -221,7 +221,7 @@ namespace RemiseSite_Groep_B
                             break;
                         case "Technicus":
                             mwtTemp = MedewerkerType.Technicus;
-                        break;
+                            break;
                     }
 
                     Medewerker mw = new Medewerker((int)reader["MWID"],
@@ -300,7 +300,8 @@ namespace RemiseSite_Groep_B
                 }
                 return reVal;
             }
-            catch {
+            catch
+            {
                 return 0;
             }
             finally
@@ -664,7 +665,7 @@ namespace RemiseSite_Groep_B
 
             comm.Parameters.Add(":onderhoudID", onderhoud.ID);
             comm.Parameters.Add(":datum", datum);
-            
+
             try
             {
                 connection.Open();
@@ -1187,7 +1188,7 @@ namespace RemiseSite_Groep_B
                 this.connection.Close();
             }
             return false;
-            
+
         }
 
         /// <summary>
@@ -1372,7 +1373,7 @@ namespace RemiseSite_Groep_B
         /// <returns>De lijst met de DatabaseId's van de sporen die bij de Lijn horen.</returns>
         public List<int> GetSporenIDByLijnID(int lijnID)
         {
-            String cmd = "SELECT NUMMER FROM SPOOR WHERE NUMMER In (SELECT SpoorNR FROM LIJN_SPOOR WHERE LijnNR =(SELECT LijnNR FROM TRAM_LIJN WHERE TRAMNR="+lijnID+"))";
+            String cmd = "SELECT NUMMER FROM SPOOR WHERE NUMMER In (SELECT SpoorNR FROM LIJN_SPOOR WHERE LijnNR =(SELECT LijnNR FROM TRAM_LIJN WHERE TRAMNR=" + lijnID + "))";
             OracleCommand command = new OracleCommand(cmd, connection);
             command.CommandType = System.Data.CommandType.Text;
             try
@@ -1496,7 +1497,7 @@ namespace RemiseSite_Groep_B
             try
             {
                 this.connection.Open();
-  
+
                 command2.ExecuteNonQuery();
                 Console.WriteLine(op3.Value);
                 if (Convert.ToInt32(op3.Value) == 0)
@@ -1673,7 +1674,7 @@ namespace RemiseSite_Groep_B
                 reader.Read();
 
                 int SpoorID = Convert.ToInt32(reader["res"]);
-                if (!( SpoorID > 0))
+                if (!(SpoorID > 0))
                 {
                     return false;
                 }
@@ -1799,10 +1800,10 @@ namespace RemiseSite_Groep_B
         /// <returns>Gelukt?</returns>
         public bool BlokkeerSector(string sectorID, int spoorNR)
         {
-            if(!(SectorBezet(Convert.ToInt32(sectorID), spoorNR)))
+            if (!(SectorBezet(Convert.ToInt32(sectorID), spoorNR)))
             {
 
-                string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE NUMMER = " + sectorID +" AND SpoorNR = " + spoorNR;
+                string cmd = "UPDATE Sector SET Blokkade = 'y' WHERE NUMMER = " + sectorID + " AND SpoorNR = " + spoorNR;
                 OracleCommand command = new OracleCommand(cmd, connection);
                 command.CommandType = System.Data.CommandType.Text;
                 try
@@ -1977,23 +1978,28 @@ namespace RemiseSite_Groep_B
             }
         }
 
-        public int StaatTramOpSector(int sectorid, int spoorid) {
+        public int StaatTramOpSector(int sectorid, int spoorid)
+        {
             string cmd = "select tramnr from tram_sector where sectornr = " + Convert.ToString(sectorid) + "and spoornr = " + Convert.ToString(spoorid) + "and leaveday is null";
             OracleCommand command = new OracleCommand(cmd, connection);
 
-            try {
+            try
+            {
                 int tramnr = 0;
                 connection.Open();
                 OracleDataReader reader = command.ExecuteReader();
-                while (reader.Read()) {
+                while (reader.Read())
+                {
                     tramnr = reader.GetInt32(0);
                 }
                 return tramnr;
             }
-            catch {
+            catch
+            {
                 return 0;
             }
-            finally {
+            finally
+            {
                 connection.Close();
             }
         }
