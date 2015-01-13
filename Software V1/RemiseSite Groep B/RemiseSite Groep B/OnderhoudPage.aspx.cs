@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace RemiseSite_Groep_B
 {
-    public partial class Onderhoud : System.Web.UI.Page
+    public partial class OnderhoudPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

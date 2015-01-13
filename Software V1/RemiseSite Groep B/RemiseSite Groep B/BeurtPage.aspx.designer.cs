@@ -10,16 +10,25 @@
 namespace RemiseSite_Groep_B {
     
     
-    public partial class OnderhoudPage {
+    public partial class BeurtPage {
         
         /// <summary>
-        /// lblPaginaTitel control.
+        /// lblPaginaTitelOnderhoud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPaginaTitel;
+        protected global::System.Web.UI.WebControls.Label lblPaginaTitelOnderhoud;
+        
+        /// <summary>
+        /// lblPaginaTitelSchoonmaak control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPaginaTitelSchoonmaak;
         
         /// <summary>
         /// StyleTable control.
