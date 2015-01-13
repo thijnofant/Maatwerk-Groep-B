@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.OracleClient;
-using RemiseSite_Groep_B;
 
 
 namespace RemiseUnitTestProject
@@ -14,13 +13,13 @@ namespace RemiseUnitTestProject
         [TestMethod]
         public void TestInloggen()
         {
-
+            
             OracleCommand comm = new OracleCommand("insert into medewerker (id,functieid,naam,username,password) values(99,1,'test','test1','test')", conn);
             conn.Open();
             comm.ExecuteNonQuery();
             conn.Close();
-            DatabaseManager dbmanager = new DatabaseManager();
-            Assert.Equals(dbmanager.Inloggen("test1", "test"), 1);
+            RemiseSite_Groep_B.DatabaseManager dbmanager = new RemiseSite_Groep_B.DatabaseManager();
+            Assert.AreEqual(dbmanager.Inloggen("test1", "test"), 1);
             comm.CommandText = "Delete from medewerker where id = 99";
             conn.Open();
             comm.ExecuteNonQuery();
@@ -52,7 +51,7 @@ namespace RemiseUnitTestProject
             comm.ExecuteNonQuery();
             conn.Close();
 
-            DatabaseManager dbmanager = new DatabaseManager();
+            RemiseSite_Groep_B.DatabaseManager dbmanager = new RemiseSite_Groep_B.DatabaseManager();
             Assert.IsTrue(dbmanager.SectorBezet(1,999));
 
             comm.CommandText = "delete from tram_sector where spoornr = 999 and sectornr = 1";
