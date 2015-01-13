@@ -92,6 +92,7 @@ namespace RemiseSite_Groep_B
             {
                 if (DatabaseManager.Instance.TramVerplaatsen(tram, s, spoor))
                 {
+                    DatabaseManager.Instance.TramstatusVeranderen(Classes.TramStatus.Remise, tram);
                     string script2 = "alert(\"Tram " + tram + " is verplaatst naar Spoor:" + spoor + "Sector:" + sector + ".\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
                     Response.Redirect("/administrator");
@@ -118,6 +119,7 @@ namespace RemiseSite_Groep_B
 
             if (DatabaseManager.Instance.TramstatusVeranderen(Classes.TramStatus.Dienst, gekozenTram.Id))
             {
+                DatabaseManager.Instance.TramstatusVeranderen(Classes.TramStatus.Dienst, tramnummer);
                 string script = "alert(\"Tram " + tramnummer + " is uit Remise gereden\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
