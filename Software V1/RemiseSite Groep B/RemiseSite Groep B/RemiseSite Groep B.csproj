@@ -159,12 +159,12 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="administrator.aspx" />
     <Content Include="Bestuurder.aspx" />
-    <Content Include="Beurtpage.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Onderhoud.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -310,13 +310,6 @@
     <Compile Include="Bestuurder.aspx.designer.cs">
       <DependentUpon>Bestuurder.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Beurtpage.aspx.cs">
-      <DependentUpon>Beurtpage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Beurtpage.aspx.designer.cs">
-      <DependentUpon>Beurtpage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Beurt.cs" />
     <Compile Include="Classes\BeurtType.cs" />
     <Compile Include="Classes\Lijn.cs" />
@@ -349,6 +342,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Onderhoud.aspx.cs">
+      <DependentUpon>Onderhoud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Onderhoud.aspx.designer.cs">
+      <DependentUpon>Onderhoud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reserveren.aspx.cs">
       <DependentUpon>Reserveren.aspx</DependentUpon>

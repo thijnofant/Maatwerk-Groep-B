@@ -10,7 +10,7 @@
 namespace RemiseSite_Groep_B {
     
     
-    public partial class BeurtPage {
+    public partial class Onderhoud {
         
         /// <summary>
         /// lblPaginaTitel control.
