@@ -1951,6 +1951,7 @@ namespace RemiseSite_Groep_B
                 this.connection.Close();
             }
         }
+
         public int GetSpoorIDByNr(int spoorNr)
         {
             String cmd = "SELECT Nummer FROM SPOOR WHERE NUMMER =" + spoorNr;
@@ -2069,6 +2070,85 @@ namespace RemiseSite_Groep_B
                 connection.Close();
             }
             return reList;
+        }
+
+        public bool CanTramMove(int tramNR)
+        {
+            string cmd2 = "KanTramVerplaatsen";
+            OracleCommand command2 = new OracleCommand(cmd2, connection);
+            command2.CommandType = CommandType.StoredProcedure;
+            OracleParameter op1 = new OracleParameter("v_tramnummer", tramNR);
+            op1.Direction = ParameterDirection.Input;
+            command2.Parameters.Add(op1);
+            OracleParameter op3 = new OracleParameter("reval", OracleType.Number);
+            op3.Direction = ParameterDirection.ReturnValue;
+            command2.Parameters.Add(op3);
+
+            try
+            {
+                this.connection.Open();
+
+                command2.ExecuteNonQuery();
+                Console.WriteLine(op3.Value);
+                if (Convert.ToInt32(op3.Value) == 0)
+                {
+                    return false;
+                }
+                if (Convert.ToInt32(op3.Value) == 1)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
+
+        public bool CanTramInsert(int spoorNr, int sectorNr)
+        {
+            string cmd2 = "KanTramPlaatsen";
+            OracleCommand command2 = new OracleCommand(cmd2, connection);
+            command2.CommandType = CommandType.StoredProcedure;
+            OracleParameter op1 = new OracleParameter("v_spoor", spoorNr);
+            op1.Direction = ParameterDirection.Input;
+            command2.Parameters.Add(op1);
+            OracleParameter op2 = new OracleParameter("v_sector", sectorNr);
+            op2.Direction = ParameterDirection.Input;
+            command2.Parameters.Add(op2);
+            OracleParameter op3 = new OracleParameter("reval", OracleType.Number);
+            op3.Direction = ParameterDirection.ReturnValue;
+            command2.Parameters.Add(op3);
+
+            try
+            {
+                this.connection.Open();
+
+                command2.ExecuteNonQuery();
+                Console.WriteLine(op3.Value);
+                if (Convert.ToInt32(op3.Value) == 0)
+                {
+                    return false;
+                }
+                if (Convert.ToInt32(op3.Value) == 1)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
         }
     }
 }

@@ -113,12 +113,14 @@ namespace RemiseSite_Groep_B.Classes
                     SectorID = Database.GetSectorX(X, SpoorID[N]);
                 }
 
-                if (!Database.SectorBezet(SectorID, SpoorID[N]))
+                if (!Database.SectorBezet(SectorID, SpoorID[N]) && DatabaseManager.Instance.CanTramInsert(SpoorID[N], SectorID))
                 {
+
                     Database.TramVerplaatsen(tramNr, new Sector(SectorID), SpoorID[N]);
                     Tram tram = Database.ZoekTram(tramNr);
                     Database.TramstatusVeranderen(TramStatus.Remise, tram.Nummer);
                     return true;
+
                 }
                 else
                 {
