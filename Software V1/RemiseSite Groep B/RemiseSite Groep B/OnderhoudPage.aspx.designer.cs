@@ -40,6 +40,15 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.Panel PanelLijstBeurten;
         
         /// <summary>
+        /// ddlMedewerkers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedewerkers;
+        
+        /// <summary>
         /// lijstBeurten control.
         /// </summary>
         /// <remarks>
@@ -58,12 +67,12 @@ namespace RemiseSite_Groep_B {
         protected global::System.Web.UI.WebControls.Panel PanelBeheerder;
         
         /// <summary>
-        /// PanelMedewerker control.
+        /// PanelTechnici control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelMedewerker;
+        protected global::System.Web.UI.WebControls.Panel PanelTechnici;
     }
 }
