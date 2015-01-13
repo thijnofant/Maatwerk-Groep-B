@@ -88,7 +88,7 @@ namespace RemiseSite_Groep_B
             }
 
             Classes.Sector s = new Classes.Sector(sector);
-            if (!DatabaseManager.Instance.SectorBezet(sector,spoor))
+            if ((!DatabaseManager.Instance.SectorBezet(sector,spoor)) && DatabaseManager.Instance.CanTramInsert(spoor,sector))
             {
                 if (DatabaseManager.Instance.TramVerplaatsen(tram, s, spoor))
                 {
@@ -114,18 +114,25 @@ namespace RemiseSite_Groep_B
         protected void btnDel_Click(object sender, EventArgs e)
         {
             int tramnummer = Convert.ToInt32(ddTram.SelectedItem.ToString());
-            Classes.Tram gekozenTram = DatabaseManager.Instance.ZoekTram(tramnummer);
-            DatabaseManager.Instance.TramRijdUitRemise(tramnummer);
-
-            if (DatabaseManager.Instance.TramstatusVeranderen(Classes.TramStatus.Dienst, gekozenTram.Id))
+            if (DatabaseManager.Instance.CanTramMove(tramnummer))
             {
-                DatabaseManager.Instance.TramstatusVeranderen(Classes.TramStatus.Dienst, tramnummer);
-                string script = "alert(\"Tram " + tramnummer + " is uit Remise gereden\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                Classes.Tram gekozenTram = DatabaseManager.Instance.ZoekTram(tramnummer);
+                DatabaseManager.Instance.TramRijdUitRemise(tramnummer);
+
+                if (DatabaseManager.Instance.TramstatusVeranderen(Classes.TramStatus.Dienst, gekozenTram.Id))
+                {
+                    string script = "alert(\"Tram " + tramnummer + " is uit Remise gereden\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                else
+                {
+                    string script = "alert(\"Tram " + tramnummer + " uit remise rijden is mislukt\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
             }
             else
             {
-                string script = "alert(\"Tram " + tramnummer + " uit remise rijden is mislukt\");";
+                string script = "alert(\"De tram kan niet uitrijden doordat deze geblokkeerd is.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
