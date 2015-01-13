@@ -24,7 +24,7 @@ namespace RemiseSite_Groep_B
         protected void Button1_Click(object sender, EventArgs e)
         {
             Session["LoggedInMedewerker"] = null;
-            Response.Redirect("/Login");
+            Response.Redirect("/Account/Login");
         }
     }
 }
